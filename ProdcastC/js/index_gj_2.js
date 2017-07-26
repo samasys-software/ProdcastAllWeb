@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
 		//var baseUrl = "http://ec2-52-91-5-22.compute-1.amazonaws.com:8080";
+		//var baseUrl = "http://ec2-52-91-5-22.compute-1.amazonaws.com:8080";		
 		var baseUrl = "../..";
 		var logoutUrl="";
 		//var custloginMap=""
