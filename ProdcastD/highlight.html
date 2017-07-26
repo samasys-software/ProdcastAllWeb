@@ -1,0 +1,74 @@
+<html>
+<head>
+hello
+
+<style>
+.highlight
+{
+background:blue;
+font-weight:bold;
+
+
+}
+</style>
+<script src="jquery-2.2.3.min.js"></script>
+      <script type="text/javascript">
+	  $(document).ready(function(){
+					
+					$("#search").keyup(function(){
+						searchHighlight($(this).val());
+						
+					});
+				});
+				
+				
+				
+				 function searchHighlight(searchText)
+				 {
+					 if(searchText)
+					 {
+					 var content=$("p").text();
+					 var searchExp=new RegExp(searchText,"ig");
+					 var matches=content.match(searchExp);
+					 if(matches)
+					 {
+						 $("p").html(content.replace(searchExp,function(match){
+							 
+							 return "<span class='highlight'>"+match+"</span>";
+						 }));
+						 
+						 
+					 }
+					 
+					 else{
+						 $(".highlight").removeClass("highlight");
+					 }
+					 
+					 }
+					 
+					 else{
+						 $(".highlight").removeClass("highlight");
+					 }
+					 
+					 
+				 }
+         
+
+          </script>
+				</head>
+    
+	
+    <body>
+	
+	<input type="text" id="search" />
+	<p>
+	Microsoft Corporation (commonly referred to as Microsoft or MS) is an American multinational 
+	technology company headquartered in Redmond, Washington, that develops, manufactures, licenses,
+	supports and sells computer software, consumer electronics and personal computers and services. 
+	Its best known software products are the Microsoft Windows line of operating systems, Microsoft 
+	Office office suite, and Internet Explorer and Edge web browsers. Its flagship hardware products
+	are the Xbox video game consoles and the Microsoft Surface tablet
+	lineup. As of 2011, it was the world's largest software maker by revenue,[8] and one of the world's most valuable companies.
+	</p>
+	</body>
+	</html>

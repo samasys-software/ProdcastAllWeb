@@ -1,0 +1,106 @@
+/*! jQuery Mobile vGit Build: SHA1: 27e3c18acfebab2d47ee7ed37bd50fc4942c8838 <> Date: Fri Mar 22 08:50:04 2013 -0600 jquerymobile.com | jquery.org/license !*/
+
+
+.ui-mobile [data-role=page], .ui-mobile [data-role=dialog], .ui-page {
+	display: none;
+}
+.ui-mobile .ui-page-active {
+	display: block;
+	overflow: visible
+}
+.ui-page {
+	outline: none
+}
+
+
+.ui-loading .ui-loader {
+	display: block
+}
+.ui-loader {
+	display: none;
+	z-index: 9999999;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	border: 0
+}
+.ui-loader-default {
+	background: none;
+	filter: Alpha(Opacity=18);
+	opacity: .18;
+	width: 46px;
+	height: 46px;
+	margin-left: -23px;
+	margin-top: -23px
+}
+.ui-loader-verbose {
+	width: 200px;
+	filter: Alpha(Opacity=88);
+	opacity: .88;
+	box-shadow: 0 1px 1px -1px #fff;
+	height: auto;
+	margin-left: -110px;
+	margin-top: -43px;
+	padding: 10px
+}
+
+.ui-header .ui-title, .ui-footer .ui-title {
+	min-height: 1.1em;
+	text-align: center;
+	font-size: 16px;
+	display: block;
+	margin: .6em 30% .8em;
+	padding: 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	outline: 0!important;
+}
+
+
+@-webkit-keyframes fadein {
+from {
+opacity:0
+}
+to {
+	opacity: 1
+}
+}
+@-moz-keyframes fadein {
+from {
+opacity:0
+}
+to {
+	opacity: 1
+}
+}
+@-webkit-keyframes fadeout {
+from {
+opacity:1
+}
+to {
+	opacity: 0
+}
+}
+@-moz-keyframes fadeout {
+from {
+opacity:1
+}
+to {
+	opacity: 0
+}
+}
+.fade.out {
+	opacity: 0;
+	-webkit-animation-duration: 125ms;
+	-webkit-animation-name: fadeout;
+	-moz-animation-duration: 125ms;
+	-moz-animation-name: fadeout
+}
+.fade.in {
+	opacity: 1;
+	-webkit-animation-duration: 225ms;
+	-webkit-animation-name: fadein;
+	-moz-animation-duration: 225ms;
+	-moz-animation-name: fadein
+}

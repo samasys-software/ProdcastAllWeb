@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Prodcast</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+<!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<!-- Bootstrap 3.3.5 -->
+<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+<link href="http://code.jquery.com/ui/1.9.2/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/jquery.css">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+.green-btn-style-blink
+{
+background: #89ca18 none repeat scroll 0 0;
+  color: white;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 20px;
+  padding: 10px 30px;
+  text-decoration:none;
+}
+@-webkit-keyframes glowing {
+  0% { background-color: #89ca18; -webkit-box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
+  50% { background-color: #41e52b; -webkit-box-shadow: 0 0 10px #41e52b; color: white; text-decoration:none;}
+  100% { background-color: #89ca18; -webkit-box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
+}
+
+@-moz-keyframes glowing {
+  0% { background-color: #89ca18; -moz-box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
+  50% { background-color: #41e52b; -moz-box-shadow: 0 0 10px #41e52b; color: white; text-decoration:none;}
+  100% { background-color: #89ca18; -moz-box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
+}
+
+@-o-keyframes glowing {
+  0% { background-color: #89ca18; box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
+  50% { background-color: #41e52b; box-shadow: 0 0 10px #41e52b; color: white; text-decoration:none;}
+  100% { background-color: #89ca18; box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
+}
+
+@keyframes glowing {
+  0% { background-color: #89ca18; box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
+  50% { background-color: #41e52b; box-shadow: 0 0 10px #41e52b; color: white; text-decoration:none;}
+  100% { background-color: #89ca18; box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
+}
+
+.green-btn-style-blink {
+  -webkit-animation: glowing 1500ms infinite;
+  -moz-animation: glowing 1500ms infinite;
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+
+}
+
+.green{
+ background-color:#89ca18;
+}
+#savedialog
+ {
+   background-color:white;
+   float:left;
+ }
+ 
+ #dialog
+ {
+   background-color:white;
+   float:left;
+   position: ['center'];
+ }
+
+
+ 
+</style>
+</head>
+
+<body style="overflow-y:scroll">
+<div class="page">
+
+  <!-- Login Page -->
+  
+  <!-- Start of first page -->
+
+  <div class="ui-page ui-body-c ui-page-active" tabindex="0" data-url="one" data-role="page" id="loginHome">
+    <section class="login-sec">
+      <div class="admin-logo"><img src="images/admin-logo.png" alt="" /></div>
+      <div class="login-form-area">
+        <div class="login-form">
+          <div class="login-form-box">
+            <form>
+              <ul>
+			  <li>
+			  <div class="select-box" > <span class="input-icon"><i class="fa fa-globe" aria-hidden="true"></i></span>
+                    	<select id="LoginCountry" style="text-transform:uppercase;" >
+						</select>
+				  </div>  
+                </li>
+                <li>
+				
+                  <div class="input-box ui-content ui-body-a" > <span class="input-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                    <input type="number" name="" value="" placeholder="Mobile Number" id="LoginUserId" class="allownumericwithoutdecimal"/>
+                  </div>
+                  <div id="validationMessage" class="validation-msg">! Invalid Mobile Number or PIN</div>
+                </li>
+                <li>
+                  <div class="input-box" > <span class="input-icon"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+                    <input type="number" name="" placeholder="PIN" id="LoginPassword" maxlength="10" inputmode="numeric" class="allownumericwithoutdecimal"/>
+                  </div>
+                  <div id="validationMessage" class="validation-msg">! Invalid Mobile Number or PIN</div>
+                </li>
+				
+              </ul>
+              <div class="btn-sec">
+                <div class="col-half"> 
+                  <a  class="submit-btn" id="LoginButton">Log in</a>
+					<div class="col-half reg-new"><a  href="#customerRegister">Register</a></div>
+                </div>
+                <div class="col-half-right "><a class="submit-btn-right" id="clearButton">Clear</a></div>
+				<div class="col-half forgot-pswd"><a  id="retrievePin">Forgot Pin?</a></div>
+				
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Login Page END -->
+	
+  <!-- Customer Register page -->
+	 
+	<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="customerRegister" data-theme="a">
+            <header class="col-sm-12 top-head">
+              <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+		    </header>
+	
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users"; aria-hidden="true"></i>Customer Registration</div>
+	   </div>
+			
+	<div class="col-sm-12 content-sec" >
+		<div style="width:100" id="customerRegisterNavigation" title="Prodcast Notification" >
+			<div class="costomer-tab-section">
+               <div class="tab-content">
+                  <div id="customerRegisterTab" class="tab-pane fade in active">
+			  
+                        <form>
+						
+                            <div class="row" >
+								   <div class="col-sm-4 col-xs-6" >
+										  <label>Country</label>
+											<select id="country" >													
+											</select>
+									</div>
+								   <div class="col-sm-4 col-xs-6" >
+								      <label>Mobile Phone</label>
+									  <input type="number" id="mobilePhone" class="allownumericwithoutdecimal" >
+									</div>
+								</div>
+							<div class="row">
+									<div class="col-sm-4 col-xs-6" >
+								      <label>PIN</label>
+								      <input type="password" id="pin" maxlength="10" class="allownumericwithoutdecimal" >
+								    </div>
+									<div class="col-sm-4 col-xs-6" >
+								      <label>Confirm PIN</label>
+								      <input type="password" id="confirmPin" maxlength="10" class="allownumericwithoutdecimal" >
+								    </div>
+							</div> 
+							
+							<div class="row" >
+									  <p id="fillMessage" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please enter values for mandatory fields.</p>
+									  <p id="pinMatch" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Pin do not match.</p>
+							</div> 
+				        </form>		 
+						
+						<div class="row">
+					               <div class="col-sm-4 col-xs-6">
+						                 <br> <a class="submit-btn ui-link" id="customerRegisterButton" > Register </a>
+                                    </div>
+				                  	<div class="col-sm-4 col-xs-6">
+					                   	 <br> <a class="submit-btn ui-link" id="customerRegisterResetButton" > Reset </a>
+					                </div>
+							</div> 
+              </div>
+			  
+		
+			  
+	
+			  
+			  
+			  
+            </div>
+		  </div>
+		</div>
+
+      </div>
+    </div>
+	
+  <!-- Customer Register Page End-->
+  <!-- newCustomer Register Page Start-->
+  
+     
+  
+  
+  	<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="newCustomerRegistration" data-theme="a">
+            <header class="col-sm-12 top-head">
+              <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+			  <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+               <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+               </div>
+		    </header>
+	
+			<div class="col-sm-12 title-bar">
+			  <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users"; aria-hidden="true"></i> New Customer Registration</div>
+		    </div>
+			<!--<div class="col-sm-12" >
+			<br/><br/>
+			
+			 <div class="col-sm-12 col-xs-12" > <center> <a class="green-btn-style distmenu ui-link" id="skipregistration" > Skip Registration </a> </center> </div>
+		     </div>-->
+			<div class="col-sm-12 content-sec" >
+				<div style="width:100" id="newCustomerRegisterNavigation" title="Prodcast Notification" >
+					<div class="costomer-tab-section">
+					   <div class="tab-content">					   
+					   <div id="newCustomerDetails" class="tab-pane fade in active">
+		                     <form>
+												   <div class="row">
+													 <div class="col-sm-4 col-xs-6">
+															<label>First Name</label>
+															<input type="text" id="customer_firstname">
+													 </div>
+													<div class="col-sm-4 col-xs-6">
+															<label>Last Name</label>
+															<input type="text" id="customer_lastname">
+													</div>
+													</div>
+													 <div class="row">
+													<div class="col-sm-4 col-xs-6">
+														   <label>Email Address</label>
+															<input type="email" id="customer_email">
+													</div>
+													<div class="col-sm-4 col-xs-6">
+														<label>Billing Address1</label>
+														<input type="text" id="customer_Address1">
+													</div>
+													</div>
+													 <div class="row">
+													<div class="col-sm-4 col-xs-6">
+														<label>Billing Address2</label>
+														<input type="text" id="customer_Address2">
+													</div>
+													<div class="col-sm-4 col-xs-6">
+														<label>Billing Address3</label>
+														<input type="text" id="customer_Address3">
+													</div>
+													</div>
+													 <div class="row">
+														<div class="col-sm-4 col-xs-6">
+														<label>Home PhoneNumber</label>
+														<input type="number" id="customer_Phonenumber" class="allownumericwithoutdecimal">
+													</div>
+													
+													
+													<div class="col-sm-4 col-xs-6">
+														  <label>City</label>
+														  <input type="text" id="customer_city">
+													</div>
+													</div>
+													<div class="row">
+													
+													<div class="col-sm-4 col-xs-6">
+														<label>State</label>
+														<input type="text" id="customer_state">
+													</div>
+																						
+													<div class="col-sm-4 col-xs-6">
+													   <label>Country</label>
+													   
+											               <select id="customer_country" >
+													      
+											             </select>
+													   
+													</div>
+													</div>
+													<div class="row">
+													<div class="col-sm-4 col-xs-6">
+													   <label>Postal Code</label>
+													   <input type="text" id="customer_postalcode">
+													</div>
+													<div class="col-sm-4 col-xs-6">
+														  <label>SMS Allowed</label>
+														  <input type="checkbox" id="customer_smsallowed" >
+													</div>
+													</div>
+													
+											  
+											   <div class="row">
+													<p style="color:red;display:none" id="emptyalertmsg">&nbsp;&nbsp;&nbsp;Please fill in the focused fields.</p>
+												 </div>
+											   <div class="row">
+												   <div class="col-sm-4 col-xs-6">
+														 <br> <a class="submit-btn ui-link" id="newCustomerSaveButton" > Save </a>
+												</div>
+													<div class="col-sm-4 col-xs-6">
+														 <br> <a class="submit-btn ui-link" id="newCustomerResetButton" > Reset </a>
+												</div>
+												<div class="col-sm-4 col-xs-6">
+														 <br> <a class="green-btn-style distmenu ui-link" id="skipregistration" > Skip Registration </a>
+												</div>
+												</div> 
+												 </form>
+												
+												</div>
+											</div>
+											</div>
+											</div>
+											</div>
+											</div>			  
+	
+	 
+  <!-- newcustomer Register page End-->
+	 
+  <!-- PIN page -->
+	 
+	<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="pinScreen" data-theme="a">
+	<header class="col-sm-12 top-head">
+	  <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+	</header>
+
+	   <div class="col-sm-12 title-bar">
+		  <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users"; aria-hidden="true"></i> Verification Code </div>
+	   </div>
+		  
+	  <div class="col-sm-12 content-sec">
+		<div style="width:100%" id="verifivationCodeNavigation" title="Prodcast Notification" >
+			<div class="costomer-tab-section">
+               <div class="tab-content">
+                  <div id="verifivationCodeTab" class="tab-pane fade in active">
+			  
+                        <form>
+                           <div class="row">
+									<div class="col-sm-4 col-xs-6">
+										  <label>Please enter the confirmation code from the text sent to your registered mobile number </label>
+										  <input type="text" id="code" maxlength="6" class="allownumericwithoutdecimal">
+								    </div>
+                           </div>
+				        </form>
+						
+						<div class="row" >
+							<p id="smsValidationMessage" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please enter the confirmation number from the sms</p>
+						</div>
+				
+						<div class="col-half resend-code"><a id="resentCode">Resend confirmation code</a></div>
+						
+                            <div class="row">
+					               <div class="col-sm-4 col-xs-6">
+						               <br> <a class="submit-btn ui-link" id="verifyButton" > Verify </a>
+                                    </div>
+							</div>   
+              </div>
+            </div>
+		  </div>
+		</div>
+		
+      </div>
+    </div>
+	
+  <!-- PIN Page End-->
+  
+  <!-- Dashboard -->
+
+  <div style="min-height: 800px;" class="ui-page ui-body-a" tabindex="0" data-url="two" data-role="page" id="home" data-theme="a">
+    <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+            <li class="salesmenu"> <a href="#order" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order History </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#distributorScreen" id="elid"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label> Change Store </label>
+              </a> </li>
+			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
+              <label> Edit Registration </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Pin Number </label>
+              </a> </li>
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-home" aria-hidden="true"></i> Dashboard</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"> <a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>        
+          </div>
+        </div>
+        <div class="col-sm-12 content-sec">
+          <ul class="entry-menu">
+		    <li class="salesmenu">
+			<a href="#order">
+				  <div class="icon-box"><img src="images/OrderEntry.png" alt="" class="hvr-bounce-in"></div>
+				  <label> ORDER </label>
+              </a>
+			  </li>
+            <li class="salesmenu"><a href="#report">
+              <div class="icon-box"><img src="images/report.png" alt="" class="hvr-bounce-in"> </div>
+              <label> ORDER HISTORY </label>
+              </a></li>
+			<li class="distmenu"><a href="#distributorScreen">
+              <div class="icon-box"> <img src="images/distribution-icon.png" alt="" class="hvr-bounce-in"></div>
+              <label> CHANGE STORE </label>
+              </a></li>
+			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg.png" alt="" class="hvr-bounce-in">
+              <label> EDIT REGISTRATION </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chhnge.png" alt="" class="hvr-bounce-in">
+              <label> CHANGE PIN NUMBER </label>
+              </a> </li>
+		 </ul>
+        </div>
+		 </div>
+    </div>
+  </div>
+  
+  <!-- Dashboard END -->
+    
+  <!-- order -->
+   
+  <div  class="ui-page ui-body-a" tabindex="0" data-url="four" data-role="page" id="order" data-theme="a">
+   <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order </label>
+              </a> </li>
+			
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label>  Order History  </label>
+              </a> </li>
+		
+			<li class="adminmenu"> <a href="#distributorScreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Change Store</label>
+              </a></li>
+			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
+              <label> Edit Registration </label>
+              </a> </li>
+
+			  <li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Pin Number </label>
+              </a> </li>
+		   </ul>
+		 </div>
+      </div>
+	
+	 <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><img src="images/OrderEntry-icon.png" alt="">Orders</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+		  </div>
+        </div>
+		<div class="col-sm-12 content-sec">
+		<div id="paymentdiv" style="display:none">
+			<div class="outstandingDivcl" id="outstandingDiv" >
+			  <div class="row">
+	
+	<div class="col-sm-12">
+				  <div class="head-table">Outstanding Bills</div>
+				<div class="custom-table">
+				  <div class="tbl">
+				  </div>
+				</div>
+				</div>
+			  </div>
+			</div>
+		  
+		 <div class="row">
+
+            <div class="col-md-8">
+			  <div class="row">
+               
+                <div class="col-sm-12 free-space"><a  href="#order-new" id="neworder" class="green-btn-style">New Order</a><br><br>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+        </div>
+		</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- order end -->
+  
+  <!--bill details start-->
+ 
+  <div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1"  data-role="page" id="billdetailspage" data-theme="a">
+    <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label>  Order History  </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#distributorScreen" id="elid"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label> Change Store </label>
+              </a> </li>
+			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
+              <label> Edit Registration </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Pin  Number </label>
+              </a> </li>
+         </ul>
+        </div>
+      </div>
+     <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users";	 aria-hidden="true"></i>Bill Details</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+            </div>
+        </div>
+	<div class="col-sm-12 content-sec">
+			<div>
+				<div class="tbl" id="msgtable">
+								<div class="tbl-row tbl-hed">
+								<div class="tbl-cols">
+								<p align="left" >
+								Distributor
+								</p>
+								</div>
+
+								<div class="tbl-cols">
+								<p align="left" >
+
+								Customer
+								</p>
+								</div>
+									</div>
+								<div class="tbl-row">
+								<div class="tbl-cols">
+								    <p id="distMname" style="color:#abcd14" align="left"></p>
+								    <p id="distAddress" style="color:#abcd14" align="left"></p>
+								    <p id="distCity" style="color:#abcd14" align="left"></p>
+								    <p id="distPhone" style="color:#abcd14" align="left"></p>
+								</div>
+								<div class="tbl-cols">
+									<p id="customerMname" style="color:#abcd14" align="left"></p>
+									<p id="custAddress" style="color:#abcd14" align="left"></p>
+									<p id="custCity" style="color:#abcd14" align="left"></p>
+									<p id="custPhone" style="color:#abcd14" align="left"></p>
+								</div>
+								</div>
+
+				</div>
+							</br>
+							</br>
+				         </br>
+
+             	<div class="tbl" id="bill">
+              		<div class="tbl-row tbl-hed">
+					</div>
+					<div class="tbl-row">
+                    	<div class="tbl-cols">
+                        	Order No.
+                        </div>
+                    	<div class="tbl-cols">
+                        	<p id="billNumber" style="color:#abcd14"></p>
+                        </div>
+					</div>
+					<div class="tbl-row">
+                    	<div class="tbl-cols">
+                        	Bill Date
+                        </div>
+                    	<div class="tbl-cols">
+                        	<p id="billDate" style="color:#abcd14"></p>
+                        </div>
+					</div>
+
+					<div class="tbl-row">
+						<div class="tbl-cols">
+                        Sales Rep
+                        </div>
+                    	<div class="tbl-cols">
+                        	<p id="employeeName" style="color:#abcd14"></p>
+                        </div>
+					</div>
+					<div class="tbl-row">
+						<div class="tbl-cols">
+						Discount
+						                        </div>
+						                    	<div class="tbl-cols">
+						                        	<p id="discountValue" style="color:#abcd14"></p>
+
+						                        </div>
+											</div>
+											<div class="tbl-row">
+						<div class="tbl-cols">
+                        	Total (<label class='distcurrency'></label>)
+                        </div>
+						<div class="tbl-cols">
+                        	<p id="totalAmount" style="color:#abcd14"></p>
+                        </div>
+					</div>
+
+					<div class="tbl-row">
+						<div class="tbl-cols">
+                        	Outstanding Balance (<label class='distcurrency'></label>)
+                        </div>
+						<div class="tbl-cols">
+                        	<p id="outstandingBalance" style="color:#abcd14"></p>
+                        </div>
+					</div>
+
+                 </div>
+
+			</div>
+		<br>
+					<div>
+						<h3>Order Details</h3>
+							<div id="ordtable" class="tbl">
+								<div class="tbl-row tbl-hed">
+									<div class="tbl-cols">
+										No.
+									</div>
+									<div class="tbl-cols">
+										Product
+									</div>
+									<div class="tbl-cols">
+										Qty
+									</div>
+									<div class="tbl-cols">
+										Price (<label class='distcurrency'></label>)
+									</div>
+									<div class="tbl-cols">
+										Sales Tax (<label class='distcurrency'></label>)
+									</div>
+									<div class="tbl-cols">
+										Other Tax (<label class='distcurrency'></label>)
+									</div>
+
+									<div class="tbl-cols">
+										Sub Total (<label class='distcurrency'></label>)
+									</div>
+								</div>
+							</div>
+						</div>
+					<br>
+					<div>
+						<h3 id="billdetailsheader1">Payment Details</h3>
+							<div id="paytable" class="tbl">
+								<div class="tbl-row tbl-hed">
+									<div class="tbl-cols">
+										No.
+									</div>
+									<div class="tbl-cols">
+										Date
+									</div>
+									<div class="tbl-cols">
+										Received By
+									</div>
+									<div class="tbl-cols">
+										Amount (<label class='distcurrency'></label>)
+									</div>
+								</div>
+							</div>
+						</div>
+						<br/>
+						<div>
+												<h3 id="billdetailsheader2">Return Details</h3>
+													<div id="rordtable" class="tbl">
+														<div class="tbl-row tbl-hed">
+															<div class="tbl-cols">
+																No.
+															</div>
+															<div class="tbl-cols">
+																Product
+															</div>
+															<div class="tbl-cols">
+																Qty
+															</div>
+
+															<div class="tbl-cols">
+																Price (<label class='distcurrency'></label>)
+															</div>
+															<div class="tbl-cols">
+																Sales Tax (<label class='distcurrency'></label>)
+															</div>
+															<div class="tbl-cols">
+																Other Tax (<label class='distcurrency'></label>)
+															</div>
+
+															<div class="tbl-cols">
+																Sub Total (<label class='distcurrency'></label>)
+															</div>
+
+														</div>
+													</div>
+						</div>
+						<br/>
+							<a class="green-border-btn" id="billdetailsclosebutton" >Close</a>&nbsp;<a class="green-border-btn" id="billdetailsCloneOrder" >Clone Order</a>
+        </div>
+
+		</div>
+	</div>
+	</div>
+  
+  <!-- bill details end -->
+  
+  <!-- order new -->
+  
+  <div  class="ui-page ui-body-a" tabindex="0" data-url="four" data-role="page" id="order-new" data-theme="a">
+   <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order </label>
+              </a> </li>
+			
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label>  Order History  </label>
+              </a> </li>
+		
+			<li class="adminmenu"> <a href="#distributorScreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Change Store</label>
+              </a></li>
+			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
+              <label> Edit Registration </label>
+              </a> </li>
+
+			  <li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+		 </div>
+      </div>
+	  <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><img src="images/order-new.png" alt="">Order New</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+            </div>
+        </div>
+        <div class="col-sm-12 content-sec">
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="select-client">
+
+				<br>
+					<p class="orderNewBillDate"/>
+					<p class="customerName"></p>
+					<p class="address1"></p>
+
+					<p> Order Details </p>
+              </div>
+            </div>
+            <div class="col-sm-4"></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+            <div class="custom-table">
+             	<div class="tbl" id="odtbl">
+              		<div class="tbl-row tbl-hed">
+                    	<div class="tbl-cols">
+
+                        </div>
+                    	<div class="tbl-cols">
+                        	Product
+                        </div>
+                    	<div class="tbl-cols">
+                        	Qty
+                        </div>
+                    	<div class="tbl-cols">
+                        	Sub Total (<label class="distcurrency"></label>)
+                        </div>
+                    </div>
+              		<div class="tbl-row" id="orderdetailrow">
+                    	<div class="tbl-cols">
+                        </div>
+                    	<div class="tbl-cols">
+                         <div class="drop-set"><input class="input-feild-style" type="text" id="productvalue1"/>
+						<input type="hidden" id="hproductvalue1"/>
+							<a  id="productvaluenew" class="productvalue_all"><span class="ui-icon ui-icon-triangle-1-s"></span></a>
+							</div>
+                        </div>
+                    	<div class="tbl-cols">
+                        	<input class="input-feild-style qty" id="quantityvalue1"   type="number" min="0"/>
+                        </div>
+                    	<div class="tbl-cols">
+                        	<label style="text-align:center" id="subtotal1">0.00</label>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+			<div class="col-sm-12"  >
+
+              <div class="total-amount" >
+			  <div class="row"  >
+				
+				<div class="col-md-4" style="text-align:right">
+				</div>
+				<div class="col-md-4 " style="text-align:right">
+				</div>
+				
+                <div class="col-sm-2 col-xs-6" style="text-align:right">
+					Total Value (<label class="distcurrency"></label>)
+				</div>
+                  <div class="col-sm-2 col-xs-6" style="text-align:center" id="totalvalue"> 0.00 </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 free-space"> <a  class="green-btn-style" id="reviewbtn">Review</a>&nbsp;&nbsp;&nbsp;<a  class="green-btn-style saveorder">Submit</a> </div>
+          </div>
+
+				<div style="width:100%;display:none;" id="saveDialog" title="Prodcast Notification" >
+					<div class="costomer-tab-section">
+						<div class="tab-content-mini">
+							<form>
+								<div class="row">
+								<div class="col-sm-12">
+								<p id="notificationMessage" align="center" style="color:#abcd14">Your Order has been done successfully</p>
+								</div>
+								</div>
+								<div class="row">
+								<div class="col-sm-12" align="center"><a id="okMessage"  class="green-btn-style">OK</a>
+								</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<br>
+				</div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
+    </div>
+
+	<!-- orde new end -->
+
+	<!-- review order starts -->
+
+	 <div  class="ui-page ui-body-a" tabindex="0" data-url="four" data-role="page" id="review" data-theme="a">
+	   <header class="col-sm-12 top-head">
+		  <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+		  <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+		  <div class="SalesManName"></div></a>
+			<div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+			  <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+			</div>
+		  </div>
+		</header>
+
+		<div class="wrapper">
+		  <div class="col-md-2 col-sm-3 left-panel ">
+			<div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+			  <ul class="left-panel-menu left-menu" id="slidemenu">
+				 <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+				  <label> Dashboard </label>
+				  </a> </li>
+				<li class="salesmenu"> <a href="#order" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+				  <label> Order </label>
+				  </a> </li>
+				
+				<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+				  <label>  Order History  </label>
+				  </a> </li>
+			
+				<li class="adminmenu"> <a href="#distributorScreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+				  <label>Change Store</label>
+				  </a></li>
+				  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
+              <label> Edit Registration </label>
+              </a> </li>
+
+				  <li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+				  <label> Change Pin Number </label>
+				  </a> </li>
+			 </div>
+		  </div>
+		  <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+			<div class="col-sm-12 title-bar">
+			  <div class="col-sm-6 col-xs-5 title"><img src="images/order-new.png" alt="">REVIEW ORDER</div>
+			  <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+			   
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-8">
+
+						<p class="orderNewBillDate"/>
+						<p class="customerName"></p>
+						<p class="address1"></p>
+						<p> Order Details </p>
+
+				</div>
+				<div class="col-sm-4"></div>
+			  </div>
+			  <div class="row">
+			   <div class="col-sm-12">
+				<div class="custom-table">
+					<div class="tbl" id="odrtbl">
+						<div class="tbl-row tbl-hed">
+
+							<div class="tbl-cols">
+								Product
+							</div>
+							<div class="tbl-cols">
+								Qty
+							</div>
+							<div class="tbl-cols">
+								Unit Price (<label class="distcurrency"></label>)
+							</div>
+
+							<div class="tbl-cols">
+								Sales Tax (<label class="distcurrency"></label>)
+							</div>
+							<div class="tbl-cols">
+								Other Tax (<label class="distcurrency"></label>)
+							</div>
+							<div class="tbl-cols">
+								Sub Total(<label class="distcurrency"></label>)
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="total-amount">
+				  <div class="row">
+				  
+				  <div class="col-md-4" style="text-align:right">
+					</div>
+				  <div class="col-md-4 " style="text-align:right">
+					</div>
+					
+					  <div class="col-sm-2 col-xs-6" style="text-align:right"> Total Value(<label class="distcurrency"></label>)</div>
+					  <div class="col-sm-2 col-xs-6" style="text-align:center" id="rtotalvalue"> 0.00 </div>
+				  </div>
+				</div>
+				<div class="row">
+				<div class="col-sm-12 free-space"> &nbsp;&nbsp;&nbsp;<a  class="green-btn-style" id="co">Continue Order</a>&nbsp;&nbsp;&nbsp;<a  class="green-btn-style saveorder">Save Order</a> </div>
+			  </div>
+			  </div>
+
+	  </div>
+	 </div>
+	
+  <!-- review order Page ends -->
+  
+  <!-- report Page start -->
+	
+  <div style="min-height: 657px;" class="ui-page ui-body-a" tabindex="0" data-url="two" data-role="page" id="report" data-theme="a">
+   <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a href="#home"><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header">
+			<a class="navbar-toggle">
+			<span class="icon-bar">
+			</span>
+			<span class="icon-bar">
+			</span>
+			<span class="icon-bar">
+			</span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label>  Order History  </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorScreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Change Store</label>
+              </a></li>
+			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
+              <label> Edit Registration </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Pin Number </label>
+              </a> </li>
+			  
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><img src="images/report-icon.png" alt="">REPORT</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+		  </div>
+            </div>			
+						<!-- Content Here -->
+						<br>
+						<br>
+						<br>
+						<br>
+					<div class="costomer-tab-section">
+						<div class="tab-content" >
+							<form>
+							
+								<div class="row">
+									&nbsp;
+								</div>
+								
+								<div class="row" >
+									<div class="col-sm-4 col-xs-6">
+										<label for="distributor">Store</label>
+										 <select id="distributor" >
+										 <!--option value="0">All</option!-->
+										 </select>
+									</div>
+									
+									<div class="col-sm-4 col-xs-6">
+										<label for="disreportsType">Report Type</label>
+										
+									<input type="text" value="SummaryReport" id="reportTypeForCustomer" />
+									</div>
+									
+									<div class="col-sm-4 col-xs-6">
+										<label for="disreporttype" >Select Report Date </label>
+										<select id="disreporttype" >
+											<option value="today">Today</option>
+											<option value="yesterday">Yesterday</option>
+											<option value="week">Week(Since Monday)</option>
+											<option value="custom">Custom Range</option>
+										</select>
+									</div>
+
+								</div>
+								
+								<div id="discustomrangediv" class="row">
+									<div class="col-sm-4 col-xs-6">
+										<label>Start Date</label>
+										<input type="text" data-role="date" id="disreport_startdate" >
+										 <p id="disreportodaymsg" style="color:red;display: none"> Start Date should be less than or equal to Today Date</p>
+											  <p id="disreportnullmsg" style="color:red;display: none"> </p>
+											   <p id="disreportstartmsg" style="color:red;display: none"> Start Date should be less than End Date</p>
+									</div>
+									
+									<div class="col-sm-4 col-xs-6">
+										<label>End Date</label>
+										<input type="text" data-role="date" id="disreport_enddate" >
+										 <p id="disreportendmsg" style="color:red;display: none"> End Date should be less than or equal to Today Date</p>
+										<p id="disreportendnullmsg" style="color:red;display: none"> </p>
+
+									</div>
+
+								</div>
+								
+								<div class="row">
+								<div class="col-sm-4 col-xs-6" >
+										<a id="disreportSubmit"  class="green-btn-style-blink">Report</a>
+									</div>
+
+
+									<div class="col-sm-4 col-xs-6" >
+										<a id="disreportReset"  class="green-btn-style">Reset</a>
+									</div>
+
+								</div>
+
+								<div id="reportvalidation" class="row" style="display: none">
+									<label id="disreportValidationMessage"></label>
+								</div>
+
+								</form>
+								<br>
+								<br>
+								
+								<h4 class="ui-bar ui-bar-a ui-corner-all" id="billdetail">Bill Details</h4>
+								<div class="tbl" id="billTable" >
+									
+										<div class="tbl-row tbl-hed">
+											<div class="tbl-cols">
+															S.No
+											</div>
+											<div class="tbl-cols">
+															Bill Number
+											</div>
+											<div class="tbl-cols">
+															Date
+											</div>
+											<div class="tbl-cols">
+															Total(<label class="distcurrency"></label>)
+
+											</div>
+											<div class="tbl-cols">
+															Balance(<label class="distcurrency"></label>)
+											</div>
+										</div>
+									
+								</div>
+								<br>
+								<br>
+																								
+								<h4 class="ui-bar ui-bar-a ui-corner-all" id="summ">Summary</h4>
+								<div class="tbl" id="summaryTable" >
+								
+									<div class="tbl-row tbl-hed">
+
+										<div class="tbl-cols" >ToatalBillAmount(<label class="distcurrency"></label>)</div>
+										<div class="tbl-cols " > TotalAmountPaid(<label class="distcurrency"></label>) </div>
+										<div class="tbl-cols" > OutsandingBalance(<label class="distcurrency"></label>)</div>
+
+									</div>
+									<div class="tbl-row">
+
+										<div class="tbl-cols" ><label id="lblTotalSales" /></div>
+										<div class="tbl-cols " > <label id="lblTotalCollection" /></div>
+										<div class="tbl-cols" ><label id="lblBalance" /></div>
+									</div>
+								
+								</div>
+					</div>
+				</div>
+				<!-- Content for Report Body ends -->
+            </div>
+            </div>
+            </div>
+	 
+  <!-- Report End -->
+  
+  <!-- Switch Distributor Start -->
+
+  <div style="min-height: 800px;" class="ui-page ui-body-a" tabindex="0" data-url="two" data-role="page" id="distributorScreen" data-theme="a">
+    <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+	  <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+	
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><img src="images/employee-icon.png" alt=""></i> SELECT STORE </div>
+		  <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout</a></a></div>
+        </div>
+		<!--
+		        <div class="col-sm-12 content-sec">
+          <ul class="entry-menu">
+		    <li class="salesmenu">
+			<a href="#order">
+				  <div class="icon-box"><img src="images/OrderEntry.png" alt="" class="hvr-bounce-in"></div>
+				  <label> ORDER </label>
+              </a>
+			  </li>
+            <li class="salesmenu"><a href="#report">
+              <div class="icon-box"><img src="images/report.png" alt="" class="hvr-bounce-in"> </div>
+              <label> REPORT </label>
+              </a></li>
+			<li class="distmenu"><a href="#distributorScreen">
+              <div class="icon-box"> <img src="images/distribution-icon.png" alt="" class="hvr-bounce-in"></div>
+              <label> SWITCH DISTRIBUTOR </label>
+              </a></li>
+			<li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chhnge.png" alt="" class="hvr-bounce-in">
+              <label> CHANGE PIN NUMBER </label>
+              </a> </li>
+		 </ul>
+        </div>-->
+		
+		<div class="col-sm-12 content-sec">
+		<ul class="entry-menu" id="distributorsList">
+		  </ul>
+		  <!--
+		<div style="width:100%" id="disnav"  >
+          
+			<div class="costomer-tab-section">
+               <div class="tab-content">
+                  <!--div id="distab" class="tab-pane fade in active">
+						<div>
+							<div id="viewAllDistributorsDiv">
+								<div class="row">
+								<div class="col-sm-12">
+								<div class="custom-table"-->
+								<!--<div id="allDistributorsTable" class="tbl" ></div>-->
+								<!--/div>
+								</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>-->
+		</div>
+	</div>
+ 
+  <!-- Switch Distributor END -->
+   <!-- edit customer registration starts -->
+  <div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="editCustomerRegistrationDetails" data-theme="a">
+	  <header class="col-sm-12 top-head">
+		  <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
+		  <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+		  <div class="SalesManName"></div></a>
+			<div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+			  <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+			</div>
+		  </div>
+		</header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label>  Order History </label>
+              </a> </li>
+		  <li class="distmenu"> <a href="#distributorScreen" id="elid"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label> Change Store </label>
+              </a> </li>
+			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
+              <label> Edit Registration </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Pin Number </label>
+              </a> </li>
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><img src="images/EditReg_icon.png" alt=""></img>Edit Registration </div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+		  </div>
+        </div>
+		
+		<div class="col-sm-12 content-sec">
+		 <!--div class="col-sm-12 free-space"><a  href="#newCustomerRegistration" id="editCustomerRegistrationDetails" </a></div-->
+				<div style="width:100" id="editCustomerRegisterNavigation" title="Prodcast Notification" >
+					<div class="costomer-tab-section">
+					   <div class="tab-content">					   
+					   <div id="editCustomerDetails" class="tab-pane fade in active">
+		                     <form>
+												   <div class="row">
+													 <div class="col-sm-4 col-xs-6">
+															<label>First Name</label>
+															<input type="text" id="editcustomer_firstname">
+													 </div>
+													<div class="col-sm-4 col-xs-6">
+															<label>Last Name</label>
+															<input type="text" id="editcustomer_lastname">
+													</div>
+													</div>
+													 <div class="row">
+													<div class="col-sm-4 col-xs-6">
+														   <label>Email Address</label>
+															<input type="email" id="editcustomer_email">
+													</div>
+													<div class="col-sm-4 col-xs-6">
+														<label>Billing Address1</label>
+														<input type="text" id="editcustomer_Address1">
+													</div>
+													</div>
+													 <div class="row">
+													<div class="col-sm-4 col-xs-6">
+														<label>Billing Address2</label>
+														<input type="text" id="editcustomer_Address2">
+													</div>
+													<div class="col-sm-4 col-xs-6">
+														<label>Billing Address3</label>
+														<input type="text" id="editcustomer_Address3">
+													</div>
+													</div>
+													 <div class="row">
+														<div class="col-sm-4 col-xs-6">
+														<label>Home PhoneNumber</label>
+														<input type="number" id="editcustomer_Phonenumber" class="allownumericwithoutdecimal">
+													</div>
+													
+													
+													<div class="col-sm-4 col-xs-6">
+														  <label>City</label>
+														  <input type="text" id="editcustomer_city">
+													</div>
+													</div>
+													<div class="row">
+													
+													<div class="col-sm-4 col-xs-6">
+														<label>State</label>
+														<input type="text" id="editcustomer_state">
+													</div>
+																						
+													<div class="col-sm-4 col-xs-6">
+													   <label>Country</label>
+													   
+											               <select id="editcustomer_country" >
+													      
+											             </select>
+													   
+													</div>
+													</div>
+													<div class="row">
+													<div class="col-sm-4 col-xs-6">
+													   <label>Postal Code</label>
+													   <input type="text" id="editcustomer_postalcode">
+													</div>
+													<div class="col-sm-4 col-xs-6">
+														  <label>SMS Allowed</label>
+														  <input type="checkbox" id="editcustomer_smsallowed" >
+													</div>
+													</div>
+													
+											  
+											   <div class="row">
+													<p style="color:red;display:none" id="editemptyalertmsg">&nbsp;&nbsp;&nbsp;Please fill in the focused fields.</p>
+												 </div>
+											   <div class="row">
+												   <div class="col-sm-4 col-xs-6">
+														 <br> <a class="submit-btn ui-link" id="newCustomerUpdateButton" > Update </a>
+												</div>
+													<div class="col-sm-4 col-xs-6">
+														 <br> <a class="submit-btn ui-link" id="newCustomerEditResetButton" > Reset </a>
+												</div>
+												</div> 
+												 </form>
+												
+												</div>
+					</div>
+				  </div>
+				</div>
+		 		</div>
+			 </div>
+			</div>
+		</div>
+		<!-- edit customer registration ends-->
+  <!-- Change Password screen begins-->
+
+	<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="changePinScreen" data-theme="a">
+	  <header class="col-sm-12 top-head">
+		  <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
+		  <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+		  <div class="SalesManName"></div></a>
+			<div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+			  <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+			</div>
+		  </div>
+		</header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label>  Order History </label>
+              </a> </li>
+		  <li class="distmenu"> <a href="#distributorScreen" id="elid"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label> Change Store </label>
+              </a> </li>
+			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
+              <label> Edit Registration </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Pin Number </label>
+              </a> </li>
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><img src="images/chnge.png" alt=""></img>Change Pin Number </div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+		  </div>
+        </div>
+		
+		<div class="col-sm-12 content-sec">
+		  <div style="width:70%;" id="dialog" title="Prodcast Notification" >
+				<div class="costomer-tab-section">
+					<div class="tab-content">
+
+                     <div id="changepinnumbertab1" class="tab-pane fade in active">
+                      <form>
+                        <div class="row">
+				         <div class="col-sm-4" style="color:#abcd14">
+
+                            <label for="oldPinnumber">Old PIN </label>
+
+					         <input type="password" id="oldPinnumber" size="20">
+					     </div>
+					    </div>
+						<div class="row">
+						 
+					        <p id="oldpinnonull" style="color:red;display:none">Please Enter A Old PinNumber</p>
+					        <p id="oldpinnoerror" style="color:red;display:none">Please Enter A Correct Old PinNumber</p>
+						 
+					    </div>
+
+					    <div class="row">
+					     <div class="col-sm-4" style="color:#abcd14">
+
+                            <label for="newPinnumber">New PIN </label>
+
+					       <input type="password" id="newPinnumber"   size="20"><br>
+						   
+					      </div>
+					    </div>
+						<div class="row">
+						   
+					         <p id="newpinnonull" style="color:red;display:none">Please Enter A New PinNumber</p>
+					         <p id="newpinnosame" style="color:red;display:none">Your New PinNumberIs Same As The Old PinNumber</p>
+					         <p id="newpinnoerror" style="color:red;display:none">Please Enter A Minimum 6 Characters</p>
+                          
+					    </div>
+					    <div class="row">
+					      <div class="col-sm-4" style="color:#abcd14">
+
+                              <label for="confirmPinnumber">Confirm PIN</label>
+					          <input type="password" id="confirmPinnumber" size="20" >
+					      </div>
+
+						</div>
+						<div class="row">
+						   
+					          <p id="confirmpinnonull" style="color:red;display:none">Please Enter The Confirm PinNumber</p>
+					          <p id="confirmpinnoerror" style="color:red;display:none">Please Enter A Correct Confirm PinNumber</p>
+					       	
+                        </div>
+						
+						<br>
+					     <br>
+						 
+					    <div class="row">
+						
+							 <div class="col-sm-4" >
+								<a class="green-btn-style" id="changepinnumber_save" >Submit</a>
+							 </div>
+
+							 <div class="col-sm-4">
+								<a class="green-btn-style" id="changepinnumber_reset" >Reset</a>
+							 </div>
+							 
+                        </div>
+						
+					  </form>
+						 
+
+					 </div>
+				    </div>
+				</div>
+			  </div>
+			</div>
+			 </div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Change Password screen ends-->
+	
+  <!--<footer>
+	<div class="copy-right">@Copyright Prodcast</div>
+	<div class="footer-link"><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a> </div>
+  </footer>-->
+
+<!-- jQuery 2.1.4 -->
+<script src="js/jQuery-2.1.4.min.js"></script>
+<!--<script src="js/jquery.mobile-1.3.2.min.js"></script>-->
+<script src="js/jquery.mobile-1.4.5.min.js"></script>
+<!--
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+-->
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js" ></script>
+
+
+<!-- Bootstrap 3.3.5 -->
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/index_gj_2.js"></script>
+<script src="js/index_customer_order.js"></script>
+<script src="js/index_cust_reports.js"></script>
+
+<!--
+<script type="text/javascript">
+$(document).ready(function() {  function setHeight()
+{
+  windowHeight = $(window).innerHeight();
+  $('#right-panel').css('min-height', windowHeight);
+
+//var footer_height = $('footer').css('height');
+  //var total_footer_height = parseInt(windowHeight) - parseInt(footer_height);
+
+ // alert(total_footer_height);
+ // $('footer').css('height',total_footer_height);
+
+};  setHeight();
+
+   $(window).resize(function() {    setHeight();  });});
+</script>
+-->
+<script type="text/javascript">
+	$(document).ready(function () {
+    //stick in the fixed 100% height behind the navbar but don't wrap it
+    $('#slide-nav.navbar-inverse, #slide-nav2.navbar-inverse, #slide-nav3.navbar-inverse, #slide-nav4.navbar-inverse').after($('<div class="inverse" id="navbar-height-col"></div>'));
+
+    $('#slide-nav.navbar-default, #slide-nav2.navbar-default, #slide-nav3.navbar-default, #slide-nav4.navbar-default').after($('<div id="navbar-height-col"></div>'));
+
+    // Enter your ids or classes
+    var toggler = '.navbar-toggle';
+    var pagewrapper = '#page-content';
+    var navigationwrapper = '.navbar-header';
+    var menuwidth = '100%'; // the menu inside the slide menu itself
+    var slidewidth = '80%';
+    var menuneg = '-100%';
+    var slideneg = '-80%';
+
+
+    $("#slide-nav, #slide-nav2, #slide-nav3, #slide-nav4").on("click", toggler, function (e) {
+
+        var selected = $(this).hasClass('slide-active');
+
+        $('#slidemenu, #slidemenu2, #slidemenu3, #slidemenu4').stop().animate({
+            left: selected ? menuneg : '0px'
+        });
+
+        $('#navbar-height-col, #navbar-height-col2, #navbar-height-col3, #navbar-height-col4').stop().animate({
+            left: selected ? slideneg : '0px'
+        });
+        $(pagewrapper).stop().animate({
+            left: selected ? '0px' : slidewidth
+        });
+
+        $(navigationwrapper).stop().animate({
+            left: selected ? '0px' : slidewidth
+        });
+
+
+        $(this).toggleClass('slide-active', !selected);
+        $('#slidemenu, #slidemenu2, #slidemenu3, #slidemenu4').toggleClass('slide-active');
+
+
+        $('#page-content, .navbar, body, .navbar-header').toggleClass('slide-active');
+
+
+    });
+
+
+    var selected = '#slidemenu, #page-content, body, .navbar, .navbar-header';
+
+
+    $(window).on("resize", function () {
+
+        if ($(window).width() > 800 && $('.navbar-toggle').is(':hidden')) {
+            $(selected).removeClass('slide-active');
+        }
+
+
+    });
+//$("#loginHome").removeClass("ui-page-active");
+//$(this).addclass("ui-page-active");
+
+$(document).on("pageinit",function(event){
+    
+    if( event.target.id != "loginHome"){
+    $("#loginHome").removeClass("ui-page-active");
+    
+     }
+   });
+   
+  /*$(document).on("pageinit",function(event){
+    
+    if( event.target.id == "customerRegister"){
+    $("#customerRegister").addClass("ui-page-active");
+    
+     }
+   });*/  
+     
+    
+});
+
+</script>
+</body>
+</html>
