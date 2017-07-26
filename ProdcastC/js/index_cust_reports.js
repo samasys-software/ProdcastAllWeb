@@ -20,7 +20,7 @@ $(document).ready(function() {
 			var billDetails="";
 			var clicked="";
 	
-	
+	//nothing
 	currency=localStorage.getItem("currency");
 		$(".distcurrency").html(currency);
 			$("#disreportSubmit").click(function(){
