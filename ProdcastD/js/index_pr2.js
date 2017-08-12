@@ -4,6 +4,7 @@ $(document).ready(function() {
 			var baseUrl = "../..";
 
             /* Global Variable Declaration Begins*/
+			//bgyjgy
 
 			var userUrl=window.location.href.replace(window.location.hash,'');
 			var localBillNoId="";
