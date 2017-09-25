@@ -349,11 +349,27 @@ img:hover {
 	top: 33px;
 	overflow-y: auto;
 }
+
+.wrapper-no-scroll {
+    background: #89ca18 none repeat scroll 0 0;
+    float: left;
+    bottom:0px;
+    position: absolute;
+    width: 100%;
+	top: 33px;
+}
+
 .right-panel {
 	background: #fafafa;
 	height:100%;
 	overflow-y: auto;	
 }
+
+.right-panel-no-scroll {
+	background: #fafafa;
+	height:100%;	
+}
+
 .left-panel-menu {
 	margin: 0;
 	padding: 15px 0;
@@ -689,11 +705,66 @@ footer {
   display: table;
   width: 100%;
 }
+
+/*.tbl-full {
+  border-bottom: 1px solid #e3e3e3;
+  border-left: 1px solid #e3e3e3;
+  display: table;
+  width: 50%;
+}
+
+.tbl-half {
+  width: 50%;
+}
+
+.tbl-three-quarter {
+  width: 50%;
+}*/
+
+/*********** order entry Floating Button css  ************/
+/*
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#06C;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	font-size:24px;
+	margin-top:18px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container{
+  visibility: visible;
+  opacity: 1;
+}
+*/
+/*********** order entry Floating Button css  ************/
+
 .tbl-row {
   color: #575757;
   display: table-row;
   font-size: 13px;
 }
+
+.tbl-row-notable {
+  color: #575757;
+  font-size: 13px;
+}
+
 .tbl-cols {
   border-right: 1px solid #e3e3e3;
   display: table-cell;
@@ -701,6 +772,13 @@ footer {
   text-align: center;
   vertical-align: middle;
 }
+
+.tbl-cols-noborder {
+  display: table-cell;
+  padding: 10px;
+  text-align: center;
+}
+
 .tbl-cols2 {
   border-right: 0px solid #e3e3e3;
   display: table-cell;
@@ -716,6 +794,13 @@ footer {
   color: #fff;
   font-size: 14px;
 }
+
+.tbl-row-notable.tbl-hed {
+  background: #575757 none repeat scroll 0 0;
+  color: #fff;
+  font-size: 14px;
+}
+
 .tbl-row.tbl-hed2 {
   bsackground: #575757 none repeat scroll 0 0;
   color: #575757;
