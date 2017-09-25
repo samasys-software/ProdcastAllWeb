@@ -25,6 +25,8 @@ $(document).ready(function() {
 		gid.push("1");
 		var cloneResponse="";
 		var i=null;
+		var deliveryType=null;
+		var deliveryAddress=null;
 	
 			 
 		
@@ -156,7 +158,7 @@ $(document).ready(function() {
 			
 				$('#fillmsg').hide();
 				$('#pinmatch').hide();
-function calculateTotal(id) {
+			function calculateTotal(id) {
                     if ($('#hproductvalue' + id).val() != "" && !isNaN($('#hproductvalue' + id).val())) {
 						var selectedProduct = productList[productMap[$('#hproductvalue' + id).val()]];
                         var unitPrice = selectedProduct.unitPrice;
@@ -403,7 +405,7 @@ function calculateTotal(id) {
 			
 				function saveOrdersForCustomer()
 				{
-					$('#savedialog').dialog("close");
+					//$('#savedialog').dialog("close");
 								while(gid.length>1)
 								{
 									gid.pop();
@@ -702,36 +704,7 @@ function calculateTotal(id) {
 				
                 });
 				
-				
-
-                $('.saveorder').on('click', function() {
-				//alert(gid.length);
-				if($('#productvalue1').val() != "" && $('#quantityvalue1').val() == 0)
-				{
-					alertMessage("Please Enter a Quantity");
-					return;
-				}
-				
-				else if ($('#productvalue1').val() != "" && $('#quantityvalue1').val() != "")
-				{
-					$("#savedialog").dialog({
-						modal: true,
-						draggable: false,
-						resizable: false,
-						position: ['center'],
-						show: 'blind',
-						hide: 'blind',
-						width: 'auto',
-						height: 'auto',
-						dialogClass: 'ui-dialog-osx',
-						});
-				}
-
-				else 
-				{
-					alertMessage("Please select at least one Product.");
-					return;
-				}
+				function submitOrder(shippingType,deliveryAddress){
 					
 					var so = {};
                     so.customerId = customerId;
@@ -744,6 +717,8 @@ function calculateTotal(id) {
                     so.discountValue=0;
 					so.discountType=null;
 					so.orderStatus="S";
+					so.shippingType=shippingType;
+					so.deliveryAddress=deliveryAddress;
 
 				
                     for (var i = 0; i < gid.length; i++) {
@@ -800,17 +775,140 @@ function calculateTotal(id) {
 	
 						alertMessage("Your Order has been Placed successfully");
                         $.mobile.navigate('#order');
-	
-
-
 							}
-						
-					
-						
                         }                  
 						});
+					
+				}
+				
+				function showPanel(display){
+					
+						var responseString = localStorage.getItem("customerSwitchDistributor");
+						 
+								var customer= JSON.parse( responseString ).customer;
+								var address=$('#dialogAddress').val(customer.billingAddress1+" "+customer.billingAddress2+" "+customer.billingAddress3);
+								var city=$('#dialogCity').val(customer.city+" "+customer.postalCode);
+								var state=$('#dialogState').val(customer.state);
+									
+					
+						if(display){
+							$('#dialogShippingMethod').show();
+							deliveryType=$('#dialogShippingMethod').val();
+							
+							if(deliveryType=="1"){
+								$('#addressDetails').show();
+								
+								
+							}
+							else{
+								$('#addressDetails').hide();
+								
+							}
+						
+							
+							
+						}
+						else{
+							$('#addressDetails').show();
+							$('#dialogShippingMethod').hide();
+							deliveryType="1"
+							
+							
+						}
+				}
+
+				$(document).delegate('.confirmAddress', 'click', function(evt) {
+					//alert($('#dialogShippingMethod').val()+""+$('#dialogAddress').val()+""+$('#dialogCity').val()+""+$('#dialogState').val());
+					$('#savedialog').dialog("close");
+					if(deliveryType=="2"){
+						submitOrder(deliveryType,null);
+					}
+					else{
+						submitOrder(deliveryType,$('#dialogAddress').val()+","+$('#dialogCity').val()+","+$('#dialogState').val());
+					}
+					
+				});		
+
+				$("#dialogShippingMethod").change(function() {
+                    if ($("#dialogShippingMethod").val() == "1") {
+						$('#addressDetails').show();
+						deliveryType=$('#dialogShippingMethod').val();
+						
+							
+                        
+                    } 
+					else{
+                        $('#addressDetails').hide();
+						deliveryType=$('#dialogShippingMethod').val();
+						
+							
+                    }
 
                 });
+
+                $('.saveorder').on('click', function() {
+				//alert(gid.length);
+				if($('#productvalue1').val() != "" && $('#quantityvalue1').val() == 0)
+				{
+					alertMessage("Please Enter a Quantity");
+					return;
+				}
+				
+				else if ($('#productvalue1').val() != "" && $('#quantityvalue1').val() != "")
+				{
+					
+						var responseString = localStorage.getItem("customerSwitchDistributor");
+						 
+						var distType= JSON.parse( responseString ).distributor.fulfillmentType;
+						
+						if(distType=="0" || distType=="2"){
+							submitOrder(distType,null);
+							
+						}
+						else 
+						{
+							$("#savedialog").dialog({
+							modal: true,
+							draggable: false,
+							resizable: false,
+							position: ['center'],
+							show: 'blind',
+							hide: 'blind',
+							width: 'auto',
+							height: 'auto',
+							dialogClass: 'ui-dialog-osx',
+							});
+							
+							if(distType=="1"){
+								$('#dialogShippingMethod').hide();
+								showPanel(false);
+							}
+							else
+							{	
+								$('#dialogShippingMethod').empty();
+								$('#dialogShippingMethod').append('<option value="1">Delivery</option>');
+								$('#dialogShippingMethod').append('<option value="2">Pickup</option>');	
+								showPanel(true)
+							}
+						}
+						
+						
+						
+                                  
+				}
+
+				else 
+				{
+					alertMessage("Please select at least one Product.");
+					return;
+				}
+					
+				/*	*/
+
+                });
+				
+				
+				
                 
         /* local variable declaration begins */
 

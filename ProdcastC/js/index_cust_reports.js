@@ -20,7 +20,7 @@ $(document).ready(function() {
 			var billDetails="";
 			var clicked="";
 	
-	//nothing
+	
 	currency=localStorage.getItem("currency");
 		$(".distcurrency").html(currency);
 			$("#disreportSubmit").click(function(){
@@ -281,7 +281,7 @@ $(document).ready(function() {
 								
 							$('#summaryTable').append('<div class="tbl-row tbl-hed"><div class="tbl-cols">ToatalBillAmount ('+currency+')</div><div class="tbl-cols"> TotalAmountPaid ('+currency+')</div><div class="tbl-cols">OutsandingBalance ('+currency+')</div> </div>');
 							
-							$('#summaryTable').append('<div class="tbl-row"></div><div class="tbl-cols">' + response.totalAmount.toFixed(2) + '</div><div class="tbl-cols" >' + response.totalAmountPaid.toFixed(2) + '</div><div class="tbl-cols">' + response.totalOutstandingBalance.toFixed(2) + '</div></div>');
+							$('#summaryTable').append('<div class="tbl-row"></div><div class="tbl-cols">' + response.amount.toFixed(2) + '</div><div class="tbl-cols" >' + response.amountPaid.toFixed(2) + '</div><div class="tbl-cols">' + response.outstandingBalance.toFixed(2) + '</div></div>');
 		
 							var billDetails= response.result;
 
