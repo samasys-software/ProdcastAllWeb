@@ -1094,7 +1094,7 @@
 			</div>
           </div>
 	  </div>
-          <div class="row">
+          <div class="row paymentPanel">
 
             <div class="col-md-8">
 			<div class="row">
@@ -3986,7 +3986,7 @@
          </ul>
         </div>
       </div>
-      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+    <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
 
         <div class="col-sm-12 title-bar">
           <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users";	 aria-hidden="true"></i>Bill Details</div>
@@ -3997,76 +3997,136 @@
             </ul>
             </div-->
         </div>
-		
-		
-		
-		
-		
-		
+
 	<div class="col-sm-12 content-sec">
 
-
-
-				<div>
-				<p><a  class="green-btn-style printable" >Print Order</a><a  class="green-btn-style distmenu" id="deleteOrder" >Delete Order</a></p>
-				   
-                    </div>
-				<div style="width:100%;display:none;" class="deleteOrderDialog" title="Prodcast Notification" >
-													<div class="costomer-tab-section">
-														<div class="tab-content-mini">
-															<form>
-																<div class="row">
-																<div class="col-sm-12">
-																<center> <label >Are you sure you would like to delete this order?</label></center>
-															<center><div class="tbl-row">
-																	<div class="tbl-col">
-																	<a id="deleteOrderYes"  class="green-btn-style deleteOrderYes">Yes</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a id="deleteOrderNo"  class="green-btn-style deleteOrderNo">No</a>
-																	</div></center>
-															
-																</div>
-																</div>
-																</div>
-															</form>
-														</div>
-													</div>
+		<div>
+			<p><a  class="green-btn-style printable" >Print Order</a><a  class="green-btn-style distmenu" id="deleteOrder" >Delete Order</a></p>				   
+        </div>
+		<div style="width:100%;display:none;" class="deleteOrderDialog" title="Prodcast Notification" >
+			<div class="costomer-tab-section">
+				<div class="tab-content-mini">
+					<form>
+						<div class="row">
+						<div class="col-sm-12">
+						<center> <label >Are you sure you would like to delete this order?</label></center>
+					<center><div class="tbl-row">
+							<div class="tbl-col">
+							<a id="deleteOrderYes"  class="green-btn-style deleteOrderYes">Yes</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a id="deleteOrderNo"  class="green-btn-style deleteOrderNo">No</a>
+							</div></center>
+					
+						</div>
+						</div>
+						</div>
+					</form>
 				</div>
-				
-				<div class="tbl" id="msgtable">
-								<div class="tbl-row tbl-hed">
-								<div class="tbl-cols">
-								<p align="left" >
-								Distributor
-								</p>
-								</div>
+			</div>
+		</div>
+		<!--div class="col-sm-1"></div>
+		<div class="col-sm-10"-->
+			<div id="msgtable">
+				<!--div class="tbl-row tbl-hed">
+				<div class="tbl-cols">
+				<p align="left" >
+				Distributor
+				</p>
+				</div>
 
-								<div class="tbl-cols">
+				<div class="tbl-cols">
+				<p align="left" >
+
+				Customer
+				</p>
+				</div>
+					</div-->
+				<div class="tbl-row">
+				<!--div class="tbl-cols">
+					<p id="distMname" style="color:#abcd14" align="left"></p>
+					<p id="distAddress" style="color:#abcd14" align="left"></p>
+					<p id="distCity" style="color:#abcd14" align="left"></p>
+					<p id="distPhone" style="color:#abcd14" align="left"></p>
+				</div-->
+				
+					<div class="tbl-cols" id="bill">
+						<!--div class="tbl-row tbl-hed">
+						</div-->
+						<div class="tbl-row">
+							<div class="tbl-cols">
+								Order No.
+							</div>
+							<div class="tbl-cols">
+								<p id="billNumber" style="color:#abcd14"></p>
+							</div>
+						</div>
+						<div class="tbl-row">
+							<div class="tbl-cols">
+								Bill Date
+							</div>
+							<div class="tbl-cols">
+								<p id="billDate" style="color:#abcd14"></p>
+							</div>
+						</div>
+						<div class="tbl-row">
+							<div class="tbl-cols">
+								Total (<label class='distcurrency'></label>)
+							</div>
+							<div class="tbl-cols">
+								<p id="totalAmount" style="color:#abcd14"></p>
+							</div>
+						</div>
+						<div class="tbl-row">
+							<div class="tbl-cols">
+								Balance (<label class='distcurrency'></label>)
+							</div>
+							<div class="tbl-cols">
+								<p id="outstandingBalance" style="color:#abcd14"></p>
+							</div>
+						</div>
+						<div class="tbl-row">
+							<div class="tbl-cols">
+							Discount
+							</div>
+							<div class="tbl-cols">
+								<p id="discountValue" style="color:#abcd14"></p>
+
+							</div>
+						</div>
+					</div>
+					<div class="tbl-cols">
+						<div class="tbl-row tbl-hed">
+							<div class="tbl-cols">
 								<p align="left" >
 
 								Customer
 								</p>
-								</div>
-									</div>
-								<div class="tbl-row">
-								<div class="tbl-cols">
-								    <p id="distMname" style="color:#abcd14" align="left"></p>
-								    <p id="distAddress" style="color:#abcd14" align="left"></p>
-								    <p id="distCity" style="color:#abcd14" align="left"></p>
-								    <p id="distPhone" style="color:#abcd14" align="left"></p>
-								</div>
-								<div class="tbl-cols">
-									<p id="customerMname" style="color:#abcd14" align="left"></p>
-									<p id="custAddress" style="color:#abcd14" align="left"></p>
-									<p id="custCity" style="color:#abcd14" align="left"></p>
-									<p id="custPhone" style="color:#abcd14" align="left"></p>
-								</div>
-								</div>
+							</div>
+						</div>
+						<div class="tbl-row">
+							<div class="tbl-cols">
+								<p id="customerMname" style="color:#abcd14" align="left"></p>
+							</div>
+						</div>
+						<div class="tbl-row">
+							<div class="tbl-cols">
+								<p id="custAddress" style="color:#abcd14" align="left"></p>
+							</div>
+						</div>
+						<div class="tbl-row">
+							<div class="tbl-cols">
+								<p id="custCity" style="color:#abcd14" align="left"></p>
+							</div>
+						</div>
+						<div class="tbl-row">
+							<div class="tbl-cols">
+								<p id="custPhone" style="color:#abcd14" align="left"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</br></br>
 
-								</div>
-							</br>
-							</br>
-				         </br>
-
-             	<div class="tbl" id="bill">
+             	<!--div class="tbl" id="bill">
               		<div class="tbl-row tbl-hed">
 					</div>
 					<div class="tbl-row">
@@ -4121,118 +4181,115 @@
                         </div>
 					</div>
 
-                    </div>
-
-<!--</div>-->
-		<br>
-					<div>
-						<h3>Order Details</h3>
-							<div id="ordtable" class="tbl">
-								<div class="tbl-row tbl-hed">
-									<div class="tbl-cols">
-										No.
-									</div>
-									<div class="tbl-cols">
-										Product
-									</div>
-									<div class="tbl-cols">
-										Qty
-									</div>
-									<div style="width:100%;display:none;" id="returnDialog" title="Prodcast Notification" >
-																						<div class="costomer-tab-section">
-																							<div class="tab-content-mini">
-																								<form>
-																									<div class="row">
-																									<div class="col-sm-12">
-																									<label>Enter the quantity you would like to return</label>
-																									<input id="returnQty" placeholder="Enter The Quantity" value="" type="text" />
-																									<p id="returnQtymsg" style="color:red;display: none">Quantity should be above zero </p>
-																									</div>
-																									</div>
-																									<br>
-																									<div class="row">
-																									<div class="col-sm-12" align="center"><a id="returnIdsave"  class="green-btn-style">Save</a>
-																									</div>
-																									</div>
-																								</form>
-																							</div>
-																						</div>
-												</div>
-									<div class="tbl-cols">
-										Price (<label class='distcurrency'></label>)
-									</div>
-									<div class="tbl-cols">
-										Sales Tax (<label class='distcurrency'></label>)
-									</div>
-									<div class="tbl-cols">
-										Other Tax (<label class='distcurrency'></label>)
-									</div>
-
-									<div class="tbl-cols">
-										Sub Total (<label class='distcurrency'></label>)
+                    </div-->
+				<!--</div>-->
+			<br>
+			<div>
+				<h3>Order Details</h3>
+					<div id="ordtable" class="tbl">
+						<div class="tbl-row tbl-hed">
+							<!--div class="tbl-cols">
+								No.
+							</div-->
+							<div class="tbl-cols">
+								Product
+							</div>
+							<div class="tbl-cols">
+								Qty
+							</div>
+							<div style="width:100%;display:none;" id="returnDialog" title="Prodcast Notification" >
+								<div class="costomer-tab-section">
+									<div class="tab-content-mini">
+										<form>
+											<div class="row">
+											<div class="col-sm-12">
+											<label>Enter the quantity you would like to return</label>
+											<input id="returnQty" placeholder="Enter The Quantity" value="" type="text" />
+											<p id="returnQtymsg" style="color:red;display: none">Quantity should be above zero </p>
+											</div>
+											</div>
+											<br>
+											<div class="row">
+											<div class="col-sm-12" align="center"><a id="returnIdsave"  class="green-btn-style">Save</a>
+											</div>
+											</div>
+										</form>
 									</div>
 								</div>
 							</div>
-						</div>
-					<br>
-					<div>
-						<h3>Payment Details</h3>
-							<div id="paytable" class="tbl">
-								<div class="tbl-row tbl-hed">
-									<div class="tbl-cols">
-										No.
-									</div>
-									<div class="tbl-cols">
-										Date
-									</div>
-									<div class="tbl-cols">
-										Received By
-									</div>
-									<div class="tbl-cols">
-										Amount (<label class='distcurrency'></label>)
-									</div>
-								</div>
+							<div class="tbl-cols">
+								Price (<label class='distcurrency'></label>)
+							</div>
+							<!--div class="tbl-cols">
+								Sales Tax (<label class='distcurrency'></label>)
+							</div>
+							<div class="tbl-cols">
+								Other Tax (<label class='distcurrency'></label>)
+							</div-->
+
+							<div class="tbl-cols">
+								Sub Total (<label class='distcurrency'></label>)
 							</div>
 						</div>
-						<div>
-												<h3>Return Details</h3>
-													<div id="rordtable" class="tbl">
-														<div class="tbl-row tbl-hed">
-															<div class="tbl-cols">
-																No.
-															</div>
-															<div class="tbl-cols">
-																Product
-															</div>
-															<div class="tbl-cols">
-																Qty
-															</div>
-
-															<div class="tbl-cols">
-																Price (<label class='distcurrency'></label>)
-															</div>
-															<div class="tbl-cols">
-																Sales Tax (<label class='distcurrency'></label>)
-															</div>
-															<div class="tbl-cols">
-																Other Tax (<label class='distcurrency'></label>)
-															</div>
-
-															<div class="tbl-cols">
-																Sub Total (<label class='distcurrency'></label>)
-															</div>
-
-														</div>
-													</div>
-						</div>
-						<br/>
-							<a class="green-border-btn" id="b_close"  >Close</a>
-
-
-                </div>
+					</div>
+			</div>
 				
+			<br>
+			<div>
+				<h3>Payment Details</h3>
+				<div id="paytable" class="tbl">
+					<div class="tbl-row tbl-hed">
+						<!--div class="tbl-cols">
+							No.
+						</div-->
+						<div class="tbl-cols">
+							Date
+						</div>
+						<div class="tbl-cols">
+							Received By
+						</div>
+						<div class="tbl-cols">
+							Amount (<label class='distcurrency'></label>)
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--div>
+				<h3>Return Details</h3>
+				<div id="rordtable" class="tbl">
+					<div class="tbl-row tbl-hed">
+						<!--div class="tbl-cols">
+							No.
+						</div-->
+						<!--div class="tbl-cols">
+							Product
+						</div>
+						<div class="tbl-cols">
+							Qty
+						</div>
 
-		</div>
+						<div class="tbl-cols">
+							Price (<label class='distcurrency'></label>)
+						</div>
+						<!--div class="tbl-cols">
+							Sales Tax (<label class='distcurrency'></label>)
+						</div>
+						<div class="tbl-cols">
+							Other Tax (<label class='distcurrency'></label>)
+						</div-->
+
+						<!--div class="tbl-cols">
+							Sub Total (<label class='distcurrency'></label>)
+						</div>
+
+					</div>
+				</div>
+			</div-->
+			<br/>
+			<a class="green-border-btn" id="b_close"  >Close</a>
+		<!--/div>
+	<div class="col-sm-1"></div-->
+	</div>
 	</div>
    </div>
 </div>

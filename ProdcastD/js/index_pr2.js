@@ -4,7 +4,6 @@ $(document).ready(function() {
 			var baseUrl = "../..";
 
             /* Global Variable Declaration Begins*/
-			//bgyjgy
 
 			var userUrl=window.location.href.replace(window.location.hash,'');
 			var localBillNoId="";
@@ -158,9 +157,11 @@ $(document).ready(function() {
                            if(orderStatus=="S")
 						   {
 						   $("#fullFilled").show();
+						   $('.paymentPanel').show();
                            }
 						   else{
 							   $("#fullFilled").hide();
+							   $('.paymentPanel').show();
 						   }
 
                             break;
@@ -3835,10 +3836,10 @@ $(document).ready(function() {
 										 discount=(order.discount)+'%';
 								  }
 
-								   $('#billdetailspage #distMname').text( distributor.companyName );
+								   /*$('#billdetailspage #distMname').text( distributor.companyName );
 								   $('#billdetailspage #distAddress').text(distAddress );
 								   $('#billdetailspage #distCity').text(distCityState );
-								   $('#billdetailspage #distPhone').text(distPhoneNumber );
+								   $('#billdetailspage #distPhone').text(distPhoneNumber );*/
 
 								   $('#billdetailspage #customerMname').text( customer.customerName );
 								   $('#billdetailspage #custAddress').text(customerAddress );
@@ -3847,7 +3848,7 @@ $(document).ready(function() {
 
 								   $('#billdetailspage #billNumber').text( selectedBill );
 								   $('#billdetailspage #billDate').text( stringToDate (order.billDate) );
-								   $('#billdetailspage #employeeName').text( order.employeeName );
+								   //$('#billdetailspage #employeeName').text( order.employeeName );
 								   $('#billdetailspage #discountValue').text(discount);
 								   $('#billdetailspage #totalAmount').text( order.totalAmount.toFixed(2) );
 								  $('#billdetailspage #outstandingBalance').text( order.outstandingBalance.toFixed(2) );
@@ -3856,7 +3857,8 @@ $(document).ready(function() {
 
 									 for(counter=0;counter<orderEntries.length;counter++){
 										 var entry1 = orderEntries[counter];
-										  var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+(counter+1)+'</div><div class="tbl-cols">'+entry1.productName+'</div><div class="tbl-cols"><a class="returnProduct" id="'+entry1.productId+'">'+entry1.quantity+'</a></div><div class="tbl-cols">'+entry1.unitPrice.toFixed(2)+'</div><div class="tbl-cols">'+entry1.salesTax.toFixed(2)+'</div><div class="tbl-cols">'+entry1.otherTax.toFixed(2)+'</div><div class="tbl-cols">'+entry1.subtotal.toFixed(2)+'</div></div>';
+										  //var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+(counter+1)+'</div><div class="tbl-cols">'+entry1.productName+'</div><div class="tbl-cols"><a class="returnProduct" id="'+entry1.productId+'">'+entry1.quantity+'</a></div><div class="tbl-cols">'+entry1.unitPrice.toFixed(2)+'</div><div class="tbl-cols">'+entry1.salesTax.toFixed(2)+'</div><div class="tbl-cols">'+entry1.otherTax.toFixed(2)+'</div><div class="tbl-cols">'+entry1.subtotal.toFixed(2)+'</div></div>';
+										  var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+entry1.productName+'</div><div class="tbl-cols"><a class="returnProduct" id="'+entry1.productId+'">'+entry1.quantity+'</a></div><div class="tbl-cols">'+entry1.unitPrice.toFixed(2)+'</div><div class="tbl-cols">'+entry1.subtotal.toFixed(2)+'</div></div>';
 
 										 $('#billdetailspage #ordtable').append( trstr1 );
 										 $('#billdetailspage #ordtable').show();
@@ -3866,14 +3868,16 @@ $(document).ready(function() {
 
 									 for(counter=0;counter<orderEntries.length;counter++){
 										 var entry1 = orderEntries[counter];
-										 var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+(counter+1)+'</div><div class="tbl-cols">'+stringToDate(entry1.paymentDate)+'</div><div class="tbl-cols">'+entry1.employeeName+'</div><div class="tbl-cols">'+entry1.amountPaid.toFixed(2)+'</div></div>';
+										 //var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+(counter+1)+'</div><div class="tbl-cols">'+stringToDate(entry1.paymentDate)+'</div><div class="tbl-cols">'+entry1.employeeName+'</div><div class="tbl-cols">'+entry1.amountPaid.toFixed(2)+'</div></div>';
+										 var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+stringToDate(entry1.paymentDate)+'</div><div class="tbl-cols">'+entry1.employeeName+'</div><div class="tbl-cols">'+entry1.amountPaid.toFixed(2)+'</div></div>';
 										 $('#billdetailspage #paytable').append( trstr1 );
 									 }
 									 var returnEntries = order.returnEntries;
 
 									 									 for(counter=0;counter<returnEntries.length;counter++){
 									 										 var entry1 = returnEntries[counter];
-									 										 var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+(counter+1)+'</div><div class="tbl-cols">'+entry1.productName+'</div><div class="tbl-cols">'+entry1.quantity+'</div><div class="tbl-cols">'+entry1.unitPrice.toFixed(2)+'</div><div class="tbl-cols">'+entry1.salesTax.toFixed(2)+'</div><div class="tbl-cols">'+entry1.otherTax.toFixed(2)+'</div><div class="tbl-cols">'+entry1.subtotal.toFixed(2)+'</div></div>';
+									 										 //var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+(counter+1)+'</div><div class="tbl-cols">'+entry1.productName+'</div><div class="tbl-cols">'+entry1.quantity+'</div><div class="tbl-cols">'+entry1.unitPrice.toFixed(2)+'</div><div class="tbl-cols">'+entry1.salesTax.toFixed(2)+'</div><div class="tbl-cols">'+entry1.otherTax.toFixed(2)+'</div><div class="tbl-cols">'+entry1.subtotal.toFixed(2)+'</div></div>';
+									 										 var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+entry1.productName+'</div><div class="tbl-cols">'+entry1.quantity+'</div><div class="tbl-cols">'+entry1.unitPrice.toFixed(2)+'</div><div class="tbl-cols">'+entry1.subtotal.toFixed(2)+'</div></div>';
 									 										 $('#billdetailspage #rordtable').append( trstr1 );
 									 										 $('#billdetailspage #rordtable').show();
 									 }
@@ -6780,6 +6784,8 @@ $(document).ready(function() {
 				$('#chequenum').hide();
 				$('#commentord').hide();
 				$('#messageForZero').hide();
+				
+				$('.paymentPanel').hide();
 
 				$('#billdetailspage #ordtable').show();
 				originalBills = $('#outstandingDiv').html();
@@ -7027,7 +7033,7 @@ $(document).ready(function() {
 
 
 
-
+												$('.paymentPanel').hide();
 												$("#fullFilled").hide();
 
 
@@ -7220,6 +7226,8 @@ $(document).ready(function() {
                                             $('#payment').val("");
 											$('#chequenumber').val("");
 											$('#commentorder').val("");
+											
+											$('.paymentPanel').hide();
 
                                             outstandingBills = response.customer.outstandingBill;
 											if(customerId == "" )
@@ -7281,7 +7289,8 @@ $(document).ready(function() {
                     //$("#selectcustomer").val('');
 				resetOrderEntryPage = false;
 					$("#fullFilled").hide();
-
+					
+					$(".paymentPanel").hide();
                     //$('.outstandingDiv').show();
 					$("#orderdetailrow").val("");
 					$('#productvalue1').val("");
