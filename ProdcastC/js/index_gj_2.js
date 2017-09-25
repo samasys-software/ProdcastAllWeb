@@ -1,7 +1,6 @@
 
 $(document).ready(function() {
 		//var baseUrl = "http://ec2-52-91-5-22.compute-1.amazonaws.com:8080";
-		//var baseUrl = "http://ec2-52-91-5-22.compute-1.amazonaws.com:8080";		
 		var baseUrl = "../..";
 		var logoutUrl="";
 		//var custloginMap=""
@@ -1021,14 +1020,12 @@ $(document).ready(function() {
 	//BilldetailsPage Ends//
 // edit custommer registration details//
 	
-		
-							 
-	$(document).delegate("#editCustomerRegistrationDetails","pageinit",function(evt)
-		{
-				   function editregistrationSubAutoComplete(getNewCustRegDetails){
-				    openCustomerId=getNewCustRegDetails.outlet_id;
-		            $("#editcustomer_firstname").val(getNewCustRegDetails.firstname);
-					$("#editcustomer_lastname").val(getNewCustRegDetails.lastname);					
+
+	
+	 function editregistrationSubAutoComplete(getNewCustRegDetails){
+				    openCustomerId=getNewCustRegDetails.customerId;
+		            $("#editcustomer_firstname").val(getNewCustRegDetails.firstName);
+					$("#editcustomer_lastname").val(getNewCustRegDetails.lastName);					
 					$("#editcustomer_email").val(getNewCustRegDetails.email);
 					$('#editcustomer_Address1').val(getNewCustRegDetails.address1);
 					$('#editcustomer_Address2').val(getNewCustRegDetails.address2);					
@@ -1037,9 +1034,13 @@ $(document).ready(function() {
 					$('#editcustomer_city').val(getNewCustRegDetails.city);
 					$('#editcustomer_state').val(getNewCustRegDetails.state);					
 					$('#editcustomer_country').val(getNewCustRegDetails.country).change();
-					$('#editcustomer_postalcode').val(getNewCustRegDetails.postalcode);
-					$('#editcustomer_smsallowed')[0].checked=getNewCustRegDetails.smsallowed;		
+					$('#editcustomer_postalcode').val(getNewCustRegDetails.postalCode);
+					$('#editcustomer_smsallowed')[0].checked=getNewCustRegDetails.smsAllowed;		
 	         }
+							 
+	$(document).delegate("#editCustomerRegistrationDetails","pageinit",function(evt)
+		{
+				  
 						
 		   
 			// accessId=localStorage.getItem("accessId");
@@ -1067,7 +1068,7 @@ $(document).ready(function() {
 $(document).delegate("#editCustomerRegistrationDetails","pageshow",function(evt)
 		{
 			 
-			  function editregistrationSubAutoComplete(getNewCustRegDetails){
+		/*	  function editregistrationSubAutoComplete(getNewCustRegDetails){
 						 openCustomerId=getNewCustRegDetails.outlet_id;
 		            $("#editcustomer_firstname").val(getNewCustRegDetails.firstname);
 					$("#editcustomer_lastname").val(getNewCustRegDetails.lastname);					
@@ -1082,7 +1083,7 @@ $(document).delegate("#editCustomerRegistrationDetails","pageshow",function(evt)
 					$('#editcustomer_postalcode').val(getNewCustRegDetails.postalcode);
 					$('#editcustomer_smsallowed')[0].checked=getNewCustRegDetails.smsallowed;		
 	         }
-					
+		*/			
 			 cellPhone=localStorage.getItem("cellPhone");
 			// accessId=localStorage.getItem("accessId");
 			$("#editemptyalertmsg").hide();
@@ -1456,7 +1457,7 @@ $(document).delegate("#editCustomerRegistrationDetails","pageshow",function(evt)
 
 						if (response.error) 
 						{
-							alertmessage(response.errorMessage);
+							alertMessage(response.errorMessage);
 						} else 
 						{
 							allDistributorMap = response;

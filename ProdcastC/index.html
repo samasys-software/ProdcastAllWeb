@@ -881,6 +881,48 @@ background: #89ca18 none repeat scroll 0 0;
           <div class="row">
             <div class="col-sm-12 free-space"> <a  class="green-btn-style" id="reviewbtn">Review</a>&nbsp;&nbsp;&nbsp;<a  class="green-btn-style saveorder">Submit</a> </div>
           </div>
+		  
+		  
+		  <div style="width:100%" id="savedialog" title="Shipping Details">
+				<div class="costomer-tab-section">
+				<div class="tab-2content tab-content-mini">
+				<form>
+					  <div id="dialogShippingType" class="row">
+						Shipping Type
+									<select id="dialogShippingMethod">
+									</select>
+						<div id="addressDetails" "class="col-sm-12">
+								<p id="addressVerification" style="color:red;display:none"> Please enter an amount zero or above</p>
+								
+									<div class="col-sm-4">
+									<label class="lable-style"> address</label>
+									<input class="input-feild-style" style="text-align: right" type="text" id="dialogAddress">
+									
+									</div>
+										<div  class="col-sm-4">
+									<label class="lable-style"> city</label>
+									<input class="input-feild-style" style="text-align: right" type="text" id="dialogCity">
+									
+									</div>
+									<div class="col-sm-4">
+									<label class="lable-style"> state</label>
+									<input class="input-feild-style" style="text-align: right" type="text" id="dialogState">
+									
+									</div>
+									
+						</div>
+						</div>
+						<div class="row">
+						<div class="col-sm-12">
+					<a  class="green-btn-style confirmAddress">Confirm</a>
+					</div>
+						</div>
+
+					</div>
+
+				</form>
+				</div>
+				</div>
 
 				<div style="width:100%;display:none;" id="saveDialog" title="Prodcast Notification" >
 					<div class="costomer-tab-section">
