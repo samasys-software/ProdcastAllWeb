@@ -786,22 +786,32 @@ $(document).ready(function() {
 						var responseString = localStorage.getItem("customerSwitchDistributor");
 						 
 								var customer= JSON.parse( responseString ).customer;
-								var address=$('#dialogAddress').val(customer.billingAddress1+" "+customer.billingAddress2+" "+customer.billingAddress3);
-								var city=$('#dialogCity').val(customer.city+" "+customer.postalCode);
-								var state=$('#dialogState').val(customer.state);
+								$('#dialogAddress1').val(customer.billingAddress1);
+								$('#dialogAddress2').val(customer.billingAddress2+" "+customer.billingAddress3);
+								$('#dialogCity').val(customer.city)
+								$('#dialogPincode').val(customer.postalCode);
+								$('#dialogState').val(customer.state);
 									
 					
 						if(display){
+							
+                           						
+							 $("#addressValidationMsg").hide();
 							$('#dialogShippingMethod').show();
 							deliveryType=$('#dialogShippingMethod').val();
-							
-							if(deliveryType=="1"){
-								$('#addressDetails').show();
-								
+							if(deliveryType="0"){
+								$(".confirmAddress").hide();
 								
 							}
 							else{
-								$('#addressDetails').hide();
+								$(".confirmAddress").show();
+							}
+							
+							if(deliveryType=="1"){
+								$('#addressDetails').show();						
+							}
+							else{
+								$('#addressDetails').hide();						
 								
 							}
 						
@@ -809,42 +819,102 @@ $(document).ready(function() {
 							
 						}
 						else{
-							$('#addressDetails').show();
+							$('#addressDetails').show();						
 							$('#dialogShippingMethod').hide();
 							deliveryType="1"
 							
 							
 						}
 				}
+				$("#dialogShippingMethod").change(function() {
+					
+					if($("#dialogShippingMethod").val() == "0"){
+						$(".confirmAddress").hide();
+					}
+					else{
+						$(".confirmAddress").show();
+						
+					}
+						
+					
+					
+                    if ($("#dialogShippingMethod").val() == "1") {
+						 $("#addressDetails :input").css('border', ' 1px solid #d8e1b6');
+						$('#addressDetails').show();                       
+						 $("#addressValidationMsg").hide();		
+						deliveryType=$('#dialogShippingMethod').val();
+						
+                    } 
+					else{
+                        $('#addressDetails').hide();                         
+						 $("#addressValidationMsg").hide();		
+						deliveryType=$('#dialogShippingMethod').val();							
+                      }
+
+                });
 
 				$(document).delegate('.confirmAddress', 'click', function(evt) {
 					//alert($('#dialogShippingMethod').val()+""+$('#dialogAddress').val()+""+$('#dialogCity').val()+""+$('#dialogState').val());
-					$('#savedialog').dialog("close");
+					$("#selectOrderType").hide();
+					 $("#addressValidationMsg").hide();
+					var validate=true;
+					
+					/*(if(deliveryType=="0"){
+		     			validate=false;
+						$('#dialogShippingMethod').css('border', ' 1px solid red');
+						$("#selectOrderType").show();
+						}
+						else{
+						deliveryType=$("#dialogShippingMethod").val();
+						$("#selectOrderType").hide();
+						}*/
 					if(deliveryType=="2"){
 						submitOrder(deliveryType,null);
+					}		
+						
+					
+					if(deliveryType=="1"){
+						var responseString = localStorage.getItem("customerSwitchDistributor");
+						 
+								var distributor= JSON.parse( responseString ).distributor;							
+							if(parseFloat($("#totalvalue").text())>=distributor.minimumDeliveryAmount){ 
+				      			if($('#dialogAddress1').val()=="" ){
+								 $('#dialogAddress1').css('border', '1px solid red');
+								 validate=false;
+							      }
+							    if($('#dialogAddress2').val()==""){
+								$('#dialogAddress2').css('border', '1px solid red');
+								 validate=false;
+							     }
+							    if( $('#dialogCity').val()==""){
+								$('#dialogCity').css('border', '1px solid red');
+								 validate=false;
+							     }
+							    if($('#dialogState').val()==""){
+								$('#dialogState').css('border', '1px solid red');
+								 validate=false;
+							    }
+						        if($('#dialogPincode').val()==""){							 
+							    $('#dialogPincode').css('border', '1px solid red');
+							    validate=false;												  
+						        }
+								if($('#dialogAddress1').val()!="" && $('#dialogAddress2').val()!="" && $('#dialogCity').val()!="" && $('#dialogState').val()!="" && $('#dialogPincode').val()!=""){									
+								submitOrder(deliveryType,$('#dialogAddress1').val()+" "+$('#dialogAddress2').val()+","+$('#dialogCity').val()+","+$('#dialogState').val()+"-"+$('#dialogPincode').val());
+								}
+							}
+							else{
+								alertMessage("Your totalvalue should be greaterthan or equalto MinimumDeliveryAmount");
+							}
+						//}
 					}
-					else{
-						submitOrder(deliveryType,$('#dialogAddress').val()+","+$('#dialogCity').val()+","+$('#dialogState').val());
-					}
+					if(!validate)
+						 $("#addressValidationMsg").show();						
+					else
+					$('#savedialog').dialog("close");
 					
 				});		
 
-				$("#dialogShippingMethod").change(function() {
-                    if ($("#dialogShippingMethod").val() == "1") {
-						$('#addressDetails').show();
-						deliveryType=$('#dialogShippingMethod').val();
-						
-							
-                        
-                    } 
-					else{
-                        $('#addressDetails').hide();
-						deliveryType=$('#dialogShippingMethod').val();
-						
-							
-                    }
-
-                });
+				
 
                 $('.saveorder').on('click', function() {
 				//alert(gid.length);
@@ -874,10 +944,11 @@ $(document).ready(function() {
 							position: ['center'],
 							show: 'blind',
 							hide: 'blind',
-							width: 'auto',
 							height: 'auto',
 							dialogClass: 'ui-dialog-osx',
 							});
+							
+							$('.ui-dialog-osx').css('width', '0px !important');
 							
 							if(distType=="1"){
 								$('#dialogShippingMethod').hide();
@@ -886,8 +957,10 @@ $(document).ready(function() {
 							else
 							{	
 								$('#dialogShippingMethod').empty();
+								$('#dialogShippingMethod').append('<option value="0">Select Order Type</option>');
 								$('#dialogShippingMethod').append('<option value="1">Delivery</option>');
-								$('#dialogShippingMethod').append('<option value="2">Pickup</option>');	
+								$('#dialogShippingMethod').append('<option value="2">Pickup</option>');
+										
 								showPanel(true)
 							}
 						}
@@ -975,6 +1048,9 @@ $(document).ready(function() {
 							$('#minbalance2').hide();
 							$('#chequesave').hide();
 							$('#commentsave').hide();
+							$("#selectOrderType").hide();
+					        $("#addressValidationMsg").hide();
+							
 
                         });
 						$('#reviewbtn').on('click', function() {
@@ -982,6 +1058,8 @@ $(document).ready(function() {
 								
 								$('#odrtbl').html(originalReviewTable);
 								//$('#odrtbl').empty();
+										var stax = 0.00;
+										var otax = 0.00;
 								for (var counter = 0; counter < gid.length; counter++) {
 									if ($('#productvalue' + gid[counter]).val() != "" && $('#quantityvalue' + gid[counter]).val() != "") {
 
@@ -999,18 +1077,32 @@ $(document).ready(function() {
 										var stotal = $('#subtotal' + gid[counter]).text();
 										var salesTaxValue = ((Number(salesTax)/100)*unitPrice*Number(qtyvalue)).toFixed(2);
 										var otherTaxValue = ((Number(otherTax)/100)*unitPrice*Number(qtyvalue)).toFixed(2);
+										
+										/*var stv = 0.00;
+										var otv = 0.00;
+										
+										stv = (parseFloat(stv) + salesTaxValue);
+										otv = (parseFloat(otv) + otherTaxValue);
+										
+										var tax = (parseFloat(stv) + parseFloat(otv));*/
 
 										if (stotal != "0.00") {
 											//$('#reviewtable').append('<tbody id="tablebody" style="color:#FFFFFF"><tr><td align="center">'+productvalue+'</td><td align="right">'+qtyvalue+'</td><td align="right">'+uprice+'</td><td align="right">'+stotal+'</td></tr></tbody>');
 											$('#odrtbl').append('<div class="tbl-row" id="rowid' + counter + '"><div class="tbl-cols"><label>' + productvalue + '</label></div><div class="tbl-cols" style="text-align:right"><label>' + qtyvalue + '</label></div><div class="tbl-cols" style="text-align:right"><label>' + unitPrice + '</label></div><div class="tbl-cols" style="text-align: right">'+ salesTaxValue +' </div><div class="tbl-cols" style="text-align: right">'+ otherTaxValue +' </div><div class="tbl-cols" style="text-align:center;"><label>' + stotal + '</label></div></div>');
 										}
+										
+										stax = (Number(stax) + Number(salesTaxValue));
+										otax = (Number(otax) + Number(otherTaxValue));
 									}
 
 								}
 									var disValue=$('#discountValue').val(0);
 									var disType=$('#discountType').val("");
+									var tax = (Number(stax) + Number(otax));
+									var totalTax = tax; 
 									total = $('#totalvalue').text();
 									$('#rdiscountValue').text(disValue);
+									$('#rtotalTax').html(totalTax.toFixed(2));
 									$('#rtotalvalue').text(total);
 					});
 
