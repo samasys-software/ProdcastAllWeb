@@ -1,0 +1,4494 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Prodcast</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+<!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<!-- Bootstrap 3.3.5 -->
+<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+<link href="http://code.jquery.com/ui/1.9.2/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/jquery.css">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+#savedialog
+  {
+     background-color:white;
+	 float:left;
+
+  }
+  #saveDiscount
+  {
+   background-color:white;
+	 float:left;
+  }
+#saveemp
+  {
+  background-color:white;
+  float:left;
+  }
+#savedialog1
+ {
+   background-color:white;
+   float:left;
+ }
+ #editDialog
+
+ {
+   background-color:white;
+   float:left;
+ }
+ #editCatDialog
+ {
+   background-color:white;
+   float:left;
+ }
+ #editStoreTypeDialog
+ {
+ background-color:white;
+    float:left;
+	
+ 
+ }
+  #editRegDialog
+ {
+    background-color:white;
+    float:left;
+	
+ }
+  #returnDialog
+  {
+    background-color:white;
+    float:left;
+ }
+ <!--#deleteOrderDialog{
+ background-color:white;
+    float:left;
+ 
+ }-->
+ #dialog1
+ {
+   background-color:white;
+   float:left;
+   position: ['center'];
+ }
+#dialog2
+ {
+   background-color:white;
+   float:left;
+   position: ['center'];
+ }
+
+</style>
+</head>
+
+<body>
+<div class="page">
+
+  <!-- Login Page -->
+  <!-- Start of first page: #one -->
+
+  <div class="ui-page ui-body-c ui-page-active" tabindex="0" data-url="one" data-role="page" id="loginhome">
+    <section class="login-sec">
+      <div class="admin-logo"><img src="images/admin-logo.png" alt="" /></div>
+      <div class="login-form-area">
+        <div class="login-form">
+          <div class="login-form-box">
+            <form>
+              <ul>
+                <li>
+                  <div class="input-box ui-content ui-body-a"> <span class="input-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                    <input type="text" name="" value="" placeholder="Username" id="LoginUserId"/>
+                  </div>
+                  <div id="validationMsg" class="validation-msg">! Invalid Username or Email</div>
+                </li>
+                <li>
+                  <div class="input-box"> <span class="input-icon"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+                    <input type="password" name="" placeholder="Password" id="LoginPassword"/>
+                  </div>
+                  <div id="validationMsg" class="validation-msg">! Invalid Username or Email</div>
+                </li>
+              </ul>
+              <div class="btn-sec">
+                <div class="col-half"> <!--<a href="#two" class="submit-btn" onclick="document.getElementById('validationMsg').style.display = 'block' ;">Log in</a>-->
+                  <a  class="submit-btn" id="LoginButton">Log in</a>
+					<div class="col-half reg-new"><a href="#Register">Register</a></div>
+                  <!--<input type="submit" value="Log in" onclick="document.getElementById('validationMsg').style.display = 'block' ;" />-->
+                </div>
+                <div class="col-half "><a class="green-btn-style" id="clearbtn">Clear</a></div>
+                <div class="col-half forgot-pswd"><a  id="RetrievePassword">Forgot password?</a></div>
+				
+				
+				 <!--div class="col-half "><a class="green-btn-style" id="registerbtn">Register</a></div-->
+				
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+    <!-- Login Page END -->
+	 <!-- Register page -->
+	<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="Register" data-theme="a">
+            <header class="col-sm-12 top-head">
+              <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+		    </header>
+	
+	    <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users"; aria-hidden="true"></i>New Registration</div>
+	    </div>
+		  
+	  <div class="col-sm-12 content-sec">
+	    <div class="costomer-tab-section">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" id="regnav1" href="#regtab1">Sign Up</a></li>
+            </ul>
+               <div class="tab-content">
+                  <div id="regtab1" class="tab-pane fade in active">
+			  
+                        <form align="justify">
+                               <div class="row">
+				                    <div class="col-sm-4 col-xs-6">
+									  <label>First Name</label>
+									  <input type="text"  id="registerfirstName">
+								    </div>
+                                    <div class="col-sm-4 col-xs-6">
+								      <label>Last Name</label>
+								      <input type="text" id="registerlastName">
+								    </div>
+								    <div class="col-sm-4 col-xs-6">
+								      <label>Email Id</label>
+								      <input type="email" id="registeremailId">
+								    </div>
+								   <div class="col-sm-4 col-xs-6">
+								      <label>Cell Phone</label>
+								      <input type="number"  id="registercellphone" class="allownumericwithoutdecimal">
+								    </div>
+								   <div class="col-sm-4 col-xs-6">
+								      <label>Country</label>
+									      <select id="registercountry">
+										    <option value="">&nbsp;</option>
+									      </select>
+								   </div>
+					
+                            </div>
+				        </form>
+				
+                            <div class="row">
+					               <div class="col-sm-4 col-xs-6">
+						                 <a class="submit-btn ui-link" id="submitReg" >Submit</a>
+                                    </div>
+				                  	<div class="col-sm-4 col-xs-6">
+					                   	<a class="submit-btn ui-link" id="resetReg" >Reset</a>
+					                </div>
+							</div>   
+                  </div>
+               </div>
+		 </div>
+        </div>
+    </div>
+	
+	 
+	<!-- Register Page End-->
+	 
+	 
+	 
+  <!-- Report Page -->
+  <div style="min-height: 657px;" class="ui-page ui-body-a" tabindex="0" data-url="two" data-role="page" id="report" data-theme="a">
+   <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a href="#home"><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header">
+			<a class="navbar-toggle">
+			<span class="icon-bar">
+			</span>
+			<span class="icon-bar">
+			</span>
+			<span class="icon-bar">
+			</span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+               <label>Area/Settings</label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+               <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+			  	 <label> View Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+
+
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label>  Registration Request </label>
+              </a> </li>
+
+
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-home" aria-hidden="true"></i> REPORTS</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+
+            <!--label>You are Here: </label>
+            <ul>
+              <a href="#">prodcast:</a>&nbsp;/&nbsp;Report
+            </ul-->
+
+		  </div>
+            </div>
+		<!-- Content Here -->
+					<div class="costomer-tab-section">
+						<div class="tab-content" >
+							<form>
+								<div class="row">
+									&nbsp;
+								</div>
+								<div class="row" >
+
+
+									<div class="col-sm-4 col-xs-6">
+
+										<label for="reporttype" >Select Report Date </label>
+										<select id="reporttype" >
+											<option value="today">Today</option>
+											<option value="yesterday">Yesterday</option>
+											<option value="week">Week(Since Monday)</option>
+											<option value="custom">Custom Range</option>
+										</select>
+									</div>
+								 <div class="col-sm-4 col-xs-6">
+									<label  class="lable-style">Refresh Report</label> 
+                                     <br>									
+									 <a id="refreshreport"><img src="images/refresh.jpeg" /></a>                   
+				                       
+                                  </div>
+									 <div class="col-sm-4 col-xs-6"><br>
+									 
+									    <a href="#reportfordistributor" class="green-btn-style distmenu">Advanced Report</a>
+								     </div>
+									
+									
+
+								 </div>
+								<div id="customrangediv" class="row">
+									<div class="col-sm-4 col-xs-6">
+										<label>Start Date</label>
+										<input type="text" data-role="date" id="report_startdate" >
+										 <p id="reportodaymsg" style="color:red;display: none"> Start Date should be less than or equal to Today Date</p>
+											  <p id="reportnullmsg" style="color:red;display: none"> </p>
+											   <p id="reportstartmsg" style="color:red;display: none"> Start Date should be less than End Date</p>
+									</div>
+									<div class="col-sm-4 col-xs-6">
+										<label>End Date</label>
+										<input type="text" data-role="date" id="report_enddate" >
+										 <p id="reportendmsg" style="color:red;display: none"> End Date should be less than or equal to Today Date</p>
+										<p id="reportendnullmsg" style="color:red;display: none"> </p>
+
+									</div>
+									<br>
+									<div class="col-sm-4 col-xs-6" >
+										<a id="reportSubmit" class="green-btn-style">Report</a>
+									</div>
+
+								</div>
+								<div id="reportvalidation" class="row" style="display: none">
+									<label id="reportValidationMessage"></label>
+								</div>
+									</form>
+
+
+					 <div id="reportoutput">
+
+									<!--<div class="tbl-row"><div class="tbl-cols">
+						 <div id="areaTable" class="tbl">
+									<div class="tbl-row tbl-hed">
+										<div class="tbl-cols">
+
+										</div>
+										<div class="tbl-cols">
+											Area Id
+										</div>
+										<div class="tbl-cols">
+											Area Description
+										</div>
+									  </div>
+
+
+					     <div class="tbl-row tbl-hed">
+							  </div>-->
+
+						<h3 class="ui-bar ui-bar-a ui-corner-all" style="display: none"> <label id="reportdaterun" /></h3>
+						<h4 class="ui-bar ui-bar-a ui-corner-all">Summary</h4>
+
+								<div class="tbl" id="summaryTable" >
+									<div class="tbl-row tbl-hed">
+
+										<div class="tbl-cols" >Sales(<label class="distcurrency"></label>)</div>
+										<div class="tbl-cols " > Collection(<label class="distcurrency"></label>) </div>
+										<div class="tbl-cols" > Balance(<label class="distcurrency"></label>)</div>
+
+									</div>
+									<div class="tbl-row">
+
+										<div class="tbl-cols" ><label id="lblTotalSales" /></div>
+										<div class="tbl-cols " > <label id="lblTotalCollection" /></div>
+										<div class="tbl-cols" ><label id="lblBalance" /></div>
+									</div>
+
+								</div>
+								<!--
+							  <div class="ui-body ui-body-a ui-corner-all">
+									<table id="oldSummaryTable" >
+										<tr>
+											<th style="width:25%">Date</th>
+											<th style="width:25%"><label id="reportdaterun" /></th>
+											<th style="width:25%">Total Sales </th>
+											<th style="width:25%"><label id="lblTotalSales" /></th>
+										</tr>
+										<tr>
+											<th style="width:25%">Total Payment</th>
+											<th style="width:25%"><label id="lblTotalCollection" /></th>
+											<th style="width:25%">Balance</th>
+											<th style="width:25%"><label id="lblBalance" /></th>
+										</tr>
+										<tr>
+											<th style="width:25%">Cash</th>
+											<th style="width:25%"><label id="lblTotalCash" /></th>
+											<th style="width:25%">Other</th>
+											<th style="width:25%"><label id="lblTotalOther" /></th>
+										</tr>
+
+									</table>
+								</div>
+						-->
+						<h4 class="ui-bar ui-bar-a ui-corner-all">Sales Details</h4>
+
+									<div class="tbl" id="salesTable" >
+										<div class="tbl-row tbl-hed">
+											<div class="tbl-cols">
+															&nbsp;
+											</div>
+											<div class="tbl-cols">
+															Customer
+											</div>
+											<div class="tbl-cols">
+															Date
+											</div>
+											<div class="tbl-cols">
+															Total(<label class="distcurrency"></label>)
+
+											</div>
+											<div class="tbl-cols">
+															Balance(<label class="distcurrency"></label>)
+											</div>
+										</div>
+									</div>
+
+						<h4 class="ui-bar ui-bar-a ui-corner-all">Payment Details</h4>
+									<div class="tbl" id="collectionTable" >
+										<div class="tbl-row tbl-hed">
+											<div class="tbl-cols">
+															&nbsp;
+											</div>
+											<div class="tbl-cols">
+															Customer
+											</div>
+											<div class="tbl-cols">
+															Date
+											</div>
+											<div class="tbl-cols">
+															Amount(<label class="distcurrency"></label>)
+											</div>
+											<div class="tbl-cols">
+															Type
+											</div>
+										</div>
+									</div>
+								<h4 class="ui-bar ui-bar-a ui-corner-all">Expenses</h4>
+									<div class="tbl" id="expenseTable" >
+										<div class="tbl-row tbl-hed">
+											<div class="tbl-cols">
+															No.
+											</div>
+											<div class="tbl-cols">
+															Category
+											</div>
+											<div class="tbl-cols">
+															Date
+											</div>
+											<div class="tbl-cols">
+															Amount(<label class="distcurrency"></label>)
+											</div>
+											<div class="tbl-cols">
+															Description
+											</div>
+										</div>
+									</div>
+
+					 </div>
+					</div>
+				</div>
+
+		<!-- Content for Report Body ends -->
+		 </div>
+    </div>
+	</div>
+  <!-- Report Page ENDS -->
+  <!-- Dashboard -->
+
+  <div style="min-height: 800px;" class="ui-page ui-body-a" tabindex="0" data-url="two" data-role="page" id="home" data-theme="a">
+    <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+              <label>Area/Settings</label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>View Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+
+
+			<li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-home" aria-hidden="true"></i> Dashboard</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"> <a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+		              <!--label>You are Here: </label>
+		              <ul>
+		                <a href="#">Logout</a>
+		              </ul-->
+
+          </div>
+        </div>
+        <div class="col-sm-12 content-sec">
+          <ul class="entry-menu">
+		    <li class="salesmenu">
+			<a href="#order-entry">
+              <div class="icon-box"><img src="images/OrderEntry.png" alt="" class="hvr-bounce-in"></div>
+              <label>Order Entry </label>
+              </a></li>
+            <li class="salesmenu"><a href="#customerscreen">
+              <div class="icon-box"><img src="images/customer.png" alt="" class="hvr-bounce-in"> </div>
+              <label>CUSTOMERS </label>
+              </a></li>
+			    <li class="salesmenu"><a href="#order-entry">
+              <div class="icon-box"><img src="images/payment.png" alt="" class="hvr-bounce-in"></div>
+              <label>PAYMENTS </label>
+              </a></li>
+            <li class="salesmenu"><a href="#report">
+              <div class="icon-box"> <img src="images/report.png" alt="" class="hvr-bounce-in"></div>
+              <label>REPORTS </label>
+              </a></li>
+			<li class="distmenu"><a href="#employeescreen">
+              <div class="icon-box"> <img src="images/employee.png" alt="" class="hvr-bounce-in"></div>
+              <label>EMPLOYEE </label>
+              </a></li>
+			<li class="distmenu"><a href="#Area">
+              <div class="icon-box"><img src="images/area-icon.png" alt="" class="hvr-bounce-in"> </div>
+              <label>AREA/SETTINGS </label>
+              </a></li>
+			<li class="distmenu"> <a href="#productscreen">
+              <div class="icon-box"> <img src="images/product-icon.png" alt="" class="hvr-bounce-in"></div>
+              <label>PRODUCTS</label>
+              </a></li>
+			<li class="distmenu"><a href="#expensescreen">
+              <div class="icon-box"> <img src="images/expen-iconp.png.png" alt="" class="hvr-bounce-in"></div>
+              <label>EXPENSES</label>
+              </a></li>
+			<li class="adminmenu"><a href="#distributorscreen">
+              <div class="icon-box"><img src="images/distribution-icon.png" alt="" class="hvr-bounce-in"> </div>
+              <label>DISTRIBUTORS </label>
+              <li class="salesmenu"><a href="#ordersscreen">
+			    <div class="icon-box"><img src="images/OrderEntry.png" alt="" class="hvr-bounce-in"></div>
+			  	<label>VIEW ORDERS</label>
+              </a></li>
+              </a></li><li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chhnge.png" alt="" class="hvr-bounce-in">
+              <label> CHANGE PASSWORD </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> 
+			 <div class="icon-box"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in"></div>
+              <label> REGISTRATION REQUEST </label>
+              </a> </li>
+
+
+
+		 </ul>
+        </div>
+		 </div>
+    </div>
+  </div>
+  <!-- Dashboard END -->
+
+  <!-- Customer page -->
+
+  <div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="customerscreen" data-theme="a">
+    <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+              <label>Area/Settings</label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+              <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+			        <label>View Orders </label>
+			   </a> </li>
+				<li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+
+
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users";	 aria-hidden="true"></i> Customers</div>
+                    <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+            <!--label>You are Here: </label>
+            <ul>
+              <a href="#">Prodcast</a>&nbsp;/&nbsp;Customers
+            </ul-->
+         </div>
+        </div>
+        <div class="col-sm-12 content-sec">
+          <div class="costomer-tab-section">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#tab1" id="customerTab" >Customer</a></li>
+              <li><a data-toggle="tab" id="customerAddressTab" href="#tab2">Address</a></li>
+              <li><a data-toggle="tab" id="customerContactTab" href="#tab3">Contact</a></li>
+			  <li><a data-toggle="tab" id="customerViewTab" href="#tab4">View All</a></li>
+			   <li><a data-toggle="tab" id="storeTypeTab" href="#tab5">Store Type</a></li>
+            </ul>
+            <div class="tab-content">
+              <div id="tab1" class="tab-pane fade in active">
+                <form>
+                  <div class="row">
+				  <div class="col-sm-4 col-xs-6">
+                      <label>Company Name</label>
+                      <input type="text" id="customer_companyname" class="caps" >
+					  <p id="cnameexist"  style="color:red;display:none">Your Entered CompanyName is Already Exists</p>
+
+                      <label>Select Day</label>
+                      <select id="weekday">
+						  <option value="0">&nbsp;</option>
+						  <option value="SU">SUNDAY</option>
+						  <option value="MO">MONDAY</option>
+						  <option value="TU">TUESDAY</option>
+						  <option value="WE">WEDNESDAY</option>
+						  <option value="TH">THURSDAY</option>
+						  <option value="FR">FRIDAY</option>
+						  <option value="SA">SATURDAY</option>
+						  <option value="ML">MULTIPLE DAYS</option>
+					   </select>
+
+						  <label>Area</label>
+						  <select id="cust_screen_area">
+							<option value=" 0">&nbsp;</option>
+						  </select>
+
+					</div>
+
+
+					<div class="col-sm-4 col-xs-6">
+				   <label>Customer Id1</label>
+                      <input type="text"   id="customerId1" class="caps" >
+
+                      <label>Customer Desc1</label>
+                      <input type="text" id="customerDesc1" class="caps" >
+
+					  <label>Select customer type</label>
+                      <select id="cType">
+                        <option value="0">&nbsp;</option>
+                        <option value="R">Retailer</option>
+                        <option value="W">Wholesaler</option>
+                      </select>
+
+					</div>
+
+				   	<div class="col-sm-4 col-xs-6">
+                      <label>Customer Id2</label>
+                      <input type="text"   id="customerId2" class="caps" >
+
+					   <label>Customer Desc2</label>
+                      <input type="text" id="customerDesc2" class="caps" >
+					 <label>Store Type</label>
+                       <select id="storeType">
+                        <option value="0">&nbsp;</option>
+                        
+                       </select>
+					</div>
+					</div>
+
+				   <div class="row">
+				  <p style="color:red;display:none" id="emptyalertmsg1">&nbsp;&nbsp;&nbsp;Please fill in the focused fields.</p>
+				  </div>
+                  <div class="row">
+                  <div class="col-sm-4 col-xs-6">
+				    <a class="submit-btn ui-link" id="ctab1" >Reset</a>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                        <a class="submit-btn ui-link" data-toggle="tab" onclick="document.getElementById('customerAddressTab').click()">Next</a>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+              <div id="tab2" class="tab-pane fade">
+                <form>
+                  <div class="row">
+				  <div class="col-sm-4 col-xs-6">
+                      <label>Unit Number</label>
+                      <input type="text"  id="unitnumber">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Billing Address 1</label>
+                      <input type="text" id="billingAddress1">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Billing Address 2</label>
+                      <input type="text" id="billingAddress2">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Billing Address 3</label>
+                      <input type="text" id="billingAddress3">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>City</label>
+                      <input type="text" id="city">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>State</label>
+                      <input type="text" id="state">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Country</label>
+                      <select id="country">
+						<option value="">&nbsp;</option>
+					</select>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Postal Code</label>
+                      <input type="text" id="postalCode">
+                    </div>
+                  </div>
+				  <div class="row">
+				  <p style="color:red;display:none" id="emptyalertmsg2">&nbsp;&nbsp;&nbsp;Please fill in the focused fields.</p>
+				  </div>
+                  <div class="row">
+                  <div class="col-sm-4 col-xs-6">
+                   <a class="submit-btn ui-link" id="ctab2" >Reset</a>
+                    </div>
+                   <div class="col-sm-4 col-xs-6">
+                     <a class="submit-btn ui-link" data-toggle="tab" onclick="document.getElementById('customerContactTab').click()">Next</a>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+              <div id="tab3" class="tab-pane fade">
+                <form>
+                  <div class="row">
+                    <div class="col-sm-4 col-xs-6">
+                      <label>First Name</label>
+                      <input type="text" id="firstname">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Last Name </label>
+                      <input type="text" id="lastname">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Phone Number</label>
+                      <input type="number" id="phonenumber" class='allownumericwithoutdecimal' >
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Mobile Number</label>
+                      <input type="number"  id="cellphone" class='allownumericwithoutdecimal' >
+                    </div>
+
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Email Address</label>
+                      <input type="email" id="email" >
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Note</label>
+                      <input type="text" id="notes">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>SMS Allowed</label>
+                      <input type="checkbox" id="smsallowed">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Active</label>
+                      <input type="checkbox" id="activecus" checked>
+                    </div>
+
+                  </div>
+				  <div class="row">
+						<p style="color:red;display:none" id="emptyalertmsg3">&nbsp;&nbsp;&nbsp;Please fill in the focused fields.</p>
+				  </div>
+				  <div class="row">
+	   					<p id="csmsg" style="color:#abcd14;display:none">The customer already exists in the system. Please Reset before entering another customer details.</p>
+	   			  </div>
+                  <div class="row">
+				   <div class="col-sm-4 col-xs-6">
+                     <a class="submit-btn ui-link" id="ctab3" >Reset</a>
+                    </div>
+				  <div class="col-sm-4 col-xs-6">
+                      <a class="submit-btn ui-link" id="customer_save" >Save</a>
+                    </div>
+                   
+                  </div>
+
+                </form>
+ 				</div>
+
+				<div id="tab4" class="tab-pane fade">
+
+			<div>
+
+							<br>
+							<br>
+							<div id="viewAllCustomersDiv">
+								<div class="row">
+								<div class="col-sm-12">
+								<div class="custom-table">
+
+								<div id="allcustomersTable" class="tbl">
+
+								</div>
+								</div>
+								</div>
+								</div>
+							</div>
+					</div>
+			</div>
+			<div id="tab5" class="tab-pane fade">
+			<div id="tab5" class="ui-content">
+			<form>
+
+				<div class="row">
+				  <div class="col-sm-4 col-xs-6">
+					 <input id="Add_StoreType" placeholder="Enter The StoreType" value="" type="text"/>
+				  </div>
+				  <div class="col-sm-4 col-xs-6">
+					<a class="submit-btn ui-link" id="storeTypeId_save">Save</a>
+				  </div>
+				</div>
+				 <div>	
+				 <div>
+					<p id="storeTypeempty" style="color:red;display:none">Please Enter The StoreType</p>
+					<p id="storeTypeConfirm" style="color:#abcd14;display:none">New StoreType is added successfully</p>
+					<p id="storeTypeUpdate" style="color:#abcd14;display:none">StoreType has been updated successfully</p>
+					<p id="storeTypeExist" style="color:red;display:none">Your Entered StoreType is Already Exists</p>
+				</div>
+				</div>
+            </form>
+							<br>
+							<br>
+							<div id="AddStoreTypeDiv">
+								<div class="row">
+								  <div class="col-sm-12">
+								      <div class="custom-table">
+								          <div id="addstoretypeTable" class="tbl">
+										    <div class="tbl-row tbl-hed">
+											 <div class="tbl-cols">
+											   No
+											  </div> 
+											 <div class="tbl-cols">
+													StoreType Name
+										   	</div> 
+											  <div style="width:100%;display:none;" id="editStoreTypeDialog" title="Prodcast Notification" >
+													<div class="costomer-tab-section">
+														<div class="tab-content-mini">
+															<form>
+																<div class="row">
+																   <div class="col-sm-12">
+																	<label> Enter The StoreType </label>
+																	<div class="pop-up-field">
+																		<input id="editStoreType" placeholder="Enter the StoreType" value="" type="text" />
+																		<a id="editStoreTypeIdsave"  class="green-btn-style">Save</a>
+																		<p id="editStoreTypeNull" style="color:red;display: none"> Please Enter The StoreType To Update</p>
+																		<p id="editStoreTypeVall" style="color:red;display: none"> The StoreType You Entered Already Exists</p>
+																	</div>
+																  </div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>	
+										</div>					
+								   </div>
+								</div>
+								</div>
+								</div>
+							</div>
+					</div>
+					</div>
+			
+			
+			
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customers page end -->
+
+  <!-- order Entry  -->
+  <div  class="ui-page ui-body-a" tabindex="0" data-url="four" data-role="page" id="order-entry" data-theme="a">
+   <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+			<label>Area/Settings</label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+              <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+			     <label>View Orders </label>
+			   </a> </li>
+			   <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+
+
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel-no-scroll " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><img src="images/OrderEntry-icon.png" alt="">Order Entry</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+		              <!--label>You are Here: </label>
+		              <ul>
+		                <a href="#">Prodcast</a>&nbsp;/&nbsp;Order Entry
+		              </ul-->
+
+          </div>
+        </div>
+        <div class="col-sm-12 content-sec">
+          <div class="row">
+            <div class="col-sm-8">
+			<div class="row">
+                 <div class="col-sm-6">
+                  <label class="lable-style">Search Customer</label>
+                  <div class="drop-set"><input class="input-feild-style" type="text" id="selectcustomer">
+				    <a  id="selectcustomers" class="selectcustomer_all"><span class="ui-icon ui-icon-triangle-1-s"></span></a>
+			      </div>
+                </div>
+				<div class="col-sm-6">
+                 <label class="lable-style">New Customer</label> &nbsp;<label class="lable-style refreshorder">Refresh Orders</label> 
+				 <br>
+				 <a href="#customerscreen" id="newcustomer"><img src="images/add.png" /></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="refreshOrders"><img src="images/refresh.jpeg" /></a>
+                </div>
+				</div>
+            </div>
+            <div class="col-sm-4"></div>
+          </div>
+		  <div id="paymentdiv" style="display:none">
+			<div class="outstandingDivcl" id="outstandingDiv" >
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="head-table">Outstanding Bills</div>
+						<div class="custom-table">
+							<div class="tbl"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="paymentPanel" style="position:fixed; top:250px; right:100px;">
+		<div class = "panel panel-success">
+			<div class = "panel-heading">
+			  <h3 class = "panel-title">Payment Panel</h3>
+			</div>
+		  <div class="row">
+            <div class="col-sm-12">
+              <!--div class="row"-->
+                <div class="col-sm-5">
+                  <label class="lable-style">Payment Amount</label>															  
+				  <input  id="payment" class="input-feild-style " type="number"  />
+				  <p id="pamsg"  style="color:red;display:none">Please enter the payment amount</p>
+				  <p id="payalert"  style="color:red;display:none">Please enter amount less than or equal to balance</p>																		 
+				</div>
+                <div class="col-sm-5">
+                  <label class="lable-style">Mode of Payment </label>
+                  <select class="select-style" id="mop">
+                    <option value="0">Cash</option>
+                    <option value="1">Cheque/Check</option>
+                    <option value="2">Credit/Debit</option>
+                  </select>
+                </div>
+				
+              <!--/div-->
+				<div class="row">
+				<div class="col-sm-12">
+					<div id="chequenum"  class="col-sm-5">
+						<label class="lable-style">Cheque Number </label>
+						<input class="input-feild-style" type="text" id="chequenumber">
+						<p id="chequen" style="color:red;display:none">Please enter the cheque number</p>
+					</div>
+					<div id="commentord"  class="col-sm-5">
+						<label class="lable-style">Comments </label><br><br>
+						<input class="input-feild-style" type="text" id="commentorder">
+						<p id="commento" style="color:red;display:none">Please enter the comments </p>
+					</div>
+					<div class="col-sm-2"></div>
+				</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="col-sm-4"><a id="paymentSubmit" class="green-btn-style">Pay</a></div><br>
+					</div>
+				</div>
+            </div>
+            <!--div class="col-md-4"></div-->
+          </div>
+        </div>
+        </div>
+			
+          <div class="row">
+            <div class="col-md-8">
+				<div class="row">
+					<div class="col-sm-6">
+						<br><p id="alert"  style="color:red;display:none">Please select a bill</p>
+					</div>
+				</div>
+              <div class="row">
+                <div class="col-sm-12 free-space">
+					<a  id="neworderlink" class="green-btn-style">New Order</a>
+					<a id="fullFilled" class="green-btn-style">Full Filled</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+		  
+		
+    </div>
+		</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- order entry end -->
+
+  <!-- order new -->
+  <div  class="ui-page ui-body-a" tabindex="0" data-url="four" data-role="page" id="order-new" data-theme="a">
+    <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+              <label>Area/Settings</label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+                <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+			  		<label>View Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+
+
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><img src="images/order-new.png" alt="">Order New</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+            <!--label>You are Here: </label>
+            <ul>
+              <a rel="external">Prodcast</a>&nbsp;/&nbsp;Order New
+            </ul-->
+            </div>
+        </div>
+        <div class="col-sm-12 content-sec">
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="select-client">
+
+				<br>
+					<p class="orderNewBillDate"/>
+					<p class="customerName"></p>
+					<p class="address1"></p>
+
+					<p> Order Details </p>
+              </div>
+            </div>
+            <div class="col-sm-4"></div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+            <div class="custom-table">
+             	<div class="tbl" id="odtbl">
+              		<div class="tbl-row tbl-hed">
+                    	<div class="tbl-cols">
+
+                        </div>
+                    	<div class="tbl-cols">
+                        	Product
+                        </div>
+                    	<div class="tbl-cols">
+                        	Qty
+                        </div>
+
+
+                    	<div class="tbl-cols">
+                        	Sub Total (<label class="distcurrency"></label>)
+                        </div>
+                    </div>
+              		<div class="tbl-row" id="orderdetailrow">
+                    	<div class="tbl-cols">
+                        	<!--<a rel="external" class="remove">X</a> -->
+                        </div>
+                    	<div class="tbl-cols">
+                         <div class="drop-set"><input class="input-feild-style" type="text" id="productvalue1"/>
+						<input type="hidden" id="hproductvalue1"/>
+							<a  id="productvaluenew" class="productvalue_all"><span class="ui-icon ui-icon-triangle-1-s"></span></a>
+							</div>
+							<!--a  id="productvalue1_all" class="productvalue_all" data-icon="ui-icon-triangle-1-s">+</a-->
+                        </div>
+                    	<div class="tbl-cols">
+                        	<input class="input-feild-style qty allownumberwithdecimal" id="quantityvalue1"   type="number" min="0"/>
+                        </div>
+                    	<div class="tbl-cols">
+                        	<label style="text-align:right" id="subtotal1">0.00</label>
+                        </div>
+                    </div>
+
+
+                </div>
+                </div>
+            </div>
+			<div class="col-sm-4">
+			<div class="discoutdetailsrow">
+
+				</div>
+
+			</div>
+			<div class="col-sm-12"  >
+
+              <div class="total-amount" >
+			  <div class="row"  >
+			  <div class="col-md-4" style="text-align:right">
+				<p  align="right" class="discount" >
+					Discount Value
+					<input type="number" id="discountValue" class="allownumberwithdecimal" >
+				</p>
+					</div>
+				<div class="col-md-4 " style="text-align:right">
+					<p align="right"  class="discount" >
+					Discount Type
+					<select id="discountType">
+						<option value="1">Amount</option>
+						<option value="2">Percentage</option>
+					</select>
+					</p>
+				</div>
+
+
+                <div class="col-sm-2 col-xs-6" style="text-align:right">
+					Total Value (<label class="distcurrency"></label>)
+				</div>
+                  <div class="col-sm-2 col-xs-6" style="text-align:right" id="totalvalue"> 0.00 </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 free-space"> <a  class="green-btn-style" id="reviewbtn">Review</a>&nbsp;&nbsp;&nbsp;<a  class="green-btn-style saveorder">Save Order</a>&nbsp;&nbsp;&nbsp;<a class="green-btn-style" id="applydiscount">Apply Discount</a> </div>
+          </div>
+
+		  <div style="width:100%" id="savedialog" title="Payment Panel">
+				<div class="costomer-tab-section">
+				<div class="tab-2content tab-content-mini">
+				<form>
+					  <div class="row">
+						<div class="col-sm-12">
+								Amount
+								<input  id="sopayment" class="input-feild-style allownumberwithdecimal" type="number" min="0" />
+								<p id="minbalance2" style="color:red;display:none"> Please enter an amount zero or above</p>
+								<p id="paymentamountmsg" style="color:red;display:none"> Payment amount should be less than or equal to totalvalue</p>
+							</div>
+						<div class="col-sm-12">
+								<p id="minbalance2" style="color:red;display:none"> Please enter an amount zero or above</p>
+								Mode of Payment
+									<select id="dialogPaymentMode">
+										<option value="0">Cash</option>
+										<option value="1">Cheque/Check</option>
+									</select>
+									<div id="savecheque"  class="col-sm-6">
+									<label class="lable-style">Cheque Number </label>
+									<input class="input-feild-style" style="text-align: right" type="text" id="chequesavenumber">
+									<p id="chequesave" style="color:red;display:none">Please enter the cheque number</p>
+									</div>
+									<div id="savecomment"  class="col-sm-6">
+									<label class="lable-style">Comments </label>
+									<input class="input-feild-style"  type="text" id="commentsaveorder">
+
+									<p id="commentsave" style="color:red;display:none">Please enter the comments </p>
+
+							</div>
+						</div>
+						</div>
+						<div class="row">
+						<div class="col-sm-12">
+						<p id="panelconfirm" style="color:red;display:none">Please enter the payment amount</p>
+						</div>
+						</div>
+						<div class="row">
+						<div class="col-sm-12">
+					<a  class="green-btn-style sopaymentbtn">Pay</a>
+					</div>
+						</div>
+
+					</div>
+
+				</form>
+				</div>
+				</div>
+				<div style="width:100%;display:none;" id="savedialog1" title="Prodcast Notification" >
+					<div class="costomer-tab-section">
+						<div class="tab-content-mini">
+							<form>
+								<div class="row">
+								<div class="col-sm-12">
+								<p id="okkmsg" align="center" style="color:#abcd14">Your payment has been done successfully</p>
+								</div>
+								</div>
+								<div class="row">
+								<div class="col-sm-12" align="center"><a id="okmsg"  class="green-btn-style">OK</a>
+								</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!--
+
+					<div style="margin-left:10px;">
+					<div class="col-sm-6">
+                    <label class="lable-style">Payment Amount</label>
+				 <br><input  id="sopayment" class="input-feild-style" type="number" />
+               </div>
+
+
+				 <div class="col-sm-6">
+					<label class="lable-style">Mode of Payment </label>
+					<select id="dialogPaymentMode">
+				    <option value=""></option>
+					<option value="1">Cash</option>
+                    <option value="2">Credit/Debit Card</option>
+                  </select>
+                </div>
+				 <div class="chequediv">
+				<div class="col-sm-6">
+                  <label class="lable-style">Cheque Number</label>
+                  <input   class="input-feild-style chequenumber" type="text" />
+                </div>
+				</div>
+				-->
+				<br>
+
+
+				</div>
+
+          <div class="col-md-4"></div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- orde new -->
+ <div  class="ui-page ui-body-a" tabindex="0" data-url="four" data-role="page" id="review" data-theme="a">
+   <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+              <label>Area/Settings</label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+              <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+			     <label>View Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+
+
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+       <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><img src="images/order-new.png" alt="">REVIEW ORDER</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+            <!--label>You are Here: </label>
+            <ul>
+              <a rel="external">Prodcast</a>&nbsp;/&nbsp;Order New&nbsp;/&nbsp;Review Order
+            </ul-->
+          </div>
+        </div>
+
+
+		<div class="row">
+            <div class="col-sm-8">
+
+					<p class="orderNewBillDate"/>
+					<p class="customerName"> Customer Name</p>
+					<p class="address1">Customer Address</p>
+					<p> Order Details </p>
+
+            </div>
+            <div class="col-sm-4"></div>
+          </div>
+		  <div class="row">
+		   <div class="col-sm-12">
+            <div class="custom-table">
+             	<div class="tbl" id="odrtbl">
+              		<div class="tbl-row tbl-hed">
+
+                    	<div class="tbl-cols">
+                        	Product
+                        </div>
+                    	<div class="tbl-cols">
+                        	Qty
+                        </div>
+						<div class="tbl-cols">
+                        	Unit Price (<label class="distcurrency"></label>)
+                        </div>
+
+						<div class="tbl-cols">
+                        	Sales Tax (<label class="distcurrency"></label>)
+                        </div>
+						<div class="tbl-cols">
+                        	Other Tax (<label class="distcurrency"></label>)
+                        </div>
+                    	<div class="tbl-cols">
+                        	Sub Total(<label class="distcurrency"></label>)
+                        </div>
+					</div>
+				</div>
+            </div>
+		</div>
+		</div>
+		<div class="total-amount">
+		<div class="row" >
+					  <div class="col-sm-4" style="text-align='right'">Discount Value : </div>
+					  <div class="col-sm-1" style="text-align='right'" id="rdiscountValue">0.0</div>
+					  <div class="col-md-4" style="text-align='right'">Discount Type : </div>
+					  <div class="col-md-1" style="text-align='right'" id="rdiscountType"> </div>
+		</div>
+              <div class="row">
+                  <div class="col-sm-2 col-xs-6" style="text-align='right'"> Total Value(<label class="distcurrency"></label>)</div>
+                  <div class="col-sm-2 col-xs-6" style="text-align='right'" id="rtotalvalue"> 0.00 </div>
+              </div>
+            </div>
+			<div class="row">
+            <div class="col-sm-12 free-space"> &nbsp;&nbsp;&nbsp;<a  class="green-btn-style" id="co">Continue Order</a>&nbsp;&nbsp;&nbsp;<a  class="green-btn-style saveorder">Save Order</a> </div>
+		  </div>
+		  </div>
+
+  </div>
+ </div>
+<!-- Distributor screen begins-->
+
+<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="distributorscreen" data-theme="a">
+  <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+              <label>Area/Settings</label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+              <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+			    <label>View Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+
+
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users";	 aria-hidden="true"></i>Distributors</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+            <!--label>You are Here: </label>
+            <ul>
+              <a href="#">Prodcast</a>&nbsp;/&nbsp;Distributors
+            </ul-->
+        </div>
+        </div>
+        <div class="col-sm-12 content-sec">
+          <div class="costomer-tab-section">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" id="disnav1" href="#distab1">Distributor</a></li>
+              <li><a data-toggle="tab" id="disnav2" href="#distab2">Details</a></li>
+              <li><a data-toggle="tab" id="disnav3" href="#distab3">Contact</a></li>
+			  <li><a data-toggle="tab" id="disnav4" href="#distab4">View All</a></li>
+            </ul>
+            <div class="tab-content">
+              <div id="distab1" class="tab-pane fade in active">
+                <form>
+                   <div class="row">
+					<div class="col-sm-4 col-xs-6">
+                      <label>Company Name</label>
+                      <input type="text" id="dist_companyName" >
+                    </div>
+					  <div class="col-sm-4 col-xs-6">
+                      <label>Select Manufacturer</label>
+                      <select id="dist_manufacturer">
+                        <option value="">&nbsp;</option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                      </select>
+                    </div>
+					
+					</div>
+					
+					<div class="row">
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Fulfillment Type</label>
+                      <select id="dist_fulfillmenttype">
+                        <option value="0">None</option>
+                        <option value="1">Delivery Only</option>
+                        <option value="2">Pickup Only</option>
+						<option value="3">Delivery and Pickup</option>
+                      </select>
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Open To Public</label>
+                      <input type="checkbox"  id="openPublicDist"  >
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-sm-4 col-xs-6">
+				                       <a class="submit-btn ui-link" id="distributor_reset1" >Reset</a>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <a class="submit-btn ui-link" data-toggle="tab" onclick="document.getElementById('disnav2').click()" id="dist_next1" >Next</a>
+                    </div>
+
+                  </div>
+                </form>
+				</div>
+              <div id="distab2" class="tab-pane fade">
+                <form>
+                  <div class="row">
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Title</label>
+                      <input type="text" id="dist_title">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>First Name</label>
+                      <input type="text" id="dist_firstname">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Last Name</label>
+                      <input type="text" id="dist_lastname">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Gender</label>
+                      <select id="dist_gender">
+                        <option value="">&nbsp;</option>
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-sm-4 col-xs-6">
+				                       <a class="submit-btn ui-link" id="distributor_reset2" >Reset</a>
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <a class="submit-btn ui-link" data-toggle="tab" onclick="document.getElementById('disnav3').click()" id="dist_next2" >Next</a>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+              <div id="distab3" class="tab-pane fade">
+                <form>
+                  <div class="row">
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Cell Phone</label>
+                      <input type="number" id="dist_cellphone" class='allownumericwithoutdecimal'>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Home Phone</label>
+                      <input type="number" id="dist_homephone" class='allownumericwithoutdecimal'>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Work Phone</label>
+                      <input type="number"id="dist_workphone" class='allownumericwithoutdecimal'>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Email Address</label>
+                      <input type="email" id="dist_EmailId">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Address Line1</label>
+                      <input type="text" id="dist_Addrline1">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Address Line2</label>
+                      <input type="text" id="dist_Addrline2">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Address Line3</label>
+                      <input type="text" id="dist_Addrline3">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>City</label>
+                      <input type="text" id="dist_City">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>State/Province</label>
+                      <input type="text" id="dist_state">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Country</label>
+                      <select id="dist_Country">
+								<option value="">&nbsp;</option>
+						</select>
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+					<label>TimeZone</label>
+					<select id="dist_Timezone">
+					<option value="">&nbsp;</option>
+					</select>
+					</div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Postal Code</label>
+                      <input type="text" id="dist_Postalcode">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Comments</label>
+                      <input type="text" id="dist_comments">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Active</label>
+                      <input type="checkbox" id="activedis" checked>
+                    </div>
+
+                  </div>
+                  <div class="row">
+						 <div class="col-sm-4 col-xs-6">
+                             <a class="submit-btn ui-link" id="distributor_reset3" >Reset</a>
+                           </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <a class="submit-btn ui-link" id="distributor_save">Save</a>
+					  <p id="distmsg" style="color:#abcd14;display:none">The New Distributor Saved Successfully</p>
+					  <p id="distsave" style="color:#abcd14;display:none">Please Fill the Mantatory Fields</p>
+					  </div>
+					 
+                  </div>
+                </form>
+              </div>
+			  <div id="distab4" class="tab-pane fade">
+
+			<div>
+
+							<br>
+							<br>
+							<div id="viewAllDistributorsDiv">
+								<div class="row">
+								<div class="col-sm-12">
+								<div class="custom-table">
+
+								<div id="alldistributorsTable" class="tbl">
+
+								</div>
+								</div>
+								</div>
+								</div>
+							</div>
+					</div>
+			</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--distributor screen ends-->
+<!-- Report Page for distributor -->
+  <div style="min-height: 657px;" class="ui-page ui-body-a" tabindex="0" data-url="two" data-role="page" id="reportfordistributor" data-theme="a">
+   <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+               <label>Area/Settings</label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+              <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+			  	 <label>View Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+
+
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-home" aria-hidden="true"></i> REPORTS</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+
+		  </div>
+            </div>
+		<!-- Content Here -->
+					<div class="costomer-tab-section">
+						<div class="tab-content" >
+							<form>
+								<div class="row">
+									&nbsp;
+								</div>
+								<div class="row" >
+									<div class="col-sm-4 col-xs-6">
+										<label for="disEmployee">Employee</label>
+										 <select id="disEmployee" >
+										 <option value="0">All</option>
+										 </select>
+
+									</div>
+
+									<div class="col-sm-4 col-xs-6">
+										<label for="disreportsType">Report Type</label>
+										 <select id="disreportsType" >
+										 <option value="">&nbsp;</option>
+										 </select>
+
+									</div>
+									<div class="col-sm-4 col-xs-6">
+
+										<label for="disreporttype" >Select Report Date </label>
+										<select id="disreporttype" >
+											<option value="today">Today</option>
+											<option value="yesterday">Yesterday</option>
+											<option value="week">Week(Since Monday)</option>
+											<option value="custom">Custom Range</option>
+										</select>
+									</div>
+
+
+
+								</div>
+								<div id="discustomrangediv" class="row">
+
+									<div class="col-sm-4 col-xs-6">
+										<label>Start Date</label>
+										<input type="text" data-role="date" id="disreport_startdate" >
+										 <p id="disreportodaymsg" style="color:red;display: none"> Start Date should be less than or equal to Today Date</p>
+											  <p id="disreportnullmsg" style="color:red;display: none"> </p>
+											   <p id="disreportstartmsg" style="color:red;display: none"> Start Date should be less than End Date</p>
+									</div>
+									<div class="col-sm-4 col-xs-6">
+										<label>End Date</label>
+										<input type="text" data-role="date" id="disreport_enddate" >
+										 <p id="disreportendmsg" style="color:red;display: none"> End Date should be less than or equal to Today Date</p>
+										<p id="disreportendnullmsg" style="color:red;display: none"> </p>
+
+									</div>
+
+
+								</div>
+								<div class="row">
+								<div class="col-sm-4 col-xs-6" >
+										<a id="disreportSubmit"  class="green-btn-style">Report</a>
+									</div>
+
+
+									<!--div class="col-sm-4 col-xs-6" >
+										<a id="disreportReset"  class="green-btn-style">Reset</a>
+									</div-->
+
+								</div>
+
+								<div id="reportvalidation" class="row" style="display: none">
+									<label id="disreportValidationMessage"></label>
+								</div>
+
+
+								</form>
+
+
+								<a id="downloadReport">Download Report</a>
+								<div class="tbl" id="reportTable" >
+								</div>
+
+
+
+
+
+					</div>
+				</div>
+
+		<!-- Content for Report Body ends -->
+		 </div>
+    </div>
+	</div>
+  <!-- Report Page ENDS -->
+
+<!--area screen starts-->
+<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="Area" data-theme="a">
+  <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+              <label>Area/Settings</label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+               <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+		         <label>View Orders </label>
+             </a> </li>
+			 <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+
+
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users";	 aria-hidden="true"></i>AREA/SETTINGS</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+            <!--label>You are Here: </label>
+            <ul>
+              <a rel="external">Prodcast</a>&nbsp;/&nbsp;Area/Settings
+            </ul-->
+          </div>
+        </div>
+        <div class="col-sm-12 content-sec">
+          <div class="costomer-tab-section">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#ta1">Area</a></li>
+			  <li><a data-toggle="tab" id="Setting" href="#ta2">Settings</a></li>
+            </ul>
+		 <div class="tab-content">
+         <div id="ta1" class="tab-pane fade in active">
+		 <div id="ta1" class="ui-content">
+                 <form>
+					<div class="row" >
+					<div class="col-sm-4 col-xs-6">
+						<input id="Area_Area" placeholder="Enter new Area" value="" type="text" />
+					</div>
+					<div class="col-sm-4 col-xs-6">
+						<a class="submit-btn ui-link" id="AreaId_save">Save</a>
+					</div>
+					</div>
+					<div>
+					<div>
+						<p id="areafill" style="color:red;display:none">Please Enter an Area</p>
+						<p id="areaconfirm" style="color:#abcd14;display:none">New Area is added successfully</p>
+						<p id="areaon" style="color:#abcd14;display:none">Area has been updated successfully</p>
+						<p id="areaexist" style="color:red;display:none">Your Entered Area is Already Exists</p>
+					</div>
+					</div>
+				</form>
+		   <br>
+		   <br>
+				   <div id="areasDiv">
+							<div class="row">
+							<div class="col-sm-12">
+								<div class="custom-table">
+
+										<div id="areaTable" class="tbl">
+											<div class="tbl-row tbl-hed">
+												<div class="tbl-cols">
+													No.
+												</div>
+												<div class="tbl-cols">
+													Area Description
+												</div>
+												<div style="width:100%;display:none;" id="editDialog" title="Prodcast Notification" >
+													<div class="costomer-tab-section">
+														<div class="tab-content-mini">
+															<form>
+																<div class="row">
+																<div class="col-sm-12">
+																<label> Enter The Area </label>
+																<div class="pop-up-field">
+																	<input id="editArea" placeholder="Enter new Area" value="" type="text" />
+																	<a id="editIdsave"  class="green-btn-style">Save</a>
+														<p id="editAreaNull" style="color:red;display: none"> Please Enter The Area To Update</p>
+														<p id="editAreaVal" style="color:red;display: none"> The Area You Entered Already Exists</p>
+																</div>
+																</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+							    </div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+		  </div>
+		</div>
+		<div id="ta2" class="tab-pane fade">
+			<div id="ta2" class="ui-content">
+                 <form>
+					<div class="row" >
+					<div class="col-sm-4 col-xs-6">
+						<label>Sales Tax Rate</label>
+                      <input type="text" style="text-align: right" id="set_tax">
+					</div>
+					<div class="col-sm-4 col-xs-6">
+						<label>Company Name</label>
+                      <input type="text" id="set_comp">
+					</div>
+					<div class="col-sm-4 col-xs-6">
+						<label>Address</label>
+                      <input type="text" id="set_addr">
+					</div>
+					<div class="col-sm-4 col-xs-6">
+						<label>City</label>
+                      <input type="text" id="set_city">
+					</div>
+					<div class="col-sm-4 col-xs-6">
+						<label>State</label>
+                      <input type="text" id="set_state">
+					</div>
+					<div class="col-sm-4 col-xs-6">
+						<label>Postal Code</label>
+                      <input type="text" id="set_postal">
+					</div>
+					<div class="col-sm-4 col-xs-6">
+						<label>Country</label>
+						<select id="set_country">
+								<option value="">&nbsp;</option>
+						</select>
+
+					</div>
+					<div class="col-sm-4 col-xs-6">
+					<label>TimeZone</label>
+					<select id="set_timezone">
+					<option value="">&nbsp;</option>
+					</select>
+					</div>
+					<div class="col-sm-4 col-xs-6">
+						<label>Phone Number</label>
+                      <input type="number"  id="set_ph">
+					</div>
+					<div class="col-sm-4 col-xs-6">
+						<label>Fax</label>
+                      <input type="text" id="set_fax">
+					</div>
+					
+					
+					<div class="col-sm-4 col-xs-6">
+                      <label>Fulfillment Type</label>
+                      <select id="set_fulfillmenttype">
+                        <option value="0">None</option>
+                        <option value="1">Delivery Only</option>
+                        <option value="2">Pickup Only</option>
+						<option value="3">Delivery and Pickup</option>
+                      </select>
+                    </div>
+					
+					
+					<br>
+					<div class="col-sm-4 col-xs-6">
+					<a class="submit-btn ui-link" id="setting_save">Save</a>
+
+
+					</div>
+					
+					</div>
+				</form>
+
+			</div>
+		</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--area screen ends-->
+
+  <!-- Employee screen begins-->
+<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1"  data-role="page" id="employeescreen" data-theme="a">
+  <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+              <label>Area/Settings </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+              <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+			     <label>View Orders </label>
+			   </a> </li>
+			   <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+
+
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users";	 aria-hidden="true"></i>Employee</div>
+                    <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+            <!--label>You are Here: </label>
+            <ul>
+              <a rel="external">Prodcast</a>&nbsp;/&nbsp;Employee
+            </ul-->
+        </div>
+        </div>
+        <div class="col-sm-12 content-sec">
+          <div class="costomer-tab-section">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" id="e_EmployeeTab" href="#e_tab1">Employee</a></li>
+              <li><a data-toggle="tab" id="e_AddressTab" href="#e_tab2">Address</a></li>
+              <li><a data-toggle="tab" id="e_ContactTab" href="#e_tab3">Contact</a></li>
+			  <li><a data-toggle="tab" id="viewallemp" href="#e_tab4">View All</a></li>
+            </ul>
+            <div class="tab-content">
+              <div id="e_tab1" class="tab-pane fade in active">
+                <form>
+                  <div class="row">
+				  <div class="col-sm-4 col-xs-6">
+                      <label>First Name</label>
+                      <input type="text" id="Employee_firstname">
+					  <p id="fnameexist" style="color:#abcd14;display:none">Your First Name is Already Exists</p>
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Last Name</label>
+                      <input type="text" id="Employee_lastname">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Title</label>
+                      <input type="text" id="Employee_title"/>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+					  <label>Gender</label>
+                      <select id="EmployeeGender">
+                        <option value="0">&nbsp;</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Area</label>
+                      <select id="Employee_area">
+                        <option value="0">&nbsp;</option>
+                      </select>
+                    </div>
+					  <div class="col-sm-4 col-xs-6">
+                      <label>Date of Birth</label>
+                      <input type="text" data-role="date" id="Employee_dob" data-theme="a">
+					  <p id="todaydobdate" style="color:red;display:none">Date of Birth is not greater than today date</p>
+					  <p id="equaldobhiredate" style="color:red;display:none">Date of Birth and Hire Date should not be same date</p>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Salary</label>
+                      <input type="number" id="Employee_salary" class="allownumberwithdecimal" min="0">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Hire Date</label>
+                      <input type="text" id="Employee_hiredate">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <!--<label>Termination Date</label> -->
+                      <input type="hidden" id="Employee_terminationdate">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Allowance</label>
+                      <input type="number" id="Employee_allowance" class="allownumberwithdecimal" min="0">
+                    </div>
+					<!--<div class="col-sm-4 col-xs-6">
+                     <label>Active</label>
+                      <input type="hidden" id="EmployeeActive">
+                    </div> -->
+					 <div class="col-sm-4 col-xs-6">
+                      <label>User Role</label>
+                      <select id="userRole">
+                        <option value="0">&nbsp;</option>
+						 <option value="S">Sales</option>
+						 <option value="M">Manager</option>
+						  <option value="D">Distributor</option>
+                      </select>
+                    </div>
+					<div>
+					<p id="hiredateconform" style="color:red;display:none">Hire date should be greater than date of birth</p>
+					<p id="todayhiredate" style="color:red;display:none">Hire date is not greater than today date</p>
+					</div>
+					</div>
+                  <div class="row">
+                  <div class="col-sm-4 col-xs-6">
+                       <a class="submit-btn ui-link" id="ereset1" >Reset</a>
+	                    </div>
+
+                    <div class="col-sm-4 col-xs-6">
+                        <a class="submit-btn ui-link" data-toggle="tab" onclick="document.getElementById('e_AddressTab').click()">Next</a>
+                    </div>
+
+
+                  </div>
+
+                </form>
+              </div>
+				<div id="e_tab2" class="tab-pane fade">
+					<form>
+                  <div class="row">
+				<div class="col-sm-4 col-xs-6">
+                      <label>Address 1</label>
+                      <input type="text" id="Employee_Addrline1">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Address 2</label>
+                      <input type="text" id="Employee_Addrline2">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Address 3</label>
+                      <input type="text" id="Employee_Addrline3">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>City</label>
+                      <input type="text" id="Employee_City">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>State</label>
+                      <input type="text" id="Employee_state" >
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Postal Code</label>
+                      <input type="text" id="Employee_Postalcode">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Location</label>
+                      <input type="text" id="Employee_location">
+                    </div>
+
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Country</label>
+					  <select id="Employee_Country">
+								<option value="">&nbsp;</option>
+						</select>
+					</div>
+
+                  </div>
+                  <div class="row">
+                  <div class="col-sm-4 col-xs-6">
+				                          					<a class="submit-btn ui-link" id="ereset2" >Reset</a>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                     <a class="submit-btn ui-link" data-toggle="tab" onclick="document.getElementById('e_ContactTab').click()">Next</a>
+                    </div>
+
+
+                  </div>
+                </form>
+              </div>
+              <div id="e_tab3" class="tab-pane fade">
+                <form>
+                  <div class="row">
+                     <div class="col-sm-4 col-xs-6">
+                      <label>Mobile Number</label>
+                      <input type="number"  id="Employee_cellphone" class='allownumericwithoutdecimal'>
+                    </div>
+
+
+					<div class="col-sm-4 col-xs-6">
+                      <label>Home Phone</label>
+                      <input type="number"  id="Employee_homephone" class='allownumericwithoutdecimal'>
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Work Phone</label>
+                      <input type="number" id="Employee_workphone" class='allownumericwithoutdecimal'>
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Email</label>
+                      <input type="email" id="Employee_EmailId">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Comments</label>
+                      <input type="text" id="Comments">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Active</label>
+                      <input type="checkbox" id="activeemp" checked>
+                    </div>
+
+                  </div>
+				  <div class="row">
+				   <div class="col-sm-4 col-xs-6">
+                     <a class="submit-btn ui-link" id="ereset3" >Reset</a>
+                    </div>
+				  <div class="col-sm-4 col-xs-6">
+                      <a class="submit-btn ui-link" id="Employee_save" >Save</a>
+                    </div>
+                   
+
+                  </div>
+
+                </form>
+              </div>
+			  <div id="e_tab4" class="tab-pane fade">
+
+			<div>
+
+							<br>
+							<br>
+							<div id="viewallemployeesDiv">
+								<div class="row">
+								<div class="col-sm-12">
+								<div class="custom-table">
+
+								<div id="allemployeesTable" class="tbl">
+									<div class="tbl-row tbl-hed">
+
+										</div>
+
+
+								</div>
+								</div>
+								</div>
+								</div>
+							</div>
+					</div>
+			</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Employee Screen ends -->
+ <!-- Product screen begins-->
+<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1"  data-role="page" id="productscreen" data-theme="a">
+   <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+   <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+              <label>Area/Settings </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+               <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+			  	  <label>View Orders </label>
+			    </a> </li>
+				<li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+
+
+
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users";	 aria-hidden="true"></i>Product</div>
+         <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+		             <!--label>You are Here: </label>
+		             <ul>
+		               <a rel="external">Prodcast</a>&nbsp;/&nbsp;Product
+		             </ul-->
+
+          </div>
+        </div>
+		 <div class="col-sm-12 content-sec">
+		 <div class="costomer-tab-section">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" id="li_e_tabp1" href="#e_tabp1">Brands</a></li>
+              <li><a data-toggle="tab"  id="li_e_tabp2" href="#e_tabp2">Categories</a></li>
+              <li><a data-toggle="tab"   id="li_e_tabp4" href="#e_tabp4">Sub Categories</a></li>
+			  <li><a data-toggle="tab"   id="li_e_tabp3" href="#e_tabp3">Products</a></li>
+			  <li><a data-toggle="tab" id="li_e_tabp5" href="#e_tabp5">All Products</a></li>
+            </ul>
+		 <div class="tab-content">
+
+		 <div id="e_tabp1" class="tab-pane fade in active">
+
+			<div>
+							<form>
+								<div class="row" >
+								<div class="col-sm-4 col-xs-6">
+									<input id="Brand_Brand" placeholder="Enter new Brand" value="" type="text" />
+								</div>
+								<div class="col-sm-4 col-xs-6">
+									<a class="submit-btn ui-link" id="BrandId_save">Save</a>
+								</div>
+								</div>
+								<div>
+								<div>
+									<p id="brandconfirm" style="color:#abcd14;display:none">New Brand is added successfully</p>
+									<p id="brandon" style="color:#abcd14;display:none">Brand has been updated successfully</p>
+									<p id="brandexist"  style="color:red;display:none">Your Entered Brand is Already Exist</p>
+								<p id="brandfill" style="color:red;display:none">Please Enter A Brand</p>
+								</div>
+								</div>
+							</form>
+
+							<br>
+							<br>
+							<div id="brandsDiv">
+								<div class="row">
+								<div class="col-sm-12">
+								<div class="custom-table">
+
+								<div id="brandsTable" class="tbl">
+									<div class="tbl-row tbl-hed">
+										<div class="tbl-cols">
+										No.
+										</div>
+
+
+
+										<div class="tbl-cols">
+										Brand Description
+										</div>
+										</div>
+									<div style="width:100%;display:none;" id="editBrandDialog" title="Prodcast Notification" >
+											<div class="costomer-tab-section">
+													<div class="tab-content-mini">
+															<form>
+																<div class="row">
+																<div class="col-sm-12">
+																<label> Enter The Brand </label>
+																<div class="pop-up-field">
+																<input id="editbrand" placeholder="Enter new Brand" value="" type="text" />
+																<a id="editBrandIdsave"  class="green-btn-style">Save</a>
+																<p id="editBrandNull" style="color:red;display: none"> Please Enter The Brand To Update</p>
+										                        <p id="editBrandVal" style="color:red;display: none">The Brand You Selected Already Exists</p>
+																</div>
+																</div>
+																</div>
+															</form>
+													</div>
+											</div>
+										</div>
+
+								</div>
+								</div>
+								</div>
+								</div>
+							</div>
+					</div>
+			</div>
+
+
+				<div id="e_tabp2" class="tab-pane fade">
+				    <div>
+										<form>
+											<div class="row" >
+											<div class="col-sm-4 col-xs-6">
+												<input id="Category_Category" placeholder="Enter new Category" value="" type="text" />
+											</div>
+											<div class="col-sm-4 col-xs-6">
+												<a class="submit-btn ui-link" id="CategoryId_save">Save</a>
+											</div>
+											</div>
+											<div>
+											<div>
+												<p id="catconfirm" style="color:#abcd14;display:none">New Category is added successfully</p>
+												<p id="categoryon" style="color:#abcd14;display:none">Category hsas been updated successfully</p>
+												<p id="catexist"  style="color:red;display:none">Your Entered Category is Already Exists</p>
+												<p id="catfill" style="color:red;display:none">Please Enter A Category</p>
+											</div>
+											</div>
+										</form>
+
+									<br>
+									<br>
+											<div id="categorysDiv">
+													<div class="row">
+													<div class="col-sm-12">
+													<div class="custom-table">
+
+															<div id="catsTable" class="tbl">
+																<div class="tbl-row tbl-hed">
+																<div class="tbl-cols">
+																No.
+																</div>
+
+
+
+																<div class="tbl-cols">
+																Category Name
+																</div>
+																</div>
+																<div style="width:100%;display:none;" id="editCategoryDialog" title="Prodcast Notification" >
+																<div class="costomer-tab-section">
+																<div class="tab-content-mini">
+																<form>
+																	<div class="row">
+																	<div class="col-sm-12">
+																	<label> Enter The Category </label>
+																	<div class="pop-up-field">
+																	<input id="editcategory" placeholder="Enter new Category" value="" type="text" />
+																	<a id="editCatIdsave"  class="green-btn-style">Save</a>
+																	<p id="editCatNull" style="color:red;display: none"> Please Enter The Category To Update</p>
+										                             <p id="editCatVal" style="color:red;display: none">The Category You Selected Already Exists</p>
+																	</div>
+																	</div>
+																	</div>
+																</form>
+																</div>
+																</div>
+																</div>
+
+															</div>
+													</div>
+													</div>
+													</div>
+											</div>
+								  </div>
+
+				 </div>
+
+
+						<div id="e_tabp3" class="tab-pane fade">
+				<form>
+			<div class="row">
+			 <div class="col-sm-4 col-xs-6">
+				 <label>Brand</label>
+				  <div class="drop-set"><input class="input-feild-style selectproductbrand" type="text"  id="selectproductbrand"/>					
+					<input type="hidden" id="autoselectproductbrand"/>
+					<a  id="selectbrand" class="selectbrand_all"><span class="ui-icon ui-icon-triangle-1-s"></span></a>
+			     </div>
+			 
+			</div>				 <!--div class="col-sm-4 col-xs-6">
+				 <label>Brand</label>
+				 
+					<input class="input-feild-style"  type="text" id="selectproductbrand"/>
+					</div-->
+					<div class="col-sm-4 col-xs-6" >
+							<a data-toggle="tab" id="brandAddInProduct"><img src="images/add.png" title="Add Brand" alt="Add Brand"/></a>
+					 </div>
+				</div>
+				<div class="row" >
+				  <p id="subcategoryfill" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please Enter A SubCategory Field And Then Enter A Brand.</p>
+				  <p id="brandfillalert" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please Select A Brand.</p>
+				  <p id="brandadded" style="color:green;display:none">&nbsp;&nbsp;&nbsp;The Brand is Added Successfully.</p>
+				  <p id="brandexists" style="color:red;display:none">&nbsp;&nbsp;&nbsp;The Brand is Already Exists And It Has Been Selected Automatically..</p>
+				 </div>
+
+				<div class="row">
+					<div class="col-sm-4 col-xs-6">
+					<label>Category</label>
+					<div class="drop-set"><input class="input-feild-style" type="text" id="selectproductcategory"/>	
+						<input type="hidden" id="autoselectproductcategory"/>
+							<a  id="selectcategory" class="selectcategory_all"><span class="ui-icon ui-icon-triangle-1-s"></span></a>
+					</div>
+					</div>
+					<div class="col-sm-4 col-xs-6" >
+							<a href="#" id="categoryAddInProduct" data-toggle="tab" ><img src="images/add.png" title="Add Category" alt="Add Category"/></a>
+					 </div>
+				</div>
+				<div class="row" >
+				  <p id="categoryfillalert" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please Select A Category.</p>
+				  <p id="categoryadded" style="color:green;display:none">&nbsp;&nbsp;&nbsp;The Category is Added Successfully.</p>
+				  <p id="categoryexists" style="color:red;display:none">&nbsp;&nbsp;&nbsp;The Category Is Already Exists And It Has Been Selected Automatically.</p>
+				 </div>
+
+				<div class="row">
+
+				  <div class="col-sm-4 col-xs-6">
+				   <label>Sub Category</label>
+				   <div class="drop-set"><input class="input-feild-style" type="text" id="selectsubcategory"/>	
+					<input type="hidden" id="autoselectproductsubcategory"/>
+					 <a  id="selectsubcategory" class="selectsubcategory_all"><span class="ui-icon ui-icon-triangle-1-s"></span></a>
+					 <p id="scatexist" style="color:#abcd14;display:none">Your Entered SubCategory is Already Exists</p>
+					</div>
+					
+					</div>
+					<div class="col-sm-4 col-xs-6">
+							<a   id="subcategory_save"><img src="images/add.png"  title="Add Sub Category" alt="Add Sub Category"/></a>
+					 </div>
+					 </div>
+				<div class="row" >
+				  <p id="categoryfill" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please Enter A Category And Then Enter A SubCategory.</p>
+				  <p id="subcategoryfillalert" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please Select A SubCategory.</p>
+				  <p id="subcategoryadded" style="color:green;display:none">&nbsp;&nbsp;&nbsp;The SubCategory is Added Successfully.</p>
+				  <p id="subcategoryexists" style="color:red;display:none">&nbsp;&nbsp;&nbsp;The SubCategory is Already Exists And It Has Been Selected Automatically..</p>
+				 </div>
+
+
+                 <div class="row">
+					<div class="col-sm-4 col-xs-6">
+                      <label>Product Name</label>
+                      <input class="input-feild-style"  type="text" id="productname">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Product Description</label>
+                      <input class="input-feild-style"  type="text" id="productdesc">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+					                      <label>Active</label>
+					                      <input type="checkbox" id="activeprod" checked>
+					                    </div>
+
+					</div>
+					<div class="row" >
+				  <p id="productvalidationmsg" style="color:red;display:none">&nbsp;&nbsp;&nbsp;The SKU you used already exists in one of your products</p>
+				  </div>
+				<div class="row">
+					<div class="col-sm-4 col-xs-6">
+                      <label>Product SKU</label>
+                      <input class="input-feild-style"   type="text" id="productsku"/>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Wholesale Price</label>
+                      <input  class="input-feild-style allownumberwithdecimal" type="number"  id="unitprice"/>
+					  <p id="unitprice1" style="color:red;display:none"> Please enter the amount above zero </p>
+					 </div>
+					 <div class="col-sm-4 col-xs-6">
+                      <label>Retail Price</label>
+                      <input  class="input-feild-style allownumberwithdecimal" type="number"  id="retailprice"/>
+					  <p id="retailprice1" style="color:red;display:none"> Please enter the amount above zero </p>
+					</div>
+					<div class="col-sm-4 col-xs-6">
+                      <input type="hidden"/>
+                    </div>
+				</div>
+				<div class="row" >
+					<p id="skuvalidationmsg" style="color:red;display:none">&nbsp;&nbsp;&nbsp;The SKU you used already exists in one of your products</p>
+					<p id="urprice" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Retail price should be greater than or equal to unit price</p>
+				</div>
+				<div class="row">
+					<div class="col-sm-4 col-xs-6">
+					     <label>Unit Type</label>
+					  	 <input class="input-feild-style"   type="text" id="unittype">
+					  	  <p id="unittypenull" style="color:red;display:none">Please Enter The UnitType </p>
+						   <p id="unittypemsg" style="color:red;display:none"> UnitType Should Be Text</p>
+
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Sales Tax</label>
+                      <input class="input-feild-style allownumberwithdecimal"  type="number"  id="salestax">
+					  <p id="stmsg" style="color:red;display:none"> Please enter the tax above 0 and below 100 </p>
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Other Tax</label>
+                      <input class="input-feild-style allownumberwithdecimal"  type="number"  id="othertax">
+					  <p id="otmsg" style="color:red;display:none"> Please enter the tax above 0 and below 100 </p>
+                    </div>
+				
+				</div>
+				<div class="row">
+					<div class="col-sm-4 col-xs-6">
+                      <label>Non Taxable</label>
+                      <input class="reportaction" type="checkbox" name="nontax" id="nontax" value="nontax"  />
+					</div>
+				</div>
+				<!--div class="row" >
+					<p id="taxvalidationmsg" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please enter the tax below 100 </p>
+				</div-->
+				
+				</form>
+				<!--<div class="row" >
+				  <p id="prodsavemsg" style="color:#89CA18;display:none">&nbsp;&nbsp;&nbsp;New Product is saved successfully</p>
+					</div>-->
+				<div class="row" >
+				  <p id="validationmsg" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please enter values for mandatory fields highlighted in red.</p>
+				  </div>
+
+				<div class="row">
+					<div class="col-sm-2 col-xs-4">
+					<a class="green-btn-style" id="save_product" >Save</a>
+					</div>
+
+					<div class="col-sm-2 col-xs-4">
+					 <a class="green-btn-style" id="reset_product" >Reset</a>
+					 </div>
+					 
+					 <div class="col-sm-1 col-xs-2" >
+					<a id="productFileDownload" rel="external" href="productList.xlsx" download="productList.xlsx"><img style="position:absolute;top:5px;" src="images/download.png" title="Download Product Template" alt=""/></a>						
+					</div>
+					
+					 <div class="col-sm-1 col-xs-2" >
+					<a href="#" id="productFileUpload" data-toggle="tab" ><img style="position:absolute;top:5px;" src="images/upload.png" title="Upload Your Product File" alt="Add Category"/></a>
+					 </div>
+				</div>
+				
+				 <div   class="row uploadedInfo">
+									<div class="col-sm-4 col-xs-0" >
+									</div>
+									<div class="col-sm-4 col-xs-6" >
+									<input class="input-feild-style" style="position:relative;top:5px;" type="file" id="fileUpload">
+									</div>
+									<div class="col-sm-4 col-xs-6">
+									<!--label>&nbsp;</label-->
+									<a class="submit-btn ui-link" id="fileUpload_save">Submit</a>
+									</div>
+									<p id="uploadMsg" style="color:red;display:none">Please Select The File</p>
+				</div>
+
+
+					</div>
+				<!--</div>-->
+				<div id="e_tabp4" class="tab-pane fade">
+					<div>
+							<form>
+								<div class="row" >
+									<div class="col-sm-4 col-xs-6">
+									  <label>Categories</label>
+									  <select id="p_category">
+										<option value="">&nbsp;</option>
+									  </select>
+									</div>
+									<div class="col-sm-4 col-xs-6">
+									<label>Sub Category</label>
+									<input id="subcat" class="input-feild-style" placeholder="Enter new SubCategory" value="" type="text" />
+									</div>
+									<div class="col-sm-4 col-xs-6">
+									<label>&nbsp;</label>
+									<a class="submit-btn ui-link" id="SubCategoryId_save">Save</a>
+									</div>
+									</div>
+
+									<div class="row">
+									<div class="col-sm-4 col-xs-6">
+									<p id="subcatconfirm" style="color:#abcd14;display:none">New SubCategory is added successfully</p>
+									<p id="subcatexist"  style="color:red;display:none">Your Entered SubCategory is Already Exist</p>
+									<p id="subcategoryon" style="color:#abcd14;display:none">SubCategory has been updated  successfully</p>
+									<p id="subcatfill" style="color:red;display:none">Please Enter A SubCategory</p>
+									</div>
+								</div>
+							</form>
+
+							<br>
+							<br>
+							<br>
+							<br>
+							<div id="subcatDiv">
+								<div class="row">
+							<div class="col-sm-12">
+							<div class="custom-table">
+
+							  <div id="subcatTable" class="tbl">
+									<div class="tbl-row tbl-hed">
+										<div class="tbl-cols">
+											No.
+										</div>
+										<div class="tbl-cols">
+											SubcategoryName
+										</div>
+									  </div>
+									</div>
+									<div style="width:100%;display:none;" id="editSubCategoryDialog" title="Prodcast Notification" >
+									<div class="costomer-tab-section">
+									<div class="tab-content-mini">
+									<form>
+										<div class="row">
+										<div class="col-sm-12">
+										<label> Enter The SubCategory </label>
+										<div class="pop-up-field">
+										<input id="editsubcategory" placeholder="Enter new SubCategory" value="" type="text" />
+										<a id="editSubcatIdsave" class="green-btn-style">Save</a>
+										<p id="editSubNull" style="color:red;display: none"> Please Enter The Subcategory To Update</p>
+										<p id="editSubVal" style="color:red;display: none">The Subcategory You Selected Already Exists</p>
+										</div>
+										</div>
+										</div>
+										</form>
+									</div>
+									</div>
+									</div>
+
+
+							  </div>
+							  </div>
+							  </div>
+
+
+							</div>
+						</div>
+
+
+
+
+					</div>
+
+
+								<div id="e_tabp5" class="tab-pane fade">
+
+			<div>
+
+							<br>
+							<br>
+							<div id="viewallproductsDiv">
+								<div class="row">
+								<div class="col-sm-12">
+								<div class="custom-table">
+
+								<div id="allproductsTable" class="tbl">
+									<div class="tbl-row tbl-hed">
+
+										</div>
+
+
+								</div>
+								</div>
+								</div>
+								</div>
+							</div>
+					</div>
+			</div>
+
+</div>
+<!-- End here-->
+
+		</div>
+	 </div>
+	</div>
+    </div>
+  </div> 
+
+<!-- Product Screen ends -->
+
+
+
+<!-- Change Password screen begins-->
+
+
+
+<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="changepasswordscreen" data-theme="a">
+  <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+              <label>Area/Settings</label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+              <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label>View Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><img src="images/chnge.png" alt=""></img>Change Password</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+		              <!--label>You are Here: </label>
+		              <ul>
+		                <a rel="external">Prodcast</a>&nbsp;/&nbsp;Change Password
+		              </ul-->
+
+          </div>
+        </div>
+		<div class="col-sm-12 content-sec">
+		<div style="width:70%;display:none;" id="dialog1" title="Prodcast Notification" >
+					<div class="costomer-tab-section">
+						<div class="tab-content">
+
+              <div id="pswdtab1" class="tab-pane fade in active">
+                <form>
+                  <div class="row">
+				  <div class="col-sm-4" style="color:#abcd14">
+
+                      <label for="oldPassword">Old Password </label>
+
+					  <input type="password" id="oldPassword" size="20">
+					  </div>
+					  </div>
+						<div class="row">
+
+
+					  <p id="oldpsdnull" style="color:red;display:none">Please Enter A Old Password</p>
+					  <p id="oldpsderror" style="color:red;display:none">Please Enter A Correct Old Password</p>
+
+
+					</div>
+
+					<div class="row">
+					<div class="col-sm-4" style="color:#abcd14">
+
+                      <label for="newPassword">New Password </label>
+
+
+					  <input type="password" id="newPassword" size="20" ><br>
+					  </div>
+					  </div>
+						<div class="row">
+
+					  <p id="newpsdnull" style="color:red;display:none">Please Enter A New Password</p>
+					  <p id="newpsdsame" style="color:red;display:none">Your New Password Is Same As The Old Password</p>
+					  <p id="newpsderror" style="color:red;display:none">Please Enter A Minimum 7 Characters</p>
+
+
+
+
+                    </div>
+
+					<div class="row">
+					<div class="col-sm-4" style="color:#abcd14">
+
+                      <label for="confirmPassword">Confirm Password</label>
+					  <input type="password" id="confirmPassword" size="20" >
+					</div>
+
+						</div>
+						<div class="row">
+					  <p id="confirmpsdnull" style="color:red;display:none">Please Enter The Confirm Password</p>
+					  <p id="confirmpsderror" style="color:red;display:none">Please Enter A Correct Confirm Password</p>
+
+
+
+
+                    </div>
+					<br>
+					<br>
+					<div class="row">
+				  <div class="col-sm-4" >
+                      <a class="green-btn-style" id="password_save" >Submit</a>
+					</div>
+					<div class="col-sm-8">
+					<a class="green-btn-style" id="password_reset" >Reset</a>
+                    </div>
+                  </div>
+
+
+
+
+					</form>
+					</div>
+
+				</div>
+
+
+
+
+					</div>
+				</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Change Password Screen Ends-->
+  
+  <!-- view registration screen begins-->
+  
+<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1"  data-role="page" id="registrationscreen" data-theme="a">
+  <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+              <label>Area/Settings </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+              <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+			     <label>View Orders </label>
+			   </a> </li>
+			   <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+
+
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			   <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users";	 aria-hidden="true"></i>New Register</div>
+                    <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+            <!--label>You are Here: </label>
+            <ul>
+              <a rel="external">Prodcast</a>&nbsp;/&nbsp;Employee
+            </ul-->
+        </div>
+        </div>
+		<div style="width:100%;display: none;" id="editRegDialog" title="Prodcast Notification">
+													<div class="costomer-tab-section">
+														<div class="tab-content-mini">
+															<form>
+																<div class="row">
+																  <div class="col-sm-12">
+																   <label> Comments </label>
+																<div class="pop-up-field">
+																	<input id="editRegistration" placeholder="Enter The Comments" value="" type="text" />
+																	<p id="editRegVal" style="color:red;display: none">Please Enter The Comments</p>
+																	</div>
+																	</div>
+																</div>
+																	<div class="row">
+																	 <div class="col-sm-12">
+																	    <label>Status</label>
+																	    <select id="regStatus">
+																		<option value="0">&nbsp;</option>
+																		<option value="1">Follow Up</option>
+																		<option value="2">Completed</option>
+																		<option value="3">Not Interested</option>
+																	    </select>
+																		<p id="editRegNull" style="color:red;display: none">Please Select The Status</p>
+
+																		</div>
+																	</div>
+																	<div class="row">
+																	 <div class="col-sm-12">
+																		<a id="editRegsave"  class="green-btn-style">Save</a>
+																	</div>	
+																	</div>
+																
+																
+															</form>
+														</div>
+													</div>
+												    </div>
+        <div class="col-sm-12 content-sec">
+          <div class="costomer-tab-section">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#r_tab">Registration Request</a></li>
+              
+            </ul>
+				
+                   <div class="tab-content">
+                     <div id="r_tab" class="tab-pane fade in active">
+		                    <div id="r_tab" class="ui-content">
+						<div id="allregistrationDiv">
+							<div class="row">
+							   <div class="col-sm-12">
+								      <div class="custom-table">
+
+										<div id="allregistrationTable" class="tbl">
+										
+											<div class="tbl-row tbl-hed">
+											<!--	<div class="tbl-cols">
+													S.No.
+												</div>
+												<div class="tbl-cols">
+													First Name
+												</div>
+													
+												<div class="tbl-cols">
+													Last Name
+												</div>
+												 <!--div style="width:100%;display:none;" id="editRegDialog" title="Prodcast Notification" >
+													<div class="costomer-tab-section">
+														<div class="tab-content-mini">
+															<form>
+																<div class="row">
+																<div class="col-sm-12">
+																<label> Comments </label>
+																<div class="pop-up-field">
+																	<input id="editRegistration" placeholder="Enter The Comments" value="" type="text" />
+																	<a id="editRegsave"  class="green-btn-style">Save</a>
+																		<label>Status</label>
+																	  <select id="regStatus">
+																		
+																		<option value="1">Follow</option>
+																		<option value="2">Completed</option>
+																	  </select>	
+																</div>
+																</div>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div-->
+												<!--<div class="tbl-cols">
+													Email Id
+												</div>
+												
+												<div class="tbl-cols">
+													Cell Phone
+												</div>
+												 
+												<div class="tbl-cols">
+													Country
+												</div>-->
+												 <!--div style="width:100%" id="editRegDialog" title="Payment Panel" >
+													<div class="costomer-tab-section">
+														<div class="tab-content-mini">
+															<form>
+																<div class="row">
+																<div class="col-sm-12">
+																<label> Comments </label>
+																<!--div class="pop-up-field">
+																	<input id="editRegistration" placeholder="Enter The Comments" value="" type="text" />
+																	</div>
+																	<div class="col-sm-12">
+																	
+																		<label>Status</label>
+																	  <select id="regStatus">
+																		
+																		<option value="1">Follow</option>
+																		<option value="2">Completed</option>
+																	  </select>	
+																</div>
+																</div>
+																<div class="row">
+																<a id="editRegsave"  class="green-btn-style">Save</a>
+																</div>
+																
+																
+																
+															</form>
+														</div>
+													</div>
+												</div-->
+											</div>
+										
+											
+
+											</div>
+										</div>
+							    </div>
+							</div>
+						</div> 
+				 </div>  
+			</div>	
+					 </div> 
+				 </div>  
+			</div>
+          </div>
+   
+        </div>				
+</div>				
+
+
+
+								
+								  
+								  
+							
+					  
+					  
+			      
+			
+     
+  
+
+<!-- view registration Screen ends -->
+
+<!-- offline Syncronization screen begins-->
+
+
+
+<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="offline-Sync" data-theme="a">
+  <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+       <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+              <label>Area/Settings</label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+              <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label>View Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+
+         </ul>
+        </div>
+      </div>
+	  <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><img src="images/chnge.png" alt=""></img>Offline Sync</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+		              <!--label>You are Here: </label>
+		              <ul>
+		                <a rel="external">Prodcast</a>&nbsp;/&nbsp;Change Password
+		              </ul-->
+
+          </div>
+        </div>
+		<div class="col-sm-12 content-sec">
+		<div style="width:70%;display:none;" id="dialog2" title="Prodcast Notification" >
+					<div class="costomer-tab-section">
+						<div class="tab-content">
+
+              <div id="synctab1" class="tab-pane fade in active">
+                <form>
+
+					<div class="row">
+				  <div class="col-sm-4" >
+                      <a class="green-btn-style" id="syncOrders" >Sync Orders</a>
+					</div>
+					<div class="col-sm-8">
+					<a class="green-btn-style" id="syncCollections" >Sync Collections</a>
+                    </div>
+                  </div>
+
+
+
+
+					</form>
+					</div>
+
+				</div>
+
+
+
+
+					</div>
+				</div>
+
+
+
+          </div>
+        </div>
+</div>
+</div>
+  <!-- offline Syncronization Screen Ends-->
+
+
+
+
+
+
+<!-- Expensens Screen begins -->
+
+<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="expensescreen" data-theme="a">
+   <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+              <label>Area/Settings </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+              <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+			   <label>View Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users";	 aria-hidden="true"></i>Expenses</div>
+         <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+		             <!--label>You are Here: </label>
+		             <ul>
+		               <a rel="external">Prodcast</a>&nbsp;/&nbsp;Expenses
+            </ul-->
+          </div>
+        </div>
+	 <div class="col-sm-12 content-sec">
+          <div class="costomer-tab-section">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" id="expnav1" href="#exptab1">Expenses</a></li>
+              <li><a data-toggle="tab" id="expnav2" href="#exptab2">Category</a></li>
+			</ul>
+			<div class="tab-content">
+			<div id="exptab1" class="tab-pane fade in active">
+                <form>
+                  <div class="row">
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Categories</label>
+                      <select id="exp_category">
+                        <option value="">&nbsp;</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Account</label>
+                      <input type="text"  id="exp_account">
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Description</label>
+                      <input type="text" id="exp_description">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Details</label>
+                      <input type="text" id="exp_details">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Amount</label>
+                      <input type="number" id="exp_amount" class="allownumberwithdecimal" min="0">
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                      <label>Payment Mode</label>
+					  <select id="exp_payment">
+                      <option value="1">Cash</option>
+					  <option value="2">Check/Credit</option>
+					  </select>
+                    </div>
+					</div>
+					 <div class="row">
+				   <div class="col-sm-4 col-xs-6">
+                      <label>Expense Date</label>
+                      <input type="text" data-role="date" id="exp_date" data-theme="a">
+                    </div>
+					</div>
+                  <div class="row">
+					<div class="col-sm-4 col-xs-6">
+						<a class="submit-btn ui-link" id="exp_save" >Save</a>
+                    </div>
+					<div class="col-sm-4 col-xs-6">
+                     <a class="submit-btn ui-link" id="resettab" >Reset</a>
+                    </div>
+
+				  </div><br></br>
+
+				  <div class="row">
+					<div class="col-sm-4 col-xs-6">
+
+					<p id="expSaveSuccess" style="display:none;color:green">Expense saved</p>
+					</div>
+                  </div>
+				  <div id="expenseoutput">
+					<div class="tbl" id="allexpenseTable" class="tab-pane fade in active" >
+										<div class="tbl-row tbl-hed">
+											<div class="tbl-cols">
+															No.
+											</div>
+											<div class="tbl-cols">
+															Category
+											</div>
+											<div class="tbl-cols">
+															Date
+											</div>
+											<div class="tbl-cols">
+															Amount(<label class="distcurrency"></label>)
+											</div>
+											<div class="tbl-cols">
+															Description
+											</div>
+										</div>
+									</div>
+					</div>
+
+				</form>
+              </div>
+			 <div id="exptab2" class="tab-pane fade">
+                 <form>
+					<div class="row" >
+					<div class="col-sm-4 col-xs-6">
+						<input id="exp_desc" placeholder="Enter Expenses Description" value="" type="text" />
+					</div>
+					<div class="col-sm-4 col-xs-6">
+						<a class="submit-btn ui-link" id="expcat_save">Save</a>
+					</div>
+					</div>
+					<div>
+					<div>
+							<p id="expcatconfirm" style="color:#abcd14;display:none">New Category is added successfully</p>
+							<p id="expcaton" style="color:#abcd14;display:none">Category has been updated successfully</p>
+							<p id="expcatexist"  style="color:red;display:none">Your Entered Category is Already Exist</p>
+							<p id="expcatfill" style="color:red;display:none">Please Enter A Category</p>
+					</div>
+					</div>
+				</form>
+					<br>
+					<br>
+				   <div id="ExpDiv">
+							<div class="row">
+							<div class="col-sm-12">
+							<div class="custom-table">
+
+							<div id="ExpTable" class="tbl">
+								<div class="tbl-row tbl-hed">
+									<div class="tbl-cols">
+									   No
+									 </div>
+								<div class="tbl-cols">
+									Expense Description
+								</div>
+								 <div style="width:100%;display:none;" id="editCatDialog" title="Prodcast Notification" >
+									<div class="costomer-tab-section">
+										<div class="tab-content-mini">
+											<form>
+												<div class="row">
+												<div class="col-sm-12">
+												<label> Enter The Category </label>
+												<div class="pop-up-field">
+												<input id="editExpCat" placeholder="Enter new Category" value="" type="text" />
+												<a id="editExpIdsave"  class="green-btn-style">Save</a>
+												<p id="editExpVal" style="color:red;display: none"> Please Enter The Expense Category To Update</p>
+												  <p id="editExp" style="color:red;display: none">The Expense Category You Selected Already Exists</p>
+												</div>
+												</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						  </div>
+
+					  </div>
+					   </div>
+					  </div>
+		    </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+     </div>
+    </div>
+</div>
+<!--Expense Screen Ends -->
+<!-- order screen starts-->
+
+ <div  class="ui-page ui-body-a" tabindex="0" data-url="four" data-role="page" id="ordersscreen" data-theme="a">
+   <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+			<label>Area/Settings</label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+              <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+			   <label>View Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+
+         </ul>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><img src="images/OrderEntry-icon.png" alt="">Orders</div>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+		                        </div>
+        </div>
+        <div class="col-sm-12 content-sec">
+
+            <div class="col-sm-8">
+			
+			<div class="row">
+                <div class="col-sm-6">
+                  <label class="lable-style">Search Billnumber</label>
+                  <input class="input-feild-style"  type="text" id="selectbillnumber">
+                   <p id="ordermsg" style="color:red;display: none">Enter the Billnumber</p>
+				</div>
+				</div>
+		<div class="row">
+		 <div class="col-sm-6">
+		 <a class="green-btn-style" id="goBillnum">Go</a>
+		 </div>
+
+		</div>
+		</div>
+		</div>
+
+		  <!--div class="outstandingDivcl" id="outstandingDiv" >
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="head-table">Bill Details Page</div>
+          </div>
+	  </div>
+
+        </div-->
+		</div>
+      </div>
+    </div>
+
+ <!-- orders screen ends-->
+
+   <div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1"  data-role="page" id="billdetailspage" data-theme="a">
+    <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><!--a rel="external" class="logout">
+	  <div class="SalesManName"></div></a-->
+        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+        </div>
+      </div>
+    </header>
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order-entry" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order Entry </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#customerscreen"> <img src="images/customer-icon.png" alt="" class="hvr-bounce-in">
+              <label> Customers </label>
+              </a> </li>
+			<li class="salesmenu"> <a href="#order-entry"> <img src="images/payment-icon.png" alt="" class="hvr-bounce-in">
+              <label> Payments </label>
+              </a> </li>
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label> Reports </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#employeescreen" id="elid"> <img src="images/employee-icon.png" alt="" class="hvr-bounce-in">
+              <label> Employee </label>
+              </a> </li>
+			<li class="distmenu"> <a href="#Area"> <img src="images/ar.png" alt="" class="hvr-bounce-in">
+              <label>Area/Settings</label>
+              </a> </li>
+			<li class="distmenu"> <a href="#productscreen"> <img src="images/product-icon-min.png" alt="" class="hvr-bounce-in">
+              <label> Product </label>
+              </a> </li>
+			<li class="adminmenu"> <a href="#distributorscreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Distributors</label>
+              </a></li>
+			<li class="distmenu"> <a href="#expensescreen"> <img src="images/expen-iconp-1.png.png" alt="" class="hvr-bounce-in">
+              <label> Expenses </label>
+              </a> </li>
+              <li class="salesmenu"> <a href="#ordersscreen" id="oslink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+			     <label>View Orders </label>
+			   </a> </li>
+			   <li class="salesmenu"> <a href="#offline-Sync" id="sync"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+	            <label>Sync Orders </label>
+              </a> </li>
+
+
+
+			  <li class="salesmenu"> <a href="#changepasswordscreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+			  <li class="adminmenu"> <a href="#registrationscreen"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Registration Request </label>
+              </a> </li>
+
+         </ul>
+        </div>
+      </div>
+    <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+
+        <div class="col-sm-12 title-bar">
+          <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users";	 aria-hidden="true"></i>Bill Details</div>
+         <!-- <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+            <!--label>You are Here: </label>
+            <ul><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+              <a rel="external">Prodcast</a>&nbsp;/&nbsp;Expenses
+            </ul>
+            </div-->
+        </div>
+
+	<div class="col-sm-12 content-sec">
+		<div class="col-sm-1"></div>
+		<div>
+			<p><a  class="green-btn-style printable" >Print Order</a><a  class="green-btn-style distmenu" id="deleteOrder" >Delete Order</a></p>				   
+        </div>
+		<div style="width:100%;display:none;" class="deleteOrderDialog" title="Prodcast Notification" >
+			<div class="costomer-tab-section">
+				<div class="tab-content-mini">
+					<form>
+						<div class="row">
+						<div class="col-sm-12">
+						<center> <label >Are you sure you would like to delete this order?</label></center>
+					<center><div class="tbl-row">
+							<div class="tbl-col">
+							<a id="deleteOrderYes"  class="green-btn-style deleteOrderYes">Yes</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a id="deleteOrderNo"  class="green-btn-style deleteOrderNo">No</a>
+							</div></center>
+					
+						</div>
+						</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+<div class="col-sm-1"></div>
+		
+			<div class="col-sm-10" id="msgtable">
+				<div class="row">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-4 tbl-cols-noborder" id="bill">
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								Order No.
+							</div>
+							<div class="tbl-cols-noborder">
+								<p id="billNumber" style="color:#abcd14"></p>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								Bill Date
+							</div>
+							<div class="tbl-cols-noborder">
+								<p id="billDate" style="color:#abcd14"></p>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								Total (<label class='distcurrency'></label>)
+							</div>
+							<div class="tbl-cols-noborder">
+								<p id="totalAmount" style="color:#abcd14"></p>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								Balance (<label class='distcurrency'></label>)
+							</div>
+							<div class="tbl-cols-noborder">
+								<p id="outstandingBalance" style="color:#abcd14"></p>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+							Discount
+							</div>
+							<div class="tbl-cols-noborder">
+								<p id="discountValue" style="color:#abcd14"></p>
+
+							</div>
+						</div>
+						<div class="tbl-row-notable deliveryAddressType">
+							<div class="tbl-cols-noborder">
+								Fullfillment Type
+							</div>
+							<div class="tbl-cols-noborder">
+								<p id="deliveryAddress" style="color:#abcd14"></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 tbl-cols-noborder">
+						   
+						<div class="tbl-row-notable tbl-hed">
+							<div class="tbl-cols-noborder">
+								<p align="left" >
+
+								Customer
+								</p>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								<p id="customerMname" style="color:#abcd14" align="left"></p>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								<p id="custAddress" style="color:#abcd14" align="left"></p>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								<p id="custCity" style="color:#abcd14" align="left"></p>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								<p id="custPhone" style="color:#abcd14" align="left"></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-2"></div>
+				</div>
+			</br></br>
+
+             	<!--div class="tbl" id="bill">
+              		<div class="tbl-row tbl-hed">
+					</div>
+					<div class="tbl-row">
+                    	<div class="tbl-cols">
+                        	Order No.
+                        </div>
+                    	<div class="tbl-cols">
+                        	<p id="billNumber" style="color:#abcd14"></p>
+                        </div>
+					</div>
+					<div class="tbl-row">
+                    	<div class="tbl-cols">
+                        	Bill Date
+                        </div>
+                    	<div class="tbl-cols">
+                        	<p id="billDate" style="color:#abcd14"></p>
+                        </div>
+					</div>
+
+					<div class="tbl-row">
+						<div class="tbl-cols">
+                        Sales Rep
+                        </div>
+                    	<div class="tbl-cols">
+                        	<p id="employeeName" style="color:#abcd14"></p>
+                        </div>
+					</div>
+					<div class="tbl-row">
+						<div class="tbl-cols">
+						Discount
+						                        </div>
+						                    	<div class="tbl-cols">
+						                        	<p id="discountValue" style="color:#abcd14"></p>
+
+						                        </div>
+											</div>
+											<div class="tbl-row">
+						<div class="tbl-cols">
+                        	Total (<label class='distcurrency'></label>)
+                        </div>
+						<div class="tbl-cols">
+                        	<p id="totalAmount" style="color:#abcd14"></p>
+                        </div>
+					</div>
+
+					<div class="tbl-row">
+						<div class="tbl-cols">
+                        	Outstanding Balance (<label class='distcurrency'></label>)
+                        </div>
+						<div class="tbl-cols">
+                        	<p id="outstandingBalance" style="color:#abcd14"></p>
+                        </div>
+					</div>
+
+                    </div-->
+				<!--</div>-->
+			<br>
+			
+			<div class="row" >
+		<div class="col-sm-12" >
+		
+	
+				<a id="applyDiscountForCust" class="green-btn-style">Apply Discount</a></div>
+				<div style="width:100%" id="saveDiscount" class="saveDiscount" title="Payment Panel">
+				<div class="costomer-tab-section">
+				<div class="tab-2content tab-content-mini">
+				<form>
+				   <div class="row">
+				  <div class="col-sm-12">
+					Discount Value
+					<input  id="discountValueForCust" class="input-feild-style allownumberwithdecimal" type="number" />
+					
+				   </div>
+				  <div class="col-sm-12">
+					
+					Discount Type
+					 <select id="discountTypeForCust">
+					  <option value="1">Amount</option>
+					  <option value="2">Percentage</option>
+					 </select>				
+					
+				  </div>
+				  </div>
+				   <div class="row">
+                   <div class="col-sm-12" align="center"><a id="applyBtn"  class="green-btn-style applyDiscount">Apply</a>
+                   </div>
+                    </div>
+             </form>
+				 </div>
+				
+				</div>
+				</div>
+		
+		
+		
+		
+		
+		</div>
+		<br>
+		
+		
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div>
+				<h3>Order Details</h3>
+					<div id="ordtable" class="tbl">
+						<div class="tbl-row tbl-hed">
+							<!--div class="tbl-cols">
+								No.
+							</div-->
+							<div class="tbl-cols">
+								Product
+							</div>
+							<div class="tbl-cols">
+								Qty
+							</div>
+							<div style="width:100%;display:none;" id="returnDialog" title="Prodcast Notification" >
+								<div class="costomer-tab-section">
+									<div class="tab-content-mini">
+										<form>
+											<div class="row">
+											<div class="col-sm-12">
+											<label>Enter the quantity you would like to return</label>
+											<input id="returnQty" placeholder="Enter The Quantity" value="" type="text" />
+											<p id="returnQtymsg" style="color:red;display: none">Quantity should be above zero </p>
+											</div>
+											</div>
+											<br>
+											<div class="row">
+											<div class="col-sm-12" align="center"><a id="returnIdsave"  class="green-btn-style">Save</a>
+											</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="tbl-cols">
+								Price (<label class='distcurrency'></label>)
+							</div>
+							<!--div class="tbl-cols">
+								Sales Tax (<label class='distcurrency'></label>)
+							</div>
+							<div class="tbl-cols">
+								Other Tax (<label class='distcurrency'></label>)
+							</div-->
+
+							<div class="tbl-cols">
+								Sub Total (<label class='distcurrency'></label>)
+							</div>
+						</div>
+					</div>
+			</div>
+				
+			<br>
+			<div>
+				<h3>Payment Details</h3>
+				<div id="paytable" class="tbl">
+					<div class="tbl-row tbl-hed">
+						<!--div class="tbl-cols">
+							No.
+						</div-->
+						<div class="tbl-cols">
+							Date
+						</div>
+						<div class="tbl-cols">
+							Received By
+						</div>
+						<div class="tbl-cols">
+							Amount (<label class='distcurrency'></label>)
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--div>
+				<h3>Return Details</h3>
+				<div id="rordtable" class="tbl">
+					<div class="tbl-row tbl-hed">
+						<!--div class="tbl-cols">
+							No.
+						</div-->
+						<!--div class="tbl-cols">
+							Product
+						</div>
+						<div class="tbl-cols">
+							Qty
+						</div>
+
+						<div class="tbl-cols">
+							Price (<label class='distcurrency'></label>)
+						</div>
+						<!--div class="tbl-cols">
+							Sales Tax (<label class='distcurrency'></label>)
+						</div>
+						<div class="tbl-cols">
+							Other Tax (<label class='distcurrency'></label>)
+						</div-->
+
+						<!--div class="tbl-cols">
+							Sub Total (<label class='distcurrency'></label>)
+						</div>
+
+					</div>
+				</div>
+			</div-->
+			<br/>
+			<a class="green-border-btn" id="b_close"  >Close</a>
+		</div>
+	</div>
+	<div class="col-sm-1"></div>
+	</div>
+	</div>
+   </div>
+</div>
+
+
+<!-- Expenses screen ends-->
+
+
+<!--<footer>
+  <div class="copy-right">@Copyright Prodcast</div>
+  <div class="footer-link"><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a> </div>
+</footer>-->
+
+<!-- jQuery 2.1.4 -->
+<script src="js/jQuery-2.1.4.min.js"></script>
+<!--<script src="js/jquery.mobile-1.3.2.min.js"></script>-->
+<script src="js/jquery.mobile-1.4.5.min.js"></script>
+<!--
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+-->
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js" ></script>
+
+
+<!-- Bootstrap 3.3.5 -->
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/index_pr2.js"></script>
+
+
+<!--
+<script type="text/javascript">
+$(document).ready(function() {  function setHeight()
+{
+  windowHeight = $(window).innerHeight();
+  $('#right-panel').css('min-height', windowHeight);
+
+//var footer_height = $('footer').css('height');
+  //var total_footer_height = parseInt(windowHeight) - parseInt(footer_height);
+
+ // alert(total_footer_height);
+ // $('footer').css('height',total_footer_height);
+
+};  setHeight();
+
+   $(window).resize(function() {    setHeight();  });});
+</script>
+-->
+<script type="text/javascript">
+	$(document).ready(function () {
+    //stick in the fixed 100% height behind the navbar but don't wrap it
+    $('#slide-nav.navbar-inverse, #slide-nav2.navbar-inverse, #slide-nav3.navbar-inverse, #slide-nav4.navbar-inverse').after($('<div class="inverse" id="navbar-height-col"></div>'));
+
+    $('#slide-nav.navbar-default, #slide-nav2.navbar-default, #slide-nav3.navbar-default, #slide-nav4.navbar-default').after($('<div id="navbar-height-col"></div>'));
+
+    // Enter your ids or classes
+    var toggler = '.navbar-toggle';
+    var pagewrapper = '#page-content';
+    var navigationwrapper = '.navbar-header';
+    var menuwidth = '100%'; // the menu inside the slide menu itself
+    var slidewidth = '80%';
+    var menuneg = '-100%';
+    var slideneg = '-80%';
+
+
+    $("#slide-nav, #slide-nav2, #slide-nav3, #slide-nav4").on("click", toggler, function (e) {
+
+        var selected = $(this).hasClass('slide-active');
+
+        $('#slidemenu, #slidemenu2, #slidemenu3, #slidemenu4').stop().animate({
+            left: selected ? menuneg : '0px'
+        });
+
+        $('#navbar-height-col, #navbar-height-col2, #navbar-height-col3, #navbar-height-col4').stop().animate({
+            left: selected ? slideneg : '0px'
+        });
+        $(pagewrapper).stop().animate({
+            left: selected ? '0px' : slidewidth
+        });
+
+        $(navigationwrapper).stop().animate({
+            left: selected ? '0px' : slidewidth
+        });
+
+
+        $(this).toggleClass('slide-active', !selected);
+        $('#slidemenu, #slidemenu2, #slidemenu3, #slidemenu4').toggleClass('slide-active');
+
+
+        $('#page-content, .navbar, body, .navbar-header').toggleClass('slide-active');
+
+
+    });
+
+
+    var selected = '#slidemenu, #page-content, body, .navbar, .navbar-header';
+
+
+    $(window).on("resize", function () {
+
+        if ($(window).width() > 800 && $('.navbar-toggle').is(':hidden')) {
+            $(selected).removeClass('slide-active');
+        }
+
+
+    });
+//$("#loginhome").removeClass("ui-page-active");
+//$(this).addclass("ui-page-active");
+
+
+ 
+
+$(document).on("pageinit",function(event){
+    
+    if( event.target.id != "loginhome"){
+    $("#loginhome").removeClass("ui-page-active");
+     
+     }
+   });
+
+
+});
+
+</script>
+
+</body>
+</html>
