@@ -4,7 +4,7 @@ $(document).ready(function() {
 			var baseUrl = "../..";
 
             /* Global Variable Declaration Begins*/
-
+            
 			var userUrl=window.location.href.replace(window.location.hash,'');
 			var localBillNoId="";
 			var orderStatus="";
@@ -96,7 +96,18 @@ $(document).ready(function() {
 			var customerType="";
 			var storeType_map={};
 			var storeTypeMap="";
+			var orderBillNumber="";
             gid.push("1");
+    
+    
+            $('#paymentPanelHide').on("click", function(e) {
+                 $('#paymentPanel').hide();
+				
+				 
+            });
+			
+          
+    
 			//	var salesrateforproduct="";
             /* Global Variable Declaration Ens*/
 		function customerreset (){
@@ -131,365 +142,391 @@ $(document).ready(function() {
                     $('#emptyalertmsg3').hide();
 					$('#customer_save').html("Save");
 					$('#cellphone').attr("disabled", false);
-					
-
-
 					custId="";
 				}
-
 			$("#expensescreen").on('pageshow', function() {
-
 				customerreset();
-
-
 				});
-
  $(document).delegate(".radioButton" , "click" , function (evt)
 			  {
 				for (var counter = 0; counter < outstandingBills.length; counter++)
 				{
-
                         var billSelect = $('#billSelect' + counter);
 						var orderStatus = outstandingBills[counter].orderStatus;
-
                         if (billSelect.is(':checked'))
 						{
                            if(orderStatus=="S")
 						   {
 						   $("#fullFilled").show();
-						   $('.paymentPanel').show();
+						   $('#paymentPanel').show();
+						   
+						   $('.content-sec').scroll(function() 
+						{ 
+							$('#paymentPanel').css('position:fixed;', $(this).scrollTop());
+						});
                            }
 						   else{
 							   $("#fullFilled").hide();
-							   $('.paymentPanel').show();
+							   $('#paymentPanel').show();
 						   }
-
                             break;
-
 
                         }
                     }
 			  });
 			 //  var salesrateforproduct=$("#set_tax").val();
-
-
-
-
-
+				 
 			//localStorage.setItem("salesrateforproduct",salesrateforproduct);
 
-			function stringToDate(_date)
+		function stringToDate(_date)
+		{
+				var formatLowerCase=format.toLowerCase();
+				var formatItems=formatLowerCase.split(delimiter);
+				var dateItems=_date.split(delimiter);
+				var monthIndex=formatItems.indexOf("mm");
+				var dayIndex=formatItems.indexOf("dd");
+				var yearIndex=formatItems.indexOf("yyyy");
+				var month=parseInt(dateItems[monthIndex]);
+				month-=1;
+				var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+				return formatedDate.customFormat(myDateFormat);
+		}
+
+		function syncOrders()
+		{
+			var orderCount=parseInt(localStorage.getItem("ProdcastOrderCounts"));
+			if(orderCount>0)
 			{
-					var formatLowerCase=format.toLowerCase();
-					var formatItems=formatLowerCase.split(delimiter);
-					var dateItems=_date.split(delimiter);
-					var monthIndex=formatItems.indexOf("mm");
-					var dayIndex=formatItems.indexOf("dd");
-					var yearIndex=formatItems.indexOf("yyyy");
-					var month=parseInt(dateItems[monthIndex]);
-					month-=1;
-					var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
-					return formatedDate.customFormat(myDateFormat);
+				var so=JSON.parse(localStorage.getItem("ProdcastOrder"+orderCount));
+				$.ajax({
+				type: 'POST',
+				url: baseUrl+'/prodcast/global/saveOrder',
+				timeout: 10000,
+				dataType: 'json',
+				contentType: "application/json; charset=utf-8",
+				data: JSON.stringify(so),
 
-			}
+				success: function(response) 
+				{
 
-			function syncOrders()
+					if (response.error) 
 					{
-						var orderCount=parseInt(localStorage.getItem("ProdcastOrderCounts"));
-						if(orderCount>0)
-						{
-
-								var so=JSON.parse(localStorage.getItem("ProdcastOrder"+orderCount));
-								$.ajax({
-								type: 'POST',
-								url: baseUrl+'/prodcast/global/saveOrder',
-								timeout: 10000,
-								dataType: 'json',
-								contentType: "application/json; charset=utf-8",
-								data: JSON.stringify(so),
-
-								success: function(response) {
-
-								if (response.error) {
-										alertmessage(response.errorMessage);
-								} else {
-
-					outstandingBills = response.customer.outstandingBill;
-					writeOutstandingBills( response , false ,customerId);  /*to do
-					/*	alertmessage("The order has been processed successfully");*/
-                        /*$("#savedialog1").dialog({
-                            modal: true,
-                            draggable: false,
-                            resizable: false,
-                            position: ['center'],
-                            show: 'blind',
-                            hide: 'blind',
-                            width: '300',
-                            height: '200',
-                            dialogClass: 'ui-dialog-osx',
-                        });
+							alertmessage(response.errorMessage);
+					} 
+					else 
+					{
+						outstandingBills = response.customer.outstandingBill;
+						writeOutstandingBills( response , false ,customerId);  /*to do
+						/*	alertmessage("The order has been processed successfully");*/
+							/*$("#savedialog1").dialog({
+								modal: true,
+								draggable: false,
+								resizable: false,
+								position: ['center'],
+								show: 'blind',
+								hide: 'blind',
+								width: '300',
+								height: '200',
+								dialogClass: 'ui-dialog-osx',
+							});
 
 
-						$('#okmsg').on('click', function() {
+							$('#okmsg').on('click', function() {
 
-							$('#savedialog1').dialog("close");
+								$('#savedialog1').dialog("close");
 
-                        });*/
+							});*/
 
-                        localStorage.removeItem("ProdcastOrder"+orderCount);
+						localStorage.removeItem("ProdcastOrder"+orderCount);
 						var ordCount=--orderCount;
 						localStorage.setItem("ProdcastOrderCounts",ordCount)
 							syncOrders(ordCount);
-						}
-						},
-								error: function(){
-									$.mobile.navigate('#offline-Sync');
-								//	localStorage.setItem("ProdcastOrderCounts",orderCount)
-									alertmessage("Your Device is Not in Online Please Process Later");
+					}
+				},
+				error: function(){
+					$.mobile.navigate('#offline-Sync');
+				//	localStorage.setItem("ProdcastOrderCounts",orderCount)
+					alertmessage("Your Device is Not in Online Please Process Later");
 
-								}
-							});
-						}
-						else{
-							$.mobile.navigate('#offline-Sync');
-									alertmessage("All Offline Orders have been processed ");
-						//			localStorge.removeItem("ProdcastOrderCounts");
+				}
+				});
+			}
+			else
+			{
+				$.mobile.navigate('#offline-Sync');
+				alertmessage("All Offline Orders have been processed ");
+			//	localStorge.removeItem("ProdcastOrderCounts");
+			}
+		}
+			
+		function getPaymentForOrder(response)
+		{
+			$('#payment').val("");
+			$('#chequenumber').val("");
+			$('#commentorder').val("");
+			outstandingBills = response.customer.outstandingBill;
+			writeOutstandingBills( response ,true ,customerId);
+			alertmessage("Payment for "+formData.amount+" has been processed");
+		}
+		function syncCollections()
+		{
+			alertmessage("All collection entries has been updated successfully");
+			var ProdCastPay=parseInt(localStorage.getItem("ProdCastPayCount"));
 
-						}
+			if(ProdCastPay==null || ProdCastPay==0)
+			{
+				$('#offlinecollections').hide();
+				return;
+			}
+
+			var formdata=JSON.parse(localStorage.getItem("Prodcastpayment"+ProdCastPay));
+			$.ajax({
+			type: 'POST',
+			url: baseUrl+'/prodcast/global/collection',
+		    timeout: 10000,
+		    dataType: 'json',
+			data:formdata,
+			encode: true,
+			success: function(response) 
+			{
+				if (response.error) 
+				{
+					alertmessage(response.errorMessage);
+				} 
+				else
+				{
+					$('#offlinecollections').hide();
+					localStorage.removeItem("Prodcastpayment"+ProdCastPay);
+					ProdCastPay--;
+					localStorage.setItem("ProdCastPayCount",ProdCastPay);
+					syncCollections();
+					//getPaymentForOrder(response,true);
+					$('#offlinecollections').hide();
+					$('#payment').val("");
+					$('#chequenumber').val("");
+					$('#commentorder').val("");
+				}
+			},
+			/*error: function()
+			{
+				alertmessage("No payments to store")
+			}*/
+			});
+		}
+			
+		function getdatefromstring(_date)
+		{
+				var formatLowerCase=myInputDateFormat.toLowerCase();
+				var formatItems=formatLowerCase.split(inputDelimiter);
+				var dateItems=_date.split(inputDelimiter);
+				var monthIndex=formatItems.indexOf("mm");
+				var dayIndex=formatItems.indexOf("dd");
+				var yearIndex=formatItems.indexOf("yyyy");
+				var month=parseInt(dateItems[monthIndex]);
+				month-=1;
+				var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+				return formatedDate;
+		}
+
+		Date.prototype.customFormat = function(formatString)
+		{
+			  var YYYY,YY,MMMM,MMM,MM,M,DDDD,DDD,DD,D,hhhh,hhh,hh,h,mm,m,ss,s,ampm,AMPM,dMod,th;
+			  YY = ((YYYY=this.getFullYear())+"").slice(-2);
+			  MM = (M=this.getMonth()+1)<10?('0'+M):M;
+			  MMM = (MMMM=["January","February","March","April","May","June","July","August","September","October","November","December"][M-1]).substring(0,3);
+			  DD = (D=this.getDate())<10?('0'+D):D;
+			  DDD = (DDDD=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][this.getDay()]).substring(0,3);
+			  th=(D>=10&&D<=20)?'th':((dMod=D%10)==1)?'st':(dMod==2)?'nd':(dMod==3)?'rd':'th';
+			  formatString = formatString.replace("#YYYY#",YYYY).replace("#YY#",YY).replace("#MMMM#",MMMM).replace("#MMM#",MMM).replace("#MM#",MM).replace("#M#",M).replace("#DDDD#",DDDD).replace("#DDD#",DDD).replace("#DD#",DD).replace("#D#",D).replace("#th#",th);
+			  h=(hhh=this.getHours());
+			  if (h==0) h=24;
+			  if (h>12) h-=12;
+			  hh = h<10?('0'+h):h;
+			  hhhh = hhh<10?('0'+hhh):hhh;
+			  AMPM=(ampm=hhh<12?'am':'pm').toUpperCase();
+			  mm=(m=this.getMinutes())<10?('0'+m):m;
+			  ss=(s=this.getSeconds())<10?('0'+s):s;
+			  return formatString.replace("#hhhh#",hhhh).replace("#hhh#",hhh).replace("#hh#",hh).replace("#h#",h).replace("#mm#",mm).replace("#m#",m).replace("#ss#",ss).replace("#s#",s).replace("#ampm#",ampm).replace("#AMPM#",AMPM);
+		};
+
+		function writeOutstandingBillsInitial(outstandingBillsParam)
+		{
+			$('#outstandingdiv').html(originalBills);
+			$('#outstandingDiv .tbl').empty();
+			var billNotFound = true;
+			//if (outstandingBills.length > 0)
+			outstandingBills = outstandingBillsParam;
+
+
+			for (var counter = 0; counter < outstandingBills.length; counter++) 
+			{
+				if( billNotFound )
+				{
+					billNotFound = false;
+					$('#paymentdiv').show();
+					$('#ordmsg').hide();
+					$('#outstandingDiv .tbl').append('<div class="tbl-row tbl-hed"><div class="tbl-cols">Select</div><div class="tbl-cols">Bill No.</div><div class="tbl-cols">Status</div><div class="tbl-cols">Bill Date</div><div class="tbl-cols">Total ('+currency+')</div><div class="tbl-cols">Balance ('+currency+')</div> </div>');
+				}
+				var orderStatus = "NEW";
+				if( outstandingBills[counter].orderStatus == "F") orderStatus="READY";
+				$('#outstandingDiv .tbl').append('<div class="tbl-row"><div class="tbl-cols"><input type="radio" class="radioButton"  id="billSelect' + counter + '" name="outstanding" value="' + outstandingBills[counter].billNumber + '" /></div><div class="tbl-cols"><a class="billNumber"  id="' + outstandingBills[counter].billNumber + '" data-role="button" data-mini="true" href="#billdetailspage">' + outstandingBills[counter].billNumber + '</a></div><div class="tbl-cols" >'+orderStatus+'</div><div class="tbl-cols" >' + stringToDate( outstandingBills[counter].billDate) + '</div><div class="tbl-cols">' + outstandingBills[counter].billAmount.toFixed(2) + '</div><div class="tbl-cols">' + outstandingBills[counter].outstandingBalance.toFixed(2) + '</div></div>');
+			}
+			if(billNotFound) 
+			{
+				$('#paymentdiv').hide();
+			}
+		}
+		
+		function writeOutstandingBills(response, gotoNewOrder,customerId)
+		{
+			//outstandingBill = response.outstandingBills;
+			$('#outstandingdiv').html(originalBills);
+			$('#outstandingDiv .tbl').empty();
+			var billNotFound = true;
+			//if (outstandingBills.length > 0)
+
+			for (var counter = 0; counter < outstandingBills.length; counter++) 
+			{
+				if(customerId==outstandingBills[counter].customerId)
+				{
+					if( billNotFound )
+					{
+						billNotFound = false;
+						$('#paymentdiv').show();
+						$('#ordmsg').hide();
+						$('#outstandingDiv .tbl').append('<div class="tbl-row tbl-hed"><div class="tbl-cols">Select</div><div class="tbl-cols">Bill No.</div><div class="tbl-cols">Bill Date</div><div class="tbl-cols">Total ('+currency+')</div><div class="tbl-cols">Balance ('+currency+')</div> </div>');
+						//$('#outstanding').append('<tr><td align="center"><input  id="billSelect'+counter+'" name="billNumber" value="'+outstandingBills[counter].billNumber+'" type="radio"/></td><td align="center"><a class="billNumber"  id="'+outstandingBills[counter].billNumber+'" data-role="button" data-mini="true" >'+outstandingBills[counter].billNumber+'<a/></td><td align="center">'+outstandingBills[counter].billDate+'</td><td align="center">'+outstandingBills[counter].billAmount+'</td><td align="center">'+outstandingBills[counter].outstandingBalance+'</td></tr>');
 					}
 
+					$('#outstandingDiv .tbl').append('<div class="tbl-row"><div class="tbl-cols billSelected"><input type="radio" class="radioButton"  id="billSelect' + counter + '" name="outstanding" value="' + outstandingBills[counter].billNumber + '" /></div><div class="tbl-cols"><a class="billNumber"  id="' + outstandingBills[counter].billNumber + '" data-role="button" data-mini="true" href="#billdetailspage">' + outstandingBills[counter].billNumber + '</a></div><div class="tbl-cols" >' + stringToDate( outstandingBills[counter].billDate) + '</div><div class="tbl-cols">' + outstandingBills[counter].billAmount.toFixed(2) + '</div><div class="tbl-cols">' + outstandingBills[counter].outstandingBalance.toFixed(2) + '</div></div>');
+				}
+			}
+
+			if(billNotFound) 
+			{
+				$('#paymentdiv').hide();
+				if( gotoNewOrder )
+				{
+					$("#orderdetailrow").val("");
+					$('#productvalue1').val("");
+					$('#quantityvalue1').val("");
+					$("#subtotal1").text("0.00");
+					$('#totalvalue').text('0.00');
+					resetOrderEntryPage = false;
+					$.mobile.navigate('#order-new');
+				}
+			}
+		}
+
+		function showHide()
+		{
+			if (userRole == "D" || userRole == "M") 
+			{
+				$(".salesmenu").show();
+				$(".distmenu").show();
+				$(".adminmenu").hide();
+			} 
+			else if (userRole == "S") 
+			{
+				$(".salesmenu").show();
+				$(".distmenu").hide();
+				$(".adminmenu").hide();
+			} 
+			else 
+			{
+				$(".salesmenu").show();
+				$(".distmenu").show();
+				$(".adminmenu").show();
+			}
+		}
+
+		function getLoginKey()
+		{
+			var loginkey=localStorage.getItem("ProdcastLogin");
+			if(loginkey != null)
+			{
+
+				$.mobile.navigate("#home");
+
+			}
+			else
+			{
+				$.mobile.navigate("#loginhome");
+			}
+		}
+		
+		
+		
+		function updateOrderStatus(){
+			 var formdata ={ "billNo" : billIdNo,"orderStatus" :"F","customerId":customerId , "employeeId":employeeId };
 
 
 
-			function getPaymentForOrder(response)
-							{
-								$('#payment').val("");
-								$('#chequenumber').val("");
-								$('#commentorder').val("");
-								outstandingBills = response.customer.outstandingBill;
-								writeOutstandingBills( response ,true ,customerId);
-								alertmessage("Payment for "+formData.amount+" has been processed");
-							}
-				function syncCollections()
-					{
-						alertmessage("All collection entries has been updated successfully");
 
 
-						var ProdCastPay=parseInt(localStorage.getItem("ProdCastPayCount"));
+									$.ajax({
+										type: 'POST' ,
+										url : baseUrl+'/prodcast/distributor/updateOrderStatus',
+										dataType : 'json',
+										data : formdata,
+										encode : true,
+										success : function( response ){
+											if( response.error) {
+												alertmessage('Please refresh the page and try again');
 
-						if(ProdCastPay==null || ProdCastPay==0)
-						{
-							$('#offlinecollections').hide();
-							return;
-						}
+												}
+												else{
+														outstandingBills=response.result;
+														if(billIdNo==outstandingBills[counter].billNumber)
 
-						var formdata=JSON.parse(localStorage.getItem("Prodcastpayment"+ProdCastPay));
-								$.ajax({
-                                    type: 'POST',
-                                    url: baseUrl+'/prodcast/global/collection',
-                                   timeout: 10000,
-								   dataType: 'json',
-									data:formdata,
-                                    encode: true,
-                                    success: function(response) {
-                                        if (response.error) {
-                                            alertmessage(response.errorMessage);
-                                        } else
-										{
-											$('#offlinecollections').hide();
-											localStorage.removeItem("Prodcastpayment"+ProdCastPay);
-											ProdCastPay--;
-											localStorage.setItem("ProdCastPayCount",ProdCastPay);
-											syncCollections();
-										//getPaymentForOrder(response,true);
-											$('#offlinecollections').hide();
-											$('#payment').val("");
-											$('#chequenumber').val("");
-											$('#commentorder').val("");
+												{
+
+														outstandingBills[counter].orderStatus="F";
+														//localStorage.setItem("OrderStatusForApplyDiscount","F")
+														//orderStatus="F";
+
+
+
+														}
+													//alertmessage('Order Status Has Been Updated Succesfully');
+
+
+												}
+
+
 
 										}
 
-									},
-								/*error: function()
-								{
 
+									});
 
-									alertmessage("No payments to store")
-
-
-								}*/
-							});
-
-						}
-			function getdatefromstring(_date)
+		}
+		$.ajax({
+			type: 'GET',
+			url: baseUrl+'/prodcast/global/getCountries',
+			dataType: 'json',
+			encode: true,
+			success: function(response) 
 			{
-					var formatLowerCase=myInputDateFormat.toLowerCase();
-					var formatItems=formatLowerCase.split(inputDelimiter);
-					var dateItems=_date.split(inputDelimiter);
-					var monthIndex=formatItems.indexOf("mm");
-					var dayIndex=formatItems.indexOf("dd");
-					var yearIndex=formatItems.indexOf("yyyy");
-					var month=parseInt(dateItems[monthIndex]);
-					month-=1;
-					var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
-					return formatedDate;
-
-			}
-
-
-
-			Date.prototype.customFormat = function(formatString){
-				  var YYYY,YY,MMMM,MMM,MM,M,DDDD,DDD,DD,D,hhhh,hhh,hh,h,mm,m,ss,s,ampm,AMPM,dMod,th;
-				  YY = ((YYYY=this.getFullYear())+"").slice(-2);
-				  MM = (M=this.getMonth()+1)<10?('0'+M):M;
-				  MMM = (MMMM=["January","February","March","April","May","June","July","August","September","October","November","December"][M-1]).substring(0,3);
-				  DD = (D=this.getDate())<10?('0'+D):D;
-				  DDD = (DDDD=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][this.getDay()]).substring(0,3);
-				  th=(D>=10&&D<=20)?'th':((dMod=D%10)==1)?'st':(dMod==2)?'nd':(dMod==3)?'rd':'th';
-				  formatString = formatString.replace("#YYYY#",YYYY).replace("#YY#",YY).replace("#MMMM#",MMMM).replace("#MMM#",MMM).replace("#MM#",MM).replace("#M#",M).replace("#DDDD#",DDDD).replace("#DDD#",DDD).replace("#DD#",DD).replace("#D#",D).replace("#th#",th);
-				  h=(hhh=this.getHours());
-				  if (h==0) h=24;
-				  if (h>12) h-=12;
-				  hh = h<10?('0'+h):h;
-				  hhhh = hhh<10?('0'+hhh):hhh;
-				  AMPM=(ampm=hhh<12?'am':'pm').toUpperCase();
-				  mm=(m=this.getMinutes())<10?('0'+m):m;
-				  ss=(s=this.getSeconds())<10?('0'+s):s;
-				  return formatString.replace("#hhhh#",hhhh).replace("#hhh#",hhh).replace("#hh#",hh).replace("#h#",h).replace("#mm#",mm).replace("#m#",m).replace("#ss#",ss).replace("#s#",s).replace("#ampm#",ampm).replace("#AMPM#",AMPM);
-			};
-
-
-			function writeOutstandingBillsInitial(outstandingBillsParam){
-
-					$('#outstandingdiv').html(originalBills);
-					$('#outstandingDiv .tbl').empty();
-					var billNotFound = true;
-					//if (outstandingBills.length > 0)
-					outstandingBills = outstandingBillsParam;
-
-
-						for (var counter = 0; counter < outstandingBills.length; counter++) {
-
-							if( billNotFound ){
-								billNotFound = false;
-								$('#paymentdiv').show();
-								$('#ordmsg').hide();
-								$('#outstandingDiv .tbl').append('<div class="tbl-row tbl-hed"><div class="tbl-cols">Select</div><div class="tbl-cols">Bill No.</div><div class="tbl-cols">Status</div><div class="tbl-cols">Bill Date</div><div class="tbl-cols">Total ('+currency+')</div><div class="tbl-cols">Balance ('+currency+')</div> </div>');
-							}
-							var orderStatus = "NEW";
-							if( outstandingBills[counter].orderStatus == "F") orderStatus="READY";
-							$('#outstandingDiv .tbl').append('<div class="tbl-row"><div class="tbl-cols"><input type="radio" class="radioButton"  id="billSelect' + counter + '" name="outstanding" value="' + outstandingBills[counter].billNumber + '" /></div><div class="tbl-cols"><a class="billNumber"  id="' + outstandingBills[counter].billNumber + '" data-role="button" data-mini="true" href="#billdetailspage">' + outstandingBills[counter].billNumber + '</a></div><div class="tbl-cols" >'+orderStatus+'</div><div class="tbl-cols" >' + stringToDate( outstandingBills[counter].billDate) + '</div><div class="tbl-cols">' + outstandingBills[counter].billAmount.toFixed(2) + '</div><div class="tbl-cols">' + outstandingBills[counter].outstandingBalance.toFixed(2) + '</div></div>');
-
-						//}
-
-						}
-
-
-					if(billNotFound) {
-						$('#paymentdiv').hide();
+				if (response.error) 
+				{
+					alertmessage(response.errorMessage);
+				} 
+				else 
+				{
+					countryMap = response.result;
+					timezoneMap=response.timezones;
+					for (counter = 0; counter < countryMap.length; counter++) 
+					{
+						$('#country').append('<option value="' + countryMap[counter].countryId + '">' + countryMap[counter].countryName.trim().toUpperCase() + '</option>')
+						$('#dist_Country').append('<option value="' + countryMap[counter].countryId + '">' + countryMap[counter].countryName.trim().toUpperCase() + '</option>')
+						$('#Employee_Country').append('<option value="' + countryMap[counter].countryId + '">' + countryMap[counter].countryName.trim().toUpperCase() + '</option>')
+						$('#set_country').append('<option value="' + countryMap[counter].countryId + '">' + countryMap[counter].countryName.trim().toUpperCase() + '</option>')
+						$('#registercountry').append('<option value="' + countryMap[counter].countryId + '">' + countryMap[counter].countryName.trim().toUpperCase() + '</option>')
 					}
-
+				}
 			}
-
-			function writeOutstandingBills(response, gotoNewOrder,customerId){
-					//outstandingBill = response.outstandingBills;
-
-					$('#outstandingdiv').html(originalBills);
-					$('#outstandingDiv .tbl').empty();
-					var billNotFound = true;
-					//if (outstandingBills.length > 0)
-
-
-
-						for (var counter = 0; counter < outstandingBills.length; counter++) {
-							if(customerId==outstandingBills[counter].customerId){
-							if( billNotFound ){
-								billNotFound = false;
-								$('#paymentdiv').show();
-								$('#ordmsg').hide();
-								$('#outstandingDiv .tbl').append('<div class="tbl-row tbl-hed"><div class="tbl-cols">Select</div><div class="tbl-cols">Bill No.</div><div class="tbl-cols">Bill Date</div><div class="tbl-cols">Total ('+currency+')</div><div class="tbl-cols">Balance ('+currency+')</div> </div>');
-
-								//$('#outstanding').append('<tr><td align="center"><input  id="billSelect'+counter+'" name="billNumber" value="'+outstandingBills[counter].billNumber+'" type="radio"/></td><td align="center"><a class="billNumber"  id="'+outstandingBills[counter].billNumber+'" data-role="button" data-mini="true" >'+outstandingBills[counter].billNumber+'<a/></td><td align="center">'+outstandingBills[counter].billDate+'</td><td align="center">'+outstandingBills[counter].billAmount+'</td><td align="center">'+outstandingBills[counter].outstandingBalance+'</td></tr>');
-							}
-
-
-							$('#outstandingDiv .tbl').append('<div class="tbl-row"><div class="tbl-cols"><input type="radio" class="radioButton"  id="billSelect' + counter + '" name="outstanding" value="' + outstandingBills[counter].billNumber + '" /></div><div class="tbl-cols"><a class="billNumber"  id="' + outstandingBills[counter].billNumber + '" data-role="button" data-mini="true" href="#billdetailspage">' + outstandingBills[counter].billNumber + '</a></div><div class="tbl-cols" >' + stringToDate( outstandingBills[counter].billDate) + '</div><div class="tbl-cols">' + outstandingBills[counter].billAmount.toFixed(2) + '</div><div class="tbl-cols">' + outstandingBills[counter].outstandingBalance.toFixed(2) + '</div></div>');
-
-						}
-						}
-
-					if(billNotFound) {
-						$('#paymentdiv').hide();
-						if( gotoNewOrder ){
-							$("#orderdetailrow").val("");
-							$('#productvalue1').val("");
-							$('#quantityvalue1').val("");
-							$("#subtotal1").text("0.00");
-							$('#totalvalue').text('0.00');
-						resetOrderEntryPage = false;
-							$.mobile.navigate('#order-new');
-
-
-						}
-					}
-
-			}
-
-			function showHide(){
-							if (userRole == "D" || userRole == "M") {
-			                                    $(".salesmenu").show();
-			                                    $(".distmenu").show();
-			                                    $(".adminmenu").hide();
-			                                } else if (userRole == "S") {
-			                                    $(".salesmenu").show();
-			                                    $(".distmenu").hide();
-			                                    $(".adminmenu").hide();
-
-			                                } else {
-			                                    $(".salesmenu").show();
-			                                    $(".distmenu").show();
-			                                    $(".adminmenu").show();
-
-
-			                                }
-			}
-
-			function getLoginKey(){
-				var loginkey=localStorage.getItem("ProdcastLogin");
-
-					if(loginkey != null)
-				    {
-
-					 $.mobile.navigate("#home");
-
-				    }
-				else{
-					$.mobile.navigate("#loginhome");
-				    }
-			}
-					$.ajax({
-                        type: 'GET',
-                        url: baseUrl+'/prodcast/global/getCountries',
-                        dataType: 'json',
-                        encode: true,
-                        success: function(response) {
-
-                            if (response.error) {
-                                alertmessage(response.errorMessage);
-                            } else {
-                                countryMap = response.result;
-								timezoneMap=response.timezones;
-                                for (counter = 0; counter < countryMap.length; counter++) {
-                                    $('#country').append('<option value="' + countryMap[counter].countryId + '">' + countryMap[counter].countryName.trim().toUpperCase() + '</option>')
-                                    $('#dist_Country').append('<option value="' + countryMap[counter].countryId + '">' + countryMap[counter].countryName.trim().toUpperCase() + '</option>')
-                                    $('#Employee_Country').append('<option value="' + countryMap[counter].countryId + '">' + countryMap[counter].countryName.trim().toUpperCase() + '</option>')
-									$('#set_country').append('<option value="' + countryMap[counter].countryId + '">' + countryMap[counter].countryName.trim().toUpperCase() + '</option>')
-									$('#registercountry').append('<option value="' + countryMap[counter].countryId + '">' + countryMap[counter].countryName.trim().toUpperCase() + '</option>')
-                                }
-
-                            }
-                        }
-                    });
+		});
 
 
 
@@ -535,6 +572,11 @@ $(document).ready(function() {
                     }
 
                  });
+				 $("#discountValueForCust").on("keypress keyup blur",function (event){
+					 if((event.which == 45)){
+						event.preventDefault(); 
+					 }
+				 });
 
 			$(document).on("pageinit",function(event){
 
@@ -706,7 +748,8 @@ $(document).ready(function() {
 			function expenseAutoComplete(exp_expmap)
 			{
 					$('#exp_category').val(exp_expmap.categoryId);
-					$("#exptab1:input").css('border','1px solid #d8e1b6');
+					$("#expensescreen :input").css('border', ' 1px solid #d8e1b6');
+					$("#expSaveSuccess").hide();
 					$('#exp_account').val(exp_expmap.account);
 					$('#exp_description').val(exp_expmap.description);
 					$('#exp_details').val(exp_expmap.description2);
@@ -741,6 +784,7 @@ $(document).ready(function() {
 
 							});
 				}
+			
 
 				// AdminStoretype starts
 			 localStorage.getItem("UserRole");
@@ -2290,7 +2334,7 @@ $(document).ready(function() {
 								brandId="";
 
 
-							$('#editBrandDialog').dialog("close");
+							editBrandDialog.dialog("close");
 							$("#editbrand").val('');
 
 
@@ -2304,11 +2348,8 @@ $(document).ready(function() {
 
 				});
 			}
-			function editBrand(evt)
-							{
-								brandId=evt.target.id.split("_")[1];
-								$('#editbrand').val($('#'+evt.target.id).html());
-								$("#editBrandDialog").dialog({
+			var editBrandDialog=$("#editBrandDialog");
+			editBrandDialog.dialog({
                             modal: true,
                             draggable: false,
                             resizable: false,
@@ -2317,9 +2358,17 @@ $(document).ready(function() {
                             hide: 'blind',
                             width: 150,
                             height: 170,
+							autoOpen:false,
                             dialogClass: 'ui-dialog-osx',
                         });
-						}
+			      function editBrand(evt)
+							{
+								brandId=evt.target.id.split("_")[1];
+								$('#editbrand').val($('#'+evt.target.id).html());
+								evt.preventDefault();
+								editBrandDialog.dialog('open');
+								
+						    }
 
 
                     //save for brand and category tab
@@ -2422,13 +2471,8 @@ $(document).ready(function() {
                                 }
                             });
                     });
-
-							function editsubcategory(evt)
-
-							{
-								subCategoryId=evt.target.id.split("_")[1];
-								$('#editsubcategory').val($('#'+evt.target.id).html());
-								$("#editSubCategoryDialog").dialog({
+							var editSubCategoryDialog=$("#editSubCategoryDialog");
+							editSubCategoryDialog.dialog({
                             modal: true,
                             draggable: false,
                             resizable: false,
@@ -2437,9 +2481,18 @@ $(document).ready(function() {
                             hide: 'blind',
                             width: 150,
                             height: 170,
+							autoOpen:false,
                             dialogClass: 'ui-dialog-osx',
-                        });
-						}
+                           });
+							function editsubcategory(evt)
+
+							{
+								subCategoryId=evt.target.id.split("_")[1];
+								$('#editsubcategory').val($('#'+evt.target.id).html());
+								evt.preventDefault();
+								editSubCategoryDialog.dialog('open');
+								
+						    }
 						function savesubcategory()
 						{
 							$("#editSubNull").hide();
@@ -2539,7 +2592,7 @@ $(document).ready(function() {
                               $('#subcategoryUpdate_'+subCategoryId).html(editsubcategory);
 								subCategoryId="";
 
-							$('#editSubCategoryDialog').dialog("close");
+							editSubCategoryDialog.dialog("close");
 							$("#editsubcategory").val('');
 						}
 					}
@@ -2727,12 +2780,8 @@ $(document).ready(function() {
 
 
 					 });
-
-					function editcategory(evt)
-							{
-								catId=evt.target.id.split("_")[1];
-								$('#editcategory').val($('#'+evt.target.id).html());
-								$("#editCategoryDialog").dialog({
+					 var editCategoryDialog=$("#editCategoryDialog");
+						editCategoryDialog.dialog({
                             modal: true,
                             draggable: false,
                             resizable: false,
@@ -2741,9 +2790,17 @@ $(document).ready(function() {
                             hide: 'blind',
                             width: 150,
                             height: 170,
+							autoOpen:false,
                             dialogClass: 'ui-dialog-osx',
                         });
-						}
+					function editcategory(evt)
+							{
+								catId=evt.target.id.split("_")[1];
+								$('#editcategory').val($('#'+evt.target.id).html());
+								evt.preventDefault();
+								editCategoryDialog.dialog('open');
+								
+						    }
 
 						function savecategory()
 						{
@@ -2844,7 +2901,7 @@ $(document).ready(function() {
                               $('#categoryUpdate_'+catId).html(editcategory);
 								catId="";
 
-							$('#editCategoryDialog').dialog("close");
+							editCategoryDialog.dialog("close");
 							$("#editcategory").val('');
 
 						}
@@ -3598,6 +3655,7 @@ $(document).ready(function() {
                 //$("#dist_Country").val("");
                 $("#dist_Postalcode").val("");
                 $("#dist_comments").val("");
+				$("#dist_fulfillmenttype").val(" ");
 
             };
 			//BilldetailsPage Starts//
@@ -3625,6 +3683,7 @@ $(document).ready(function() {
 					selectedBill=evt.target.id;
 					$.mobile.navigate("#billdetailspage");
 					originForBillDetails="order-entry";
+					localStorage.setItem("currentBillId",selectedBill);
 
 					resetOrderEntryPage = false;
 			});
@@ -3632,21 +3691,140 @@ $(document).ready(function() {
 				$(document).delegate(".returnProduct",'click',function(evt){
 									 		productId = evt.target.id;
 									 		returnQty(evt);
-
 				});
-				$('.deleteOrderDialog').hide();
-
-
+					$('#billPaymentPanel').hide();		
 				billDetailsOriginal= $('#billdetailspage').html();
 				$("#returnQtymsg").hide();
-
-
-
+			 });
+					var discountDialog=$("#saveDiscount");
+		           discountDialog.dialog({
+                            modal: true,
+                            draggable: false,
+                            resizable: false,
+                            position: ['center'],
+                            show: 'blind',
+                            hide: 'blind',
+                            width: 'auto',
+                            height: 'auto',
+						    autoOpen: false,							
+                            dialogClass: 'ui-dialog-osx',
+                        });				 
+						
+			
+			$(document).delegate('.applyDiscountForCust','click',function(evt){
+				  evt.preventDefault();
+				  $('#discountmsg').hide();
+				  $("#saveDiscount :input").css('border', ' 1px solid #d8e1b6');				
+				  discountDialog.dialog('open');					
+						
 			});
-			$(document).delegate('#deleteOrder','click',function(evt){
+			
+						$(document).delegate(".applyDiscount","click",function(evt){
+					
+							var validate=true;
+						
+							//var orderDetailsId=localStorage.getItem("orderDetailsId");
+						//	var selectedBill=localStorage.getItem("currentBillId");
+							
+							
+							var discountValue="";
+							if($('#discountValueForCust').val()==""){
+								validate=false;
+							    $('#discountValueForCust').css('border', ' 1px solid red');
+							}
+							else{
+								discountValue=$('#discountValueForCust').val();
+							}
+							var discountType="0";
+							if($("#discountTypeForCust").val()=="0"){
+								validate=false;
+								$('#discountTypeForCust').css('border', ' 1px solid red');
+							}
+							else{
+								discountType=$("#discountTypeForCust").val();
+							}
+							
+							 $("#discountTypeForCust").change(function() {
+								  $("#discountTypeForCust").css('border', ' 1px solid #d8e1b6');
+                               if ($("#discountTypeForCust").val() == "0") {
+                                 $("#discountTypeForCust").focus();
+                                 } 
+								 else{
+                                  discountType = $("#discountTypeForCust").val();
+                                   }
+                                 });
+							
 
-							  $(".deleteOrderDialog").dialog({
+							if(!validate)
+							{
+								return;
+							}
 
+						
+						
+							
+							
+							var formData={
+								"billNumber":selectedBill,
+								"orderDetailId":orderDetailsId,								
+								"employeeId":employeeId,
+								"discountValue":discountValue,
+								"discountType":discountType
+							};
+							$.ajax({
+								type:'POST',
+								url:baseUrl+'/prodcast/distributor/updateDiscount',
+								dataType:'json',
+								data:formData,
+								encoding:false,
+								success:function(response){
+									if(response.error){
+										$('#discountmsg').show();
+									}
+									else{
+										
+										var rorder=response.order;
+									  	outstandingBills=response.outstandingBills;									
+										  var discountType=rorder.discountType;
+									      if(discountType==0){
+									        $('#discountTypeForCust').attr("disabled", false);
+									       }
+							
+							               else if(discountType==1){									
+									       $('#discountTypeForCust option:eq('+discountType+')').attr('selected', 'selected');										
+								           $('#discountTypeForCust').attr("disabled", true);
+							              }
+						         	      else{
+										  $('#discountTypeForCust option:eq('+discountType+')').attr('selected', 'selected');										
+								          $('#discountTypeForCust').attr("disabled", true);		
+						 
+						             	   }
+										  
+										 $('#billdetailspage #discount').html(rorder.discount);
+								         $('#billdetailspage #totalAmt').html( rorder.totalAmount.toFixed(2) );
+								         $('#billdetailspage #outstandingBalance').html( rorder.outstandingBalance.toFixed(2));
+																			
+										 discountDialog.dialog("close");										
+										$("#discountValueForCust").val("");
+										alertmessage("Discount Has Been Applied Successfully");
+										//writeOutstandingBills (outstandingBills , false,customerId);
+									
+										}
+										
+						        }
+								
+						
+							});
+							
+							
+					    });
+					
+					
+					// update discount ends
+			
+			
+			var deleteOrderDialog=$("#deleteOrderDialog");
+			            deleteOrderDialog.dialog({
 			                            modal: true,
 			                            draggable: false,
 			                            resizable: false,
@@ -3655,9 +3833,14 @@ $(document).ready(function() {
 			                            hide: 'blind',
 			                            width: 300,
 			                            height: 220,
+										autoOpen:false,
 			                            dialogClass: 'ui-dialog-osx',
 			                        });
 
+			
+			$(document).delegate('#deleteOrder','click',function(evt){
+				    evt.preventDefault();
+					deleteOrderDialog.dialog('open');		
 				 });
 			$(document).delegate('.deleteOrderYes','click',function(){
 
@@ -3678,7 +3861,7 @@ $(document).ready(function() {
 													selectedBill="";
 													outstandingBills=response.result;
 													alertmessage("The order has been deleted successfully");
-	                                                 $(".deleteOrderDialog").dialog("close");
+	                                                deleteOrderDialog.dialog("close");
 													writeOutstandingBills (outstandingBills , false,customerId);
 													$('#selectbillnumber').val('');
 
@@ -3692,10 +3875,8 @@ $(document).ready(function() {
 
 						           });
 					           	$(document).delegate('.deleteOrderNo','click',function(){
-
-				                       $(".deleteOrderDialog").dialog("close");
-
-								                     })
+				                       deleteOrderDialog.dialog("close");  
+								     })
 
 
 			$(document).delegate('.printable','click', function(evt){
@@ -3703,23 +3884,289 @@ $(document).ready(function() {
 						window.print();
 
 					});
+				
+				
+				
+				
+				$(document).delegate("#billmop","change",function()
+					{
+						var mop = $("#billmop").val();
+						if(mop == '1')
+						{
+							$('#checkdivision').show();
+						}
+						else{
+							$('#checkdivision').hide();
+						}
+						if(orderStatus=="F"){
+							$('#billfullFilled').hide();
+						}
+						else{
+							$('#billfullFilled').show();
+						}
+
+                    });
+					
+					$(document).delegate('.applyPaymentForCust','click', function(evt){
+							$('#billPaymentPanel').show();							
+								//evt.preventDefault();	
+									var mop = $("#billmop").val();
+									if(mop == '1')
+									{
+										$('#checkdivision').show();
+									
+									}
+									
+									else{
+										$('#checkdivision').hide();
+									}
+									
+									
+									if(orderStatus=="F"){
+										$('#billfullFilled').hide();
+										
+									}
+									else{
+										$('#billfullFilled').show();
+									}
+
+
+						
+
+					});
+			$(document).delegate('.billPaymentSubmit',"click", function(e) {
+					var outstandingAmount="";
+			//	e.preventDefault();
+				$('#billordmsg').hide();
+				$('#billpayalert').hide();
+				$('#billalert').hide()
+				$('#billpamsg').hide();
+				$('#billpmsg').hide();
+				$('#billminbalance1').hide();
+				$('#billmessageForZero').hide();
+				$('#fullfilledmsg').hide();
+             
+					var payment = $("#billPayment").val();
+					var payvalidate=true;
+						if (payment == "")
+						{
+
+						 payvalidate=false;
+						$('#billPayment').css('border', '1px solid red');
+						$('#billpamsg').show();
+						}
+						else{
+						$('#billpamsg').hide();
+						}
+						var mop = $("#billmop").val();
+						if (mop == "")
+						{
+						 payvalidate=false;
+						$('#billmop').css('border', '1px solid red');
+						$('#billpmsg').show();
+
+						}
+						else
+						{
+						$('#billpmsg').hide();
+						}
+
+						var mop = $("#billmop").val();
+						if(mop == '1')
+						{
+						var chequenumber=$('#billchequenumber').val();
+						var payvalidate=true;
+						if (chequenumber == "")
+						{
+						 payvalidate=false;
+						$('#billchequenumber').css('border', '1px solid red');
+						$('#billchequen').show();
+						}
+						else{
+						$('#billchequen').hide();
+						}
+
+						var commentorder=$('#billcommentorder').val();
+						if (commentorder == "")
+						{
+						 payvalidate=false;
+						$('#billcommentorder').css('border', '1px solid red');
+						$('#billcommento').show();
+						}
+						else{
+						$('#billcommento').hide();
+						}
+                            
+					}
+                    
+                    if( !payvalidate ) return;
+           
+                            billId = selectedBill;
+                            outstandingAmount = outstandingBalance;
+
+                           
+							
+						if(payment>outstandingAmount)
+							{
+							$('#billpayalert').show();
+							return;
+							}
+						else
+						{
+							$('#billpayalert').hide();
+						}
+						/*if(payment > '0-1')
+
+						{
+							$("#messageForZero").show();
+						}
+						else
+						{
+
+						$("#messageForZero").hide();
+						}
+						if(payment >=1)
+						{
+							$("#messageForZero").hide();
+						}*/
+
+
+                    var formData = {
+                        "employeeId": employeeId,
+                        "billId": billId,
+                        "amount": $('#billPayment').val(),
+                        "customerId": customerId,
+						"paymentType":mop,
+						"refNo":chequenumber,
+						"refDetail":commentorder
+                    };
+
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: baseUrl+'/prodcast/global/collection',
+                                    dataType: 'json',
+									timeout: 10000,
+                                    data: formData,
+                                    encode: true,
+                                    success: function(response) {
+                                        if (response.error) {
+                                            alertmessage(response.errorMessage);
+                                        } else {
+                                            $('#billPayment').val("");
+											$('#billchequenumber').val("");
+											$('#billcommentorder').val("");
+											
+											//$('#billPaymentPanel').dialog("close");
+											$("#billfullFilled").hide();
+											$('#billPaymentPanel').hide();
+											outstandingBills = response.customer.outstandingBill;
+											
+
+                                            var order = response.bill;
+											$('#billdetailspage #outstandingBalance').html( order.outstandingBalance.toFixed(2) );
+											outstandingBalance=order.outstandingBalance;
+											 orderEntries = order.collectionEntries;
+										
+												
+													var paid=0;
+													$('#billdetailspage #paytable').empty();
+													$('#billdetailspage #paytable').append( '<div class="tbl-row tbl-hed"><div class="tbl-cols">Date</div><div class="tbl-cols">Received By</div><div class="tbl-cols">Amount ('+currency+')</div></div>');
+													$('#billdetailspage #paytable').show();
+
+													for(counter=0;counter<orderEntries.length;counter++){
+														 var entry1 = orderEntries[counter];
+														 //var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+(counter+1)+'</div><div class="tbl-cols">'+stringToDate(entry1.paymentDate)+'</div><div class="tbl-cols">'+entry1.employeeName+'</div><div class="tbl-cols">'+entry1.amountPaid.toFixed(2)+'</div></div>';
+														 var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+stringToDate(entry1.paymentDate)+'</div><div class="tbl-cols">'+entry1.employeeName+'</div><div class="tbl-cols">'+entry1.amountPaid.toFixed(2)+'</div></div>';
+														 $('#billdetailspage #paytable').append( trstr1 );
+														 
+														 
+														 paid=paid+entry1.amountPaid;
+													 }
+													 $('#billdetailspage #paytable').show();
+													 $('#billdetailspage #paid').html( paid.toFixed(2) );
+													alertmessage("Payment for "+formData.amount+" has been processed");
+												}
+										
+									},
+									error: function()
+									{
+										//alert("Storing in Local Storage ");
+										var ProdCastPay=localStorage.getItem("ProdCastPayCount");
+
+										if(ProdCastPay==null)
+										{
+
+											ProdCastPay = parseInt(localStorage.getItem("ProdCastPayCount"));
+											ProdCastPay=1;
+
+										}
+										else
+										{
+
+
+											ProdCastPay++;
+
+										}
+										localStorage.setItem("ProdCastPayCount",ProdCastPay);
+
+										localStorage.setItem("Prodcastpayment"+ProdCastPay,JSON.stringify(formData));
+
+										alertmessage("The payment has been saved in offline mode");
+
+
+									}
+                                });
+                            /*}
+                        }
+                    }*/
+
+                });
+			/*	$(document).delegate('#billPayment','click',function(e){
+					e.preventDefault();
+					$('#billpamsg').hide();
+					$('#billpaalert').hide();
+					$('#fullfilledmsg').hide();
+					
+				});*/
+
+			$(document).delegate('.billfullFilled',"click",function(e){
+			
+							e.preventDefault();
+										billIdNo = selectedBill;
+									    customerId = customerId;
+								updateOrderStatus();
+								
+								$('#fullfilledmsg').show();
+								$("#billfullFilled").hide();
+								orderStatus="F";
+								$('#applyDiscountForCust').show();						
+
+
+								});
+			
 			$("#billdetailspage").on('pageshow', function(e) {
 
 				var returnEntries=[];
-				var productId = "";
-				$('.deleteOrderDialog').hide();
+				var productId = "";							
 				$("#returnQtymsg").hide();
-					$('#billdetailspage').html( billDetailsOriginal);
-					$(".distcurrency").html(currency);
-					showHide();
-
+				$('#billdetailspage').html( billDetailsOriginal);
+				$(".distcurrency").html(currency);
+				showHide();
+					$('#billPaymentPanel').hide();	
+					 $('#billPaymentPanelHide').on("click", function(e) {
+                
+				 $('#billPaymentPanel').hide();
+				 
+            });
+					
 					$('#returnIdsave').on('click', function(){
 							var returnvalidate=true;
 							$("#returnQtymsg").hide();
 							 var returnQty="";
 							 returnQty = $("#returnQty").val();
 
-				if ($('#returnQty').val() == "" )
+				    if ($('#returnQty').val() == "" )
 							{
 								returnvalidate=false;
 								$('#returnQty').css('border', '1px solid red');
@@ -3811,49 +4258,115 @@ $(document).ready(function() {
 							}
 							else{
 								 var order = response.order;
+								if (order.deliveryAddress != null && order.deliveryAddress != "")
+								  {
+									  $('#billdetailspage #deliveryAddress').text( order.deliveryAddress );
+								  }
+								  else
+								  {
+									  $('.deliveryAddressType').hide();
+								  }
+                                
+                                 var orderType="";
+                                
+                                
+                                
 								 var customer=order.customer;
 								 var customerAddress=(customer.billingAddress1+" "+customer.billingAddress2+" "+customer.billingAddress3);
-							     var  custStatepost=(customer.city+","+customer.state+customer.postalCode);
+							     var  custStatepost=(customer.city+","+customer.state+" "+customer.postalCode);
 								 var distributor=order.distributor;
 							     var distAddress=(distributor.address1+" "+distributor.address2+" "+distributor.address3);
 								 var  distCityState=(distributor.city+","+distributor.state+distributor.postalCode);
-								 var distPhoneNumber=("PhoneNumber:"+distributor.homePhone)	;
-								 var custPhoneNumber=("PhoneNumber:"+customer.phonenumber)	;
+								 var distPhoneNumber=("Ph: "+distributor.homePhone)	;
+								 var custPhoneNumber=("Ph: "+customer.phonenumber)	;
+								 var orderId=order.orderId;
+								 orderStatus=order.orderStatus;
+								 orderDetailsId=orderId;
+								 var status="";
+								 
+								// localStorage.setItem("orderDetailsId",orderId);
+								 //localStorage.setItem("OrderStatusForApplyDiscount",orderStatus);
+								 if(orderStatus=="F"){
+										$("#applyDiscountForCust").show();
+										status="READY";
+									}
+									else{
+										$("#applyDiscountForCust").hide();
+										status="NEW";
+									}
 
 									var  discount=$('#discountValue').val();
 									if($('#discountValue').val()=="")
 									{
 										discount=currency+'0';
+										
 									}
+									 
+                                
+                                if( distributor.fulfillmentType!='0'){
+                                    if( order.fulfillmentType == '0' ){
+                                        orderType = "PICKUP";
+                                    }
+                                    else if( order.fulfillmentType == '1' ){
+                                        orderType = "DELIVERY";
+                                    }
+                                }
+								
+								
+									var discountReturnType=order.discountType;
+									if(discountReturnType==0){
+									     $('#discountTypeForCust').attr("disabled", false);
+										 $('#discountTypeForCust').empty();
+										 $('#discountTypeForCust').append('<option value="0">&nbsp;</option>');
+								         $('#discountTypeForCust').append('<option value="1">Amount</option>');
+								         $('#discountTypeForCust').append('<option value="2">Percentage</option>');
+									}
+							
+							        else if(discountReturnType==1){	
+										 $('#discountTypeForCust').empty();								
+								         $('#discountTypeForCust').append('<option value="1">Amount</option>');								
+									     $('#discountTypeForCust option:eq('+discountReturnType+')').attr('selected', 'selected');										
+								         $('#discountTypeForCust').attr("disabled", true);
+							        }
+						         	else{
+								    	$('#discountTypeForCust').empty();								
+								        $('#discountTypeForCust').append('<option value="2">Percentage</option>');										
+									    $('#discountTypeForCust option:eq('+discountReturnType+')').attr('selected', 'selected');										
+								      
+										 $('#discountTypeForCust').attr("disabled", true);		
+						 
+						           	}
+								
+								   
+								   if (distributor.openToPublic == false)
+								   {
+									   $('#billdetailspage #customerMname').text( customer.customerName );
+								   }
+								   else
+								   {
+									   $('#billdetailspage #customerMname').html( customer.firstname+' &nbsp;'+customer.lastname );
+								   }
 
-									 var returntype=$("#discountType").val();
-
-									 if(returntype==1){
-										 discount=currency+(order.discount);
-										 //discount=($(".distcurrency").html(currency))+(order.discount);
-									 }
-									  if(returntype==2){
-										 discount=(order.discount)+'%';
-								  }
-
-								   /*$('#billdetailspage #distMname').text( distributor.companyName );
-								   $('#billdetailspage #distAddress').text(distAddress );
-								   $('#billdetailspage #distCity').text(distCityState );
-								   $('#billdetailspage #distPhone').text(distPhoneNumber );*/
-
-								   $('#billdetailspage #customerMname').text( customer.customerName );
+								   //$('#billdetailspage #customerMname').text( customer.customerName );
 								   $('#billdetailspage #custAddress').text(customerAddress );
 								   $('#billdetailspage #custCity').text(custStatepost );
 								   $('#billdetailspage #custPhone').text(custPhoneNumber);
 
 								   $('#billdetailspage #billNumber').text( selectedBill );
+								   $('#billdetailspage #orderStatus').text( selectedBill );
 								   $('#billdetailspage #billDate').text( stringToDate (order.billDate) );
 								   //$('#billdetailspage #employeeName').text( order.employeeName );
-								   $('#billdetailspage #discountValue').text(discount);
-								   $('#billdetailspage #totalAmount').text( order.totalAmount.toFixed(2) );
-								  $('#billdetailspage #outstandingBalance').text( order.outstandingBalance.toFixed(2) );
+								   
+								   
+                                   $('#billdetailspage #distributorName').html(distributor.companyName);
+                                   $('#billdetailspage #orderType').html(orderType);
+								
+								
+                                
 								 //Adding products.
 									 var orderEntries = order.orderEntries;
+									 var totalTax=0;
+									 var subTotal=0;
 
 									 for(counter=0;counter<orderEntries.length;counter++){
 										 var entry1 = orderEntries[counter];
@@ -3862,16 +4375,32 @@ $(document).ready(function() {
 
 										 $('#billdetailspage #ordtable').append( trstr1 );
 										 $('#billdetailspage #ordtable').show();
+										 totalTax=totalTax+(entry1.salesTax+entry1.otherTax);
+										 subTotal=subTotal+entry1.subtotal;
 									 }
-
+									
+									$('#billdetailspage #subTotal').html(subTotal.toFixed(2));
+									$('#billdetailspage #totalTax').html(totalTax.toFixed(2));
+									$('#billdetailspage #discount').html(order.discount.toFixed(2));
+									$('#billdetailspage #totalAmt').html( order.totalAmount.toFixed(2) );
+									
+								   $('#billdetailspage #outstandingBalance').html( order.outstandingBalance.toFixed(2) );
+								   outstandingBalance=order.outstandingBalance;
 									 orderEntries = order.collectionEntries;
+                                
+                                   if( orderEntries.length==0){
+                                        $('#billdetailspage #paymentDetailsDiv').hide();
+                                     }
+								var paid=0;
 
 									 for(counter=0;counter<orderEntries.length;counter++){
 										 var entry1 = orderEntries[counter];
 										 //var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+(counter+1)+'</div><div class="tbl-cols">'+stringToDate(entry1.paymentDate)+'</div><div class="tbl-cols">'+entry1.employeeName+'</div><div class="tbl-cols">'+entry1.amountPaid.toFixed(2)+'</div></div>';
 										 var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+stringToDate(entry1.paymentDate)+'</div><div class="tbl-cols">'+entry1.employeeName+'</div><div class="tbl-cols">'+entry1.amountPaid.toFixed(2)+'</div></div>';
 										 $('#billdetailspage #paytable').append( trstr1 );
+										 paid=paid+entry1.amountPaid;
 									 }
+									 $('#billdetailspage #paid').html( paid.toFixed(2) );
 									 var returnEntries = order.returnEntries;
 
 									 									 for(counter=0;counter<returnEntries.length;counter++){
@@ -3888,11 +4417,24 @@ $(document).ready(function() {
 									 });*/
 								}
 						}
+
 					});
+					
+					
+								
+					
 					$("#b_close").on('click', function(evt){
 
 							$.mobile.navigate('#'+originForBillDetails);
-
+							if(originForBillDetails=="order-entry"){
+								if(customerId == "" )
+									writeOutstandingBillsInitial(outstandingBills)
+								else
+									writeOutstandingBills( outstandingBills ,false ,customerId);
+								
+							}
+							
+							selectedBill ="";
 					   });
 				$("#billdetailspage :input").on('click', function() {
 																	$(this).css('border', ' 1px solid #d8e1b6');
@@ -4088,7 +4630,7 @@ $(document).ready(function() {
 										$('#expcaton').show();
 										$('#expCatUpdate_'+expcatId).html(expCat);
 										expcatId="";
-										$('#editCatDialog').dialog("close");
+										editCatDialog.dialog("close");
 										$("#editExpCat").val('');
 									}
 
@@ -4101,22 +4643,27 @@ $(document).ready(function() {
 
 						});
 							}
+							var editCatDialog=$("#editCatDialog");
+							editCatDialog.dialog({
+								modal: true,
+								draggable: false,
+								resizable: false,
+								position: ['center'],
+								show: 'blind',
+								hide: 'blind',
+								width: 150,
+								height: 170,
+								autoOpen:false,
+								dialogClass: 'ui-dialog-osx',
+                             });
 							 function editExpCat(evt)
 							{
 								expcatId=evt.target.id.split("_")[1];
+								evt.preventDefault();
 								$('#editExpCat').val($('#'+evt.target.id).html());
-								$("#editCatDialog").dialog({
-                            modal: true,
-                            draggable: false,
-                            resizable: false,
-                            position: ['center'],
-                            show: 'blind',
-                            hide: 'blind',
-                            width: 150,
-                            height: 170,
-                            dialogClass: 'ui-dialog-osx',
-                        });
-						}
+								editCatDialog.dialog('open');
+								
+						     }
 
 
             $('#expcat_save').on("click", function() {
@@ -4726,6 +5273,7 @@ $(document).ready(function() {
 							if(s>m){
 								$('#disreport_startdate').css('border', '1px solid red');
 								$("#disreportodaymsg").show();
+								$("#disreportstartmsg").hide();
 								validated = false;
 							}
 							if(d>m){
@@ -4991,6 +5539,7 @@ $(document).ready(function() {
 					if(s>m){
 						$('#report_startdate').css('border', '1px solid red');
 						$("#reportodaymsg").show();
+						$("#reportstartmsg").hide();
 						validated = false;
 					}
 				    if(d>m){
@@ -5143,7 +5692,41 @@ $(document).ready(function() {
 				  $(document).on("click","#refreshreport" , refreshreportpage );
 				});
 
+				// mysetting autocomplete 		      
+				function settingAutocomplete(){
+                $.ajax({
+                    type: 'GET',
+                    url: baseUrl+'/prodcast/distributor/setting?employeeId=' + getEmployeeId(),
+                    dataType: 'json',
+                    encode: true,
+                    success: function(response) {
+                        if (response.error) {
+                            alertmessage(response.errorMessage);
+                        } else {
+                            var setting = response.result;
+                            $('#set_tax').val(setting.salesTaxRate);
+                            $('#set_comp').val(setting.companyName);
+                            $('#set_addr').val(setting.address);
+                            $('#set_city').val(setting.city);
+                            $('#set_state').val(setting.stateorprovince);
+                            $('#set_postal').val(setting.postalcode);
+                            $('#set_country').val(setting.country).change();
+                            $('#set_timezone').val(setting.timezone);
 
+                            $('#set_ph').val(setting.phoneNumber);
+                            $('#set_fax').val(setting.faxNumber);
+							$("#set_fulfillmenttype").val(setting.fulfillmentType).change();
+							//if($("#set_fulfillmenttype").val=='1'||$("#set_fulfillmenttype").val=='3'){
+								$('#set_deliveryAmount').val(setting.minimumDeliveryAmount);
+							//}
+
+
+                        }
+					
+                        }
+					  });
+			    }
+				
             $("#Area").on("pageinit", function() {
 
 			$("#editAreaNull").hide();
@@ -5211,38 +5794,39 @@ $(document).ready(function() {
                         }
                     }
                 });
-
-
-
-                // mysettings screen starts
-                $.ajax({
-                    type: 'GET',
-                    url: baseUrl+'/prodcast/distributor/setting?employeeId=' + getEmployeeId(),
-                    dataType: 'json',
-                    encode: true,
-                    success: function(response) {
-                        if (response.error) {
-                            alertmessage(response.errorMessage);
-                        } else {
-                            var setting = response.result;
-                            $('#set_tax').val(setting.salesTaxRate);
-                            $('#set_comp').val(setting.companyName);
-                            $('#set_addr').val(setting.address);
-                            $('#set_city').val(setting.city);
-                            $('#set_state').val(setting.stateorprovince);
-                            $('#set_postal').val(setting.postalcode);
-                            $('#set_country').val(setting.country).change();
-                            $('#set_timezone').val(setting.timezone);
-
-                            $('#set_ph').val(setting.phoneNumber);
-                            $('#set_fax').val(setting.faxNumber);
-
-                        }
-						   var salesrateforproduct=$("#set_tax").val();
+         
+				settingAutocomplete();
+				 $('#set_fulfillmenttype').change( function() {
+									var set_fulfillmenttype=$("#set_fulfillmenttype").val();
+						           if(set_fulfillmenttype== '1' || set_fulfillmenttype== '3' ){
+									  $(".set_minimumDeliveryAmount").show();
+									
+										  
+									  }
+									  								
+					               
+					              else{
+						              $(".set_minimumDeliveryAmount").hide();
+						              $("#set_deliveryAmount").val("0");
+									  
+									
+					                 }
+				                     });
+					
+				
+				
+	                            var salesrateforproduct=$("#set_tax").val();
 							localStorage.setItem("salesrateforproduct",salesrateforproduct);
-                    }
-                });
-				 var set_country=$('#set_country').val();
+							var set_fulfillmenttype=$("#set_fulfillmenttype").val();
+					          if(set_fulfillmenttype== '1' || set_fulfillmenttype== '3' ){
+					                   	$(".set_minimumDeliveryAmount").show();
+					           }
+					         else{
+						       $(".set_minimumDeliveryAmount").hide();
+					          }
+				
+				
+				         var set_country=$('#set_country').val();
 									$('#set_country').change( function() {
 									if($('#set_country').val()=="")
 									{
@@ -5270,12 +5854,8 @@ $(document).ready(function() {
 
             //ARea Screen Auto Load Over
 					//$('.editableArea').on("click", function(evt)
-
-					function editArea(evt)
-							{
-								areaId=evt.target.id.split("_")[1];
-								$('#editArea').val($('#'+evt.target.id).html());
-								$("#editDialog").dialog({
+						var editDialog=$("#editDialog");
+					      editDialog.dialog({
                             modal: true,
                             draggable: false,
                             resizable: false,
@@ -5284,8 +5864,15 @@ $(document).ready(function() {
                             hide: 'blind',
                             width: 215,
                             height: 210,
+							autoOpen:false,
                             dialogClass: 'ui-dialog-osx',
                         });
+					function editArea(evt)
+							{
+								areaId=evt.target.id.split("_")[1];
+								$('#editArea').val($('#'+evt.target.id).html());
+								evt.preventDefault();
+								editDialog.dialog('open');
 						}
 						function savearea()
 							{
@@ -5364,7 +5951,7 @@ $(document).ready(function() {
 												$('#areaon').show();
 												$('#areaUpdate_'+areaId).html(editArea);
 												areaId="";
-												$('#editDialog').dialog("close");
+												editDialog.dialog("close");
 												$("#editArea").val('');
 									}
 								}
@@ -5501,66 +6088,52 @@ $(document).ready(function() {
             //setting screen save starts
 
             $('#setting_save').on('click', function() {
-
-               /* set_tax = $("#set_tax").val();
-
-                set_comp = $("#set_comp").val();
-
-                set_addr = $("#set_addr").val();
-
-                set_city = $("#set_city").val();
-
-                set_state = $("#set_state").val();
-
-                set_postal = $("#set_postal").val();
-
-                set_country = $("#set_country").val();
-
-                set_ph = $("#set_ph").val();
-
-                set_fax = $('#set_fax').val();*/
-
-
-
-
+				var valid=true;          
                 var set_tax = "";
                 if ($('#set_tax').val() == "") {
+					valid=false;
                     $('#set_tax').css('border', '1px solid red');
                 } else {
                     set_tax = $("#set_tax").val();
                 }
                 var set_comp = "";
                 if ($('#set_comp').val() == "") {
+						valid=false;
                     $('#set_comp').css('border', '1px solid red');
                 } else {
                     set_comp = $("#set_comp").val().toUpperCase();
                 }
                 var set_addr = "";
                 if ($('#set_addr').val() == "") {
+						valid=false;
                     $('#set_addr').css('border', '1px solid red');
                 } else {
                     set_addr = $("#set_addr").val().toUpperCase();
                 }
                 var set_city = "";
                 if ($('#set_city').val() == "") {
+						valid=false;
                     $('#set_city').css('border', '1px solid red');
                 } else {
                     set_city = $("#set_city").val().toUpperCase();
                 }
                 var set_state = "";
                 if ($('#set_state').val() == "") {
+						valid=false;
                     $('#set_state').css('border', '1px solid red');
                 } else {
                     set_state = $("#set_state").val().toUpperCase();
                 }
                 var set_postal = "";
                 if ($('#set_postal').val() == "") {
+						valid=false;
                     $('#set_postal').css('border', '1px solid red');
                 } else {
                     set_postal = $("#set_postal").val().toUpperCase();
                 }
                 var set_country = "";
                 if ($('#set_country').val() == "") {
+						valid=false;
                     $('#set_country').css('border', '1px solid red');
                 } else {
                     set_country = $("#set_country").val();
@@ -5568,22 +6141,52 @@ $(document).ready(function() {
 
 				var set_timezone="";
 				 if ($('#set_timezone').val() == "") {
+					 	valid=false;
                     $('#set_timezone').css('border', '1px solid red');
                 } else {
                     set_timezone = $("#set_timezone").val();
                 }
                 var set_ph = "";
                 if ($('#set_ph').val() == "") {
+						valid=false;
                     $('#set_ph').css('border', '1px solid red');
                 } else {
                     set_ph = $("#set_ph").val();
                 }
                 var set_fax = "";
 				 if ($('#set_fax').val() == "") {
+					 	valid=false;
                     $('#set_fax').css('border', '1px solid red');
                 } else {
                     set_fax = $("#set_fax").val();
                 }
+				var set_fulfillmenttype = "";
+                if ($('#set_fulfillmenttype').val() == "") {
+						valid=false;
+                    $('#set_fulfillmenttype').css('border', '1px solid red');
+                } else {
+                    set_fulfillmenttype = $("#set_fulfillmenttype").val();
+                }
+				var  set_deliveryAmount="";
+			   if (set_fulfillmenttype=='1' || set_fulfillmenttype=='3'){
+				
+				if ($('#set_deliveryAmount').val() == "") {
+						valid=false;
+                    $('#set_deliveryAmount').css('border', '1px solid red');
+                } 
+              			
+				else{
+                    set_deliveryAmount = $("#set_deliveryAmount").val();
+				}
+                }
+				else{
+					 set_deliveryAmount=null; 
+				}
+				if(!valid){
+					return;
+				}
+			 
+				
 
 					var formData5 = {
 					"employeeId": employeeId,
@@ -5597,6 +6200,8 @@ $(document).ready(function() {
 					"set_timezone":set_timezone,
                     "set_ph": set_ph,
                     "set_fax": set_fax,
+					"set_fulfillmenttype":set_fulfillmenttype,
+					"set_minimumDeliveryAmount":set_deliveryAmount
 
                 };
 
@@ -5615,6 +6220,7 @@ $(document).ready(function() {
                             alertmessage(response.errorMessage);
                         } else {
 							alertmessage("New Settings Save Successfully");
+							settingAutocomplete();
 							 salesrateforproduct=$("#set_tax").val();
 							localStorage.setItem("salesrateforproduct",salesrateforproduct);
 							var defaultproductsalesrate=localStorage.getItem("salesrateforproduct");
@@ -5634,7 +6240,8 @@ $(document).ready(function() {
 				//expcatId=exp_map.categoryId;
 				     $("#editExp").hide();
 					 $("#editExpVal").hide();
-
+					  $('#expSaveSuccess').hide();
+					 
 
 
 
@@ -5877,6 +6484,7 @@ $(document).ready(function() {
 								$("#exp_payment").val("1");
 								$("#exp_date").val(new Date().customFormat(myDateFormat) );
 								$('#exp_category').val("");
+								 $("#exptab1:input").css('border', ' 1px solid #d8e1b6');
 
 
 
@@ -5901,9 +6509,12 @@ $(document).ready(function() {
 
                         }
 						$("#exp_save").html("Save");
+						
                     }
-                });
+					
 
+                });
+					
 				$("#expensescreen :input").on('click', function()
                         {
                             $(this).css('border', ' 1px solid #d8e1b6');
@@ -6053,6 +6664,8 @@ $(document).ready(function() {
 					localStorage.removeItem("ProdCastPayCount");
 
 					localStorage.removeItem("ProdcastLogin");
+					//localStorage.removeItem("OrderStatusForApplyDiscount");
+					localStorage.removeItem("orderDetailsId");
 
 				}
                 //$.mobile.navigate('#loginhome');
@@ -6769,13 +7382,15 @@ $(document).ready(function() {
 
             /*order entry screen begins */
             $('#order-entry').on('pageinit', function() {
-				$("#order-entry").on('pageshow', function() {
+				/*$("#order-entry").on('pageshow', function() {
 
 								customerreset();
 
 
-				});
+				});*/
+				
 				$('#fullFilled').hide();
+				$('#paymentPanel').hide();
 				$('#alert').hide();
 				$('#pamsg').hide();
 				$('#pmsg').hide();
@@ -6785,8 +7400,6 @@ $(document).ready(function() {
 				$('#commentord').hide();
 				$('#messageForZero').hide();
 				
-				$('.paymentPanel').hide();
-
 				$('#billdetailspage #ordtable').show();
 				originalBills = $('#outstandingDiv').html();
                 /* local variable declaration begins*/
@@ -7009,55 +7622,13 @@ $(document).ready(function() {
 
 									}
 								}
+								
+								updateOrderStatus();
+								$('#paymentPanel').hide();
+								$("#fullFilled").hide();
 
 
-									 var formdata ={ "billNo" : billIdNo,"orderStatus" :"F","customerId":customerId , "employeeId":employeeId };
-
-
-
-
-
-									$.ajax({
-										type: 'POST' ,
-										url : baseUrl+'/prodcast/distributor/updateOrderStatus',
-										dataType : 'json',
-										data : formdata,
-										encode : true,
-										success : function( response ){
-											if( response.error) {
-												alertmessage('Please refresh the page and try again');
-
-												}
-												else{
-
-
-
-
-												$('.paymentPanel').hide();
-												$("#fullFilled").hide();
-
-
-														if(billIdNo==outstandingBills[counter].billNumber)
-
-												{
-
-														outstandingBills[counter].orderStatus="F";
-
-
-
-														}
-
-
-
-												}
-
-
-
-										}
-
-
-									});
-
+									
 
 
 								});
@@ -7142,7 +7713,10 @@ $(document).ready(function() {
 						else{
 						$('#commento').hide();
 						}
+                            
 					}
+                    
+                    if( !payvalidate ) return;
                     for (var counter = 0; counter < outstandingBills.length; counter++) {
                         var obj = $('#billSelect' + counter);
                         if (obj.is(':checked')) {
@@ -7152,23 +7726,10 @@ $(document).ready(function() {
 
                             break;
 
-                            //$('.savedamount').text("Saved");
+                            
                         }
                     }
-							if (payment<=0)
-							{
-							$('#minbalance1').show();
-							return;
-							}
-
-
-
-						else
-						{
-							$('#minbalance1').hide();
-							$("#messageForZero").hide();
-
-						}
+							
 						if(payment>outstandingAmount)
 							{
 							$('#payalert').show();
@@ -7178,7 +7739,7 @@ $(document).ready(function() {
 						{
 							$('#payalert').hide();
 						}
-						if(payment > '0-1')
+						/*if(payment > '0-1')
 
 						{
 							$("#messageForZero").show();
@@ -7191,7 +7752,7 @@ $(document).ready(function() {
 						if(payment >=1)
 						{
 							$("#messageForZero").hide();
-						}
+						}*/
 
 
                     var formData = {
@@ -7205,13 +7766,6 @@ $(document).ready(function() {
                     };
 
 
-
-
-                    if (payvalidate) {
-                        var paymentval = $('#payment').val();
-                        var pval = parseInt(paymentval);
-                        if ($(!isNaN($('#payment').val()))) {
-                            if (pval > 0 && pval <= outstandingAmount) {
                                 $.ajax({
                                     type: 'POST',
                                     url: baseUrl+'/prodcast/global/collection',
@@ -7227,14 +7781,15 @@ $(document).ready(function() {
 											$('#chequenumber').val("");
 											$('#commentorder').val("");
 											
-											$('.paymentPanel').hide();
+											$('#paymentPanel').hide();
+											$("#fullFilled").hide();
 
                                             outstandingBills = response.customer.outstandingBill;
 											if(customerId == "" )
 												writeOutstandingBillsInitial(outstandingBills)
 											else
-											writeOutstandingBills( response ,false ,customerId);
-											alertmessage("Payment for "+formData.amount+" has been processed");
+												writeOutstandingBills( outstandingBills ,false ,customerId);
+											alertmessage("Payment for "+currency+""+formData.amount+" has been processed");
 
                                         }
 
@@ -7262,14 +7817,14 @@ $(document).ready(function() {
 
 										localStorage.setItem("Prodcastpayment"+ProdCastPay,JSON.stringify(formData));
 
-										alertmessage("The payment has been saved in offline mode");
+										alertmessage("The Payment for "+currency+""+formData.amount+" has been saved in offline mode");
 
 
 									}
                                 });
-                            }
+                            /*}
                         }
-                    }
+                    }*/
 
                 });
 
@@ -7290,7 +7845,7 @@ $(document).ready(function() {
 				resetOrderEntryPage = false;
 					$("#fullFilled").hide();
 					
-					$(".paymentPanel").hide();
+					$('#paymentPanel').hide();
                     //$('.outstandingDiv').show();
 					$("#orderdetailrow").val("");
 					$('#productvalue1').val("");
@@ -7386,12 +7941,14 @@ $(document).ready(function() {
 					if( $("#applydiscount").html() == "Apply Discount" ){
 						$("#applydiscount").html("Cancel Discount");
 						$(".discount").show();
+						$(".offsetDiv").hide();
 					}
 					else{
 						$("#applydiscount").html("Apply Discount");
 						$("#discountValue").val("0");
 						calculateTotal(id);
 						$(".discount").hide();
+						$(".offsetDiv").show();
 					}
 
 				});
@@ -8090,12 +8647,19 @@ $(document).ready(function() {
                             } else {
                                saveOrdersForCustomer();
 							 //  $('.discount').hide();
-						outstandingBills = response.customer.outstandingBill;
-						writeOutstandingBills( outstandingBills , false,customerId );
-						alertmessage("The order has been processed successfully");
-                        $.mobile.navigate('#order-entry');
-
+								outstandingBills = response.customer.outstandingBill;
+								var bill=response.bill;
+								 orderBillNumber=bill.billNumber;						
+								writeOutstandingBills( outstandingBills , false,customerId );
+							    alertmessage("The order has been processed successfully");
+																
 							}
+							      if(orderBillNumber!=""){
+									   selectedBill=orderBillNumber;
+									   $.mobile.navigate("#billdetailspage");
+									   
+								   }
+								   originForBillDetails="order-entry";
 
                         },
 						error: function(){
@@ -8112,13 +8676,13 @@ $(document).ready(function() {
 
 							}
 
-                 localStorage.setItem("ProdcastOrderCounts",orderCount);
-				localStorage.setItem("ProdcastOrder"+orderCount, JSON.stringify(so));
-				saveOrdersForCustomer();
+                        localStorage.setItem("ProdcastOrderCounts",orderCount);
+				        localStorage.setItem("ProdcastOrder"+orderCount, JSON.stringify(so));
+				        saveOrdersForCustomer();
 
-				alertmessage("Your Order Has been Processed in Offline Mode");
+				         alertmessage("Your Order Has been Processed in Offline Mode");
 
-				$.mobile.navigate('#order-entry');
+				        $.mobile.navigate('#order-entry');
 
 
 				//saveOrdersForCustomer(response);
@@ -8236,7 +8800,7 @@ $(document).ready(function() {
 
 				function resetChangePassword()
 				{
-					$("#pswdtab1 :input").css('border', ' 1px solid green');
+					$("#pswdtab1 :input").css('border', ' 1px solid #d8e1b6');
 					$('#newPassword').val("");
 					$('#oldPassword').val("");
 					$('#confirmPassword').val("");
@@ -8259,7 +8823,7 @@ $(document).ready(function() {
 
 				$("#dialog1").show();
 				$("#changepasswordscreen :input").on('click', function() {
-                    $(this).css('border', ' 1px solid green');
+                    $(this).css('border', ' 1px solid #d8e1b6');
 					$('#oldpsdnull').hide();
 					$('#oldpsderror').hide();
 					$('#newpsdnull').hide();
@@ -9068,15 +9632,12 @@ $(document).ready(function() {
 									$("#dist_manufacturer")[0].selectedIndex = 0;
 									$("#dist_Country").val("");
 									$("#dist_Timezone").val("");
+									
 									$("input[type=numeric], textbox").val("");
 									$('#activedis')[0].checked=true;
 									$('#openPublicDist').attr('checked',false);
-
-									/*$('#dist_manufacturer').on('change',function() {
-									$('#dist_manufacturer').attr('selectedIndex', " ");
-									});*/
-
-
+									$("#dist_fulfillmenttype")[0].selectedIndex =0;
+									$("#dist_deliveryAmount").val("");		
 
 				                    $("#distab1").find('input:text').val('');
 				                    $("#distab1 :input").css('border', ' 1px solid #d8e1b6');
@@ -9131,6 +9692,10 @@ $(document).ready(function() {
                         $('#dist_comments').val(dist.comments);
 						$('#activedis')[0].checked=dist.active;
 						$('#openPublicDist')[0].checked=dist.openToPublic;
+						$("#dist_fulfillmenttype").val(dist.fulfillmentType).change();
+					//	if(($("#dist_fulfillmenttype").val=='1')||($("#dist_fulfillmenttype").val=='3')){
+							$('#dist_deliveryAmount').val(dist.minimumDeliveryAmount);
+						//}	
 
 						distId=dist.distributorId;
 						$('#distributor_save').html("Update");
@@ -9239,6 +9804,22 @@ $(document).ready(function() {
                     }
 
                 });
+				
+				
+				
+                $("#dist_fulfillmenttype").change(function() {
+					var dist_fulfillmenttype=$("#dist_fulfillmenttype").val();
+					if(dist_fulfillmenttype== '1' || dist_fulfillmenttype== '3' ){
+						$(".minimumDeliveryAmount").show();
+					}
+					else{
+						$(".minimumDeliveryAmount").hide();
+						$('#dist_deliveryAmount').val("0");
+					}
+                  
+
+                });			
+								
                 var dist_gender = "";
                 $("#dist_gender").change(function() {
                     if ($("#dist_gender").val() == "") {
@@ -9268,6 +9849,18 @@ $(document).ready(function() {
 						}
 					}
 				});
+				
+				
+			
+					var dist_fulfillmenttype=$("#dist_fulfillmenttype").val();
+					if(dist_fulfillmenttype== '1' || dist_fulfillmenttype== '3' ){
+						$(".minimumDeliveryAmount").show();
+					}
+					else{
+						$(".minimumDeliveryAmount").hide();
+					}
+                 
+				
                 $('#distributor_save').on("click", function() {
                     $('#distsave').hide();
 					var dvalid1 = true;
@@ -9458,8 +10051,35 @@ $(document).ready(function() {
                         dist_postalcode = $('#dist_Postalcode').val();
                     }
 
-                    var dist_comment = $('#dist_comments').val();
-
+                   
+					 var dist_fulfillmenttype = "";
+               
+                    if ($("#dist_fulfillmenttype").val() == "") {
+						 dvalid1 = false;
+                        $('#dist_fulfillmenttype').css('border', '1px solid red'); 
+                    } 
+					else{
+                        dist_fulfillmenttype = $("#dist_fulfillmenttype").val();
+                    }
+					
+					 var dist_minimumDeliveryAmount ="";
+					 if(dist_fulfillmenttype=="1" || dist_fulfillmenttype=="3"){
+					       
+                           if ($('#dist_deliveryAmount').val() == ""){							    
+							   $('#dist_deliveryAmount').css('border', '1px solid red');
+								dvalid1 = false;			
+						   }
+							else{
+								dist_minimumDeliveryAmount = $('#dist_deliveryAmount').val();
+							} 
+					 }
+					else{
+						dist_minimumDeliveryAmount=null;
+					}		
+                         
+                       
+					// }
+					 var dist_comment = $('#dist_comments').val();
 
                     if (dvalid1 == false) {
 
@@ -9500,6 +10120,8 @@ $(document).ready(function() {
                             "active": activedist,
 							"openToPublic":public_dist,
                             "comments": dist_comment.toUpperCase(),
+							"fulfillmentType":dist_fulfillmenttype,
+							"minimumDeliveryAmount":dist_minimumDeliveryAmount,
                             "newDistributorId": distId
 
                         };
