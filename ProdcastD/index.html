@@ -9,6 +9,7 @@
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <!-- Bootstrap 3.3.5 -->
 <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="http://code.jquery.com/ui/1.9.2/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 
 <!-- Font Awesome -->
@@ -17,70 +18,20 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
- #savedialog
-  {
-     background-color:white;
-	 float:left;
 
-  }
-#saveemp
-  {
-  background-color:white;
-  float:left;
-  }
-#savedialog1
+.orderFrom
  {
-   background-color:white;
-   float:left;
- }
- #editDialog
-
- {
-   background-color:white;
-   float:left;
- }
- #editCatDialog
- {
-   background-color:white;
-   float:left;
- }
- #editStoreTypeDialog
- {
- background-color:white;
-    float:left;
-	
- 
- }
-  #editRegDialog
- {
-    background-color:white;
-    float:left;
-	
- }
-  #returnDialog
-  {
-    background-color:white;
-    float:left;
- }
- <!--#deleteOrderDialog{
- background-color:white;
-    float:left;
- 
- }-->
- #dialog1
- {
-   background-color:white;
-   float:left;
-   position: ['center'];
- }
-#dialog2
- {
-   background-color:white;
-   float:left;
-   position: ['center'];
- }
+	padding-left:12px;
+	padding-right:12px;
+}
+.nameAlign
+{
+    position: relative;
+    top: 2px;
+}
 
 </style>
+
 </head>
 
 <body>
@@ -116,7 +67,7 @@
 					<div class="col-half reg-new"><a href="#Register">Register</a></div>
                   <!--<input type="submit" value="Log in" onclick="document.getElementById('validationMsg').style.display = 'block' ;" />-->
                 </div>
-                <div class="col-half "><a class="green-btn-style" id="clearbtn">Clear</a></div>
+                <div class="col-half"><a class="submit-btn-right" id="clearbtn">Clear</a></div>
                 <div class="col-half forgot-pswd"><a  id="RetrievePassword">Forgot password?</a></div>
 				
 				
@@ -1043,7 +994,7 @@
          </ul>
         </div>
       </div>
-      <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+      <div class="col-md-10 col-sm-9 right-panel-no-scroll " id="right-panel">
 
         <div class="col-sm-12 title-bar">
           <div class="col-sm-6 col-xs-5 title"><img src="images/OrderEntry-icon.png" alt="">Order Entry</div>
@@ -1070,88 +1021,105 @@
 				 <br>
 				 <a href="#customerscreen" id="newcustomer"><img src="images/add.png" /></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="refreshOrders"><img src="images/refresh.jpeg" /></a>
                 </div>
-
-
-
-				</div>
+			</div>
             </div>
             <div class="col-sm-4"></div>
           </div>
+		  <br>
 		  <div id="paymentdiv" style="display:none">
-		  <div class="outstandingDivcl" id="outstandingDiv" >
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="head-table">Outstanding Bills</div>
-            <div class="custom-table">
-
-              <div class="tbl">
-
-
-              </div>
-              </div>
-
-
+			<div class="outstandingDivcl" id="outstandingDiv" >
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="head-table">Outstanding Bills</div>
+						<div class="custom-table">
+							<div class="tbl"></div>
+						</div>
+					</div>
+				</div>
 			</div>
-          </div>
-	  </div>
-          <div class="row paymentPanel">
-
-            <div class="col-md-8">
-			<div class="row">
-				<div class="col-sm-6">
-		      <p id="alert"  style="color:red;display:none">Please select a bill</p>
-			  </div>
-		      </div>
-              <div class="row">
-                <div class="col-sm-6">
-
-                  <label class="lable-style">Payment Amount</label>
-                 <!-- <input class="input-feild-style" type="text" id="payment -->
+			
+			<div id="paymentPanel" class="slide-anim">
+		<div class = "panel panel-success">
+			<div class = "panel-heading">
+			  <h4 class = "panel-title">Update Bill</h4> &nbsp;
+              <a id="paymentPanelHide">Hide</a>
+			</div>
+		  <div class="row">
+            <div class="col-sm-12">
+              <!--div class="row"-->
+                <div class="col-sm-5">
+                    
+                  <label class="lable-style">Payment Amount</label>															  
 				  <input  id="payment" class="input-feild-style " type="number"  />
 				  <p id="pamsg"  style="color:red;display:none">Please enter the payment amount</p>
-				  <p id="payalert"  style="color:red;display:none">Please enter amount less than or equal to balance</p>
-				  <p id="minbalance1" style="color:red;display:none"> Please enter an amount zero or above</p>
- <p id="messageForZero" style="color:red;display:none"> Please enter a amount greter than one</p>
-			   </div>
-
-                <div class="col-sm-6">
+				  <p id="payalert"  style="color:red;display:none">Please enter amount less than or equal to balance</p>																		 
+				</div>
+                <div class="col-sm-5">
                   <label class="lable-style">Mode of Payment </label>
                   <select class="select-style" id="mop">
                     <option value="0">Cash</option>
                     <option value="1">Cheque/Check</option>
                     <option value="2">Credit/Debit</option>
-
                   </select>
-					<div>
-	  				<p id="pmsg" style="color:red;display:none">Please select the mode of payment</p>
-					</div>
-					<div id="chequenum"  class="col-sm-6">
-                    <label class="lable-style">Cheque Number </label>
-                    <input class="input-feild-style" type="text" id="chequenumber">
-					<p id="chequen" style="color:red;display:none">Please enter the cheque number</p>
-					</div>
-					<div id="commentord"  class="col-sm-6">
-                    <label class="lable-style">Comments </label><br><br>
-					<input class="input-feild-style"  type="text" id="commentorder">
-
-					<p id="commento" style="color:red;display:none">Please enter the comments </p>
-
-
-					</div>
                 </div>
-                <div class="col-sm-12 free-space"><a id="paymentSubmit" class="green-btn-style">Pay</a><a  id="neworderlink" class="green-btn-style">New Order</a><a id="fullFilled" class="green-btn-style">Full Filled</a><br><br>
-                  <p id="ordmsg" style="color:#abcd14;display: none">The Payment has been processed Successfully</p>
-                  <!--<p class="success-msg"><img src="images/check-icon.png" alt="">Your payment amount 25 for Bill Id 5 has been saved.</p> -->
+				
+              <!--/div-->
+				<div class="row">
+				<div class="col-sm-12">
+					<div id="chequenum"  class="col-sm-5">
+						<label class="lable-style">Cheque Number </label>
+						<input class="input-feild-style" type="text" id="chequenumber">
+						<p id="chequen" style="color:red;display:none">Please enter the cheque number</p>
+					</div>
+					<div id="commentord"  class="col-sm-5">
+						<label class="lable-style">Comments </label><br><br>
+						<input class="input-feild-style" type="text" id="commentorder">
+						<p id="commento" style="color:red;display:none">Please enter the comments </p>
+					</div>
+					<div class="col-sm-2"></div>
+				</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="col-sm-4">
+                            <a id="paymentSubmit" class="green-btn-style">Pay</a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a id="fullFilled" class="green-btn-style">Fullfilled</a>
+                        </div>
+                        </div>
+					</div>
+				</div>
+            </div>
+            <!--div class="col-md-4"></div-->
+          </div>
+        </div>
+        </div>
+			
+          <div class="row">
+            <div class="col-md-8">
+				<div class="row">
+					<div class="col-sm-6">
+						<br><p id="alert"  style="color:red;display:none">Please select a bill</p>
+					</div>
+				</div>
+              <div class="row">
+                <div class="col-sm-12 alignPadding">
+					<a  id="neworderlink" class="green-btn-style">New Order</a>
+					<!--<a id="fullFilled" class="green-btn-style">Full Filled</a>-->
                 </div>
               </div>
             </div>
             <div class="col-md-4"></div>
           </div>
-        </div>
+		  
+		
+    </div>
 		</div>
       </div>
     </div>
-  </div>
+  
 
 
   <!-- order entry end -->
@@ -1297,34 +1265,30 @@
 				</div>
 
 			</div>
-			<div class="col-sm-12"  >
-
-              <div class="total-amount" >
-			  <div class="row"  >
-			  <div class="col-md-4" style="text-align:right">
-				<p  align="right" class="discount" >
-					Discount Value
-					<input type="number" id="discountValue" class="allownumberwithdecimal" >
-				</p>
+					<div class="col-sm-12"  >
+						<div class="total-amount" >
+							<div class="row"  >
+								<div class="col-sm-3 col-md-3 discount">
+										Discount Value
+										<input type="number" id="discountValue" class="allownumberwithdecimal col-xs-12" >
+								</div>
+								<div class="col-sm-3 col-md-3 discount">
+										Discount Type
+										<select id="discountType" class="col-xs-12 orderPadding">
+											<option value="1">Amount</option>
+											<option value="2">Percentage</option>
+										</select>
+								</div>
+								<br>
+								<div class="col-md-6 offsetDiv"></div>
+								<div class="col-sm-6 col-md-6">
+									<div class="col-xs-6 col-xs-offset-4">Total Value (<label class="distcurrency"></label>)</div>
+									<div class="col-xs-2" id="totalvalue"> 0.00 </div>
+								</div>
+								
+							</div>
+						</div>
 					</div>
-				<div class="col-md-4 " style="text-align:right">
-					<p align="right"  class="discount" >
-					Discount Type
-					<select id="discountType">
-						<option value="1">Amount</option>
-						<option value="2">Percentage</option>
-					</select>
-					</p>
-				</div>
-
-
-                <div class="col-sm-2 col-xs-6" style="text-align:right">
-					Total Value (<label class="distcurrency"></label>)
-				</div>
-                  <div class="col-sm-2 col-xs-6" style="text-align:right" id="totalvalue"> 0.00 </div>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="row">
             <div class="col-sm-12 free-space"> <a  class="green-btn-style" id="reviewbtn">Review</a>&nbsp;&nbsp;&nbsp;<a  class="green-btn-style saveorder">Save Order</a>&nbsp;&nbsp;&nbsp;<a class="green-btn-style" id="applydiscount">Apply Discount</a> </div>
@@ -1395,6 +1359,7 @@
 						</div>
 					</div>
 				</div>
+					
 
 				<!--
 
@@ -1656,24 +1621,12 @@
             <div class="tab-content">
               <div id="distab1" class="tab-pane fade in active">
                 <form>
-                  <div class="row">
+                   <div class="row">
 					<div class="col-sm-4 col-xs-6">
                       <label>Company Name</label>
                       <input type="text" id="dist_companyName" >
                     </div>
-					<!--
-					<div class="col-sm-4 col-xs-6">
-                      <label>Active</label>
-                      <select id="dist_active">
-                        <option value=" ">&nbsp;</option>
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
-                      </select>
-                    </div>-->
-					</div>
-					
-					<div class="row">
-                    <div class="col-sm-4 col-xs-6">
+					  <div class="col-sm-4 col-xs-6">
                       <label>Select Manufacturer</label>
                       <select id="dist_manufacturer">
                         <option value="">&nbsp;</option>
@@ -1681,13 +1634,31 @@
                         <option value="0">No</option>
                       </select>
                     </div>
-                  </div>
-				  <div class="row">
+					
+					</div>
+					
+					<div class="row">
+                    <div class="col-sm-4 col-xs-6">
+                      <label>Fulfillment Type</label>
+                      <select id="dist_fulfillmenttype">
+                        <option value="0">None</option>
+                        <option value="1">Delivery Only</option>
+                        <option value="2">Pickup Only</option>
+						<option value="3">Delivery and Pickup</option>
+                      </select>
+                    </div>
 					<div class="col-sm-4 col-xs-6">
                       <label>Open To Public</label>
                       <input type="checkbox"  id="openPublicDist"  >
-                    </div>	
+                    </div>
+					 </div>
+					<div class="row minimumDeliveryAmount">
+					<div class="col-sm-4 col-xs-6 ">
+                      <label>Minimum Delivery Amount</label>
+                      <input type="text" id="dist_deliveryAmount" >
+                    </div>
 					</div>
+                 
                   <div class="row">
                   <div class="col-sm-4 col-xs-6">
 				                       <a class="submit-btn ui-link" id="distributor_reset1" >Reset</a>
@@ -2206,6 +2177,22 @@
 						<label>Fax</label>
                       <input type="text" id="set_fax">
 					</div>
+					
+					
+					<div class="col-sm-4 col-xs-6">
+                      <label>Fulfillment Type</label>
+                      <select id="set_fulfillmenttype">
+                        <option value="0">None</option>
+                        <option value="1">Delivery Only</option>
+                        <option value="2">Pickup Only</option>
+						<option value="3">Delivery and Pickup</option>
+                      </select>
+                    </div>
+					<div class="col-sm-4 col-xs-6 set_minimumDeliveryAmount">
+						<label>Minimum Delivery Amount</label>
+                      <input type="text" id="set_deliveryAmount">
+					</div>
+					
 					<br>
 					<div class="col-sm-4 col-xs-6">
 					<a class="submit-btn ui-link" id="setting_save">Save</a>
@@ -3140,7 +3127,7 @@
               <div id="pswdtab1" class="tab-pane fade in active">
                 <form>
                   <div class="row">
-				  <div class="col-sm-4" style="color:#abcd14">
+				  <div class="col-sm-4 col-xs-12" style="color:#abcd14">
 
                       <label for="oldPassword">Old Password </label>
 
@@ -3157,7 +3144,7 @@
 					</div>
 
 					<div class="row">
-					<div class="col-sm-4" style="color:#abcd14">
+					<div class="col-sm-4 col-xs-12" style="color:#abcd14">
 
                       <label for="newPassword">New Password </label>
 
@@ -3177,7 +3164,7 @@
                     </div>
 
 					<div class="row">
-					<div class="col-sm-4" style="color:#abcd14">
+					<div class="col-sm-4 col-xs-12" style="color:#abcd14">
 
                       <label for="confirmPassword">Confirm Password</label>
 					  <input type="password" id="confirmPassword" size="20" >
@@ -3195,10 +3182,10 @@
 					<br>
 					<br>
 					<div class="row">
-				  <div class="col-sm-4" >
+				  <div class="col-sm-2 col-xs-6" >
                       <a class="green-btn-style" id="password_save" >Submit</a>
 					</div>
-					<div class="col-sm-8">
+					<div class="col-sm-2 col-xs-6">
 					<a class="green-btn-style" id="password_reset" >Reset</a>
                     </div>
                   </div>
@@ -3554,10 +3541,10 @@
                 <form>
 
 					<div class="row">
-				  <div class="col-sm-4" >
+				  <div class="col-sm-4 col-xs-6" >
                       <a class="green-btn-style" id="syncOrders" >Sync Orders</a>
 					</div>
-					<div class="col-sm-8">
+					<div class="col-sm-8 col-xs-6">
 					<a class="green-btn-style" id="syncCollections" >Sync Collections</a>
                     </div>
                   </div>
@@ -3923,11 +3910,11 @@
 
  <!-- orders screen ends-->
 
-   <div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1"  data-role="page" id="billdetailspage" data-theme="a">
-    <header class="col-sm-12 top-head">
-      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
-      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><!--a rel="external" class="logout">
-	  <div class="SalesManName"></div></a-->
+   <div style="min-height: 657px"  class="ui-page ui-body-a" tabindex="1"  data-role="page" id="billdetailspage" data-theme="a">
+     <header class="col-sm-12 top-head">
+      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+      <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
         <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
           <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
         </div>
@@ -3990,219 +3977,236 @@
 
         <div class="col-sm-12 title-bar">
           <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users";	 aria-hidden="true"></i>Bill Details</div>
-         <!-- <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+         <div class="col-sm-6 col-xs-7 text-right"><a id="applyDiscountForCust" class="applyDiscountForCust icon"><span class="glyphicon glyphicon-scissors"></span></a>&nbsp;&nbsp;<a id="applyPaymentForCust" class="applyPaymentForCust icon"><span class="glyphicon glyphicon-usd"></span></a>&nbsp;&nbsp;<a class="printable icon"><i class="fa fa-print fa-lg" aria-hidden="true"></i></a>&nbsp;&nbsp;<a class="distmenu icon" id="deleteOrder"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>&nbsp;&nbsp;<a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
             <!--label>You are Here: </label>
             <ul><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
               <a rel="external">Prodcast</a>&nbsp;/&nbsp;Expenses
             </ul>
             </div-->
         </div>
+        </div>
 
 	<div class="col-sm-12 content-sec">
-
-		<div>
-			<p><a  class="green-btn-style printable" >Print Order</a><a  class="green-btn-style distmenu" id="deleteOrder" >Delete Order</a></p>				   
+		
+        <div class="row">
+            <div class="col-sm-12 ">
+                <label id="distributorName"></label> &nbsp;<label id="orderType"></label>&nbsp;Order#&nbsp;<label id="billNumber" ></label>&nbsp;Order Status&nbsp;<label id="orderStatus" ></label> on <label id="billDate" ></label>
+            </div>
         </div>
-		<div style="width:100%;display:none;" class="deleteOrderDialog" title="Prodcast Notification" >
+		<div>
+		<p>
+	
+		<div style="width:100%;display:none;" id="saveDiscount" class="saveDiscount" title="Discount Panel">
+				<div class="costomer-tab-section">
+				<div class="tab-2content tab-content-mini">
+				<form>
+				   <div class="row">
+				  <div class="col-sm-12">
+					Discount Value
+					<input  id="discountValueForCust" class="input-feild-style allownumberwithdecimal" type="number" min="0"/>
+					
+				   </div>
+				  <div class="col-sm-12">
+					
+					Discount Type
+					 <select id="discountTypeForCust">
+					 <option value="0">&nbsp;</option>
+					  <option value="1">Amount</option>
+					  <option value="2">Percentage</option>
+					 </select>				
+					
+				  </div>
+				  </div>
+				   <div class="row">
+				  <p id="discountmsg"  style="color:red;display:none">The Applied discount is more than the Order Balance. Please correct it</p>
+				   </div>
+				    <div class="row">
+                   <div class="col-sm-12" align="center"><a id="applyBtn"  class="green-btn-style applyDiscount">Apply</a>
+                   </div>
+                    </div>
+             </form>
+				 </div>
+				
+				</div>
+				</div>
+            
+			
+		
+		</p>
+        </div>
+		
+		<div style="width:100%;display:none;" id="deleteOrderDialog" class="deleteOrderDialog" title="Prodcast Notification" >
 			<div class="costomer-tab-section">
 				<div class="tab-content-mini">
 					<form>
 						<div class="row">
 						<div class="col-sm-12">
 						<center> <label >Are you sure you would like to delete this order?</label></center>
-					<center><div class="tbl-row">
+					<center>
+                        <div class="tbl-row">
 							<div class="tbl-col">
 							<a id="deleteOrderYes"  class="green-btn-style deleteOrderYes">Yes</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a id="deleteOrderNo"  class="green-btn-style deleteOrderNo">No</a>
-							</div></center>
+							</div>
+                        
 					
 						</div>
+                        </center>
 						</div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-		<!--div class="col-sm-1"></div>
-		<div class="col-sm-10"-->
-			<div id="msgtable">
-				<!--div class="tbl-row tbl-hed">
-				<div class="tbl-cols">
-				<p align="left" >
-				Distributor
-				</p>
-				</div>
 
-				<div class="tbl-cols">
-				<p align="left" >
-
-				Customer
-				</p>
-				</div>
-					</div-->
-				<div class="tbl-row">
-				<!--div class="tbl-cols">
-					<p id="distMname" style="color:#abcd14" align="left"></p>
-					<p id="distAddress" style="color:#abcd14" align="left"></p>
-					<p id="distCity" style="color:#abcd14" align="left"></p>
-					<p id="distPhone" style="color:#abcd14" align="left"></p>
-				</div-->
-				
-					<div class="tbl-cols" id="bill">
-						<!--div class="tbl-row tbl-hed">
-						</div-->
-						<div class="tbl-row">
-							<div class="tbl-cols">
+        <div class="row orderFrom">
+				<div class="col-sm-4 col-xs-6 tbl-cols-noborder">
+						   
+						
+                        <div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								Order from :
+							</div>
+						</div>
+                        
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								<label id="customerMname" ></label>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								<label id="custAddress" ></label>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+                                <label id="custCity" ></label>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								<label id="custPhone" ></label>
+							</div>
+						</div>
+   
+					</div>
+            <div class="col-sm-4 col-xs-6 tbl-cols-noborder">
+                
+                                     <div class="tbl-row-notable deliveryAddressType">
+							<div class="tbl-cols-noborder">
+								Delivery Address
+							</div>
+							
+						</div>
+                             <div class="tbl-row-notable deliveryAddressType">
+							<div class="tbl-cols-noborder">
+								<p id="deliveryAddress" ></p>
+							</div>
+						</div>
+            </div>
+                    
+        </div>
+			<div class="col-sm-10" id="msgtable" style="display:none" >
+				<div class="row">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-4 tbl-cols-noborder" id="bill">
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
 								Order No.
 							</div>
-							<div class="tbl-cols">
-								<p id="billNumber" style="color:#abcd14"></p>
+							<div class="tbl-cols-noborder">
+								<!--<p id="billNumber" ></p>-->
 							</div>
 						</div>
-						<div class="tbl-row">
-							<div class="tbl-cols">
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
 								Bill Date
 							</div>
-							<div class="tbl-cols">
-								<p id="billDate" style="color:#abcd14"></p>
+							<div class="tbl-cols-noborder">
+								<p id="billDate" ></p>
 							</div>
 						</div>
-						<div class="tbl-row">
-							<div class="tbl-cols">
-								Total (<label class='distcurrency'></label>)
+					<!--	<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								Total
 							</div>
-							<div class="tbl-cols">
-								<p id="totalAmount" style="color:#abcd14"></p>
-							</div>
-						</div>
-						<div class="tbl-row">
-							<div class="tbl-cols">
-								Balance (<label class='distcurrency'></label>)
-							</div>
-							<div class="tbl-cols">
-								<p id="outstandingBalance" style="color:#abcd14"></p>
+							<div class="tbl-cols-noborder">
+                                <label class='distcurrency'></label><label id="totalAmount" ></label>
 							</div>
 						</div>
-						<div class="tbl-row">
-							<div class="tbl-cols">
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								Balance
+							</div>
+							<div class="tbl-cols-noborder">
+                                <label class='distcurrency'></label><label id="outstandingBalance" ></label>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
 							Discount
 							</div>
-							<div class="tbl-cols">
-								<p id="discountValue" style="color:#abcd14"></p>
+						
+							<div class="tbl-cols-noborder">
+								<p id="discountValue" ></p>
 
 							</div>
-						</div>
+						</div>-->
+						
 					</div>
-					<div class="tbl-cols">
-						<div class="tbl-row tbl-hed">
-							<div class="tbl-cols">
-								<p align="left" >
-
+					<div class="col-sm-4 tbl-cols-noborder">
+						   
+						
+                        <div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
 								Customer
-								</p>
 							</div>
 						</div>
-						<div class="tbl-row">
-							<div class="tbl-cols">
-								<p id="customerMname" style="color:#abcd14" align="left"></p>
+                        
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								<p id="customerMname" ></p>
 							</div>
 						</div>
-						<div class="tbl-row">
-							<div class="tbl-cols">
-								<p id="custAddress" style="color:#abcd14" align="left"></p>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								<p id="custAddress" ></p>
 							</div>
 						</div>
-						<div class="tbl-row">
-							<div class="tbl-cols">
-								<p id="custCity" style="color:#abcd14" align="left"></p>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								<p id="custCity" ></p>
 							</div>
 						</div>
-						<div class="tbl-row">
-							<div class="tbl-cols">
-								<p id="custPhone" style="color:#abcd14" align="left"></p>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								<p id="custPhone" ></p>
+							</div>
+						</div>
+                        <div class="tbl-row-notable deliveryAddressType">
+							<div class="tbl-cols-noborder">
+								Delivery Address
+							</div>
+							
+						</div>
+                             <div class="tbl-row-notable deliveryAddressType">
+							<div class="tbl-cols-noborder">
+								<p id="deliveryAddress" style="color:#abcd14"></p>
 							</div>
 						</div>
 					</div>
+					
 				</div>
-			</div>
-			</br></br>
+        </div>
 
-             	<!--div class="tbl" id="bill">
-              		<div class="tbl-row tbl-hed">
-					</div>
-					<div class="tbl-row">
-                    	<div class="tbl-cols">
-                        	Order No.
-                        </div>
-                    	<div class="tbl-cols">
-                        	<p id="billNumber" style="color:#abcd14"></p>
-                        </div>
-					</div>
-					<div class="tbl-row">
-                    	<div class="tbl-cols">
-                        	Bill Date
-                        </div>
-                    	<div class="tbl-cols">
-                        	<p id="billDate" style="color:#abcd14"></p>
-                        </div>
-					</div>
-
-					<div class="tbl-row">
-						<div class="tbl-cols">
-                        Sales Rep
-                        </div>
-                    	<div class="tbl-cols">
-                        	<p id="employeeName" style="color:#abcd14"></p>
-                        </div>
-					</div>
-					<div class="tbl-row">
-						<div class="tbl-cols">
-						Discount
-						                        </div>
-						                    	<div class="tbl-cols">
-						                        	<p id="discountValue" style="color:#abcd14"></p>
-
-						                        </div>
-											</div>
-											<div class="tbl-row">
-						<div class="tbl-cols">
-                        	Total (<label class='distcurrency'></label>)
-                        </div>
-						<div class="tbl-cols">
-                        	<p id="totalAmount" style="color:#abcd14"></p>
-                        </div>
-					</div>
-
-					<div class="tbl-row">
-						<div class="tbl-cols">
-                        	Outstanding Balance (<label class='distcurrency'></label>)
-                        </div>
-						<div class="tbl-cols">
-                        	<p id="outstandingBalance" style="color:#abcd14"></p>
-                        </div>
-					</div>
-
-                    </div-->
-				<!--</div>-->
-			<br>
-			<div>
-				<h3>Order Details</h3>
-					<div id="ordtable" class="tbl">
-						<div class="tbl-row tbl-hed">
-							<!--div class="tbl-cols">
-								No.
-							</div-->
-							<div class="tbl-cols">
-								Product
-							</div>
-							<div class="tbl-cols">
-								Qty
-							</div>
-							<div style="width:100%;display:none;" id="returnDialog" title="Prodcast Notification" >
+			
+	
+		<div style="width:100%;display:none;" id="returnDialog" title="Prodcast Notification" >
 								<div class="costomer-tab-section">
 									<div class="tab-content-mini">
 										<form>
 											<div class="row">
-											<div class="col-sm-12">
+											<div class="col-sm-12" align="center">
 											<label>Enter the quantity you would like to return</label>
 											<input id="returnQty" placeholder="Enter The Quantity" value="" type="text" />
 											<p id="returnQtymsg" style="color:red;display: none">Quantity should be above zero </p>
@@ -4217,81 +4221,197 @@
 									</div>
 								</div>
 							</div>
-							<div class="tbl-cols">
+		
+			<br>
+			<div class="row col-sm-12">
+				
+					<div id="ordtable" class="tbl">
+						<div class="tbl-row tbl-hed-bill">
+							
+							<div class="tbl-cols-hed ">
+								Product
+							</div>
+							<div class="tbl-cols-hed ">
+								Qty
+							</div>
+						
+							<div class="tbl-cols-hed">
 								Price (<label class='distcurrency'></label>)
 							</div>
-							<!--div class="tbl-cols">
-								Sales Tax (<label class='distcurrency'></label>)
-							</div>
-							<div class="tbl-cols">
-								Other Tax (<label class='distcurrency'></label>)
-							</div-->
+							
 
-							<div class="tbl-cols">
+							<div class="tbl-cols-hed">
 								Sub Total (<label class='distcurrency'></label>)
 							</div>
 						</div>
 					</div>
 			</div>
-				
-			<br>
-			<div>
-				<h3>Payment Details</h3>
+        
+		<br>
+        <div class="row">
+            
+            <div class="col-sm-4 col-xs-12" style="margin-left: auto; margin-right: 0px;">
+                    				<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								Subtotal
+							</div>
+							<div class="tbl-cols-noborder">
+                                <label class='distcurrency'></label><label id="subTotal" ></label>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								Tax
+							</div>
+							<div class="tbl-cols-noborder">
+                                <label class='distcurrency'></label><label id="totalTax" ></label>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								Discount
+							</div>
+							<div class="tbl-cols-noborder">
+                                <label class='distcurrency'></label><label id="discount" ></label>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								Amount
+							</div>
+							<div class="tbl-cols-noborder">
+                                <label class='distcurrency'></label><label id="totalAmt" ></label>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								Paid
+							</div>
+							<div class="tbl-cols-noborder">
+                                <label class='distcurrency'></label><label id="paid" ></label>
+							</div>
+						</div>
+						<div class="tbl-row-notable">
+							<div class="tbl-cols-noborder">
+								Balance
+							</div>
+							<div class="tbl-cols-noborder">
+                                <label class='distcurrency'></label><label id="outstandingBalance" ></label>
+							</div>
+						</div>
+						
+            </div>
+                
+        </div>
+
+			<div class="row col-sm-12" id="paymentDetailsDiv">
+				<h5>Payment Details</h5>
 				<div id="paytable" class="tbl">
-					<div class="tbl-row tbl-hed">
-						<!--div class="tbl-cols">
-							No.
-						</div-->
-						<div class="tbl-cols">
+					<div class="tbl-row tbl-hed-bill">
+						
+						<div class="tbl-cols-hed">
 							Date
 						</div>
-						<div class="tbl-cols">
+						<div class="tbl-cols-hed">
 							Received By
 						</div>
-						<div class="tbl-cols">
+						<div class="tbl-cols-hed">
 							Amount (<label class='distcurrency'></label>)
 						</div>
 					</div>
 				</div>
 			</div>
-			<!--div>
-				<h3>Return Details</h3>
-				<div id="rordtable" class="tbl">
-					<div class="tbl-row tbl-hed">
-						<!--div class="tbl-cols">
-							No.
-						</div-->
-						<!--div class="tbl-cols">
-							Product
-						</div>
-						<div class="tbl-cols">
-							Qty
-						</div>
-
-						<div class="tbl-cols">
-							Price (<label class='distcurrency'></label>)
-						</div>
-						<!--div class="tbl-cols">
-							Sales Tax (<label class='distcurrency'></label>)
-						</div>
-						<div class="tbl-cols">
-							Other Tax (<label class='distcurrency'></label>)
-						</div-->
-
-						<!--div class="tbl-cols">
-							Sub Total (<label class='distcurrency'></label>)
-						</div>
-
+			<br/>
+			<div class="row col-sm-12">
+		      <p><a class="green-border-btn" id="b_close"  >Close</a></p>
+			</div>
+				  
+				  	
+			<div id="billPaymentPanel" class="slide-anim billPaymentPanel">
+		<div class = "panel panel-success">
+			<div class = "panel-heading">
+			  <h4 class = "panel-title">Payment Panel</h4> &nbsp;
+              <a id="billPaymentPanelHide">Hide</a>
+			</div>	
+		  <div class="row">
+            <div class="col-sm-12">
+             
+                <div class="col-sm-5">
+                    
+                  <label class="lable-style">Payment Amount</label>															  
+				  <input  id="billPayment" class="input-feild-style " type="number"  />
+				  <p id="billpamsg"  style="color:red;display:none">Please enter the payment amount</p>
+				  <p id="billpayalert"  style="color:red;display:none">Please enter amount less than or equal to balance</p>																		 
+				</div>
+                <div class="col-sm-5">
+                  <label class="lable-style">Mode of Payment </label>
+                  <select class="select-style" id="billmop">
+                    <option value="0">Cash</option>
+                    <option value="1">Cheque/Check</option>
+                    <option value="2">Credit/Debit</option>
+                  </select>
+                </div>
+				
+             
+				<div class="row" id="checkdivision">
+				<div class="col-sm-12">
+					<div id="billchequenum"  class="col-sm-5">
+						<label class="lable-style">Cheque Number </label>
+						<input class="input-feild-style" type="text" id="billchequenumber">
+						<p id="billchequen" style="color:red;display:none">Please enter the cheque number</p>
+					</div>
+					<div id="billcommentord"  class="col-sm-5">
+						<label class="lable-style">Comments </label><br><br>
+						<input class="input-feild-style" type="text" id="billcommentorder">
+						<p id="billcommento" style="color:red;display:none">Please enter the comments </p>
+					</div>
+					<div class="col-sm-2"></div>
+				</div>
+				</div>
+				<div class="row">
+				  <p id="fullfilledmsg"  style="color:green;display:none">The Order Has Been Fulfilled Successfully</p>
+				   </div>
+				
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="col-sm-4">
+                            <a id="billPaymentSubmit" class="green-btn-style billPaymentSubmit">Pay</a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a id="billfullFilled" class="green-btn-style billfullFilled">Fullfilled</a>
+                        </div>
+                        </div>
 					</div>
 				</div>
-			</div-->
-			<br/>
-			<a class="green-border-btn" id="b_close"  >Close</a>
-		<!--/div>
-	<div class="col-sm-1"></div-->
+            </div>
+          
+			
+          </div>
+        </div>
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+		</div>
 	</div>
+	
 	</div>
-   </div>
+   
+</div>
 </div>
 
 

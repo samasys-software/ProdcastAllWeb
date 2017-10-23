@@ -50,9 +50,22 @@ $(document).ready(function() {
 		var productMap=[];
 		var saveNewCustMap="";
 		var accessId=localStorage.getItem("accessId");
-		//$('.showEditReg').hide();
 		
-		function getAccessId()
+		if(  $(location).attr("href").endsWith("#home") || $(location).attr("href").endsWith("#order") || $(location).attr("href").endsWith("#order-new") || $(location).attr("href").endsWith("#review") || $(location).attr("href").endsWith("#billdetailspage") || $(location).attr("href").endsWith("#report") || $(location).attr("href").endsWith("#editCustomerRegistrationDetails") || $(location).attr("href").endsWith("#changePinScreen") )
+		{
+			
+			localStorage.removeItem("customerId");
+			localStorage.removeItem("distributorId");
+			localStorage.removeItem("employeeId");
+			localStorage.removeItem("customerType");
+			localStorage.removeItem("DistributorsList");
+			localStorage.removeItem("ProdcastCustomerLogin");
+			localStorage.removeItem("customerSwitchDistributor");
+			
+			$.mobile.navigate("#distributorScreen");
+		}
+		
+		/*function getAccessId()
 		{
 				if(accessId!="")
 				{
@@ -84,7 +97,7 @@ $(document).ready(function() {
 						selectDistributor(customerDetailsMap);
 					}
 				}
-	    }
+	    }*/
 		
 		
                 function calculateTotal(id) {
@@ -125,30 +138,28 @@ $(document).ready(function() {
 
                 }
 
-		function getCustomerLoginKey(){
-				var customerLoginkey=localStorage.getItem("ProdcastCustomerLogin");
-				
-					if(customerLoginkey != null)
-				    {
-						
-					 $.mobile.navigate("#distributorScreen");
-					
-				    }
-				else{
-					$.mobile.navigate("#loginhome");
-				    }
+		/*function getCustomerLoginKey()
+		{
+			var customerLoginkey=localStorage.getItem("accessId");
+			
+			if(customerLoginkey == null)
+			{
+			 $.mobile.navigate("#distributorScreen");
 			}
-			 if(  $(location).attr("href").endsWith("#loginhome") || $(location).attr("href").endsWith(".html") )
-		    {
-					getCustomerLoginKey();
+			else
+			{
+				$.mobile.navigate("#loginhome");
 			}
+		}*/
 		
-		$(document).on("pageinit",function(event)
+		/*if(  $(location).attr("href").endsWith("#loginhome") || $(location).attr("href").endsWith(".html") )
+		{
+			getCustomerLoginKey();
+		}*/
+		
+		/*$(document).on("pageinit",function(event)
 		{						
-				if( event.target.id != "loginHome" && accessId == "" &&event.target.id != "customerRegister" && event.target.id != "pinScreen" )
-				{
-						getAccessId();	
-				}
+
 		});
 			
 		$(document).on("pageshow",function(event)
@@ -157,7 +168,7 @@ $(document).ready(function() {
 			{
 				getAccessId();
 			}
-		});
+		});*/
 		
 		function stringToDate(_date)
 			{
@@ -282,7 +293,7 @@ $(document).ready(function() {
 								
 								// $('#allDistributorsTable').append(newRow);
 								 
-								 $('#distributor').append('<option value="' + distributorMap[counter].distributorId + '">' + distributorMap[counter].companyName + '</option>');   
+								 //$('#distributor').append('<option value="' + distributorMap[counter].distributorId + '">' + distributorMap[counter].companyName + '</option>');   
 								 
 								 newRow = '<li class="salesmenu"><a class="switchDistributors" id="'+distributorMap[counter].distributorId+'"><div class="icon-box"><img src="images/'+distributorMap[counter].logo+'" alt="" class="hvr-bounce-in"></div><label>'+distributorMap[counter].companyName+'</label></a></li>';
 								 
@@ -296,7 +307,7 @@ $(document).ready(function() {
 								
 								 //$('#allDistributorsTable').append(newRow);
 								 
-								 $('#distributor').append('<option value="' + distributorsPublicMap[counter].distributorId + '">' + distributorsPublicMap[counter].companyName + '</option>');   
+								 //$('#distributor').append('<option value="' + distributorsPublicMap[counter].distributorId + '">' + distributorsPublicMap[counter].companyName + '</option>');   
 								 
 								 newRow = '<li class="salesmenu"><a class="switchDistributors" id="'+distributorsPublicMap[counter].distributorId+'"><div class="icon-box"><img src="images/'+distributorsPublicMap[counter].logo+'" alt="" class="hvr-bounce-in"></div><label>'+distributorsPublicMap[counter].companyName+'</label></a></li>';
 								 
@@ -338,6 +349,14 @@ $(document).ready(function() {
 
 				});
 			}
+
+			$(".numericwithoutnegative").keydown(function(e) 
+			{
+				if(!((e.keyCode > 95 && e.keyCode < 106) || (e.keyCode > 48 && e.keyCode < 57) || e.keyCode == 8)) 
+				{
+					return false;
+				}
+			});
 			
 			$(".allownumericwithoutdecimal").on("keypress keyup blur",function (event) 
 			{ 
@@ -459,7 +478,7 @@ $(document).ready(function() {
 					$('#pinMatch').show();
 					
 				}
-			   else
+			    else
 				{
 					validationPin=$('#pin').val();
 				}
@@ -542,39 +561,39 @@ $(document).ready(function() {
 		});
 		
 		//register screen ends
+		
 		//DB MobileNumber Customer Register screen starts
-		$(document).delegate("#newCustomerRegistration","pageinit",function(evt){
-						$("#skipregistration").on("click",function(){
-			
-			   $.mobile.navigate('#distributorScreen');
+		$(document).delegate("#newCustomerRegistration","pageinit",function(evt)
+		{
+			$("#skipregistration").on("click",function()
+			{
+				$.mobile.navigate('#distributorScreen');
 			});
+			
 			$('#customer_country').attr("disabled", true);
 			$("#emptyalertmsg").hide();
-			function newcustomerreset(){
-				
-					                $("#emptyalertmsg").hide();
-									$("input[type=number], textbox").val("");																	
-									$("input[type=numeric], textbox").val("");
-									$("#newCustomerDetails").find('input:text').val('');
-									$("input[type=email], textbox").val("");
-									
-									$('#customer_country')[0].selectedIndex=0;
-										
-                                    $('#customer_smsallowed').attr('checked',false);									
-				                   						
-													
-			}
 			
+			function newcustomerreset()
+			{
+				$("#emptyalertmsg").hide();
+				$("input[type=number], textbox").val("");																	
+				$("input[type=numeric], textbox").val("");
+				$("#newCustomerDetails").find('input:text').val('');
+				$("input[type=email], textbox").val("");
+				$('#customer_country')[0].selectedIndex=0;
+				$('#customer_smsallowed').attr('checked',false);									
+			}
 			
 			$("#customer_country").change(function()
 			{
 				customerCountry = $("#customer_country").val();
-
 			});
 			
-		$("#newCustomerSaveButton").on("click",function(){
+		$("#newCustomerSaveButton").on("click",function()
+		{
 			$("#emptyalertmsg").hide();
 			var cvalid = true;
+			//var customerFirstName=$("#customer_firstname").val();
 			var customerFirstName="";
 			if($("#customer_firstname").val()==""){
 				$('#customer_firstname').css('border', '1px solid red');
@@ -756,50 +775,51 @@ $(document).ready(function() {
 		
 		
 		
-		//DB MobileNumber Customer Register screen ends
-		
-		//Verification code Screen Start
-		
-		$(document).delegate('#pinScreen', 'pageinit', function(evt)
-		{
+	//DB MobileNumber Customer Register screen ends
+	
+	//Verification code Screen Start
+	
+	$(document).delegate('#pinScreen', 'pageinit', function(evt)
+	{
 
-			$('#smsValidationMessage').hide();
+		$('#smsValidationMessage').hide();
+		
+		$(document).delegate('#verifyButton', 'click', function(evt)
+		{ 
+		
+			validate = true;
+			var sms_code="";
+			if($('#code').val() == "" || isNaN($('#code').val()))
+			{
+				validate = false;
+				$('#code').css('border','1px solid red');
+			}
+			else
+			{
+				sms_code=$('#code').val();
+			}
+		   
+		   /*var smsValidate=($('#code').val());
 			
-			$(document).delegate('#verifyButton', 'click', function(evt)
-			{ 
+			if(smsValidate.length<6)
+			{
+				validate=false;
+				$('#code').css('border', '1px solid red');
+				
+			}*/
 			
-			   validate = true;
-			   var sms_code="";
-				if($('#code').val() == "" || isNaN($('#code').val()))
+			if (validate == false)
+			{
+				$('#smsValidationMessage').show();
+			}
+			else
+			{
+				var formData = 
 				{
-					 validate = false;
-					$('#code').css('border','1px solid red');
-					
-					$('#smsValidationMessage').show();
-					
-				}
-			   else
-				{
-					sms_code=$('#code').val();
-				}
-			   
-			   var smsValidate=($('#code').val());
-				
-				if(smsValidate.length<6)
-				{
-					validate=false;
-					$('#code').css('border', '1px solid red');
-					
-				}
-				
-				 var formData = 
-				 {
-					 
-						"confirmationCode":sms_code,
-						"accessId":confirmationId
-						
-				 };		
-				 
+					"confirmationCode":sms_code,
+					"accessId":confirmationId
+				};		
+			 
 				$.ajax({
 				type: 'POST',
 				url: baseUrl+'/prodcast/customer/confirmationDetails',
@@ -814,47 +834,43 @@ $(document).ready(function() {
 					} 
 					else 
 					{
-						
 						registrationMap=response;
 						//username=response.
 
 						$("#code").val("");
-
 						$('#smsValidationMessage').hide();
-						
 						$("#pinScreen :input").css('border', ' 1px solid #d8e1b6');
-						
 						$.mobile.navigate("#newCustomerRegistration");	
 					}
-				 }
-
-			});
+				}
+				});
+			}
 		});
 		
 		$(document).delegate('#resentCode', 'click', function(evt)
 		{ 
-			   var formData2 = 
-				 {
-						"accessId":confirmationId	
-				 };		
-				 
-				$.ajax({
-				type: 'POST',
-				url: baseUrl+'/prodcast/customer/resendConfirmationCode',
-				dataType: 'json',
-				data: formData2,
-				encode: true,
-				success: function(response)
+			var formData2 = 
+			{
+				"accessId":confirmationId	
+			};		
+			 
+			$.ajax({
+			type: 'POST',
+			url: baseUrl+'/prodcast/customer/resendConfirmationCode',
+			dataType: 'json',
+			data: formData2,
+			encode: true,
+			success: function(response)
+			{
+				if (response.error) 
 				{
-					if (response.error) 
-					{
-						alertMessage(response.errorMessage);
-					} 
-					else 
-					{
-						alertMessage("confirmation code has been resent successfully");	
-					}
-				 }
+					alertMessage(response.errorMessage);
+				} 
+				else 
+				{
+					alertMessage("confirmation code has been resent successfully");	
+				}
+			}
 			});
 		});
 		
@@ -901,30 +917,68 @@ $(document).ready(function() {
 				}
 				else
 				{
+					var orderType="";
 					cloneResponse=response;
 					localStorage.setItem("cloneResponse",JSON.stringify(cloneResponse));
 					var order = response.order;
+					
+					if (order.deliveryAddress != null && order.deliveryAddress != "")
+					{
+					  $('#billdetailspage #deliveryAddress').text( order.deliveryAddress );
+					}
+					else
+					{
+					  $('.deliveryAddressType').hide();
+					}
+					
 					var customer=order.customer;
 					var customerAddress=(customer.billingAddress1+" "+customer.billingAddress2+" "+customer.billingAddress3);
 					var custStatepost=(customer.city+","+customer.state+customer.postalCode);
 					var distributor=order.distributor;
 					var distAddress=(distributor.address1+" "+distributor.address2+" "+distributor.address3);
 					var distCityState=(distributor.city+","+distributor.state+distributor.postalCode);
-					var distPhoneNumber=("PhoneNumber:"+distributor.homePhone)	;
-					var custPhoneNumber=("PhoneNumber:"+customer.phonenumber)	;
+					var distPhoneNumber=("Ph:"+distributor.homePhone)	;
+					var custPhoneNumber=("Ph:"+customer.phonenumber)	;
 					var totalAmount=(order.totalAmount).toFixed(2);
 					var outstandingBalance=(order.outstandingBalance).toFixed(2);
 					 
+					if( distributor.fulfillmentType!='0')
+					{
+						if( order.fulfillmentType == '0' )
+						{
+							orderType = "PICKUP";
+						}
+						else if( order.fulfillmentType == '1' )
+						{
+							orderType = "DELIVERY";
+						}
+					} 
+					
 					$('#billdetailspage #distMname').text( distributor.companyName );
-					$('#billdetailspage #distAddress').text(distAddress );
-					$('#billdetailspage #distCity').text(distCityState );
-					$('#billdetailspage #distPhone').text(distPhoneNumber );
+					//$('#billdetailspage #distAddress').text(distAddress );
+					//$('#billdetailspage #distCity').text(distCityState );
+					//$('#billdetailspage #distPhone').text(distPhoneNumber );
 					var customerName = customer.customerName;
 					if( customerName == null || customerName.trim().length == 0 ) customerName = customer.firstName + " " +customer.lastName;
-					$('#billdetailspage #customerMname').text( customerName );
+					
+					if (distributor.openToPublic == false)
+					{
+						//$('#billdetailspage #distMname').text( distributor.companyName );
+						$('#billdetailspage #customerMname').text( customerName );
+					}
+					else
+					{
+						//$('#billdetailspage #distMname').html(distributor.firstName+' &nbsp; '+distributor.lastName);
+						$('#billdetailspage #customerMname').html( customer.firstname+' &nbsp; '+customer.lastname );
+					}
+					
+					//$('#billdetailspage #customerMname').text( customerName );
 					$('#billdetailspage #custAddress').text(customerAddress );
 					$('#billdetailspage #custCity').text(custStatepost );
 					$('#billdetailspage #custPhone').text(custPhoneNumber);
+					
+					$('#billdetailspage #orderType').html(orderType);
+					
 					var  discount=$('#discountValue').val();
 									if($('#discountValue').val()=="")
 									{
@@ -940,26 +994,53 @@ $(document).ready(function() {
 									  if(returntype==2){
 										 discount=(order.discount)+'%';
 								  }
+								  
+								  
+								  
 					$('#billdetailspage #billNumber').text( selectedBill );
 					$('#billdetailspage #billDate').text( stringToDate (order.billDate) );
 					$('#billdetailspage #employeeName').text( order.employeeName );
-					$('#billdetailspage #discountValue').text(discount);
+					$('#billdetailspage #discountValue').html(order.discount.toFixed(2));
 					$('#billdetailspage #totalAmount').text( totalAmount );
 					$('#billdetailspage #outstandingBalance').text( outstandingBalance );
+					//$('#billdetailspage #totalTax').text( totalTax );
+					
+					/*var taxes = order.orderEntries;
+					
+					var stax=0.00,otax=0.00;
+					
+					for(counter=0;counter<taxes.length;counter++)
+					{
+						var salTax = taxes[counter].salesTax;
+						var othTax = taxes[counter].otherTax;
+						
+						var stax = (Number(stax) + Number(salTax));
+						var otax = (Number(otax) + Number(othTax));
+					}
+					var totalTax = salTax + othTax;
+					$('#billdetailspage #totalTax').text( totalTax );*/
 					  
 					 //Adding products.
 					 
 					var orderEntries = order.orderEntries;
+					var totalTax=0;
+					var subTotal=0;
 
 					for(counter=0;counter<orderEntries.length;counter++)
 					{
 						var entry1 = orderEntries[counter];
-						var subtotal=(entry1.subtotal).toFixed(2);
-						var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+(counter+1)+'</div><div class="tbl-cols">'+entry1.productName+'</div><div class="tbl-cols">'+entry1.quantity+'</div><div class="tbl-cols">'+entry1.unitPrice.toFixed(2)+'</div><div class="tbl-cols">'+entry1.salesTax.toFixed(2)+'</div><div class="tbl-cols">'+entry1.otherTax.toFixed(2)+'</div><div class="tbl-cols">'+subtotal+'</div></div>';
+						//var subtotal=(entry1.subtotal).toFixed(2);
+						//var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+(counter+1)+'</div><div class="tbl-cols">'+entry1.productName+'</div><div class="tbl-cols">'+entry1.quantity+'</div><div class="tbl-cols">'+entry1.unitPrice.toFixed(2)+'</div><div class="tbl-cols">'+entry1.salesTax.toFixed(2)+'</div><div class="tbl-cols">'+entry1.otherTax.toFixed(2)+'</div><div class="tbl-cols">'+subtotal+'</div></div>';
+						var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+entry1.productName+'</div><div class="tbl-cols">'+entry1.quantity+'</div><div class="tbl-cols">'+entry1.unitPrice.toFixed(2)+'</div><div class="tbl-cols">'+entry1.subtotal.toFixed(2)+'</div></div>';
 
 						$('#billdetailspage #ordtable').append( trstr1 );
 						$('#billdetailspage #ordtable').show();
+						totalTax=totalTax+(entry1.salesTax+entry1.otherTax);
+						subTotal=subTotal+entry1.subtotal;
 					}
+					
+					$('#billdetailspage #subTotal').text(subTotal);
+					$('#billdetailspage #totalTax').html(totalTax.toFixed(2));
 
 					orderEntries = order.collectionEntries;
 				
@@ -969,19 +1050,28 @@ $(document).ready(function() {
 						{
 							$('#billdetailspage #paytable').hide();
 							$('#billdetailsheader1').hide();
+							
+							var paid=0.00;
+							$('#billdetailspage #paid').html( paid.toFixed(2));
 						}
 						else
 						{	
+					
+							var paid=0;
+							
 							for(counter=0;counter<orderEntries.length;counter++)
 							{
 								var entry1 = orderEntries[counter];
-								var amountPaid=(entry1.amountPaid).toFixed(2);
-								var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+(counter+1)+'</div><div class="tbl-cols">'+stringToDate(entry1.paymentDate)+'</div><div class="tbl-cols">'+entry1.employeeName+'</div><div class="tbl-cols">'+amountPaid+'</div></div>';
+								//var amountPaid=(entry1.amountPaid).toFixed(2);
+								//var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+(counter+1)+'</div><div class="tbl-cols">'+stringToDate(entry1.paymentDate)+'</div><div class="tbl-cols">'+entry1.employeeName+'</div><div class="tbl-cols">'+amountPaid+'</div></div>';
+								var trstr1 = '<div class="tbl-row"><div class="tbl-cols">'+stringToDate(entry1.paymentDate)+'</div><div class="tbl-cols">'+entry1.employeeName+'</div><div class="tbl-cols">'+entry1.amountPaid.toFixed(2)+'</div></div>';
 								$('#billdetailspage #paytable').append( trstr1 );
+								paid=paid+entry1.amountPaid;
 							}
+							$('#billdetailspage #paid').html( paid.toFixed(2));
 						}
 					}
-					var returnEntries = order.returnEntries;
+					/*var returnEntries = order.returnEntries;
 					
 					if(returnEntries!=null)
 					{
@@ -1001,7 +1091,7 @@ $(document).ready(function() {
 								$('#billdetailspage #rordtable').show();
 							}
 						}
-					}	
+					}*/	
 				}
 			}
 			});
@@ -1086,6 +1176,7 @@ $(document).delegate("#editCustomerRegistrationDetails","pageshow",function(evt)
 		*/			
 			 cellPhone=localStorage.getItem("cellPhone");
 			// accessId=localStorage.getItem("accessId");
+			$("#editCustomerRegistrationDetails :input").css('border', ' 1px solid #d8e1b6');
 			$("#editemptyalertmsg").hide();
 			$.ajax({
                         type: 'GET',
@@ -1302,40 +1393,47 @@ $(document).delegate("#editCustomerRegistrationDetails","pageshow",function(evt)
 		$(document).delegate("#changePinScreen","pageinit",function(evt)
 		{
 			
+		});
+		$(document).delegate("#changePinScreen","pageshow",function(evt)
+		{
+			resetChangePinnumber();
+			
 			function resetChangePinnumber()
-			        {
-							$('#newPinnumber').val("");
-							$('#oldPinnumber').val("");
-							$('#confirmPinnumber').val("");
-							$('#oldpinnonull').hide();
-							$('#oldpinnoerror').hide();
-							$('#newpinnonull').hide();
-							$('#newpinnosame').hide();
-							$('#newpinnoerror').hide();
-							$('#confirmpinnonull').hide();
-							$('#confirmpinnoerror').hide();
-			        }
-					$("#dialog1").show();
-			        $('#oldpinnonull').hide();
-					$('#oldpinnoerror').hide();
-					$('#newpinnonull').hide();
-					$('#newpinnosame').hide();
-					$('#newpinnoerror').hide();
-					$('#confirmpinnonull').hide();
-					$('#confirmpinnoerror').hide();
+			{
+				$("#changePinScreen :input").css('border', ' 1px solid #d8e1b6');
+				$('#newPinnumber').val("");
+				$('#oldPinnumber').val("");
+				$('#confirmPinnumber').val("");
+				$('#oldpinnonull').hide();
+				$('#oldpinnoerror').hide();
+				$('#newpinnonull').hide();
+				$('#newpinnosame').hide();
+				$('#newpinnoerror').hide();
+				$('#confirmpinnonull').hide();
+				$('#confirmpinnoerror').hide();
+			}
+			
+			$("#dialog1").show();
+			$('#oldpinnonull').hide();
+			$('#oldpinnoerror').hide();
+			$('#newpinnonull').hide();
+			$('#newpinnosame').hide();
+			$('#newpinnoerror').hide();
+			$('#confirmpinnonull').hide();
+			$('#confirmpinnoerror').hide();
 					
-				$(document).delegate("#changePinScreen :input","click", function() 
-				{
-                    $(this).css('border', ' 1px solid green');
-					$('#oldpinnonull').hide();
-					$('#oldpinnoerror').hide();
-					$('#newpinnonull').hide();
-					$('#newpinnosame').hide();
-					$('#newpinnoerror').hide();
-					$('#confirmpinnonull').hide();
-					$('#confirmpinnoerror').hide();
-
-				});	
+			$(document).delegate("#changePinScreen :input","click", function() 
+			{
+				$(this).css('border', ' 1px solid green');
+				$('#oldpinnonull').hide();
+				$('#oldpinnoerror').hide();
+				$('#newpinnonull').hide();
+				$('#newpinnosame').hide();
+				$('#newpinnoerror').hide();
+				$('#confirmpinnonull').hide();
+				$('#confirmpinnoerror').hide();
+			});	
+			
 			$(document).delegate("#changepinnumber_save","click",function(evt)
 			{
 				var evalid=true;
@@ -1428,7 +1526,6 @@ $(document).delegate("#editCustomerRegistrationDetails","pageshow",function(evt)
 		   
 		   $(document).delegate('#changepinnumber_reset','click',function(evt)
 		   {
-			   $("#changePinScreen :input").css('border', ' 1px solid #d8e1b6');
 				 resetChangePinnumber();
 		   });
 				 
@@ -1497,6 +1594,10 @@ $(document).delegate("#editCustomerRegistrationDetails","pageshow",function(evt)
 								  {
 								
 								   customerDetailsMap = response.result;
+								   
+								   $('#distributor').append('<option value="' + customerDetailsMap.distributor.distributorId + '">' + customerDetailsMap.distributor.companyName + '</option>');   
+
+								   //$("#distributor").attr("disabled",true);
 								   
 								   selectDistributor(customerDetailsMap);
 								   
@@ -1655,6 +1756,6 @@ $(document).delegate("#editCustomerRegistrationDetails","pageshow",function(evt)
 			//window.location.href = 'http://ec2-52-91-5-22.compute-1.amazonaws.com:8080/prodcastcweb/V5/index_gj_2.html';
 		});
 
-     /* Login Screen End*/	 
+     /* Login Screen End*/	
 
 });	 
