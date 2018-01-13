@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8">
 <title>Prodcast</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
 <!-- Tell the browser to be responsive to screen width -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
 <!-- Bootstrap 3.3.5 -->
 <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
 <link href="http://code.jquery.com/ui/1.9.2/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
@@ -17,76 +20,30 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-.green-btn-style-blink
-{
-background: #89ca18 none repeat scroll 0 0;
-  color: white;
-  display: inline-block;
-  font-size: 16px;
-  margin-right: 20px;
-  padding: 10px 30px;
-  text-decoration:none;
-}
-@-webkit-keyframes glowing {
-  0% { background-color: #89ca18; -webkit-box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
-  50% { background-color: #41e52b; -webkit-box-shadow: 0 0 10px #41e52b; color: white; text-decoration:none;}
-  100% { background-color: #89ca18; -webkit-box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
-}
 
-@-moz-keyframes glowing {
-  0% { background-color: #89ca18; -moz-box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
-  50% { background-color: #41e52b; -moz-box-shadow: 0 0 10px #41e52b; color: white; text-decoration:none;}
-  100% { background-color: #89ca18; -moz-box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
-}
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button 
+	{ 
+	  -webkit-appearance: none; 
+	}
 
-@-o-keyframes glowing {
-  0% { background-color: #89ca18; box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
-  50% { background-color: #41e52b; box-shadow: 0 0 10px #41e52b; color: white; text-decoration:none;}
-  100% { background-color: #89ca18; box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
-}
+	input[type=number] 
+	{
+	  -moz-appearance: textfield;
+	}
+	
+	.dropdown-color
+	{
+		color: #000;
+	}
 
-@keyframes glowing {
-  0% { background-color: #89ca18; box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
-  50% { background-color: #41e52b; box-shadow: 0 0 10px #41e52b; color: white; text-decoration:none;}
-  100% { background-color: #89ca18; box-shadow: 0 0 3px #89ca18; color: white; text-decoration:none;}
-}
-
-.green-btn-style-blink {
-  -webkit-animation: glowing 1500ms infinite;
-  -moz-animation: glowing 1500ms infinite;
-  -o-animation: glowing 1500ms infinite;
-  animation: glowing 1500ms infinite;
-
-}
-
-.green{
- background-color:#89ca18;
-}
-#savedialog
- {
-   background-color:white;
-   float:left;
- }
- 
- #dialog
- {
-   background-color:white;
-   float:left;
-   position: ['center'];
- }
-
-
- 
 </style>
-</head>
 
+</head>
 <body style="overflow-y:scroll">
 <div class="page">
 
   <!-- Login Page -->
-  
-  <!-- Start of first page -->
-
   <div class="ui-page ui-body-c ui-page-active" tabindex="0" data-url="one" data-role="page" id="loginHome">
     <section class="login-sec">
       <div class="admin-logo"><img src="images/admin-logo.png" alt="" /></div>
@@ -104,13 +61,13 @@ background: #89ca18 none repeat scroll 0 0;
                 <li>
 				
                   <div class="input-box ui-content ui-body-a" > <span class="input-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                    <input type="number" name="" value="" placeholder="Mobile Number" id="LoginUserId" class="allownumericwithoutdecimal"/>
+                    <input type="number" name="" value="" placeholder="Mobile Number" id="LoginUserId" class="numericwithoutnegative"/>
                   </div>
                   <div id="validationMessage" class="validation-msg">! Invalid Mobile Number or PIN</div>
                 </li>
                 <li>
                   <div class="input-box" > <span class="input-icon"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
-                    <input type="number" name="" placeholder="PIN" id="LoginPassword" maxlength="10" inputmode="numeric" class="allownumericwithoutdecimal"/>
+                    <input type="number" name="" placeholder="PIN" id="LoginPassword" maxlength="10" inputmode="numeric" class="numericwithoutnegative"/>
                   </div>
                   <div id="validationMessage" class="validation-msg">! Invalid Mobile Number or PIN</div>
                 </li>
@@ -131,11 +88,9 @@ background: #89ca18 none repeat scroll 0 0;
       </div>
     </section>
   </div>
-  
   <!-- Login Page END -->
 	
-  <!-- Customer Register page -->
-	 
+  <!-- Customer Register page --> 
 	<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="customerRegister" data-theme="a">
             <header class="col-sm-12 top-head">
               <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
@@ -146,7 +101,7 @@ background: #89ca18 none repeat scroll 0 0;
 	   </div>
 			
 	<div class="col-sm-12 content-sec" >
-		<div style="width:100" id="customerRegisterNavigation" title="Prodcast Notification" >
+		<div style="width:100" id="customerRegisterNavigation">
 			<div class="costomer-tab-section">
                <div class="tab-content">
                   <div id="customerRegisterTab" class="tab-pane fade in active">
@@ -156,22 +111,22 @@ background: #89ca18 none repeat scroll 0 0;
                             <div class="row" >
 								   <div class="col-sm-4 col-xs-6" >
 										  <label>Country</label>
-											<select id="country" >													
+											<select id="country" class="dropdown-color">													
 											</select>
 									</div>
 								   <div class="col-sm-4 col-xs-6" >
 								      <label>Mobile Phone</label>
-									  <input type="number" id="mobilePhone" class="allownumericwithoutdecimal" >
+									  <input type="number" id="mobilePhone" class="numericwithoutnegative" >
 									</div>
 								</div>
 							<div class="row">
 									<div class="col-sm-4 col-xs-6" >
 								      <label>PIN</label>
-								      <input type="password" id="pin" maxlength="10" class="allownumericwithoutdecimal" >
+								      <input type="password" id="pin" maxlength="10" class="numericwithoutnegative" >
 								    </div>
 									<div class="col-sm-4 col-xs-6" >
 								      <label>Confirm PIN</label>
-								      <input type="password" id="confirmPin" maxlength="10" class="allownumericwithoutdecimal" >
+								      <input type="password" id="confirmPin" maxlength="10" class="numericwithoutnegative" >
 								    </div>
 							</div> 
 							
@@ -190,26 +145,34 @@ background: #89ca18 none repeat scroll 0 0;
 					                </div>
 							</div> 
               </div>
-			  
-		
-			  
-	
-			  
-			  
-			  
             </div>
 		  </div>
 		</div>
+		
+		<div style="width:100%;display:none;" id="dialog" title="Prodcast Notification" >
+			<div class="costomer-tab-section">
+				<div class="tab-content-mini">
+					<form>
+						<div class="row">
+							<div class="col-sm-12">
+								<p id="message" align="center" style="color:#abcd14">Your Order has been done successfully</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12" align="center">
+								<a class="green-btn-style" id="ok">OK</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 
-      </div>
+	</div>
     </div>
-	
   <!-- Customer Register Page End-->
+  
   <!-- newCustomer Register Page Start-->
-  
-     
-  
-  
   	<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="newCustomerRegistration" data-theme="a">
             <header class="col-sm-12 top-head">
               <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
@@ -221,13 +184,8 @@ background: #89ca18 none repeat scroll 0 0;
 			<div class="col-sm-12 title-bar">
 			  <div class="col-sm-6 col-xs-5 title"><i class="fa fa-users"; aria-hidden="true"></i> New Customer Registration</div>
 		    </div>
-			<!--<div class="col-sm-12" >
-			<br/><br/>
-			
-			 <div class="col-sm-12 col-xs-12" > <center> <a class="green-btn-style distmenu ui-link" id="skipregistration" > Skip Registration </a> </center> </div>
-		     </div>-->
 			<div class="col-sm-12 content-sec" >
-				<div style="width:100" id="newCustomerRegisterNavigation" title="Prodcast Notification" >
+				<div style="width:100" id="newCustomerRegisterNavigation">
 					<div class="costomer-tab-section">
 					   <div class="tab-content">					   
 					   <div id="newCustomerDetails" class="tab-pane fade in active">
@@ -265,7 +223,7 @@ background: #89ca18 none repeat scroll 0 0;
 													 <div class="row">
 														<div class="col-sm-4 col-xs-6">
 														<label>Home PhoneNumber</label>
-														<input type="number" id="customer_Phonenumber" class="allownumericwithoutdecimal">
+														<input type="number" id="customer_Phonenumber" class="numericwithoutnegative">
 													</div>
 													
 													
@@ -284,7 +242,7 @@ background: #89ca18 none repeat scroll 0 0;
 													<div class="col-sm-4 col-xs-6">
 													   <label>Country</label>
 													   
-											               <select id="customer_country" >
+											               <select id="customer_country" class="dropdown-color" >
 													      
 											             </select>
 													   
@@ -293,7 +251,7 @@ background: #89ca18 none repeat scroll 0 0;
 													<div class="row">
 													<div class="col-sm-4 col-xs-6">
 													   <label>Postal Code</label>
-													   <input type="text" id="customer_postalcode">
+													   <input type="text" id="customer_postalcode" class="numericwithoutnegative">
 													</div>
 													<div class="col-sm-4 col-xs-6">
 														  <label>SMS Allowed</label>
@@ -323,13 +281,10 @@ background: #89ca18 none repeat scroll 0 0;
 											</div>
 											</div>
 											</div>
-											</div>			  
-	
-	 
+											</div>			   
   <!-- newcustomer Register page End-->
 	 
-  <!-- PIN page -->
-	 
+  <!-- PIN page -->	 
 	<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="pinScreen" data-theme="a">
 	<header class="col-sm-12 top-head">
 	  <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
@@ -340,7 +295,7 @@ background: #89ca18 none repeat scroll 0 0;
 	   </div>
 		  
 	  <div class="col-sm-12 content-sec">
-		<div style="width:100%" id="verifivationCodeNavigation" title="Prodcast Notification" >
+		<div style="width:100%" id="verifivationCodeNavigation">
 			<div class="costomer-tab-section">
                <div class="tab-content">
                   <div id="verifivationCodeTab" class="tab-pane fade in active">
@@ -349,7 +304,7 @@ background: #89ca18 none repeat scroll 0 0;
                            <div class="row">
 									<div class="col-sm-4 col-xs-6">
 										  <label>Please enter the confirmation code from the text sent to your registered mobile number </label>
-										  <input type="text" id="code" maxlength="6" class="allownumericwithoutdecimal">
+										  <input type="number" id="code" maxlength="6" class="numericwithoutnegative">
 								    </div>
                            </div>
 				        </form>
@@ -372,11 +327,9 @@ background: #89ca18 none repeat scroll 0 0;
 		
       </div>
     </div>
-	
   <!-- PIN Page End-->
   
   <!-- Dashboard -->
-
   <div style="min-height: 800px;" class="ui-page ui-body-a" tabindex="0" data-url="two" data-role="page" id="home" data-theme="a">
     <header class="col-sm-12 top-head">
       <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
@@ -398,7 +351,7 @@ background: #89ca18 none repeat scroll 0 0;
 			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
               <label> Order History </label>
               </a> </li>
-			<li class="distmenu"> <a href="#distributorScreen" id="elid"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+			<li class="distmenu"> <a class="changeStores" id="elid"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
               <label> Change Store </label>
               </a> </li>
 			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
@@ -428,7 +381,7 @@ background: #89ca18 none repeat scroll 0 0;
               <div class="icon-box"><img src="images/report.png" alt="" class="hvr-bounce-in"> </div>
               <label> ORDER HISTORY </label>
               </a></li>
-			<li class="distmenu"><a href="#distributorScreen">
+			<li class="distmenu"><a class="changeStores">
               <div class="icon-box"> <img src="images/distribution-icon.png" alt="" class="hvr-bounce-in"></div>
               <label> CHANGE STORE </label>
               </a></li>
@@ -443,11 +396,9 @@ background: #89ca18 none repeat scroll 0 0;
 		 </div>
     </div>
   </div>
-  
   <!-- Dashboard END -->
     
   <!-- order -->
-   
   <div  class="ui-page ui-body-a" tabindex="0" data-url="four" data-role="page" id="order" data-theme="a">
    <header class="col-sm-12 top-head">
       <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
@@ -466,15 +417,11 @@ background: #89ca18 none repeat scroll 0 0;
              <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
               <label> Dashboard </label>
               </a> </li>
-            <li class="salesmenu"> <a href="#order" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
-              <label> Order </label>
-              </a> </li>
-			
 			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
               <label>  Order History  </label>
               </a> </li>
 		
-			<li class="adminmenu"> <a href="#distributorScreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+			<li class="adminmenu"> <a class="changeStores"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
               <label>Change Store</label>
               </a></li>
 			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
@@ -512,25 +459,23 @@ background: #89ca18 none repeat scroll 0 0;
 		  
 		 <div class="row">
 
-            <div class="col-md-8">
-			  <div class="row">
-               
-                <div class="col-sm-12 free-space"><a  href="#order-new" id="neworder" class="green-btn-style">New Order</a><br><br>
-                  </div>
-              </div>
+            <div class="col-sm-12 newCart">
+                <div class="col-sm-12 free-space"><a  href="#order-new" id="neworder" class="green-btn-style">New Order</a><br><br></div>
             </div>
-            <div class="col-md-4"></div>
+			
+			<div class="col-sm-12 cartExist">
+                <div class="col-sm-12 free-space"><a  href="#order-new" id="neworder" class="green-btn-style">Continue Order</a>&nbsp;&nbsp;<a class="green-btn-style reviewbtn"> View Cart <label class="productCount"></label> </a><br><br></div>
+            </div>
+
           </div>
         </div>
 		</div>
       </div>
     </div>
   </div>
-
   <!-- order end -->
   
   <!--bill details start-->
- 
   <div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1"  data-role="page" id="billdetailspage" data-theme="a">
     <header class="col-sm-12 top-head">
       <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
@@ -555,7 +500,7 @@ background: #89ca18 none repeat scroll 0 0;
 			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
               <label>  Order History  </label>
               </a> </li>
-			<li class="distmenu"> <a href="#distributorScreen" id="elid"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+			<li class="distmenu"> <a class="changeStores" id="elid"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
               <label> Change Store </label>
               </a> </li>
 			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
@@ -575,194 +520,164 @@ background: #89ca18 none repeat scroll 0 0;
             </div>
         </div>
 	<div class="col-sm-12 content-sec">
-			<div>
-				<div class="tbl" id="msgtable">
-								<div class="tbl-row tbl-hed">
-								<div class="tbl-cols">
-								<p align="left" >
-								Distributor
-								</p>
-								</div>
-
-								<div class="tbl-cols">
-								<p align="left" >
-
-								Customer
-								</p>
-								</div>
-									</div>
-								<div class="tbl-row">
-								<div class="tbl-cols">
-								    <p id="distMname" style="color:#abcd14" align="left"></p>
-								    <p id="distAddress" style="color:#abcd14" align="left"></p>
-								    <p id="distCity" style="color:#abcd14" align="left"></p>
-								    <p id="distPhone" style="color:#abcd14" align="left"></p>
-								</div>
-								<div class="tbl-cols">
-									<p id="customerMname" style="color:#abcd14" align="left"></p>
-									<p id="custAddress" style="color:#abcd14" align="left"></p>
-									<p id="custCity" style="color:#abcd14" align="left"></p>
-									<p id="custPhone" style="color:#abcd14" align="left"></p>
-								</div>
-								</div>
-
-				</div>
-							</br>
-							</br>
-				         </br>
-
-             	<div class="tbl" id="bill">
-              		<div class="tbl-row tbl-hed">
-					</div>
-					<div class="tbl-row">
-                    	<div class="tbl-cols">
-                        	Order No.
-                        </div>
-                    	<div class="tbl-cols">
-                        	<p id="billNumber" style="color:#abcd14"></p>
-                        </div>
-					</div>
-					<div class="tbl-row">
-                    	<div class="tbl-cols">
-                        	Bill Date
-                        </div>
-                    	<div class="tbl-cols">
-                        	<p id="billDate" style="color:#abcd14"></p>
-                        </div>
-					</div>
-
-					<div class="tbl-row">
-						<div class="tbl-cols">
-                        Sales Rep
-                        </div>
-                    	<div class="tbl-cols">
-                        	<p id="employeeName" style="color:#abcd14"></p>
-                        </div>
-					</div>
-					<div class="tbl-row">
-						<div class="tbl-cols">
-						Discount
-						                        </div>
-						                    	<div class="tbl-cols">
-						                        	<p id="discountValue" style="color:#abcd14"></p>
-
-						                        </div>
-											</div>
-											<div class="tbl-row">
-						<div class="tbl-cols">
-                        	Total (<label class='distcurrency'></label>)
-                        </div>
-						<div class="tbl-cols">
-                        	<p id="totalAmount" style="color:#abcd14"></p>
-                        </div>
-					</div>
-
-					<div class="tbl-row">
-						<div class="tbl-cols">
-                        	Outstanding Balance (<label class='distcurrency'></label>)
-                        </div>
-						<div class="tbl-cols">
-                        	<p id="outstandingBalance" style="color:#abcd14"></p>
-                        </div>
-					</div>
-
-                 </div>
-
-			</div>
+	
+	<div class="row">
+		<div class="col-sm-12 col-xs-12 ">
+			<label id="distMname"></label> &nbsp;<label id="orderType"></label>&nbsp;Order#&nbsp;<label id="billNumber" ></label> on <label id="billDate" ></label>
+		</div>
+    </div>
+	<br>
+	<div class="row">
+		<div class="col-xs-2"></div>
+		<div class="col-sm-12 col-xs-9">
+			<a class="green-btn-style" id="billdetailsclosebutton" >Close</a>
+			<a class="green-btn-style" id="billdetailsCloneOrder" >Clone Order</a>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
 		<br>
-					<div>
-						<h3>Order Details</h3>
-							<div id="ordtable" class="tbl">
-								<div class="tbl-row tbl-hed">
-									<div class="tbl-cols">
-										No.
-									</div>
-									<div class="tbl-cols">
-										Product
-									</div>
-									<div class="tbl-cols">
-										Qty
-									</div>
-									<div class="tbl-cols">
-										Price (<label class='distcurrency'></label>)
-									</div>
-									<div class="tbl-cols">
-										Sales Tax (<label class='distcurrency'></label>)
-									</div>
-									<div class="tbl-cols">
-										Other Tax (<label class='distcurrency'></label>)
-									</div>
-
-									<div class="tbl-cols">
-										Sub Total (<label class='distcurrency'></label>)
-									</div>
-								</div>
-							</div>
-						</div>
-					<br>
-					<div>
-						<h3 id="billdetailsheader1">Payment Details</h3>
-							<div id="paytable" class="tbl">
-								<div class="tbl-row tbl-hed">
-									<div class="tbl-cols">
-										No.
-									</div>
-									<div class="tbl-cols">
-										Date
-									</div>
-									<div class="tbl-cols">
-										Received By
-									</div>
-									<div class="tbl-cols">
-										Amount (<label class='distcurrency'></label>)
-									</div>
-								</div>
-							</div>
-						</div>
-						<br/>
-						<div>
-												<h3 id="billdetailsheader2">Return Details</h3>
-													<div id="rordtable" class="tbl">
-														<div class="tbl-row tbl-hed">
-															<div class="tbl-cols">
-																No.
-															</div>
-															<div class="tbl-cols">
-																Product
-															</div>
-															<div class="tbl-cols">
-																Qty
-															</div>
-
-															<div class="tbl-cols">
-																Price (<label class='distcurrency'></label>)
-															</div>
-															<div class="tbl-cols">
-																Sales Tax (<label class='distcurrency'></label>)
-															</div>
-															<div class="tbl-cols">
-																Other Tax (<label class='distcurrency'></label>)
-															</div>
-
-															<div class="tbl-cols">
-																Sub Total (<label class='distcurrency'></label>)
-															</div>
-
-														</div>
-													</div>
-						</div>
-						<br/>
-							<a class="green-border-btn" id="billdetailsclosebutton" >Close</a>&nbsp;<a class="green-border-btn" id="billdetailsCloneOrder" >Clone Order</a>
+		<div class="row orderFrom">
+			<div class="col-sm-4 col-xs-6 tbl-cols-noborder">
+				<div class="tbl-row-notable">
+					<div class="tbl-cols-noborder">
+						Order from :
+					</div>
+				</div>
+				<div class="tbl-row-notable">
+					<div class="tbl-cols-noborder">
+						<label id="customerMname" ></label>
+					</div>
+				</div>
+				<div class="tbl-row-notable">
+					<div class="tbl-cols-noborder">
+						<label id="custAddress" ></label>
+					</div>
+				</div>
+				<div class="tbl-row-notable">
+					<div class="tbl-cols-noborder">
+						<label id="custCity" ></label>
+					</div>
+				</div>
+				<div class="tbl-row-notable">
+					<div class="tbl-cols-noborder">
+						<label id="custPhone" ></label>
+					</div>
+				</div>
+			</div>
+            <div class="col-sm-4 col-xs-6 tbl-cols-noborder deliveryAddressType">
+				<div class="tbl-row-notable">
+					<div class="tbl-cols-noborder">
+						Delivery Address
+					</div>
+				</div>
+				<div class="tbl-row-notable">
+					<div class="tbl-cols-noborder">
+						<label id="deliveryAddress"></label>
+					</div>
+				</div>
+            </div> 
+			<div class="col-sm-4"></div>
         </div>
+		
+		<br>
+		<div class="row col-sm-12">
+			<div id="ordtable" class="tbl">
+				<div class="tbl-row tbl-hed-bill">
+					<div class="tbl-cols-hed">
+						Product
+					</div>
+					<div class="tbl-cols-hed">
+						Qty
+					</div>
+					<div class="tbl-cols-hed">
+						Price (<label class='distcurrency'></label>)
+					</div>
+					<div class="tbl-cols-hed">
+						Sub Total (<label class='distcurrency'></label>)
+					</div>
+				</div>
+			</div>
+			<br>
+		</div>
+					
+		<div class="row">     
+            <div class="col-sm-4 col-xs-12" style="margin-left: auto; margin-right: 0px;">
+				<div class="tbl-row-notable">
+					<div class="tbl-cols-noborder">
+						Subtotal
+					</div>
+					<div class="tbl-cols-noborder">
+						<label class='distcurrency'></label><label id="subTotal" ></label>
+					</div>
+				</div>
+				<div class="tbl-row-notable">
+					<div class="tbl-cols-noborder">
+						Tax
+					</div>
+					<div class="tbl-cols-noborder">
+						<label class='distcurrency'></label><label id="totalTax"></label>
 
+					</div>
+				</div>
+				<div class="tbl-row-notable">
+					<div class="tbl-cols-noborder">
+						Discount
+					</div>
+					<div class="tbl-cols-noborder">
+						<label class='distcurrency'></label><label id="discountValue" ></label>
+					</div>
+				</div>
+				<div class="tbl-row-notable">
+					<div class="tbl-cols-noborder">
+						Total
+					</div>
+					<div class="tbl-cols-noborder">
+						<label class='distcurrency'></label><label id="totalAmount" ></label>
+					</div>
+				</div>
+				<div class="tbl-row-notable">
+					<div class="tbl-cols-noborder">
+						Paid
+					</div>
+					<div class="tbl-cols-noborder">
+						<label class='distcurrency'></label><label id="paid" ></label>
+					</div>
+				</div>
+				<div class="tbl-row-notable">
+					<div class="tbl-cols-noborder">
+						Balance
+					</div>
+					<div class="tbl-cols-noborder">
+						<label class='distcurrency'></label><label id="outstandingBalance" ></label>
+					</div>
+				</div>			
+            </div>
+        </div>
+		
+		<div class="row col-sm-12" id="billdetailsheader1">
+			<h4>Payment Details</h4>
+				<div id="paytable" class="tbl">
+					<div class="tbl-row tbl-hed-bill">
+						<div class="tbl-cols-hed">
+							Date
+						</div>
+						<div class="tbl-cols-hed">
+							Received By
+						</div>
+						<div class="tbl-cols-hed">
+							Amount (<label class='distcurrency'></label>)
+						</div>
+					</div>
+				</div>
+		</div>
+		<br/>						
+        </div>
 		</div>
 	</div>
-	</div>
-  
+  </div>
   <!-- bill details end -->
   
   <!-- order new -->
-  
   <div  class="ui-page ui-body-a" tabindex="0" data-url="four" data-role="page" id="order-new" data-theme="a">
    <header class="col-sm-12 top-head">
       <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
@@ -789,7 +704,7 @@ background: #89ca18 none repeat scroll 0 0;
               <label>  Order History  </label>
               </a> </li>
 		
-			<li class="adminmenu"> <a href="#distributorScreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+			<li class="adminmenu"> <a class="changeStores"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
               <label>Change Store</label>
               </a></li>
 			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
@@ -805,121 +720,215 @@ background: #89ca18 none repeat scroll 0 0;
 
         <div class="col-sm-12 title-bar">
           <div class="col-sm-6 col-xs-5 title"><img src="images/order-new.png" alt="">Order New</div>
-          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
+          <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a class="reviewbtn"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> <label class="productCount"></label></a>&nbsp;&nbsp;&nbsp;<a rel="external"  class="logout">Logout:</a></a><label class="DistributorName"></label>
             </div>
         </div>
-        <div class="col-sm-12 content-sec">
-          <div class="row">
-            <div class="col-sm-8">
-              <div class="select-client">
-
-				<br>
-					<p class="orderNewBillDate"/>
-					<p class="customerName"></p>
-					<p class="address1"></p>
-
-					<p> Order Details </p>
-              </div>
-            </div>
-            <div class="col-sm-4"></div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-            <div class="custom-table">
-             	<div class="tbl" id="odtbl">
-              		<div class="tbl-row tbl-hed">
-                    	<div class="tbl-cols">
-
-                        </div>
-                    	<div class="tbl-cols">
-                        	Product
-                        </div>
-                    	<div class="tbl-cols">
-                        	Qty
-                        </div>
-                    	<div class="tbl-cols">
-                        	Sub Total (<label class="distcurrency"></label>)
-                        </div>
-                    </div>
-              		<div class="tbl-row" id="orderdetailrow">
-                    	<div class="tbl-cols">
-                        </div>
-                    	<div class="tbl-cols">
-                         <div class="drop-set"><input class="input-feild-style" type="text" id="productvalue1"/>
-						<input type="hidden" id="hproductvalue1"/>
-							<a  id="productvaluenew" class="productvalue_all"><span class="ui-icon ui-icon-triangle-1-s"></span></a>
-							</div>
-                        </div>
-                    	<div class="tbl-cols">
-                        	<input class="input-feild-style qty" id="quantityvalue1"   type="number" min="0"/>
-                        </div>
-                    	<div class="tbl-cols">
-                        	<label style="text-align:center" id="subtotal1">0.00</label>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-			<div class="col-sm-12"  >
-
-              <div class="total-amount" >
-			  <div class="row"  >
-				
-				<div class="col-md-4" style="text-align:right">
-				</div>
-				<div class="col-md-4 " style="text-align:right">
-				</div>
-				
-                <div class="col-sm-2 col-xs-6" style="text-align:right">
-					Total Value (<label class="distcurrency"></label>)
-				</div>
-                  <div class="col-sm-2 col-xs-6" style="text-align:center" id="totalvalue"> 0.00 </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12 free-space"> <a  class="green-btn-style" id="reviewbtn">Review</a>&nbsp;&nbsp;&nbsp;<a  class="green-btn-style saveorder">Submit</a> </div>
-          </div>
-
-				<div style="width:100%;display:none;" id="saveDialog" title="Prodcast Notification" >
-					<div class="costomer-tab-section">
-						<div class="tab-content-mini">
-							<form>
-								<div class="row">
+		
+		<div class="col-sm-12 content-sec">
+			<div class="col-sm-2"></div>
+			
+				<div class="col-sm-8">
+					<br>
+					<br>
+					<div align="center">
+						<div id="viewallcategorisDiv">
+							<div class="row">
 								<div class="col-sm-12">
-								<p id="notificationMessage" align="center" style="color:#abcd14">Your Order has been done successfully</p>
+									<div class="custom-table">
+										<div id="allcategorisTable" class="tbl">
+											<div class="tbl-row tbl-hed"></div>
+										</div>
+									</div>
 								</div>
-								</div>
-								<div class="row">
-								<div class="col-sm-12" align="center"><a id="okMessage"  class="green-btn-style">OK</a>
-								</div>
-								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
-				<br>
-				</div>
-          <div class="col-md-4"></div>
+				
+			<div class="col-sm-2"></div>
+        </div>
+		
         </div>
       </div>
     </div>
+  <!-- orde new end -->
+  
+  <!-- Browse order -->
+  <div class="ui-page ui-body-a" tabindex="1" data-url="four" data-role="page" id="order-search" data-theme="a">
+	<header class="col-sm-12 top-head">
+	  <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+	  <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+		<div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+		  <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+		</div>
+	  </div>
+	</header>
 
-	<!-- orde new end -->
+    <div class="wrapper">
+      <div class="col-md-2 col-sm-3 left-panel ">
+        <div class="navbar navbar-inverse" role="navigation" id="slide-nav">
+          <ul class="left-panel-menu left-menu" id="slidemenu">
+             <li class="salesmenu"> <a href="#home"> <img src="images/home-icon.png" alt="" class="hvr-bounce-in">
+              <label> Dashboard </label>
+              </a> </li>
+            <li class="salesmenu"> <a href="#order" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
+              <label> Order </label>
+              </a> </li>
+			
+			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
+              <label>  Order History  </label>
+              </a> </li>
+		
+			<li class="adminmenu"> <a class="changeStores"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+              <label>Change Store</label>
+              </a></li>
+			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
+              <label> Edit Registration </label>
+              </a> </li>
 
-	<!-- review order starts -->
-
-	 <div  class="ui-page ui-body-a" tabindex="0" data-url="four" data-role="page" id="review" data-theme="a">
-	   <header class="col-sm-12 top-head">
-		  <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
-		  <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
-		  <div class="SalesManName"></div></a>
-			<div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
-			  <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+			  <li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
+              <label> Change Password </label>
+              </a> </li>
+		 </div>
+      </div>
+	  
+	  <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+	  
+		<div class="col-sm-12 title-bar">
+			<div class="col-sm-6 col-xs-5 title"><img src="images/order-new.png" alt="">Browse Items</div>
+			<div class="col-sm-6 col-xs-7 breadcrumb text-right">
+				<a class="reviewbtn"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i> <label class="productCount"></label></a>&nbsp;&nbsp;&nbsp;
+				<a id="closebtn"><i class="fa fa-undo fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;
+				<a rel="external"  class="logout">Logout:</a></a>
+				<label class="DistributorName"></label>
 			</div>
-		  </div>
-		</header>
+		</div>
+		
+		<div class="col-sm-12 content-sec">
+		
+			<div class="row">
+				<div class="col-sm-12 col-xs-12" align="left">
+					<br>
+						<label id="categoryName" style="font-size:18px; color:rgba(0, 0, 0, 0.55);"></label><br>
+						<hr style="margin-top: 0px;border: 1">
+				</div>
+			</div>
+
+			<div align="center">
+				<div id="viewallproductsDiv">
+					<div class="row">
+						<div class="col-sm-12">
+							<div id="allproductsTable" class="tbl-full"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="savedialog" title="Add Product">	
+				<div class="costomer-tab-section">
+					<div class="tab-content-mini">
+						<div id="dialogSaveOrder">
+							<div id="productDetails">
+								<div class="row">
+									<div class="col-sm-6">
+										<label class="lable-style"> Product Name</label><br>
+										<label id="dialogPrdName"></label>
+									</div >
+									<div class="col-sm-6">
+										<label class="lable-style"> Unit Price</label><br>
+										<label class="distcurrency"></label><label id="dialogUntPrice"></label>
+									</div >
+								</div >
+								<div class="row">
+									<div class="col-sm-6 selectOption">
+										<label class="lable-style" id="dialogOptionName"> Option </label>
+										<select id="dialogOption" class="select-box">
+										</select>
+									</div>
+									<div class="col-sm-6 selectFlavor">
+										<label class="lable-style" id="dialogFlavorName"> Flavor </label>
+										<select id="dialogFlavor" class="select-box">
+										</select>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<label class="lable-style"> Qty</label>
+										<input class="input-feild-style dialogqty" type="number" class="numericwithoutnegative" min="1" id="dialogqty">
+									</div>
+									<div class="col-sm-6">
+										<label class="lable-style "> Subtotal</label><br>
+										<label class="distcurrency"></label><label class="subTotal" id="dialogTotal">0.00</label>
+									</div>
+								</div>
+							</div>
+							<br>
+							<div class="row" >
+							   <p id="cardValidationMsg" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please enter values for mandatory fields</p>
+							</div>
+							<div class="row" >
+							   <p id="continueValidationMsg" style="color:red;display:none"></p>
+							</div>
+						</div>
+						
+					   <br>
+						<div class="row existOrder">
+							<div class="col-sm-8 col-xs-6">
+								<a class="green-btn-style addToCard">Add to cart</a>
+							</div>
+							<div class="col-sm-4 col-xs-6">
+								<a class="green-btn-style cardClose ">Cancel</a>
+							</div>
+						</div>
+						<div class="row continue">
+							<div class="col-sm-8 col-xs-6 continue">
+								<a class="green-btn-style continueOrder">Continue</a>
+							</div>
+							<div class="col-sm-4 col-xs-6">
+								<a class="green-btn-style cardClose ">Cancel</a>
+							</div>
+						</div>
+						<br>
+					</div>
+				</div>
+			</div>
+			
+			<!--div class="carddialog" title="Prodcast Notification" >
+				<div class="costomer-tab-section">
+					<div class="tab-content-mini">
+						<form>
+							<div class="row">
+							<div class="col-sm-12">
+							<p id="notificationMessage" align="center" style="color:#abcd14">Your Order has been added to the cart</p>
+							</div>
+							</div>
+							<div class="row">
+							<div class="col-sm-12" align="center"><a id="okMessage"  class="green-btn-style">OK</a>
+							</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div-->
+			
+		</div>
+        </div>
+      </div>
+    </div>
+  <!-- Browse orde end -->
+
+  <!-- review order starts -->
+  <div  class="ui-page ui-body-a" tabindex="0" data-url="four" data-role="page" id="review" data-theme="a">
+	<header class="col-sm-12 top-head">
+	  <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+	  <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+	  <div class="SalesManName"></div></a>
+		<div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+		  <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+		</div>
+	  </div>
+	</header>
 
 		<div class="wrapper">
 		  <div class="col-md-2 col-sm-3 left-panel ">
@@ -936,7 +945,7 @@ background: #89ca18 none repeat scroll 0 0;
 				  <label>  Order History  </label>
 				  </a> </li>
 			
-				<li class="adminmenu"> <a href="#distributorScreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+				<li class="adminmenu"> <a class="changeStores"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
 				  <label>Change Store</label>
 				  </a></li>
 				  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
@@ -948,7 +957,7 @@ background: #89ca18 none repeat scroll 0 0;
 				  </a> </li>
 			 </div>
 		  </div>
-		  <div class="col-md-10 col-sm-9 right-panel " id="right-panel">
+		<div class="col-md-10 col-sm-9 right-panel " id="right-panel">
 
 			<div class="col-sm-12 title-bar">
 			  <div class="col-sm-6 col-xs-5 title"><img src="images/order-new.png" alt="">REVIEW ORDER</div>
@@ -956,72 +965,137 @@ background: #89ca18 none repeat scroll 0 0;
 			   
 				</div>
 			</div>
-			
+		
+		<div class="col-sm-12">
+		
+		<div class="col-sm-12" style="padding:20px">
 			<div class="row">
 				<div class="col-sm-8">
-
-						<p class="orderNewBillDate"/>
-						<p class="customerName"></p>
-						<p class="address1"></p>
-						<p> Order Details </p>
-
+					<p class="orderNewBillDate"/>
+					<p class="customerName"></p>
+					<p class="address1"></p>
+					<p> Order Details </p>
 				</div>
 				<div class="col-sm-4"></div>
-			  </div>
-			  <div class="row">
-			   <div class="col-sm-12">
-				<div class="custom-table">
-					<div class="tbl" id="odrtbl">
-						<div class="tbl-row tbl-hed">
-
-							<div class="tbl-cols">
-								Product
-							</div>
-							<div class="tbl-cols">
-								Qty
-							</div>
-							<div class="tbl-cols">
-								Unit Price (<label class="distcurrency"></label>)
-							</div>
-
-							<div class="tbl-cols">
-								Sales Tax (<label class="distcurrency"></label>)
-							</div>
-							<div class="tbl-cols">
-								Other Tax (<label class="distcurrency"></label>)
-							</div>
-							<div class="tbl-cols">
-								Sub Total(<label class="distcurrency"></label>)
-							</div>
+			</div>
+			
+			<div class="row">
+				<div class="tbl" id="odrtbl"></div>
+			</div>
+				
+			<br>
+			<div class="row">     
+				<div class="col-sm-4 col-xs-8" style="margin-left: auto; margin-right: 0px;">
+					<div class="tbl-row-notable">
+						<div class="tbl-cols-noborder">
+							SubTotal
+						</div>
+						<div class="tbl-cols-noborder">
+							<label class='distcurrency'></label><label id="amount" >0.00</label>
+						</div>
+					</div>
+					<div class="tbl-row-notable">
+						<div class="tbl-cols-noborder">
+							Tax
+						</div>
+						<div class="tbl-cols-noborder">
+							<label class='distcurrency'></label><label id="tax" >0.00</label>
+						</div>
+					</div>
+					<div class="tbl-row-notable">
+						<div class="tbl-cols-noborder">
+							Discount
+						</div>
+						<div class="tbl-cols-noborder">
+							<label class='distcurrency'></label><label id="discount" >0.00</label>
+						</div>
+					</div>
+					<div class="tbl-row-notable">
+						<div class="tbl-cols-noborder">
+							Total Amount
+						</div>
+						<div class="tbl-cols-noborder">
+							<label class='distcurrency'></label><label id="totalAmt" >0.00</label>
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			<div class="row">
+				<div class="col-sm-12 free-space">
+					<a  class="green-btn-style" id="co">Continue Order</a>&nbsp;&nbsp;
+					<a class="green-btn-style saveorder">Save Order</a> 
+				</div>
 			</div>
-			<div class="total-amount">
-				  <div class="row">
-				  
-				  <div class="col-md-4" style="text-align:right">
+		
+		</div>
+		
+		<div class="checkoutdialog" title="Checkout Order">	
+			<div id="dialogShippingType" class="checkOut" >
+				<div class="row">
+					<div class="col-sm-12">
+						<label class="lable-style"> Order Type</label>
+						<select id="dialogShippingMethod" class="select-box"></select>
+						<p id="selectOrderType" style="color:red;display: none">Please Select Order Type </p>
 					</div>
-				  <div class="col-md-4 " style="text-align:right">
+				</div>
+				<br>
+				<div id="addressDetails" >
+					<div class="row">
+						<div class="col-sm-12">
+							<p id="addressVerification" > Please Confirm Your Delivery Address</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="lable-style"> Address 1</label>
+							<input class="input-feild-style" type="text" id="dialogAddress1">
+						</div >
+						<div class="col-sm-6">
+							<label class="lable-style"> Address 2</label>
+							<input class="input-feild-style" type="text" id="dialogAddress2">
+						</div>
+					</div >
+					<div class="row">
+						<div class="col-sm-12">
+							<label class="lable-style"> City</label>
+							<input class="input-feild-style" type="text" id="dialogCity">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="lable-style"> State</label>
+							<input class="input-feild-style"  type="text" id="dialogState">	
+						</div>
+						<div class="col-sm-6">
+							<label class="lable-style"> Zip</label>
+							<input class="input-feild-style numericwithoutnegative" type="number" id="dialogPincode">	
+						</div>
 					</div>
 					
-					  <div class="col-sm-2 col-xs-6" style="text-align:right"> Total Value(<label class="distcurrency"></label>)</div>
-					  <div class="col-sm-2 col-xs-6" style="text-align:center" id="rtotalvalue"> 0.00 </div>
-				  </div>
 				</div>
-				<div class="row">
-				<div class="col-sm-12 free-space"> &nbsp;&nbsp;&nbsp;<a  class="green-btn-style" id="co">Continue Order</a>&nbsp;&nbsp;&nbsp;<a  class="green-btn-style saveorder">Save Order</a> </div>
-			  </div>
-			  </div>
-
+				<br>
+				<div class="row" >
+				   <p id="addressValidationMsg" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please enter values for mandatory fields</p>
+				</div>
+			</div>
+					
+		   <br>
+			<div class="row checkOut">
+				<div class="col-sm-4">
+					<a class="green-btn-style confirmAddress">Checkout</a>
+				</div>
+			</div>
+			<br>
+		</div>
+		
+		</div>
 	  </div>
-	 </div>
-	
+	</div>
+	</div>
   <!-- review order Page ends -->
   
   <!-- report Page start -->
-	
   <div style="min-height: 657px;" class="ui-page ui-body-a" tabindex="0" data-url="two" data-role="page" id="report" data-theme="a">
    <header class="col-sm-12 top-head">
       <div class="col-md-2 col-sm-3 col-xs-4 logo"><a href="#home"><img src="images/logo.png" alt=""></a></div>
@@ -1050,10 +1124,7 @@ background: #89ca18 none repeat scroll 0 0;
             <li class="salesmenu"> <a href="#order" id="oelink"> <img src="images/OrderEntry-icon.png" alt="" class="hvr-bounce-in">
               <label> Order </label>
               </a> </li>
-			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
-              <label>  Order History  </label>
-              </a> </li>
-			<li class="adminmenu"> <a href="#distributorScreen"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+			<li class="adminmenu"> <a class="changeStores"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
               <label>Change Store</label>
               </a></li>
 			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
@@ -1080,16 +1151,10 @@ background: #89ca18 none repeat scroll 0 0;
 					<div class="costomer-tab-section">
 						<div class="tab-content" >
 							<form>
-							
-								<div class="row">
-									&nbsp;
-								</div>
-								
 								<div class="row" >
 									<div class="col-sm-4 col-xs-6">
 										<label for="distributor">Store</label>
-										 <select id="distributor" >
-										 <!--option value="0">All</option!-->
+										 <select id="distributor" class="dropdown-color" >
 										 </select>
 									</div>
 									
@@ -1099,9 +1164,9 @@ background: #89ca18 none repeat scroll 0 0;
 									<input type="text" value="SummaryReport" id="reportTypeForCustomer" />
 									</div>
 									
-									<div class="col-sm-4 col-xs-6">
+									<div class="col-sm-4 col-xs-12">
 										<label for="disreporttype" >Select Report Date </label>
-										<select id="disreporttype" >
+										<select id="disreporttype" class="dropdown-color" >
 											<option value="today">Today</option>
 											<option value="yesterday">Yesterday</option>
 											<option value="week">Week(Since Monday)</option>
@@ -1130,6 +1195,7 @@ background: #89ca18 none repeat scroll 0 0;
 
 								</div>
 								
+								<br>
 								<div class="row">
 								<div class="col-sm-4 col-xs-6" >
 										<a id="disreportSubmit"  class="green-btn-style-blink">Report</a>
@@ -1148,7 +1214,7 @@ background: #89ca18 none repeat scroll 0 0;
 
 								</form>
 								<br>
-								<br>
+								
 								
 								<h4 class="ui-bar ui-bar-a ui-corner-all" id="billdetail">Bill Details</h4>
 								<div class="tbl" id="billTable" >
@@ -1174,7 +1240,7 @@ background: #89ca18 none repeat scroll 0 0;
 									
 								</div>
 								<br>
-								<br>
+							
 																								
 								<h4 class="ui-bar ui-bar-a ui-corner-all" id="summ">Summary</h4>
 								<div class="tbl" id="summaryTable" >
@@ -1199,79 +1265,56 @@ background: #89ca18 none repeat scroll 0 0;
 				<!-- Content for Report Body ends -->
             </div>
             </div>
-            </div>
-	 
+  </div> 
   <!-- Report End -->
   
   <!-- Switch Distributor Start -->
-
-  <div style="min-height: 800px;" class="ui-page ui-body-a" tabindex="0" data-url="two" data-role="page" id="distributorScreen" data-theme="a">
-    <header class="col-sm-12 top-head">
-      <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
-	  <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
-	  <div class="SalesManName"></div></a>
-        <div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
-          <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
-        </div>
-      </div>
-    </header>
+	<div style="min-height: 800px;" class="ui-page ui-body-a" tabindex="0" data-url="two" data-role="page" id="distributorScreen" data-theme="a">
+		<header class="col-sm-12 top-head">
+		  <div class="col-md-2 col-sm-3 col-xs-4 logo"><a ><img src="images/logo.png" alt=""></a></div>
+		  <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
+		  <div class="SalesManName"></div></a>
+			<div class="navbar navbar-inverse hidden-sm visible-xs" role="navigation" id="slide-nav">
+			  <div class="navbar-header"> <a class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> </div>
+			</div>
+		  </div>
+		</header>
 	
         <div class="col-sm-12 title-bar">
-          <div class="col-sm-6 col-xs-5 title"><img src="images/employee-icon.png" alt=""></i> SELECT STORE </div>
-		  <div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout</a></a></div>
-        </div>
-		<!--
-		        <div class="col-sm-12 content-sec">
-          <ul class="entry-menu">
-		    <li class="salesmenu">
-			<a href="#order">
-				  <div class="icon-box"><img src="images/OrderEntry.png" alt="" class="hvr-bounce-in"></div>
-				  <label> ORDER </label>
-              </a>
-			  </li>
-            <li class="salesmenu"><a href="#report">
-              <div class="icon-box"><img src="images/report.png" alt="" class="hvr-bounce-in"> </div>
-              <label> REPORT </label>
-              </a></li>
-			<li class="distmenu"><a href="#distributorScreen">
-              <div class="icon-box"> <img src="images/distribution-icon.png" alt="" class="hvr-bounce-in"></div>
-              <label> SWITCH DISTRIBUTOR </label>
-              </a></li>
-			<li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chhnge.png" alt="" class="hvr-bounce-in">
-              <label> CHANGE PIN NUMBER </label>
-              </a> </li>
-		 </ul>
-        </div>-->
+			<div class="col-sm-6 col-xs-5 title"><img src="images/employee-icon.png" alt=""></i> SELECT STORE </div>
+			<div class="col-sm-6 col-xs-7 breadcrumb text-right"><a rel="external"  class="logout">Logout</a></a></div>
+		</div>
 		
 		<div class="col-sm-12 content-sec">
-		<ul class="entry-menu" id="distributorsList">
-		  </ul>
-		  <!--
-		<div style="width:100%" id="disnav"  >
-          
+			<ul class="entry-menu" id="distributorsList"></ul>
+		</div>
+		
+		<div style="width:100%;display:none;" id="warning" title="Prodcast Notification" >
 			<div class="costomer-tab-section">
-               <div class="tab-content">
-                  <!--div id="distab" class="tab-pane fade in active">
-						<div>
-							<div id="viewAllDistributorsDiv">
-								<div class="row">
-								<div class="col-sm-12">
-								<div class="custom-table"-->
-								<!--<div id="allDistributorsTable" class="tbl" ></div>-->
-								<!--/div>
-								</div>
-								</div>
+				<div class="tab-content-mini">
+					<form>
+						<div class="row">
+							<div class="col-sm-12">
+								<p id="warningMessage" align="center" style="color:#abcd14">You Have A Items In Cart.. If You Change The Distributor The Cart Has Been Empty. Do You Want To Continue?</p>
 							</div>
 						</div>
-					</div>
+						<div class="row">
+							<div class="col-sm-6" align="center">
+								<a class="green-btn-style" id="yes">Yes</a>
+							</div>
+							<div class="col-sm-6" align="center">
+								<a class="green-btn-style" id="no">No</a>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
-		</div>-->
 		</div>
+		
 	</div>
- 
   <!-- Switch Distributor END -->
-   <!-- edit customer registration starts -->
+  
+  <!-- edit customer registration starts -->
   <div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="editCustomerRegistrationDetails" data-theme="a">
 	  <header class="col-sm-12 top-head">
 		  <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
@@ -1296,11 +1339,8 @@ background: #89ca18 none repeat scroll 0 0;
 			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
               <label>  Order History </label>
               </a> </li>
-		  <li class="distmenu"> <a href="#distributorScreen" id="elid"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+		  <li class="distmenu"> <a class="changeStores" id="elid"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
               <label> Change Store </label>
-              </a> </li>
-			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
-              <label> Edit Registration </label>
               </a> </li>
 			  <li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
               <label> Change Pin Number </label>
@@ -1317,8 +1357,7 @@ background: #89ca18 none repeat scroll 0 0;
         </div>
 		
 		<div class="col-sm-12 content-sec">
-		 <!--div class="col-sm-12 free-space"><a  href="#newCustomerRegistration" id="editCustomerRegistrationDetails" </a></div-->
-				<div style="width:100" id="editCustomerRegisterNavigation" title="Prodcast Notification" >
+				<div style="width:100" id="editCustomerRegisterNavigation">
 					<div class="costomer-tab-section">
 					   <div class="tab-content">					   
 					   <div id="editCustomerDetails" class="tab-pane fade in active">
@@ -1332,8 +1371,6 @@ background: #89ca18 none repeat scroll 0 0;
 															<label>Last Name</label>
 															<input type="text" id="editcustomer_lastname">
 													</div>
-													</div>
-													 <div class="row">
 													<div class="col-sm-4 col-xs-6">
 														   <label>Email Address</label>
 															<input type="email" id="editcustomer_email">
@@ -1342,8 +1379,6 @@ background: #89ca18 none repeat scroll 0 0;
 														<label>Billing Address1</label>
 														<input type="text" id="editcustomer_Address1">
 													</div>
-													</div>
-													 <div class="row">
 													<div class="col-sm-4 col-xs-6">
 														<label>Billing Address2</label>
 														<input type="text" id="editcustomer_Address2">
@@ -1353,38 +1388,31 @@ background: #89ca18 none repeat scroll 0 0;
 														<input type="text" id="editcustomer_Address3">
 													</div>
 													</div>
+													
 													 <div class="row">
 														<div class="col-sm-4 col-xs-6">
 														<label>Home PhoneNumber</label>
-														<input type="number" id="editcustomer_Phonenumber" class="allownumericwithoutdecimal">
+														<input class="numericwithoutnegative" type="number" id="editcustomer_Phonenumber" min="0">
 													</div>
-													
-													
 													<div class="col-sm-4 col-xs-6">
 														  <label>City</label>
 														  <input type="text" id="editcustomer_city">
 													</div>
-													</div>
-													<div class="row">
-													
 													<div class="col-sm-4 col-xs-6">
 														<label>State</label>
 														<input type="text" id="editcustomer_state">
-													</div>
-																						
+													</div>							
 													<div class="col-sm-4 col-xs-6">
 													   <label>Country</label>
 													   
-											               <select id="editcustomer_country" >
+											               <select id="editcustomer_country" class="dropdown-color" >
 													      
 											             </select>
 													   
 													</div>
-													</div>
-													<div class="row">
 													<div class="col-sm-4 col-xs-6">
 													   <label>Postal Code</label>
-													   <input type="text" id="editcustomer_postalcode">
+													   <input type="number" class="numericwithoutnegative" id="editcustomer_postalcode" min="0">
 													</div>
 													<div class="col-sm-4 col-xs-6">
 														  <label>SMS Allowed</label>
@@ -1413,11 +1441,11 @@ background: #89ca18 none repeat scroll 0 0;
 		 		</div>
 			 </div>
 			</div>
-		</div>
-		<!-- edit customer registration ends-->
+  </div>
+  <!-- edit customer registration ends-->
+  
   <!-- Change Password screen begins-->
-
-	<div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="changePinScreen" data-theme="a">
+  <div style="min-height: 657px;"  class="ui-page ui-body-a" tabindex="1" data-url="three" data-role="page" id="changePinScreen" data-theme="a">
 	  <header class="col-sm-12 top-head">
 		  <div class="col-md-2 col-sm-3 col-xs-4 logo"><a rel="external"><img src="images/logo.png" alt=""></a></div>
 		  <div class="col-md-10 col-sm-9 col-xs-8 head-author text-right"><a rel="external" class="logout">
@@ -1441,14 +1469,11 @@ background: #89ca18 none repeat scroll 0 0;
 			<li class="salesmenu">  <a href="#report"> <img src="images/report-icon.png" alt="" class="hvr-bounce-in">
               <label>  Order History </label>
               </a> </li>
-		  <li class="distmenu"> <a href="#distributorScreen" id="elid"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
+		  <li class="distmenu"> <a class="changeStores" id="elid"> <img src="images/tr.png" alt="" class="hvr-bounce-in">
               <label> Change Store </label>
               </a> </li>
 			  <li class="distmenu showEditReg"> <a href="#editCustomerRegistrationDetails"> <img src="images/EditReg_icon.png" alt="" class="hvr-bounce-in">
               <label> Edit Registration </label>
-              </a> </li>
-			  <li class="salesmenu"> <a href="#changePinScreen"> <img src="images/chnge.png" alt="" class="hvr-bounce-in">
-              <label> Change Pin Number </label>
               </a> </li>
          </ul>
         </div>
@@ -1462,69 +1487,67 @@ background: #89ca18 none repeat scroll 0 0;
         </div>
 		
 		<div class="col-sm-12 content-sec">
-		  <div style="width:70%;" id="dialog" title="Prodcast Notification" >
+		  <div style="width:70%;">
 				<div class="costomer-tab-section">
 					<div class="tab-content">
 
-                     <div id="changepinnumbertab1" class="tab-pane fade in active">
+                     <!--div id="changepinnumbertab1" class="tab-pane fade in active"-->
                       <form>
                         <div class="row">
-				         <div class="col-sm-4" style="color:#abcd14">
+				         <div class="col-sm-6">
 
-                            <label for="oldPinnumber">Old PIN </label>
+                            <label>Old PIN </label>
 
-					         <input type="password" id="oldPinnumber" size="20">
+					         <input class="numericwithoutnegative" type="password" id="oldPinnumber" size="20">
 					     </div>
 					    </div>
 						<div class="row">
 						 
-					        <p id="oldpinnonull" style="color:red;display:none">Please Enter A Old PinNumber</p>
-					        <p id="oldpinnoerror" style="color:red;display:none">Please Enter A Correct Old PinNumber</p>
+					        <p id="oldpinnonull" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please Enter A Old PinNumber</p>
+					        <p id="oldpinnoerror" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please Enter A Correct Old PinNumber</p>
 						 
 					    </div>
 
 					    <div class="row">
-					     <div class="col-sm-4" style="color:#abcd14">
+					     <div class="col-sm-6">
 
-                            <label for="newPinnumber">New PIN </label>
+                            <label>New PIN </label>
 
-					       <input type="password" id="newPinnumber"   size="20"><br>
+					       <input class="numericwithoutnegative" type="password" id="newPinnumber"   size="20"><br>
 						   
 					      </div>
 					    </div>
 						<div class="row">
 						   
-					         <p id="newpinnonull" style="color:red;display:none">Please Enter A New PinNumber</p>
-					         <p id="newpinnosame" style="color:red;display:none">Your New PinNumberIs Same As The Old PinNumber</p>
-					         <p id="newpinnoerror" style="color:red;display:none">Please Enter A Minimum 6 Characters</p>
+					         <p id="newpinnonull" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please Enter A New PinNumber</p>
+					         <p id="newpinnosame" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Your New PinNumberIs Same As The Old PinNumber</p>
+					         <p id="newpinnoerror" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please Enter A Minimum 6 Characters</p>
                           
 					    </div>
 					    <div class="row">
-					      <div class="col-sm-4" style="color:#abcd14">
+					      <div class="col-sm-6">
 
-                              <label for="confirmPinnumber">Confirm PIN</label>
-					          <input type="password" id="confirmPinnumber" size="20" >
+                              <label>Confirm PIN</label>
+							  
+					          <input class="numericwithoutnegative" type="password" id="confirmPinnumber" size="20" >
 					      </div>
 
 						</div>
 						<div class="row">
 						   
-					          <p id="confirmpinnonull" style="color:red;display:none">Please Enter The Confirm PinNumber</p>
-					          <p id="confirmpinnoerror" style="color:red;display:none">Please Enter A Correct Confirm PinNumber</p>
+					          <p id="confirmpinnonull" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please Enter The Confirm PinNumber</p>
+					          <p id="confirmpinnoerror" style="color:red;display:none">&nbsp;&nbsp;&nbsp;Please Enter A Correct Confirm PinNumber</p>
 					       	
                         </div>
 						
 						<br>
-					     <br>
+			
 						 
 					    <div class="row">
 						
-							 <div class="col-sm-4" >
+							 <div class="col-sm-6" >
 								<a class="green-btn-style" id="changepinnumber_save" >Submit</a>
-							 </div>
-
-							 <div class="col-sm-4">
-								<a class="green-btn-style" id="changepinnumber_reset" >Reset</a>
+							 	<a class="green-btn-style-right" id="changepinnumber_reset" >Reset</a>
 							 </div>
 							 
                         </div>
@@ -1532,58 +1555,29 @@ background: #89ca18 none repeat scroll 0 0;
 					  </form>
 						 
 
-					 </div>
+					 <!--/div-->
 				    </div>
 				</div>
 			  </div>
 			</div>
 			 </div>
 			</div>
-		</div>
-	</div>
-	
-	<!-- Change Password screen ends-->
-	
-  <!--<footer>
-	<div class="copy-right">@Copyright Prodcast</div>
-	<div class="footer-link"><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a> </div>
-  </footer>-->
+  </div>
+  <!-- Change Password screen ends-->
+  
+</div>
 
 <!-- jQuery 2.1.4 -->
 <script src="js/jQuery-2.1.4.min.js"></script>
-<!--<script src="js/jquery.mobile-1.3.2.min.js"></script>-->
 <script src="js/jquery.mobile-1.4.5.min.js"></script>
-<!--
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
--->
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js" ></script>
-
 
 <!-- Bootstrap 3.3.5 -->
 <script src="js/bootstrap/bootstrap.min.js"></script>
-<script src="js/index_gj_2.js"></script>
-<script src="js/index_customer_order.js"></script>
-<script src="js/index_cust_reports.js"></script>
+<script src="js/index_gj.js"></script>
+<script src="js/index_order_gj.js"></script>
+<script src="js/index_reports_gj.js"></script>
 
-<!--
-<script type="text/javascript">
-$(document).ready(function() {  function setHeight()
-{
-  windowHeight = $(window).innerHeight();
-  $('#right-panel').css('min-height', windowHeight);
-
-//var footer_height = $('footer').css('height');
-  //var total_footer_height = parseInt(windowHeight) - parseInt(footer_height);
-
- // alert(total_footer_height);
- // $('footer').css('height',total_footer_height);
-
-};  setHeight();
-
-   $(window).resize(function() {    setHeight();  });});
-</script>
--->
 <script type="text/javascript">
 	$(document).ready(function () {
     //stick in the fixed 100% height behind the navbar but don't wrap it
@@ -1599,7 +1593,6 @@ $(document).ready(function() {  function setHeight()
     var slidewidth = '80%';
     var menuneg = '-100%';
     var slideneg = '-80%';
-
 
     $("#slide-nav, #slide-nav2, #slide-nav3, #slide-nav4").on("click", toggler, function (e) {
 
@@ -1620,48 +1613,28 @@ $(document).ready(function() {  function setHeight()
             left: selected ? '0px' : slidewidth
         });
 
-
         $(this).toggleClass('slide-active', !selected);
         $('#slidemenu, #slidemenu2, #slidemenu3, #slidemenu4').toggleClass('slide-active');
-
-
         $('#page-content, .navbar, body, .navbar-header').toggleClass('slide-active');
-
-
     });
-
 
     var selected = '#slidemenu, #page-content, body, .navbar, .navbar-header';
 
-
-    $(window).on("resize", function () {
-
-        if ($(window).width() > 800 && $('.navbar-toggle').is(':hidden')) {
+    $(window).on("resize", function () 
+	{
+        if ($(window).width() > 800 && $('.navbar-toggle').is(':hidden')) 
+		{
             $(selected).removeClass('slide-active');
         }
-
-
     });
-//$("#loginHome").removeClass("ui-page-active");
-//$(this).addclass("ui-page-active");
 
-$(document).on("pageinit",function(event){
-    
-    if( event.target.id != "loginHome"){
-    $("#loginHome").removeClass("ui-page-active");
-    
-     }
+	$(document).on("pageinit",function(event)
+	{
+		if( event.target.id != "loginHome")
+		{
+			$("#loginHome").removeClass("ui-page-active");
+		}
    });
-   
-  /*$(document).on("pageinit",function(event){
-    
-    if( event.target.id == "customerRegister"){
-    $("#customerRegister").addClass("ui-page-active");
-    
-     }
-   });*/  
-     
-    
 });
 
 </script>

@@ -23,17 +23,15 @@ a{
 .ui-datepicker-year {
 	color: #1c94c4;
 }
-
 body {
-    max-width: 1080px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
 	font-family: 'Conv_Gotham Book';
 	font-size: 12px;
 	color: #afafaf;
 	overflow-y: hidden;
 	background: #e7e7e5;
-    margin: 0 auto !important;
-    float: none !important;
-
 }
 img, iframe {
 	max-width: 100%;
@@ -196,6 +194,10 @@ img:hover {
 	font-size: 17px;
 	margin: 0;
 }
+input[id=LoginPassword]
+ {
+        -webkit-text-security: disc;
+}
 .btn-sec {
 	width: 100%;
 	float: left;
@@ -347,40 +349,15 @@ img:hover {
     float: left;
     bottom:0px;
     position: absolute;
-	top: 33px;
-	overflow-y: auto;
-
-    max-width: 1080px;
-}
-
-.wrapper-no-scroll {
-    background: #89ca18 none repeat scroll 0 0;
-    float: left;
-    bottom:0px;
-    position: absolute;
     width: 100%;
 	top: 33px;
-}
-.slide-anim{
-    -webkit-animation: slide-down .3s ease-out;
-    -moz-animation: slide-down .3s ease-out;
-    position:fixed; 
-    top: 0%;
-    opacity:1;
-    min-width: 300px;
-    height:200px;
+	overflow-y: auto;
 }
 .right-panel {
 	background: #fafafa;
 	height:100%;
 	overflow-y: auto;	
 }
-
-.right-panel-no-scroll {
-	background: #fafafa;
-	height:100%;	
-}
-
 .left-panel-menu {
 	margin: 0;
 	padding: 15px 0;
@@ -448,8 +425,7 @@ img:hover {
 	padding-bottom: 5px;
 }
 .content-sec {
-	padding: 10px;
-    background: #fafafa;
+	padding: 40px;
 }
 #customers .content-sec {
     padding: 20px 40px;
@@ -717,75 +693,10 @@ footer {
   display: table;
   width: 100%;
 }
-
-/*.tbl-full {
-  border-bottom: 1px solid #e3e3e3;
-  border-left: 1px solid #e3e3e3;
-  display: table;
-  width: 50%;
-}
-
-.tbl-half {
-  width: 50%;
-}
-
-.tbl-three-quarter {
-  width: 50%;
-}*/
-
-/*********** order entry Floating Button css  ************/
-/*
-.float{
-	position:fixed;
-	width:60px;
-	height:60px;
-	bottom:40px;
-	right:40px;
-	background-color:#06C;
-	color:#FFF;
-	border-radius:50px;
-	text-align:center;
-	box-shadow: 2px 2px 3px #999;
-}
-
-.my-float{
-	font-size:24px;
-	margin-top:18px;
-}
-
-a.float + div.label-container {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s ease;
-}
-
-a.float:hover + div.label-container{
-  visibility: visible;
-  opacity: 1;
-}
-*/
-
-.area {
-    position: relative;
-    color: #0F0;
-    font-weight: bold;
-}
-
-.fixed {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    padding: 5px;
-    z-index: 100px;
-    display: none;
-}
-
-/*********** order entry Floating Button css  ************/
-
 .tbl-row {
   color: #575757;
   display: table-row;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .tbl-row-notable {
@@ -797,7 +708,7 @@ a.float:hover + div.label-container{
 .tbl-cols {
   border-right: 1px solid #e3e3e3;
   display: table-cell;
-  padding: 2px;
+  padding: 10px;
   text-align: center;
   vertical-align: middle;
 }
@@ -805,8 +716,7 @@ a.float:hover + div.label-container{
 .tbl-cols-noborder {
   display: table-cell;
   padding: 2px;
-  text-align: center;
-  vertical-align: middle;
+  text-align: left;
 }
 
 .tbl-cols-hed
@@ -821,29 +731,10 @@ border-top: 1px solid #e3e3e3;
   vertical-align: middle;
 }
 
-.tbl-cols-hed-noborder
-{
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.tbl-cols-noborder {
-  display: table-cell;
-  padding: 2px;
-  text-align: left;
-}
-.tbl-cols-border {
-  display: table-cell;
-  padding: 2px;
-  text-align: center;
-  border: 1px solid #e3e3e3;
-}
-
 .tbl-cols2 {
   border-right: 0px solid #e3e3e3;
   display: table-cell;
-  padding: 2px;
+  padding: 10px;
   text-align: center;
   vertical-align: middle;
 }
@@ -853,7 +744,7 @@ border-top: 1px solid #e3e3e3;
 .tbl-row.tbl-hed {
   background: #575757 none repeat scroll 0 0;
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .tbl-row.tbl-hed-bill {
@@ -861,14 +752,8 @@ border-top: 1px solid #e3e3e3;
   border: 1px solid #e3e3e3;
 }
 
-.tbl-row-notable.tbl-hed {
-  background: #575757 none repeat scroll 0 0;
-  color: #fff;
-  font-size: 12px;
-}
-
 .tbl-row.tbl-hed2 {
-  background: #575757 none repeat scroll 0 0;
+  bsackground: #575757 none repeat scroll 0 0;
   color: #575757;
   font-size: 12px;
 }
@@ -878,7 +763,7 @@ border-top: 1px solid #e3e3e3;
 }
 .tbl .input-feild-style {
   margin: 0;
-  padding: 8px;
+  padding: 5px;
 }
 #order-new .tbl-row .tbl-cols:nth-child(2) {
   width: 50%;
@@ -886,8 +771,8 @@ border-top: 1px solid #e3e3e3;
 
  label.lable-style {
     color: #575757;
-    font-size: 12px;
-	margin-top:5px;
+    font-size: 16px;
+	margin-top:20px;
     font-weight: 500;
 }
 .select-client .ui-btn-inner {
@@ -895,36 +780,35 @@ border-top: 1px solid #e3e3e3;
 }
  select.select-style {
     border: 1px solid #e3e3e3;
-	padding:0 3px;
-	height:25px;
+	padding:0 10px;
+	height:37px;
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 	background:rgba(0, 0, 0, 0) url("../images/dropdown-arrow.png")  no-repeat scroll 97% center;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 }
 
-select.select-style option { padding:5px; }
+select.select-style option { padding:10px; }
  select.select-style:focus, input.input-feild-style:focus {
     box-shadow: 0 0 12px #d8e1b6;
     outline: medium none;
 }
 input.input-feild-style {
     border: 1px solid #e3e3e3;
-    margin-bottom: 2px;
+    
 	background:none;	
-    height: 37px;
-    padding: 2px;
+    padding: 5px;
     width: 100%;
 }
 .head-table {
     background: #89ca18 none repeat scroll 0 0;
     border-radius: 5px 5px 0 0;
     color: #fff;
-    font-size: 14px;
+    font-size: 16px;
     max-width: 200px;
-    padding: 5px;
+    padding: 10px;
     text-align: center;
     width: 100%;
 }
@@ -953,20 +837,17 @@ input.input-feild-style:focus {
   background: #89ca18 none repeat scroll 0 0;
   color: #fff;
   display: inline-block;
-  font-size: 12px;
-  margin-right: 10px;
-  padding: 5px 10px;
-    margin-bottom: 5px;
-   
+  font-size: 16px;
+  margin-right: 20px;
+  padding: 10px 30px;
 }
 .green-btn-style-center {
   background: #89ca18 none repeat scroll 0 0;
   color: #fff;
   display: inline-block;
-  font-size: 12px;
-  margin-right: 10px;
-  padding: 5px 10px;
-     margin-bottom: 5px;
+  font-size: 16px;
+  margin-left: 10px;
+  padding: 10px 30px;
 }
 .green-btn-style:hover  {
   background: #66AF00 none repeat scroll 0 0;
@@ -976,9 +857,8 @@ input.input-feild-style:focus {
 .green-border-btn {
   border: 1px solid #89ca18;
   display: inline-block;
-  font-size: 12px;
-  padding: 5px 10px;
-     margin-bottom: 5px;
+  font-size: 16px;
+  padding: 9px 30px;
 }
 .green-border-btn:hover  {
   background: #66AF00 none repeat scroll 0 0;
@@ -1080,7 +960,7 @@ a.remove {
 	border:none !important;
 	padding:30px !important;
 }
-#brandAddInProduct.ui-link , #categoryAddInProduct, #subcategory_save, #addOptionValues, #addFlavorValues{
+#brandAddInProduct.ui-link , #categoryAddInProduct, #subcategory_save{
   display: inline-block;
   padding-top: 28px;
 }
@@ -1136,36 +1016,6 @@ a.remove {
     position: absolute;
     right: 9px;
     top: 11px;
-}
-.drop-set a#selectbrand {
-    position: absolute;
-    right: 9px;
-    top: 11px;
-}
-.drop-set a#selectcategory {
-    position: absolute;
-    right: 9px;
-    top: 11px;
-}
-.drop-set a#selectsubcategory {
-    position: absolute;
-    right: 9px;
-    top: 11px;
-}
-.drop-set a#selectcustomers {
-    position: absolute;
-    right: 9px;
-    top: 12px;
-}
-.drop-set a#selectcustomercompanyname {
-    position: absolute;
-    right: 9px;
-    top: 5px;
-}
-.drop-set a#selectemployeefirstname {
-    position: absolute;
-    right: 9px;
-    top: 5px;
 }
 
 
@@ -1374,9 +1224,7 @@ footer{
     max-width: 180px;
 }
 .wrapper { position:inherit; }
-.costomer-tab-section .nav-tabs li { 
-/*padding-right:10px; */
-width:auto; }
+.costomer-tab-section .nav-tabs li { padding-right:10px; width:auto; }
 }
 @media (max-width: 435px) {
 
@@ -1475,19 +1323,6 @@ footer {
 	}
 }
 
-.alignPadding{
-	padding-bottom: 10px;
-}
-
-.orderPadding{
-	padding: 4px;
-}
-
-#totalvalue {
-	position: relative;
-    right: 23px;
-}
-
 
 /*****************   13-6-2016  *****************/
 
@@ -1495,89 +1330,9 @@ footer {
 
 .left-panel {
   height: 100%;
-}                          /*********** new edit on 16-6-2016  **************/
-
-}                          /*********** Style HTML  **************/
-
-.orderFrom
- {
- padding-left:10px;
- padding-right:10px;
-}
-.icon
-{
-	font-size: 14px;
-	color: #89ca18;
-}
+} 
+                         /*********** new edit on 16-6-2016  **************/
+						 
 
 
-#savedialog
-  {
-     background-color:white;
-	 float:left;
 
-  }
-  #saveDiscount
-  {
-   background-color:white;
-	 float:left;
-  }
-#saveemp
-  {
-  background-color:white;
-  float:left;
-  }
-#savedialog1
- {
-   background-color:white;
-   float:left;
- }
- #editDialog
-
- {
-   background-color:white;
-   float:left;
- }
- #editCatDialog
- {
-   background-color:white;
-   float:left;
- }
- #editStoreTypeDialog
- {
- background-color:white;
-    float:left;
-	
- 
- }
-  #editRegDialog
- {
-    background-color:white;
-    float:left;
-	
- }
-  #returnDialog
-  {
-    background-color:white;
-    float:left;
- }
- <!--#deleteOrderDialog{
- background-color:white;
-    float:left;
- 
- }-->
- #dialog1
- {
-   background-color:white;
-   float:left;
-   position: ['center'];
- }
-#dialog2
- {
-   background-color:white;
-   float:left;
-   position: ['center'];
- }
-
-
-							/*********** Style HTML  **************/

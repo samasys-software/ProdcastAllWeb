@@ -20,7 +20,28 @@ $(document).ready(function() {
 			var billDetails="";
 			var clicked="";
 	
-	//nothing
+	function alertMessage(message)
+	{
+		$('#message').html( message );
+		
+		$("#dialog").dialog({
+		   modal: true,
+		   draggable: false,
+		   resizable: false,
+		   position: ['center'],
+		   show: 'blind',
+		   hide: 'blind',
+		   width: 'auto',
+		   height: 'auto',
+		   dialogClass: 'ui-dialog-osx',
+		});
+	
+		$(document).delegate('#ok', 'click', function(evt)
+		{
+			$('#dialog').dialog("close");
+		});
+	}
+			
 	currency=localStorage.getItem("currency");
 		$(".distcurrency").html(currency);
 			$("#disreportSubmit").click(function(){
@@ -30,7 +51,7 @@ $(document).ready(function() {
 			});
 			
 			
-		 $('#distributor ').on('change', function() 
+		 /*$('#distributor ').on('change', function() 
 			 {
 				 					var allDistributor= $('#distributor ').val();
 				// localStorage.getItem("customerSwitchDistributor");
@@ -65,7 +86,7 @@ $(document).ready(function() {
 						
                      $(".green-btn-style-blink").css("animation-play-state", "running");
 
-				});
+				});*/
 
 				 $('#disreporttype ').on('change', function() 
 				{
@@ -125,19 +146,40 @@ $(document).ready(function() {
 				  return formatString.replace("#hhhh#",hhhh).replace("#hhh#",hhh).replace("#hh#",hh).replace("#h#",h).replace("#mm#",mm).replace("#m#",m).replace("#ss#",ss).replace("#s#",s).replace("#ampm#",ampm).replace("#AMPM#",AMPM);
 			};
 			
+			function reportReset()
+			{
+				$("#report :input").css('border', ' 1px solid #d8e1b6');
+				$(".green-btn-style-blink").css("animation-play-state", "running");
+				$("#summaryTable").empty();
+				$("#billTable").empty();
+				$("#disreporttype")[0].selectedIndex[0];
+				$('#disreportodaymsg').hide();
+				$('#disreportnullmsg').hide();
+				$('#disreportstartmsg').hide();
+				$('#disreportendmsg').hide();
+				$('#disreportendnullmsg').hide();
+				$('#summaryTable').hide();
+				$('#billTable').hide();
+				$('#summ').hide();
+				$('#billdetail').hide();
+			}
+			
 		/* Global Variable Declaration Ends */
 		
 		/* Report page Start */
 		
 			$("#report").on("pageinit", function()
 			{
-				
-				
-				
 				$('#summaryTable').hide();
 				$('#billTable').hide();
 				$('#summ').hide();
 				$('#billdetail').hide();
+				$('#discustomrangediv').hide();
+			});
+			$("#report").on("pageshow", function()
+			{
+				reportReset();
+
 				distributorId=localStorage.getItem("distributorId");
 
 				$("#reportTypeForCustomer").attr("disabled",true);
@@ -181,7 +223,7 @@ $(document).ready(function() {
 				accessId=localStorage.getItem("accessId");
 				distributorId=localStorage.getItem("distributorId");
 
-				if(reportid=='SummaryReport')
+				/*if(reportid=='SummaryReport')
 				{	
 					$('#summaryTable').show();
 					$('#billTable').show();
@@ -195,7 +237,7 @@ $(document).ready(function() {
 					$('#billTable').hide();
 					$('#summ').hide();
 					$('#billdetail').hide();
-				}
+				}*/
 
 				startDate = $('#disreport_startdate').val();
 				endDate = $('#disreport_enddate').val();
@@ -278,22 +320,42 @@ $(document).ready(function() {
 						{
 							$('#summaryTable').empty();
 									
-								
-							$('#summaryTable').append('<div class="tbl-row tbl-hed"><div class="tbl-cols">ToatalBillAmount ('+currency+')</div><div class="tbl-cols"> TotalAmountPaid ('+currency+')</div><div class="tbl-cols">OutsandingBalance ('+currency+')</div> </div>');
-							
-							$('#summaryTable').append('<div class="tbl-row"></div><div class="tbl-cols">' + response.totalAmount.toFixed(2) + '</div><div class="tbl-cols" >' + response.totalAmountPaid.toFixed(2) + '</div><div class="tbl-cols">' + response.totalOutstandingBalance.toFixed(2) + '</div></div>');
-		
 							var billDetails= response.result;
-
-							$('#billTable').empty();
-								
-							$('#billTable').append('<div class="tbl-row tbl-hed"><div class="tbl-cols">S.No</div><div class="tbl-cols">Bill No.</div><div class="tbl-cols">Bill Date</div><div class="tbl-cols">Total ('+currency+')</div><div class="tbl-cols">Balance ('+currency+')</div> </div>');
 							
-							for(i=0;i<billDetails.length;i++)
-							{	
-                                var entry = billDetails[i];
-								$('#billTable').append('<div class="tbl-row"><div class="tbl-cols">' + (i + 1) + '</div><div class="tbl-cols"><a class="billNumber"  id="' + entry.billNumber + '" data-role="button" data-mini="true" href="#billdetailspage">' + entry.billNumber + '</a></div><div class="tbl-cols">' + stringToDate(entry.billDate) + '</div><div class="tbl-cols">' + entry.totalAmount.toFixed(2) + '</div><div class="tbl-cols">' + entry.outstandingBalance.toFixed(2) + '</div></div>'); 
+							if(billDetails.length == 0)
+							{
+								$('#summaryTable').hide();
+								$('#billTable').hide();
+								$('#summ').hide();
+								$('#billdetail').hide();
+								
+								alertMessage('No Bills available Please try again..!');
+								$(".green-btn-style-blink").css("animation-play-state", "running");
 							}
+							else
+							{
+								$('#summaryTable').show();
+								$('#billTable').show();
+								$('#summ').show();
+								$('#billdetail').show();
+								
+								currency=localStorage.getItem("currency");
+					
+								$('#summaryTable').append('<div class="tbl-row tbl-hed"><div class="tbl-cols">ToatalBillAmount ('+currency+')</div><div class="tbl-cols"> TotalAmountPaid ('+currency+')</div><div class="tbl-cols">OutsandingBalance ('+currency+')</div> </div>');
+							
+								$('#summaryTable').append('<div class="tbl-row"></div><div class="tbl-cols">' + response.amount.toFixed(2) + '</div><div class="tbl-cols" >' + response.amountPaid.toFixed(2) + '</div><div class="tbl-cols">' + response.outstandingBalance.toFixed(2) + '</div></div>');
+		
+								$('#billTable').empty();
+								
+								$('#billTable').append('<div class="tbl-row tbl-hed"><div class="tbl-cols">S.No</div><div class="tbl-cols">Bill No.</div><div class="tbl-cols">Bill Date</div><div class="tbl-cols">Total ('+currency+')</div><div class="tbl-cols">Balance ('+currency+')</div> </div>');
+								
+								for(i=0;i<billDetails.length;i++)
+								{	
+									var entry = billDetails[i];
+									$('#billTable').append('<div class="tbl-row"><div class="tbl-cols">' + (i + 1) + '</div><div class="tbl-cols"><a class="billNumber"  id="' + entry.billNumber + '" data-role="button" data-mini="true" href="#billdetailspage">' + entry.billNumber + '</a></div><div class="tbl-cols">' + stringToDate(entry.billDate) + '</div><div class="tbl-cols">' + entry.totalAmount.toFixed(2) + '</div><div class="tbl-cols">' + entry.outstandingBalance.toFixed(2) + '</div></div>'); 
+								}
+							}
+
 						}
 					}
 					});
@@ -311,6 +373,14 @@ $(document).ready(function() {
 				if( reportType == "custom") 
 				{
 					$('#discustomrangediv').show();
+					
+					$('#disreportodaymsg').hide();
+					$('#disreportodaymsg').hide();
+					$('#disreportnullmsg').hide();
+					$('#disreportstartmsg').hide();
+					$('#disreportendmsg').hide();
+					$("#report :input").css('border', ' 1px solid #d8e1b6');
+				
 					return;
 				}
 				
@@ -321,20 +391,7 @@ $(document).ready(function() {
 			
 			$("#disreportReset").on("click" , function()
 			{
-				$(".green-btn-style-blink").css("animation-play-state", "running");
-				$("#summaryTable").empty();
-				$("#billTable").empty();
-				$("#disreporttype")[0].selectedIndex[0];
-				$("#distributor")[0].selectedIndex[0];
-				$('#disreportodaymsg').hide();
-				$('#disreportnullmsg').hide();
-				$('#disreportstartmsg').hide();
-				$('#disreportendmsg').hide();
-				$('#disreportendnullmsg').hide();
-				$('#summaryTable').hide();
-				$('#billTable').hide();
-				$('#summ').hide();
-				$('#billdetail').hide();	
+				reportReset();	
 			});
 			
 			/* Report page Ends */
