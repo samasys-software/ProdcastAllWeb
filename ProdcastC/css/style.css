@@ -24,14 +24,17 @@ a{
 	color: #1c94c4;
 }
 body {
-	width: 100%;
+	/*width: 100%;
 	margin: 0;
-	padding: 0;
+	padding: 0;*/
 	font-family: 'Conv_Gotham Book';
 	font-size: 12px;
 	color: #afafaf;
 	overflow-y: hidden;
 	background: #e7e7e5;
+	max-width: 1080px;
+	margin: 0 auto !important;
+    float: none !important;
 }
 img, iframe {
 	max-width: 100%;
@@ -349,9 +352,11 @@ input[id=LoginPassword]
     float: left;
     bottom:0px;
     position: absolute;
-    width: 100%;
+    /*width: 100%;*/
 	top: 33px;
 	overflow-y: auto;
+	
+	max-width: 1080px;
 }
 .right-panel {
 	background: #fafafa;
@@ -411,7 +416,7 @@ input[id=LoginPassword]
 }
 .breadcrumb label, .breadcrumb ul {
 	display: inline-block;
-	vertical-align: top;
+	/*vertical-align: top;*/
 }
 .breadcrumb label {
 	text-transform: uppercase;
@@ -612,6 +617,7 @@ footer {
 .costomer-tab-section .tab-content form select {
     border: 1px solid #e3e3e3;
 	padding:0;
+	padding-left: 8px;
 	height:37px;
 	border-radius:5px;
     width: 100%;
@@ -693,6 +699,13 @@ footer {
   display: table;
   width: 100%;
 }
+
+.tbl-full {
+  
+  display: table;
+  width: 100%;
+}
+
 .tbl-row {
   color: #575757;
   display: table-row;
@@ -746,6 +759,13 @@ border-top: 1px solid #e3e3e3;
   background: #575757 none repeat scroll 0 0;
   color: #fff;
   font-size: 12px;
+}
+
+.tbl-row.tbl-hed-dash {
+  
+  color: #fff;
+  font-size: 12px;
+  border: 1px solid #575757;
 }
 
 .tbl-row.tbl-hed-bill {
@@ -904,10 +924,17 @@ input.input-feild-style:focus {
 #order-new .col-sm-12.content-sec {
   box-sizing: border-box;
   max-height: 100%;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   padding: 0 40px 50px;
   position: relative;
 }
+
+.boxHighlight
+{
+	background: #ffffff none repeat scroll 0 0;
+	border: 1px solid #e3e3e3;
+}
+
 #order-new .wrapper {
   bottom: 0px;
 }
@@ -960,15 +987,18 @@ a.remove {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   left: 0 !important;
   margin: 0 auto;
-  max-width: 500px !important;
+  /*max-width: 500px !important;*/
+  max-width: 350px !important;
   padding: 0;
   right: 0;
   /*width: 100% !important;*/
+  width: 70% !important;
 }
 .ui-dialog-content.ui-widget-content {
   height: auto !important;
   padding: 0 !important;
   width: 100% !important;
+  overflow: hidden;
 }
 .costomer-tab-section .tab-content-mini {
 	border:none !important;
@@ -1190,13 +1220,13 @@ body {
     text-align: center;
     width: 85%;
 }
-#order-new .col-sm-12.content-sec,  #order-entry .col-sm-12.content-sec, .content-sec {
+#order-search .col-sm-12.content-sec, #order-new .col-sm-12.content-sec,  #order-entry .col-sm-12.content-sec, .content-sec {
     padding: 10px;
 }
 
  
 
-#order-new .wrapper .right-panel, #order-entry .wrapper .right-panel {
+#order-search .wrapper .right-panel, #order-new .wrapper .right-panel, #order-entry .wrapper .right-panel {
   
   width:100%;
 }
@@ -1204,7 +1234,7 @@ body {
 .entry-menu li {
     padding: 3% 2%;
 }
-#order-new .col-sm-12.content-sec {
+#order-search .col-sm-12.content-sec, #order-new .col-sm-12.content-sec {
   overflow: hidden;
 }
 footer{
@@ -1225,6 +1255,11 @@ footer{
   overflow-y: scroll;
   width: 100%;
 }
+
+.custom-table-noscroll {
+  width: 100%;
+}
+
 }
 
 @media (max-width: 568px) {
@@ -1426,7 +1461,93 @@ background: #89ca18 none repeat scroll 0 0;
 }
 
 /*********** Report Button  **************/
-						 
 
+/*********** Browse Items  **************/
 
+.item-menu 
+{
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
 
+.item-menu li 
+{
+	display: inline-block;
+	vertical-align: top;
+	list-style: none;
+	padding: 4% 5%;
+	transition-duration: 0.5s;
+	transition-property: all;
+	text-align:center;
+}
+
+.item-menu li:hover label 
+{
+	color: #89ca18;
+}
+
+.item-menu li label 
+{
+	width: 100%;
+	float: left;
+	text-align: center;
+	font-size: 17px;
+	text-transform: uppercase;
+	color: #6c6c6c;
+	cursor: pointer;
+	margin: 15px 0;
+	font-weight: normal;
+}
+
+.item-menu li 
+{
+	padding: 6% 2%;
+}
+
+.item-menu li label 
+{
+	font-size: 14px;
+}
+
+.item-menu li 
+{
+	width:100%; 
+}
+
+/*.item-menu li:last-child 
+{
+	border: none;
+}*/
+
+.item-menu li label 
+{
+	margin-bottom: 0;
+}
+
+.item-menu li 
+{
+    padding: 3% 2%;
+}
+
+.item-menu li 
+{
+    max-width: 240px;
+}
+
+/*.item-menu li 
+{
+    max-width: 180px;
+}
+
+.item-menu li 
+{
+    max-width: 133px;
+}
+
+.item-menu li 
+{
+	padding: 5% 2%;
+}*/
+
+/*********** Browse Items  **************/

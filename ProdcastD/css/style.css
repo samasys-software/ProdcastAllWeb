@@ -802,6 +802,13 @@ a.float:hover + div.label-container{
   vertical-align: middle;
 }
 
+.tbl-cols-noborder {
+  display: table-cell;
+  padding: 2px;
+  text-align: center;
+  vertical-align: middle;
+}
+
 .tbl-cols-hed
 {
   border-right: 1px solid #e3e3e3;
@@ -810,6 +817,13 @@ border-top: 1px solid #e3e3e3;
     
   display: table-cell;
   
+  text-align: center;
+  vertical-align: middle;
+}
+
+.tbl-cols-hed-noborder
+{
+  display: table-cell;
   text-align: center;
   vertical-align: middle;
 }
@@ -1066,7 +1080,7 @@ a.remove {
 	border:none !important;
 	padding:30px !important;
 }
-#brandAddInProduct.ui-link , #categoryAddInProduct, #subcategory_save{
+#brandAddInProduct.ui-link , #categoryAddInProduct, #subcategory_save, #addOptionValues, #addFlavorValues{
   display: inline-block;
   padding-top: 28px;
 }
